@@ -8,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Checkbox } from '@/components/ui/checkbox';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Card } from '@/components/ui/card';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const CustomizeTemplate = () => {
   const { templateId } = useParams();
@@ -45,14 +46,16 @@ const CustomizeTemplate = () => {
   return (
     <div className="min-h-screen bg-background page-transition">
       <div className="container mx-auto px-6 py-12 md:py-16 max-w-2xl">
-        <Button
-          variant="ghost"
-          onClick={() => navigate(-1)}
-          className="mb-12"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back
-        </Button>
+        <div className="flex items-center justify-between mb-12">
+          <Button
+            variant="ghost"
+            onClick={() => navigate(-1)}
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back
+          </Button>
+          <ThemeToggle />
+        </div>
 
         <Card className="p-8 md:p-12 border border-border" style={{ boxShadow: 'var(--shadow-md)' }}>
           <div className="mb-12">

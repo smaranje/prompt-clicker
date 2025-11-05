@@ -1,6 +1,7 @@
 import { CategoryCard } from '@/components/CategoryCard';
 import { categories } from '@/data/categories';
 import { useNavigate } from 'react-router-dom';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const CategorySelection = () => {
   const navigate = useNavigate();
@@ -12,6 +13,11 @@ const CategorySelection = () => {
   return (
     <div className="min-h-screen bg-background page-transition">
       <div className="container mx-auto px-6 py-16 md:py-24 max-w-7xl">
+        {/* Theme Toggle - Top Right */}
+        <div className="flex justify-end mb-8">
+          <ThemeToggle />
+        </div>
+        
         {/* Header - Generous spacing */}
         <div className="text-center mb-20">
           <div className="inline-flex items-center gap-2 bg-secondary text-foreground px-4 py-2 rounded-full mb-6 border border-border">

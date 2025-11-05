@@ -6,6 +6,7 @@ import { Template } from '@/types/templates';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { OpenChatGPTDialog } from '@/components/OpenChatGPTDialog';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const PreviewPrompt = () => {
   const location = useLocation();
@@ -82,14 +83,16 @@ const PreviewPrompt = () => {
   return (
     <div className="min-h-screen bg-background page-transition">
       <div className="container mx-auto px-6 py-12 md:py-16 max-w-3xl">
-        <Button
-          variant="ghost"
-          onClick={() => navigate(-1)}
-          className="mb-12"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back
-        </Button>
+        <div className="flex items-center justify-between mb-12">
+          <Button
+            variant="ghost"
+            onClick={() => navigate(-1)}
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back
+          </Button>
+          <ThemeToggle />
+        </div>
 
         <Card className="p-8 md:p-12 border border-border" style={{ boxShadow: 'var(--shadow-md)' }}>
           {/* Success Header */}

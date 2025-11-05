@@ -4,6 +4,7 @@ import { templates } from '@/data/templates';
 import { categories } from '@/data/categories';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const TemplateSelection = () => {
   const { categoryId } = useParams();
@@ -26,15 +27,17 @@ const TemplateSelection = () => {
   return (
     <div className="min-h-screen bg-background page-transition">
       <div className="container mx-auto px-6 py-12 md:py-16 max-w-4xl">
-        {/* Back Button */}
-        <Button
-          variant="ghost"
-          onClick={() => navigate('/')}
-          className="mb-12"
-        >
-          <ArrowLeft className="w-4 h-4 mr-2" />
-          Back
-        </Button>
+        {/* Top Bar - Back Button + Theme Toggle */}
+        <div className="flex items-center justify-between mb-12">
+          <Button
+            variant="ghost"
+            onClick={() => navigate('/')}
+          >
+            <ArrowLeft className="w-4 h-4 mr-2" />
+            Back
+          </Button>
+          <ThemeToggle />
+        </div>
 
         {/* Header - Generous spacing */}
         <div className="mb-16">
