@@ -29,7 +29,7 @@ export const CategoryCard = ({ category, onClick }: CategoryCardProps) => {
         </p>
         <div className="flex items-center text-primary font-semibold text-xs sm:text-sm">
           Explore
-          <ArrowRight className="ml-2 w-3.5 h-3.5 sm:w-4 sm:h-4 group-hover:translate-x-2 transition-transform" />
+          <ArrowRight className="ml-2 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
         </div>
       </div>
     </Card>

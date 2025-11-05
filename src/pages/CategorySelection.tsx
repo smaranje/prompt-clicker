@@ -24,7 +24,7 @@ const CategorySelection = () => {
             onClick={() => navigate('/favorites')}
             className="gap-1.5 sm:gap-2 text-xs sm:text-sm h-9 sm:h-10 px-3 sm:px-4"
           >
-            <Bookmark className="w-3.5 h-3.5 sm:w-4 sm:h-4" />
+            <Bookmark className="w-3.5 h-3.5" />
             <span className="hidden xs:inline">Saved</span>
           </Button>
           <ThemeToggle />
@@ -32,9 +32,9 @@ const CategorySelection = () => {
         
         {/* Header - Generous spacing */}
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
-          <div className="flex items-center justify-center gap-3 mb-6 sm:mb-8">
-            <img src={logo} alt="PromptCraft Logo" className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14" />
-            <span className="text-2xl sm:text-3xl md:text-4xl font-semibold font-heading">PromptCraft</span>
+          <div className="flex items-center justify-center gap-2 mb-6 sm:mb-8">
+            <img src={logo} alt="PromptCraft Logo" className="w-6 h-6 sm:w-7 sm:h-7" />
+            <span className="text-xl sm:text-2xl md:text-3xl font-semibold font-heading">PromptCraft</span>
           </div>
           <h1 className="font-heading mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl px-4">
             Get better AI results — every time.
