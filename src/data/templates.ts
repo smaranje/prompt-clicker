@@ -77,7 +77,88 @@ export const templates: Template[] = [
         default: false
       }
     ],
-    promptTemplate: `Write a {email_type} email to {recipient} about {topic}. Cover these key points: {key_points}. Keep it {length} with a {tone} tone. Use proper email structure with greeting and closing.{include_cta}`
+    promptTemplate: `You are a professional business communication expert who has coached C-level executives on email strategy.
+
+Write a {email_type} email to {recipient} about {topic}.
+
+Key points to address: {key_points}
+Length: {length}
+Tone: {tone}
+Include CTA: {include_cta}
+
+EMAIL STRUCTURE FRAMEWORK:
+
+1. SUBJECT LINE
+Create 2 options:
+- Benefit-driven: Focus on value for recipient
+- Curiosity-driven: Creates intrigue without being clickbait
+Keep under 50 characters for mobile optimization.
+
+2. OPENING (First 1-2 sentences)
+Email Type Strategies:
+- Professional Reply: Reference their email + acknowledge main point
+- Request: Show you understand their time is valuable
+- Update: Lead with the most important news
+- Apology: Take ownership immediately, no excuses
+- Follow-up: Reference previous conversation + provide value
+- Sales/Pitch: Start with their problem/opportunity (not your solution)
+- Thank You: Be specific about what you're thanking them for
+- Cold Outreach: Personalized observation about them/their company
+
+❌ Avoid: "I hope this email finds you well" "I wanted to reach out"
+
+3. BODY (2-4 paragraphs for {length})
+Brief: 3-4 sentences, single main point
+Medium: 2-3 short paragraphs, clear structure
+Detailed: 4+ paragraphs with subheadings/bullets
+
+Structure Guidelines:
+- Start each paragraph with key point (busy readers skim)
+- Use bullet points for lists (3-5 max)
+- One idea per paragraph
+- Break up text (no paragraph over 4 lines)
+- Bold important points (use sparingly)
+
+Tone Customization for {tone}:
+- Professional: Clear, respectful, solution-focused
+- Friendly & Warm: Use first names, contractions, show personality
+- Direct & Concise: Skip pleasantries, action-oriented
+- Enthusiastic: Exclamation points (max 1-2), positive language
+- Apologetic: Own the mistake, outline solution, prevent future issues
+
+4. CALL-TO-ACTION
+{include_cta} Based on email type:
+- Request: Specific ask + easy response (yes/no question)
+- Update: Next steps + timeline
+- Sales: Low-commitment next step (call, demo, resource)
+- Follow-up: Gentle nudge + value-add
+
+Make it easy to respond:
+✓ Single, clear action
+✓ Provide specific options/times
+✓ Remove friction (no multi-step process)
+
+5. CLOSING
+Match tone:
+- Professional: "Best regards," "Sincerely,"
+- Friendly: "Thanks!" "Cheers,"
+- Direct: "Thanks," "Regards,"
+
+RECIPIENT CUSTOMIZATION:
+- Executives: Lead with impact/ROI, be concise
+- Clients: Professional + warm, focus on their goals
+- Team: Collaborative tone, clear expectations
+- Strangers: Build credibility quickly, personalize
+
+BEST PRACTICES:
+✓ Front-load important information
+✓ Use active voice ("I will" not "it will be")
+✓ Avoid jargon unless industry-specific
+✓ Proofread for typos (undermines credibility)
+✓ Preview on mobile (60% of emails opened on mobile)
+✓ If over 200 words, consider if a call would be better
+
+Write the complete email now with subject line options.`
   },
   {
     id: 'social_posts',
@@ -371,7 +452,93 @@ Write the complete article now.`
         ]
       }
     ],
-    promptTemplate: `{purpose} the following text. Maintain the original meaning but improve the writing quality.`
+    promptTemplate: `You are an expert editor who has refined copy for The New York Times, Harvard Business Review, and top Fortune 500 companies.
+
+Task: {purpose} the following text
+Goal: Maintain original meaning while dramatically improving impact and readability
+
+EDITING FRAMEWORK BY PURPOSE:
+
+## IMPROVE CLARITY
+- Remove passive voice: "was done by" → "did"
+- Cut filler words: "in order to" → "to", "due to the fact that" → "because"
+- Replace vague terms: "very good" → specific descriptor
+- Split complex sentences (max 20-25 words)
+- Use active, concrete verbs
+- Define technical terms if needed
+- One idea per sentence
+
+Before: "The implementation of the new system was accomplished by our team."
+After: "Our team implemented the new system."
+
+## MAKE SHORTER
+Target: Cut 30-50% of word count while keeping all key points
+- Delete redundant phrases ("final outcome" → "outcome")
+- Remove qualifiers unless critical ("really", "very", "quite")
+- Cut throat-clearing openings ("It is important to note that...")
+- Combine related sentences
+- Use bullet points for lists
+- Replace phrases with single words: "in the event that" → "if"
+
+## MAKE LONGER  
+Add valuable depth:
+- Expand with specific examples
+- Add supporting data/statistics
+- Include relevant context
+- Anticipate and answer reader questions
+- Add transitional sentences between ideas
+- Explain "why" behind key points
+- Include concrete scenarios or case studies
+
+❌ Don't add fluff or repeat the same idea
+
+## MORE PROFESSIONAL
+- Replace casual contractions: "can't" → "cannot"
+- Eliminate slang and colloquialisms
+- Use industry-standard terminology
+- Formal greeting/closing
+- Remove emotional language
+- Structured formatting
+- Third person for formal documents
+- Objective tone, fact-based
+
+Casual: "We've gotta fix this ASAP"
+Professional: "This requires immediate attention and resolution"
+
+## MORE CASUAL
+- Add contractions: "do not" → "don't"
+- Use conversational phrases
+- Include relatable examples
+- Address reader as "you"
+- Shorter sentences
+- Okay to start sentences with "And" "But"
+- Show personality
+- Use everyday language
+
+Professional: "We request that you provide your feedback"
+Casual: "Let us know what you think"
+
+UNIVERSAL IMPROVEMENTS:
+✓ Check for typos and grammar errors
+✓ Ensure consistent tense
+✓ Verify logical flow
+✓ Remove clichés ("think outside the box", "game changer")
+✓ Improve weak verbs: "utilize" → "use", "facilitate" → "help"
+✓ Vary sentence length for rhythm
+✓ Front-load key information
+
+READABILITY CHECKS:
+- Could a busy executive scan this in 30 seconds?
+- Is every word earning its place?
+- Does it respect the reader's time?
+- Is the tone appropriate for the audience?
+
+Now analyze and rewrite the text according to the {purpose} goal.
+
+Provide:
+1. The improved version
+2. Brief explanation of key changes made (2-3 bullets)
+3. Readability improvement metrics (word count before/after if shortened/expanded)`
   },
   {
     id: 'product_description',
@@ -405,7 +572,117 @@ Write the complete article now.`
         ]
       }
     ],
-    promptTemplate: `Write a {tone} product description for {product}. Highlight these features: {features}. Make it compelling and clear.`
+    promptTemplate: `You are a master copywriter who has written product descriptions that generated $10M+ in e-commerce sales for brands like Apple, Airbnb, and Patagonia.
+
+Product: {product}
+Key Features: {features}
+Tone: {tone}
+
+CONVERSION-OPTIMIZED PRODUCT DESCRIPTION FRAMEWORK:
+
+## 1. HEADLINE (5-10 words)
+Don't just name the product. Sell the transformation.
+❌ "Blue Wireless Headphones"
+✓ "Block Out Distractions, Amplify Your Focus"
+
+Formula: [Desired Outcome] + [Without Common Objection]
+
+## 2. OPENING HOOK (1-2 sentences)
+Lead with the problem or desire, NOT the product.
+- What pain does this solve?
+- What transformation does it enable?
+- What makes this moment the right time to buy?
+
+{tone} Tone Application:
+- Persuasive: Focus on emotional benefits + social proof
+- Informative: Lead with specs that matter + use cases  
+- Luxury: Emphasize craftsmanship, exclusivity, experience
+- Casual: Conversational, like recommending to a friend
+
+## 3. BENEFIT-DRIVEN FEATURES (3-5 bullets)
+Transform each feature into a customer benefit using "so you can" framework:
+
+Feature → Benefit transformation:
+❌ "24-hour battery life"
+✓ "24-hour battery life — so you can power through your workday and commute without ever reaching for a charger"
+
+❌ "Waterproof design"  
+✓ "Waterproof to 50 meters — so you can take calls in the rain or track your swim without worry"
+
+Structure each bullet:
+[Feature specification] — so you can [specific outcome/benefit]
+
+## 4. SOCIAL PROOF INTEGRATION
+Where appropriate for {tone}:
+- "Trusted by 50,000+ [target customers]"
+- "4.8/5 stars from 2,000+ reviews"
+- "As featured in [publication]"
+
+## 5. OVERCOME OBJECTIONS
+Address the silent questions buyers have:
+
+Common objections to preempt:
+- Price: Justify with long-term value, cost-per-use
+- Quality: Manufacturing details, warranty, materials
+- Complexity: "Set up in 5 minutes", "No assembly required"
+- Compatibility: "Works with [specific systems]"
+
+## 6. CALL-TO-ACTION
+Based on {tone}:
+- Persuasive: Create urgency + risk reversal ("30-day guarantee")
+- Informative: Clear next steps ("Order now for free shipping")
+- Luxury: Exclusive invitation ("Reserve yours today")
+- Casual: Friendly nudge ("Grab one before they're gone")
+
+LENGTH GUIDELINES BY TONE:
+- Persuasive: 150-200 words (emotional journey)
+- Informative: 100-150 words (efficient, factual)
+- Luxury: 200-250 words (storytelling, craftsmanship)
+- Casual: 75-125 words (punchy, scannable)
+
+PERSUASIVE TONE ELEMENTS:
+- Power words: "Transform", "Effortless", "Premium", "Instantly"
+- Sensory language: How it feels, sounds, looks
+- Before/After scenarios
+- Time-saving/money-saving calculations
+- Guarantee/Risk reversal
+
+INFORMATIVE TONE ELEMENTS:
+- Precise specifications
+- Compatibility details  
+- Use case scenarios
+- Technical advantages explained simply
+- Comparison to alternatives
+
+LUXURY TONE ELEMENTS:
+- Craftsmanship details
+- Heritage/Story
+- Exclusive materials
+- Limited availability
+- Aspirational imagery
+- Sensory descriptors
+
+CASUAL TONE ELEMENTS:
+- Contractions, short sentences
+- Relatable scenarios
+- Direct address ("you'll love...")
+- Personality and humor (where appropriate)
+- Conversational rhythm
+
+WRITING RULES:
+✓ Show, don't tell: "whisper-quiet motor" not "very quiet"
+✓ Specific numbers: "charges in 90 minutes" not "fast charging"
+✓ Active voice: "Delivers crystal-clear sound" not "Sound is delivered"
+✓ Scannable format: Short paragraphs, bullets, bold key phrases
+✓ Mobile-optimized: Front-load key benefits (mobile users skim)
+
+AVOID:
+❌ Generic claims: "high quality", "best in class" (prove it instead)
+❌ Jargon without context
+❌ Feature lists without benefits
+❌ All caps or excessive punctuation!!!
+
+Write the complete product description now, including headline, body, and CTA.`
   },
 
   // WORK & BUSINESS
@@ -446,7 +723,124 @@ Write the complete article now.`
         ]
       }
     ],
-    promptTemplate: `Create a {duration}-minute {meeting_type} agenda focused on {purpose}. Include time allocations for each topic and clear objectives.`
+    promptTemplate: `You are an executive productivity consultant who has optimized meeting efficiency for companies like Google, Amazon, and McKinsey.
+
+Meeting Type: {meeting_type}
+Duration: {duration} minutes
+Main Purpose: {purpose}
+
+EFFECTIVE MEETING AGENDA FRAMEWORK:
+
+## PRE-MEETING CONTEXT
+**Meeting Goal:** [One clear sentence describing what success looks like]
+**Decision Required:** [What needs to be decided by end of meeting, if applicable]
+**Pre-Read:** [Any materials participants should review beforehand]
+
+## TIME-BLOCKED AGENDA
+
+The {duration}-minute rule: Allocate time in 5-minute blocks, reserve last 10% for wrap-up.
+
+### OPENING (5-10% of time)
+- Welcome & attendance
+- State meeting purpose & desired outcome
+- Review agenda & ground rules
+- Quick round of context-setting if needed
+
+{meeting_type} Opening Strategy:
+- Team Meeting: Quick wins from last week, set positive tone
+- Client Meeting: Acknowledge their time, confirm what they want from this meeting
+- Planning Session: Share vision/end goal before diving into tactics
+- Review Meeting: Set evaluation criteria upfront
+
+### CORE DISCUSSION BLOCKS
+
+Break {purpose} into 3-5 distinct topics.
+
+For each topic block:
+**[Topic Name] — [X minutes]**
+- Goal: [Specific outcome for this segment]
+- Discussion Points:
+  • [Key question/topic 1]
+  • [Key question/topic 2]
+  • [Key question/topic 3]
+- Owner: [Who leads this section]
+- Output: [Decision, action item, or deliverable]
+
+Time Allocation Formula:
+- 30 min meeting: 2-3 topics, 8-10 min each
+- 60 min meeting: 3-4 topics, 12-15 min each
+- 90 min meeting: 4-5 topics, 15-18 min each
+
+### DECISION-MAKING & ACTION ITEMS (15-20% of time)
+- Recap decisions made
+- Assign action items (Owner + Deadline)
+- Identify blockers or dependencies
+- Schedule follow-up if needed
+
+### CLOSING (Last 5-10 minutes)
+- Summarize key outcomes
+- Confirm next steps & owners
+- Set date for next meeting if recurring
+- Parking lot items → assign follow-up
+
+## MEETING TYPE CUSTOMIZATION
+
+### Team Meeting Focus:
+- Updates: Brief status reports (time-box to 2 min each)
+- Blockers: What's preventing progress?
+- Collaboration: Where do we need alignment?
+- Wins: Celebrate progress (builds morale)
+
+### Client Meeting Focus:
+- Their priorities first
+- Show vs. tell (demos, visuals)
+- Leave 30% of time for their questions
+- End with clear next steps they can agree to
+
+### Planning Session Focus:
+- Start with vision/goal
+- Brainstorm before critiquing
+- Use frameworks (SWOT, OKRs, etc.)
+- End with prioritized roadmap
+
+### Review Meeting Focus:
+- Data-driven: Show metrics
+- Comparison: vs. goals, previous period
+- Root cause analysis for misses
+- Adjust strategy based on findings
+
+## MEETING BEST PRACTICES
+
+**Before the meeting:**
+✓ Send agenda 24 hours in advance
+✓ Include any pre-read materials
+✓ State if attendees need to prepare anything
+✓ Invite only essential people
+
+**During the meeting:**
+✓ Start on time (even if people are missing)
+✓ Assign a note-taker
+✓ Park off-topic items (keep a list to review at end)
+✓ Use a timer for each segment
+✓ Make decisions, don't just discuss
+✓ End on time (respect calendars)
+
+**After the meeting:**
+✓ Share notes within 24 hours
+✓ Include action items with owners & deadlines
+✓ Send to attendees + relevant stakeholders
+✓ Track action item completion
+
+## AGENDA QUALITY CHECKLIST
+✓ Is the purpose crystal clear?
+✓ Could we cancel this and just send an email? (If yes, do that)
+✓ Are time blocks realistic?
+✓ Does every topic have a clear goal/output?
+✓ Are the right people invited (not too many)?
+✓ Is there time for questions/discussion?
+✓ Does it end with actionable next steps?
+
+Create the complete agenda now with specific time allocations and clear objectives.`
   },
   {
     id: 'business_report',
@@ -474,7 +868,192 @@ Write the complete article now.`
         placeholder: 'what the report covers'
       }
     ],
-    promptTemplate: `Create a {report_type} about {topic}. Include an executive summary, key findings, and actionable recommendations.`
+    promptTemplate: `You are a senior business analyst who has prepared board-level reports for Fortune 500 companies and consulted for McKinsey & Company.
+
+Report Type: {report_type}
+Topic/Project: {topic}
+
+EXECUTIVE BUSINESS REPORT FRAMEWORK:
+
+## DOCUMENT STRUCTURE
+
+### 1. EXECUTIVE SUMMARY (10-15% of report)
+**Critical:** Busy executives may ONLY read this section.
+
+Must include:
+- **Situation:** What is this report about? (1-2 sentences)
+- **Key Finding/Result:** Most important insight (1 sentence, lead with the number/outcome)
+- **Impact:** Business significance (revenue, efficiency, risk, opportunity)
+- **Recommendation:** Primary action needed (specific, actionable)
+- **Timeline:** When decisions/actions are needed
+
+Format: 4-6 bullet points or short paragraphs, max 250 words.
+
+{report_type} Executive Summary Focus:
+- Progress Report: Actual vs. planned, key milestone status, risks
+- Analysis Report: Main insight, data-backed conclusion, strategic implication
+- Quarterly Review: Period performance vs. targets, trend direction, outlook
+- Project Summary: Delivery status, budget vs. actual, outcome achieved
+
+### 2. BACKGROUND/CONTEXT (5-10% of report)
+- Why this report exists
+- Scope and timeframe covered
+- Methodology or data sources
+- Key stakeholders
+- Success criteria or benchmarks
+
+Keep brief—readers want findings, not lengthy setup.
+
+### 3. KEY FINDINGS (40-50% of report)
+
+Structure findings as: **Insight → Evidence → Implication**
+
+Use data-driven headings that tell the story:
+❌ "Sales Data"
+✓ "Sales Declined 15% in Q3, Driven by Enterprise Churn"
+
+For each major finding:
+
+**Finding #[X]: [Descriptive headline]**
+
+- **Data/Evidence:** Specific metrics, trends, comparisons
+  - Use: percentages, absolute numbers, trends over time
+  - Compare: to goals, previous periods, benchmarks, competitors
+  - Visualize: tables, charts (describe what to include)
+
+- **Analysis:** What this means
+  - Why did this happen? (root cause)
+  - What patterns emerged?
+  - What surprised you?
+
+- **Business Impact:** So what?
+  - Effect on revenue/costs/timeline/quality
+  - Risk or opportunity
+  - Strategic implications
+
+Report Type Customization:
+
+**Progress Report Findings:**
+- Accomplishments vs. plan
+- Delays and reasons
+- Budget status (spent vs. allocated)
+- Resource utilization
+- Upcoming milestones
+- Risk factors
+
+**Analysis Report Findings:**
+- Data trends and patterns
+- Comparative analysis
+- Root cause identification
+- Correlation vs. causation
+- Scenario modeling results
+- Market/competitive intelligence
+
+**Quarterly Review Findings:**
+- KPI performance vs. targets
+- Revenue and cost analysis
+- Customer/product metrics
+- Team performance
+- Market conditions impact
+- Quarter-over-quarter trends
+
+**Project Summary Findings:**
+- Deliverables completed
+- Timeline adherence
+- Budget performance
+- Quality metrics
+- Stakeholder feedback
+- Lessons learned
+
+### 4. RECOMMENDATIONS (20-25% of report)
+
+Make recommendations **SMART**: Specific, Measurable, Achievable, Relevant, Time-bound
+
+For each recommendation:
+
+**Recommendation #[X]: [Action-oriented title]**
+
+- **Action:** What exactly should be done? (verb-driven)
+- **Owner:** Who should lead this?
+- **Timeline:** When should this start/complete?
+- **Resources:** What's needed? (budget, people, tools)
+- **Expected Outcome:** Quantified impact
+- **Priority:** High/Medium/Low (base on impact vs. effort)
+- **Dependencies:** What else must happen first?
+
+Prioritization Framework:
+- **High:** Immediate action, high impact, low to moderate effort
+- **Medium:** Important but not urgent, or high effort
+- **Low:** Nice to have, low impact, or long-term
+
+### 5. NEXT STEPS & TIMELINE (5-10% of report)
+
+Create visual roadmap:
+- Immediate actions (next 30 days)
+- Short-term initiatives (30-90 days)  
+- Long-term strategic moves (90+ days)
+
+Include:
+- Decision points and deadlines
+- Dependencies between actions
+- Checkpoints for progress review
+
+### 6. APPENDIX (if needed)
+- Detailed data tables
+- Methodology details
+- Assumptions made
+- Additional charts
+- Supporting research
+
+## WRITING BEST PRACTICES
+
+**Clarity:**
+- Use active voice: "Sales declined" not "A decline was seen in sales"
+- Front-load key information
+- One idea per paragraph
+- Short sentences (15-20 words average)
+- Define acronyms on first use
+
+**Data Presentation:**
+- Lead with insights, not raw data
+- Use visual aids (describe charts/tables to include)
+- Provide context (vs. what?)
+- Show trends, not just snapshots
+- Call out outliers or anomalies
+
+**Tone:**
+- Professional but accessible
+- Objective and fact-based
+- Avoid hedging ("seems to indicate") - be direct
+- Solution-oriented, not just problem-focused
+- Acknowledge limitations/uncertainties
+
+**Formatting:**
+- Use headers and subheaders generously
+- Bold key metrics and findings
+- Bullet points for lists
+- Tables for data comparison
+- White space for readability
+- Page numbers and table of contents if >5 pages
+
+## REPORT LENGTH GUIDELINES
+- Progress Report: 2-4 pages
+- Analysis Report: 4-8 pages  
+- Quarterly Review: 3-6 pages
+- Project Summary: 2-5 pages
+
+Plus appendix if needed (doesn't count toward page limit).
+
+## QUALITY CHECKLIST
+✓ Can a busy exec understand the key message in 2 minutes?
+✓ Is every finding supported by data?
+✓ Are recommendations specific and actionable?
+✓ Is the business impact clear for each finding?
+✓ Have you answered "so what?" throughout?
+✓ Is it free of jargon and acronyms (or are they defined)?
+✓ Could someone act on this report immediately?
+
+Generate the complete {report_type} report now, following this framework.`
   },
   {
     id: 'job_description',
@@ -508,7 +1087,171 @@ Write the complete article now.`
         placeholder: 'main requirements'
       }
     ],
-    promptTemplate: `Write a job description for a {experience} {role}. Focus on these key skills: {key_skills}. Include responsibilities, requirements, and company culture fit.`
+    promptTemplate: `You are a talent acquisition specialist who has hired 500+ tech professionals for companies like Google, Stripe, and high-growth startups.
+
+Role: {experience} {role}
+Key Skills: {key_skills}
+
+JOB DESCRIPTION FRAMEWORK THAT ATTRACTS TOP TALENT:
+
+## JOB TITLE
+Make it clear and searchable (SEO matters for job boards).
+Include level: {experience} {role}
+
+## OPENING HOOK (2-3 sentences)
+Don't start with "We are looking for..." That's obvious.
+
+Instead, lead with ONE of:
+- **Impact**: "Your code will be used by 10M+ users daily"
+- **Challenge**: "Help us solve [specific hard problem]"
+- **Growth**: "Be employee #20 at a $50M ARR company"
+- **Mission**: "Join us in [compelling mission]"
+
+Make candidates want to keep reading.
+
+## ABOUT THE ROLE (3-4 bullets)
+What will they ACTUALLY do day-to-day?
+
+Format: Action verb + outcome + context
+✓ "Ship user-facing features that directly impact our 4.8-star app rating"
+✓ "Lead technical architecture decisions for our payments infrastructure"
+❌ "Develop software" (too vague)
+❌ "Collaborate with team members" (assumed)
+
+Experience Level Customization:
+- Entry: Focus on learning opportunities, mentorship, defined scope
+- Mid: Balance of ownership and support, clear growth path
+- Senior: Strategic impact, autonomy, technical leadership
+- Lead/Principal: Architecture decisions, cross-team influence, business impact
+
+## WHAT YOU'LL WORK ON (3-5 specific examples)
+Real projects, not generic responsibilities.
+
+- "Build the new onboarding flow (reduce drop-off by 20%)"
+- "Optimize our API (currently 500ms average, goal: sub-200ms)"
+- "Design the data pipeline for real-time analytics"
+
+Makes the role tangible and exciting.
+
+## REQUIREMENTS
+Split into "Must Have" and "Nice to Have" — most companies only do "required."
+
+### Must Have:
+Focus on {key_skills} but frame as outcomes, not years.
+
+❌ "5+ years of experience"  
+✓ "Shipped production features handling 100K+ daily users"
+
+❌ "Expert in React"
+✓ "Built complex React applications with state management (Redux/Context)"
+
+Experience Level Guidelines:
+- Entry: 0-2 years, strong fundamentals, willingness to learn
+- Mid: 2-5 years, independent feature delivery, some mentoring
+- Senior: 5-8 years, system design, technical leadership, cross-functional collab
+- Lead/Principal: 8+ years, architecture ownership, org-wide impact
+
+Include:
+- Technical skills: {key_skills} + context
+- Soft skills: Communication, ownership, collaboration (be specific)
+- Domain knowledge if critical
+
+### Nice to Have:
+This is where you can dream. Top candidates have 60% of your requirements.
+
+- Adjacent technologies
+- Industry experience
+- Open source contributions
+- Specific certifications
+- Domain expertise
+
+## WHAT WE OFFER
+Top talent has options. Why choose you?
+
+### Growth & Impact:
+- Ownership & autonomy level
+- Learning opportunities (courses, conferences, etc.)
+- Career progression (real paths, not corporate speak)
+- Work with [impressive technologies/scale/people]
+
+### Compensation (if sharing):
+- Salary range (transparency wins candidates)
+- Equity details (% vs. options, vesting)
+- Bonus structure
+
+### Benefits:
+Highlight what's unique or exceptional:
+✓ "Unlimited PTO (team average: 25 days/year)"
+✓ "Remote-first (work from anywhere)"
+✓ "$5K annual learning budget"
+❌ "Competitive salary" (meaningless)
+❌ "Health insurance" (expected)
+
+### Culture & Work Environment:
+- Team size & structure
+- Meeting culture (# of meetings/week)
+- Collaboration style (async-first? in-person?)
+- Tools & tech stack
+- Work-life balance (be honest)
+
+## ABOUT US (keep brief - 2-3 sentences)
+- What you do (in plain English)
+- Stage (Series B, bootstrapped, etc.)
+- Traction (users, revenue, growth)
+- Mission or differentiator
+
+❌ Long company history
+❌ Buzzword bingo ("synergistic", "rockstar")
+
+## INTERVIEW PROCESS
+Transparency builds trust.
+
+Example:
+"1. 30-min intro call
+2. Technical assessment (2 hours, take-home)
+3. Virtual on-site (3 hours: system design, pair programming, team fit)
+4. Offer - typically 2 weeks start to finish"
+
+## APPLICATION INSTRUCTIONS
+Make it easy to apply. Reduce friction.
+
+"Apply with:
+- Resume/LinkedIn
+- [Optional] Link to your GitHub or portfolio
+- [Optional] Why you're interested (2-3 sentences)"
+
+Asking for cover letters reduces applications by 40%.
+
+## INCLUSIVE LANGUAGE CHECKLIST
+✓ Use "they" pronouns in examples
+✓ Avoid gendered language ("ninja", "rockstar")
+✓ Don't require unnecessary credentials (degree requirements cut qualified candidates)
+✓ Research shows women apply when 100% qualified, men at 60% - explicitly encourage diverse candidates
+✓ Include: "We value diverse perspectives. If you don't meet 100% of qualifications but are excited about the role, apply anyway."
+
+## SEO & JOB BOARD OPTIMIZATION
+- Job title matches what candidates search (not internal titles)
+- Location explicitly stated (remote? hybrid? office?)
+- Keywords from {key_skills} appear 2-3 times naturally
+- Length: 500-800 words (too short = low quality, too long = low completion)
+
+## RED FLAGS TO AVOID
+❌ "Rockstar/Ninja/Guru" (dated, cringe)
+❌ "Wear many hats" (code for understaffed)
+❌ "Fast-paced environment" (code for chaos)
+❌ "Family" culture (code for boundary issues)
+❌ Salary "based on experience" (just share the range)
+❌ Excessive requirements (PhD for junior role)
+
+## QUALITY CHECKLIST
+✓ Would I want to apply to this role?
+✓ Is the day-to-day clear?
+✓ Are requirements realistic?
+✓ Does it respect candidates' time?
+✓ Is it free of jargon and buzzwords?
+✓ Would underrepresented candidates feel welcome?
+
+Generate the complete job description now.`
   },
   {
     id: 'presentation_outline',
@@ -542,7 +1285,224 @@ Write the complete article now.`
         ]
       }
     ],
-    promptTemplate: `Create a {duration}-minute presentation outline about {topic} for {audience}. Include slide-by-slide structure with key points and talking points.`
+    promptTemplate: `You are a presentation coach who has trained TEDx speakers, Fortune 500 executives, and helped 100+ people deliver career-defining presentations.
+
+Topic: {topic}
+Audience: {audience}
+Duration: {duration} minutes
+
+COMPELLING PRESENTATION STRUCTURE:
+
+## SLIDE-BY-SLIDE BREAKDOWN
+
+Time allocation rule: 1-2 minutes per slide for {duration} minutes = {duration}/1.5 = ~[calculate] slides
+
+### SLIDE 1: TITLE SLIDE (30 seconds)
+**Visual:** Clean, high-impact image related to {topic}
+**Text:** 
+- Presentation title (benefit-driven, not just topic name)
+- Your name & credentials
+- Date
+
+**Opening line** (while this slide shows):
+❌ "Thanks for having me today..."
+✓ Start with: A question, startling statistic, or bold statement
+
+### SLIDE 2: HOOK (1-2 minutes)  
+**Goal:** Grab attention and establish relevance
+
+**Visual:** Powerful image, stat visualization, or thought-provoking question
+**Content:** Choose ONE hook approach:
+- **Problem Hook**: "80% of {audience} struggle with [pain point]"
+- **Story Hook**: Brief personal story (30-60 seconds)
+- **Question Hook**: "What if you could [amazing outcome]?"
+- **Stat Hook**: Surprising, counterintuitive data point
+
+**Talking Points:**
+- State the hook
+- Connect it to {audience}'s experience
+- Preview the value they'll get
+
+Audience-Specific Hooks for {audience}:
+- Executives: ROI, business impact, competitive advantage
+- Technical: Efficiency, scalability, innovation
+- General: Practical benefits, time-saving, simplification
+
+### SLIDE 3: AGENDA/ROADMAP (30-45 seconds)
+**Visual:** Simple roadmap graphic
+**Content:** 3-5 main points you'll cover
+
+Format as outcomes:
+❌ "I'll talk about X, Y, Z"
+✓ "You'll learn how to: [X], [Y], [Z]"
+
+Make it benefits-driven.
+
+### SLIDES 4-[X]: MAIN CONTENT
+
+**The Rule of 3:** Break {topic} into 3 main sections
+
+For {duration} minutes:
+- 5 min: 2 main points
+- 15 min: 3 main points
+- 30 min: 3-4 main points
+- 45 min: 4-5 main points
+
+For each main point:
+
+#### MAIN POINT #X SLIDE
+**Visual:** Relevant image, diagram, or graph (not bullet points!)
+**Headline:** Clear, descriptive (not "Point 1")
+**Content:** ONE key message per slide
+
+**Talking Points Structure:**
+1. **State** the point (10 seconds)
+2. **Explain** why it matters (20-30 seconds)
+3. **Evidence** - data, example, or story (40-60 seconds)
+4. **Application** - how {audience} can use this (30 seconds)
+
+#### Supporting Slides (1-2 per main point)
+- Data visualization
+- Case study/example
+- Before/After comparison
+- Process diagram
+- Customer quote/testimonial
+
+**Slide Design Rules:**
+- Max 6 words per slide (Guy Kawasaki 10/20/30 rule)
+- Use images, not clip art
+- One idea per slide
+- High contrast for readability
+- Minimum 30pt font
+
+### SLIDE [X-2]: KEY TAKEAWAYS (1-2 minutes)
+**Visual:** Simple, clean summary graphic
+**Content:** 3-5 bullet points (this is okay for recap)
+
+Format: "Remember: [takeaway]"
+
+Make them actionable:
+❌ "{topic} is important"
+✓ "Start using [specific technique] this week"
+
+### SLIDE [X-1]: CALL-TO-ACTION (1 minute)
+**Goal:** What should {audience} DO now?
+
+**Visual:** Bold, action-oriented
+**Content:** One clear next step
+
+Examples:
+- "Try [technique] on your next [project]"
+- "Download the framework at [link]"
+- "Schedule time to [implement this]"
+- "Join our community at [link]"
+
+Make it:
+✓ Specific
+✓ Achievable  
+✓ Low friction
+✓ Time-bound if possible
+
+### SLIDE [X]: QUESTIONS / THANK YOU (remaining time)
+**Visual:** Contact info, QR code to resources
+**Content:**
+- Thank you message
+- Email/LinkedIn
+- Link to slides or resources
+
+**Talking Points:**
+- Quick recap (15 seconds)
+- Open for questions
+- Offer to connect 1-on-1
+
+## PRESENTATION DELIVERY NOTES
+
+### Opening (First 30 seconds - CRITICAL)
+Don't waste time thanking everyone and apologizing.
+
+❌ "Thanks for coming... I know you're all busy... I'm a bit nervous..."
+✓ [Hook] → [Why this matters to you] → [What you'll learn]
+
+### Body Language & Delivery:
+- Stand, don't sit (if possible - increases energy)
+- Move with purpose (not pacing)
+- Hand gestures (open, natural)
+- Eye contact with different sections
+- Vary vocal tone and pace
+- Pause for emphasis (don't fill silence)
+
+### Storytelling Integration:
+For {duration} minutes, include:
+- 5 min: 1 brief story (30 sec)
+- 15 min: 1-2 stories (1 min each)
+- 30 min: 2-3 stories (1-2 min each)
+- 45 min: 3-4 stories (2 min each)
+
+Stories make facts memorable.
+
+### Handling Q&A:
+- Repeat question (others may not hear)
+- Keep answers concise (60-90 seconds max)
+- If you don't know: "Great question. I don't have that data, but I'll find out and follow up."
+- Redirect off-topic: "That's important but outside our scope today. Let's connect after."
+
+### Time Management:
+- Rehearse to 80% of allocated time (you'll speed up live)
+- Have a "drop slide" plan (what to skip if running long)
+- Set phone timer to vibrate at 75% mark
+
+### Audience Engagement Tactics:
+- Ask questions (get hands up)
+- Quick polls or shows of hands
+- Rhetorical questions (make them think)
+- Reference their industry/experiences
+- Acknowledge their challenges
+
+## CUSTOMIZATION FOR {audience}
+
+- Technical audience: Show the "how", include architecture/process diagrams
+- Executive audience: Lead with business impact, keep high-level, ROI focus
+- General audience: Use analogies, avoid jargon, more visuals
+- Creative audience: Bold visuals, unconventional format, storytelling
+- Academic audience: Cite sources, methodology, data rigor
+
+## PRESENTATION CHECKLIST
+
+Before you present:
+✓ Practiced out loud 3+ times?
+✓ Fits within time limit (with 20% buffer)?
+✓ Slides readable from back of room?
+✓ Tested tech (screen sharing, clicker, etc.)?
+✓ Have backup plan (PDF if slides fail)?
+✓ Memorized opening & closing?
+✓ Prepared for likely questions?
+✓ Removed filler words ("um", "like", "you know")?
+
+## SLIDE DESIGN PRINCIPLES
+
+**Typography:**
+- Heading: 44-54pt, bold
+- Body: 30-32pt minimum
+- Use max 2 fonts
+
+**Color:**
+- High contrast (dark on light or light on dark)
+- Consistent color scheme (2-3 colors max)
+- Avoid red/green (colorblind consideration)
+
+**Images:**
+- High resolution (no pixelation)
+- Relevant, not decorative
+- Full bleed or purposeful white space
+- No cheesy stock photos
+
+**Data Visualization:**
+- Simplify (remove grid lines, 3D effects)
+- Highlight key insight
+- Include source
+- Make it understandable in 5 seconds
+
+Now create the complete slide-by-slide presentation outline with talking points and visual descriptions for each slide.`
   },
 
   // LEARNING & RESEARCH
