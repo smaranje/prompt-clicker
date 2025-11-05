@@ -2054,7 +2054,7 @@ A: [Explanation of mechanism or reason]
 - Level 3: Analysis and connections
 
 **For each card:**
-```
+
 CARD #X [Difficulty: Easy/Medium/Hard]
 
 QUESTION:
@@ -2063,7 +2063,6 @@ QUESTION:
 ANSWER:
 [Concise answer - 2-3 sentences max]
 [+ Optional: "Related concept: [link to another card]"]
-```
 
 ---
 
@@ -2576,7 +2575,174 @@ Make them publication-worthy.`
         placeholder: 'any specific theme or element'
       }
     ],
-    promptTemplate: `Generate 3 unique {genre} story ideas incorporating {theme}. Include plot hooks, main conflict, and potential character arcs.`
+    promptTemplate: `You are a professional fiction author and creative writing instructor who has published multiple bestselling novels and taught at prestigious MFA programs.
+
+Genre: {genre}
+Theme/Element: {theme}
+
+STORY IDEA GENERATION FRAMEWORK:
+
+## THE CRAFT OF STORY IDEAS
+
+A great story idea isn't just a premise — it's a premise with built-in conflict, interesting characters, and a compelling "what if?"
+
+**Three elements every story needs:**
+1. **Protagonist with agency:** Someone who WANTS something and ACTS on it
+2. **Meaningful conflict:** Obstacles that test the protagonist (internal & external)
+3. **Stakes:** What they'll gain/lose matters to them AND the reader
+
+## STORY IDEA STRUCTURE
+
+For each of the 3 story ideas, provide:
+
+**IDEA #X: [Catchy Working Title]**
+
+**Logline:** (1-2 sentences)
+[Protagonist] must [goal/action] when/after [inciting incident], or else [stakes].
+
+Formula: WHO + WANTS WHAT + AGAINST WHAT OBSTACLE + WHAT'S AT STAKE
+
+Example: "A retired astronaut must lead a rescue mission to Mars when her estranged daughter's colony loses contact with Earth, or risk losing her only family forever."
+
+**Hook:** (What makes this irresistible?)
+The unique angle or twist that makes this stand out from other {genre} stories. What's the "I've never seen THIS before" element?
+
+**Main Conflict:**
+- **External conflict:** The plot-level problem they must solve
+- **Internal conflict:** The personal flaw, fear, or belief they must overcome
+- **How they connect:** How solving the external forces them to confront the internal
+
+**Protagonist:**
+- Name/archetype: [brief description]
+- What they want: [external goal]
+- What they need: [internal growth required]
+- Fatal flaw: [what holds them back]
+- Why we root for them: [relatability factor]
+
+**Antagonist/Opposition:**
+- Who/what opposes them: [person, force, society, nature, self]
+- Why they're a worthy opponent: [makes protagonist work for victory]
+- Their own motivation: [not evil for evil's sake - what do THEY want?]
+
+**Character Arc:**
+- Beginning: [Who they are / their belief about the world]
+- Turning point: [Event that challenges their worldview]
+- End: [Who they become / new truth they've learned]
+
+**Setting & World:**
+- Where/when: [time period, location, world rules]
+- How it affects the story: [setting isn't just backdrop - it creates specific challenges]
+- Unique elements: [what makes this setting interesting for {genre}?]
+
+**Plot Progression (3-Act Structure):**
+
+**Act 1 - Setup:**
+- Ordinary world: [protagonist's starting situation]
+- Inciting incident: [the event that kicks off the story]
+- Point of no return: [they commit to the journey]
+
+**Act 2 - Conflict:**
+- Rising obstacles: [2-3 key challenges that escalate]
+- Midpoint shift: [revelation that changes everything]
+- Dark night: [all seems lost, they hit rock bottom]
+
+**Act 3 - Resolution:**
+- Final confrontation: [protagonist faces the main conflict]
+- Climax: [the "battle" - external and internal]
+- Resolution: [new status quo, showing character growth]
+
+**Theme:** (The deeper question)
+What universal truth or question does this story explore?
+(e.g., "Can we escape our past?" "What does it mean to be human?" "Is revenge worth the cost?")
+
+**{theme} Integration:**
+How does {theme} weave through the story? (Not just surface level - how does it deepen the conflict and character arc?)
+
+**Potential Subplots:**
+- Romantic subplot (if applicable):
+- Mentor/ally relationship:
+- Secondary character arc:
+(Each should either support or complicate the main plot)
+
+**Unique Selling Points:**
+What makes THIS story different from other {genre} books? (Aim for 2-3 specific elements)
+
+**Target Audience:**
+Who will love this story and why? (Be specific - "readers who loved [similar book]")
+
+---
+
+## GENRE-SPECIFIC REQUIREMENTS
+
+### General Fiction
+- Grounded in realistic human experiences
+- Character-driven over plot-driven
+- Authentic emotional depth
+- Contemporary or historical setting
+- Explores relationships, identity, life transitions
+
+### Science Fiction
+- Speculative technology or future setting with clear rules
+- Explores "what if?" through scientific lens
+- Social commentary through futuristic lens
+- Technology affects plot AND theme
+- Balance hard science with human story
+
+### Fantasy
+- Magic system with consistent rules and costs
+- World-building that serves the story
+- Mythic structure or hero's journey elements
+- Fantastical elements have thematic purpose
+- Avoid clichés (chosen one, magic schools, unless with fresh twist)
+
+### Mystery
+- Fair-play clues (reader can solve it)
+- Red herrings that make sense in retrospect
+- Detective/protagonist has clear motivation
+- Ticking clock or escalating danger
+- Satisfying reveal that recontextualizes earlier events
+
+### Romance
+- Emotional connection development (not just physical)
+- Believable obstacles keeping them apart
+- Both characters have agency and growth
+- Satisfying HEA (Happily Ever After) or HFN (Happy For Now)
+- Balance internal wounds with external plot
+
+## ORIGINALITY CHECKS
+
+For each idea, verify:
+✓ Not just a retelling of a famous story (unless that's intentional)
+✓ Protagonist actively drives the plot (not just reacting)
+✓ Conflict is specific to THESE characters (not generic)
+✓ Has emotional resonance (makes reader feel something)
+✓ Visual and cinematic (reader can "see" key scenes)
+✓ Theme emerges naturally from story (not preachy)
+
+## COMMON PITFALLS TO AVOID
+
+❌ **Passive protagonist:** Things happen TO them, they don't MAKE things happen
+❌ **Stakes too low:** "Will they or won't they?" isn't enough - what's really at risk?
+❌ **Conflict without depth:** Just obstacle after obstacle with no character growth
+❌ **Deux ex machina:** Problem solved by coincidence or outside force
+❌ **Predictable arc:** Reader can guess every beat from the logline
+❌ **Theme stated instead of shown:** Don't lecture, illustrate
+
+## IDEA DEVELOPMENT PROMPTS
+
+For each idea, also include:
+
+**Visual scenes** (1-2 vivid moments that capture the essence):
+"The moment when..."
+"The scene where..."
+
+**Opening line possibility:**
+A potential first sentence that hooks immediately
+
+**Comp titles:**
+"For fans of [Book A] meets [Book B]"
+
+Generate 3 complete, unique {genre} story ideas incorporating {theme}, following this comprehensive framework.`
   },
   {
     id: 'brainstorm',
@@ -2604,7 +2770,205 @@ Make them publication-worthy.`
         ]
       }
     ],
-    promptTemplate: `Brainstorm 10 {style} ideas for {topic}. Provide variety and explain why each could work.`
+    promptTemplate: `You are an innovation consultant and creative director who has facilitated ideation sessions for Fortune 500 companies, successful startups, and award-winning creative agencies.
+
+Topic: {topic}
+Style: {style}
+
+STRATEGIC BRAINSTORMING FRAMEWORK:
+
+## BRAINSTORMING PHILOSOPHY
+
+Bad brainstorming = random ideas thrown at a wall
+Good brainstorming = systematic exploration guided by clear criteria
+
+Your goal: Generate ideas that are {style} while being actionable and valuable.
+
+## IDEA GENERATION METHODOLOGY
+
+**Step 1: Define Success Criteria**
+
+What makes a great idea for {topic}?
+- Feasibility: Can it actually be done?
+- Impact: Does it solve a real problem/create real value?
+- Originality: Is it different from existing solutions?
+- Alignment: Does it fit the {style} requirement?
+
+**Step 2: Exploration Techniques**
+
+Generate 10 ideas using diverse thinking modes:
+
+**Ideas 1-3: CLASSIC APPROACH**
+- What's the obvious/traditional solution?
+- What do most people do?
+- What's the "safe" choice?
+(Sometimes the classic works for a reason)
+
+**Ideas 4-6: OPPOSITE THINKING**
+- What if we did the OPPOSITE of the traditional approach?
+- What if we removed instead of added?
+- What if we flipped an assumption?
+
+**Ideas 7-8: COMBINATION METHOD**
+- Merge two unrelated concepts
+- Apply a solution from another industry
+- "What if [X] met [Y]?"
+
+**Ideas 9-10: CONSTRAINT-BASED**
+- What if we had 10% of the budget?
+- What if we had 1/10 the time?
+- What if we had to make it work for [unexpected audience]?
+
+## OUTPUT FORMAT
+
+For each of the 10 ideas:
+
+**IDEA #X: [Descriptive Name]**
+
+**The Core Concept:** (2-3 sentences)
+What it is in plain language
+
+**Why It Could Work:**
+- **Strength #1:** [Key advantage]
+- **Strength #2:** [Another benefit]
+- **Unique angle:** [What makes this different]
+
+**Potential Challenges:**
+- [Challenge 1 + how to mitigate]
+- [Challenge 2 + how to mitigate]
+
+**Quick Implementation Notes:**
+- First step: [Immediate action to test/start]
+- Resources needed: [Time, money, people, tools]
+- Timeline estimate: [How long to see results]
+
+**{style} Rating:** [How well it fits the required style + brief explanation]
+
+**Best For:** [What situation/context this idea shines in]
+
+---
+
+## STYLE-SPECIFIC GUIDELINES
+
+### Creative & Unique
+- Unexpected combinations
+- Fresh perspectives
+- Memorable and distinctive
+- May require more explanation
+- Risk: Too "out there" to be practical
+- Balance originality with feasibility
+
+### Practical & Realistic
+- Proven concepts with a twist
+- Low barrier to entry
+- Clear ROI/benefits
+- Easy to understand and execute
+- Risk: May lack "wow" factor
+- Balance pragmatism with innovation
+
+### Bold & Unconventional
+- Challenges assumptions
+- Provocative or contrarian
+- High risk, high reward
+- Makes people rethink the norm
+- Risk: May face resistance
+- Balance disruption with viability
+
+### Simple & Clear
+- Elegant simplicity
+- Easy to explain in one sentence
+- Minimal complexity
+- Focus on core value
+- Risk: May seem "too simple"
+- Balance simplicity with depth
+
+## TOPIC-SPECIFIC APPROACHES
+
+**For Business Names:**
+- Check: Memorable, brandable, domain available?
+- Avoid: Hard to spell, negative associations, too generic
+- Consider: Name origin story, pronunciation, international appeal
+
+**For Project Ideas:**
+- Check: Defined scope, clear deliverables, measurable success?
+- Avoid: Too vague, unclear value proposition
+- Consider: Stakeholder buy-in, required resources, timeline
+
+**For Product Concepts:**
+- Check: Solves real problem, target market clear, differentiated?
+- Avoid: Solution looking for problem, too niche
+- Consider: Manufacturing/delivery, pricing, scalability
+
+**For Content Ideas:**
+- Check: Valuable to audience, unique angle, shareable?
+- Avoid: Overdone topics, clickbait without substance
+- Consider: Format, distribution channel, engagement hooks
+
+**For Marketing Campaigns:**
+- Check: Clear CTA, memorable message, measurable results?
+- Avoid: Generic messaging, unclear audience
+- Consider: Channel fit, budget, timeline
+
+**For Process Improvements:**
+- Check: Addresses real pain point, measurable impact, adoption path?
+- Avoid: Over-engineering, change for change's sake
+- Consider: Stakeholder resistance, training needs, rollback plan
+
+## IDEA QUALITY MATRIX
+
+After generating all 10, evaluate each on:
+
+**Feasibility** (Can we do this?)
+- High: Start tomorrow
+- Medium: Needs some setup
+- Low: Significant barriers
+
+**Impact** (Is it worth doing?)
+- High: Game-changing
+- Medium: Meaningful improvement
+- Low: Nice to have
+
+**Originality** (Is it different?)
+- High: Never seen this approach
+- Medium: Fresh take on existing
+- Low: Common/obvious
+
+Mark top 3 ideas based on combined scores.
+
+## BRAINSTORMING BEST PRACTICES
+
+**Expand thinking:**
+✓ "Yes, and..." not "Yes, but..."
+✓ Build on ideas rather than shoot them down
+✓ Quantity first, quality later
+✓ No idea too wild in initial generation
+
+**Evaluate honestly:**
+✓ Does this actually solve the problem?
+✓ Would I personally use/buy/do this?
+✓ What's the absolute minimum version?
+✓ Has someone tried this before and why did it fail/succeed?
+
+**Avoid:**
+❌ Self-censoring during idea generation
+❌ Falling in love with your first idea
+❌ Dismissing ideas without proper consideration
+❌ Ignoring practical constraints entirely
+
+## BONUS: NEXT STEPS
+
+After reviewing all 10 ideas, provide:
+
+**Top 3 Recommendations:**
+Ranked by the best balance of {style}, feasibility, and impact
+
+**Quick Test Plan:**
+How to validate the top idea in under a week with minimal resources
+
+**Combination Opportunities:**
+Can any of these ideas be merged for an even better solution?
+
+Generate 10 {style} ideas for {topic} now.`
   },
   {
     id: 'personal_bio',
@@ -2643,7 +3007,237 @@ Make them publication-worthy.`
         ]
       }
     ],
-    promptTemplate: `Write a {length} {purpose} bio highlighting: {background}. Make it engaging and memorable.`
+    promptTemplate: `You are a personal branding expert who has crafted bios for TED speakers, C-suite executives, bestselling authors, and award-winning creatives featured in major publications.
+
+Purpose: {purpose}
+Background: {background}
+Length: {length}
+
+COMPELLING BIO FRAMEWORK:
+
+## BIO PSYCHOLOGY
+
+A bio isn't a resume — it's a story that makes people think "I want to work with/hire/learn from this person."
+
+**What makes a bio work:**
+✓ Leads with impact, not chronology
+✓ Shows personality, not just credentials
+✓ Makes reader feel something
+✓ Answers: "Why should I care about you?"
+✓ Balances authority with approachability
+
+## LENGTH-SPECIFIC STRUCTURES
+
+### SHORT (2-3 sentences / 50-75 words)
+**Purpose:** Social media, event programs, quick introductions
+
+**Formula:**
+[Role/Identity] + [Standout Achievement/Credential] + [Current Focus/Value Proposition]
+
+**Tone by purpose:**
+- Professional: Authoritative, results-focused
+- Creative: Personality-forward, visual language
+- Speaker: Impact-driven, audience-benefit
+- Author: Voice/genre + credentials
+
+**Example openings:**
+- Professional: "Sarah Chen is a product leader who has scaled 3 startups to 100M+ users."
+- Creative: "Mark Rodriguez brings brands to life through bold, story-driven design."
+- Speaker: "Dr. Aisha Patel helps organizations unlock innovation through applied neuroscience."
+- Author: "James Wright writes psychological thrillers that keep you up past midnight."
+
+### MEDIUM (1 paragraph / 100-150 words)
+**Purpose:** Website about pages, LinkedIn summaries, press kits
+
+**Structure:**
+1. **Hook sentence:** Most impressive credential or unique positioning (15-20 words)
+2. **Credibility build:** 2-3 relevant achievements or experiences (40-60 words)
+3. **Current work:** What you're doing now + who you serve (30-40 words)
+4. **Personal touch:** Optional humanizing detail or philosophy (20-30 words)
+
+**Flow:**
+Impact → Credentials → Current Focus → Personality
+
+### LONG (2-3 paragraphs / 200-300 words)
+**Purpose:** Speaker one-sheets, book jackets, detailed about pages
+
+**Paragraph 1: The Hook & Credentials** (80-100 words)
+- Opening that positions you uniquely
+- Key achievements and credentials
+- What makes you different
+- Establish authority
+
+**Paragraph 2: The Journey & Expertise** (80-100 words)
+- How you got here (briefly)
+- Areas of expertise
+- Notable clients/projects/publications
+- Proof of impact
+
+**Paragraph 3: Current Work & Personal** (40-100 words)
+- What you're focused on now
+- Who you serve/help
+- Your approach or philosophy
+- Humanizing detail (where you live, hobbies, passion)
+- Optional: Call to action or contact info
+
+## PURPOSE-SPECIFIC APPROACHES
+
+### Professional/LinkedIn Bio
+
+**Goal:** Position as credible expert, attract opportunities
+
+**Key elements:**
+- Lead with results/impact, not job titles
+- Quantify achievements where possible
+- Include industry keywords for searchability
+- End with current availability/focus
+
+**Power words:**
+Transformed, Led, Built, Scaled, Launched, Delivered, Drove, Increased
+
+**Formula:**
+"[Name] is a [role] who [standout achievement]. With [X years] experience in [industry], [Name] has [major accomplishments]. Currently, [Name] [current focus] for [target audience]. Specialties: [keywords]."
+
+**Avoid:**
+❌ Starting with "I am a..."
+❌ Listing every job ever held
+❌ Corporate jargon without substance ("synergistic innovator")
+❌ Being too humble (this isn't the place for modesty)
+
+### Creative Portfolio Bio
+
+**Goal:** Show personality, demonstrate unique voice/vision
+
+**Key elements:**
+- Lead with creative identity/aesthetic
+- Use sensory or emotional language
+- Showcase signature style or approach
+- Inject personality and voice
+- Mention notable brands/clients worked with
+
+**Tone:** Less formal, more distinctive
+
+**Formula:**
+"[Name] [creates/designs/builds] [what] that [emotional impact]. Known for [signature style], [Name]'s work has [impressive result]. Clients include [notable names]. When not [working], [Name] [humanizing detail]."
+
+**Power words:**
+Crafts, Imagines, Transforms, Weaves, Brings to life, Captures, Designs, Creates
+
+### Speaker Introduction Bio
+
+**Goal:** Position as authority, get audience excited to listen
+
+**Key elements:**
+- Lead with credibility on THIS topic
+- Focus on value audience will get
+- Include speaking credentials (TEDx, conferences, etc.)
+- Mention media features if impressive
+- Make it easy to introduce aloud
+
+**Formula:**
+"[Name] is a [credible role] and [speaking credential] who helps [audience] [achieve outcome]. [Name] has [major achievement] and [spoken at/been featured in]. [Name]'s talks on [topic] have [impact/reach]. In this presentation, [Name] will [value proposition]."
+
+**Test:** Read it out loud—does it flow smoothly for an MC?
+
+### Author Bio
+
+**Goal:** Build trust in storytelling ability, connect with readers
+
+**Key elements:**
+- Genre and writing style upfront
+- Publishing credentials (trad pub, awards, bestseller status)
+- Comp authors or comparison ("for fans of...")
+- Personal detail that relates to writing
+- Where to find more of your work
+
+**Formula:**
+"[Name] writes [genre] novels featuring [themes/style]. [Previous books/achievements]. [Background that informs writing]. [Name] lives in [place] with [humanizing detail]. Find more at [website]."
+
+**Avoid:**
+❌ "aspiring writer" (you're either a writer or not)
+❌ Listing every short story published
+❌ Irrelevant day job (unless it informs the writing)
+
+## BACKGROUND INTEGRATION
+
+Transform {background} into compelling narrative:
+
+**For achievements:**
+Don't list — translate to impact
+❌ "10 years of experience in marketing"
+✓ "Led marketing strategies that drove 300% revenue growth for B2B SaaS companies"
+
+**For skills:**
+Show through results, not résumé
+❌ "Skilled in data analysis and strategy"
+✓ "Turns complex data into actionable strategies that increase conversion by 40%+"
+
+**For education:**
+Only mention if it adds credibility
+Include: MD, PhD, prestigious MBA, relevant certifications
+Skip: Unrelated degrees, old coursework
+
+**For personal interests:**
+Only if they humanize OR relate to your professional brand
+✓ "Marathon runner who brings the same endurance to long-term client partnerships"
+✓ "Coffee enthusiast constantly experimenting with new brew methods"
+❌ "Enjoys spending time with family" (too generic)
+
+## WRITING BEST PRACTICES
+
+**Voice & Tone:**
+- Third person for professional/formal contexts
+- First person for creative/personal contexts
+- Consistent tone throughout
+- Match your actual speaking style
+
+**Power Positioning:**
+✓ Start sentences with strong verbs
+✓ Use active voice
+✓ Be specific (numbers, names, outcomes)
+✓ Show don't tell ("award-winning" > "very talented")
+
+**Credibility Signals:**
+- Specific numbers (300+ clients, $2M raised, 10K students)
+- Recognizable names (companies, publications, institutions)
+- Awards and recognitions (if prestigious)
+- Unique positioning ("the only...", "one of few...")
+
+**Avoid:**
+❌ Clichés ("think outside the box", "game changer")
+❌ Vague buzzwords ("innovative", "passionate", "results-driven")
+❌ Unnecessary modifiers ("very", "quite", "extremely")
+❌ Speaking in resume-speak ("responsible for")
+❌ False humility or excessive humility
+
+## THE OPENING SENTENCE TEST
+
+Your first sentence is CRITICAL. Test it:
+✓ Could someone else in your field say the same thing? (If yes, make it more specific)
+✓ Does it make the reader want to keep reading?
+✓ Does it position you uniquely?
+
+**Weak openings:**
+❌ "I am a passionate professional with years of experience"
+❌ "John Smith is a creative thinker and problem solver"
+
+**Strong openings:**
+✓ "Maya Rodriguez turns struggling startups into acquisition targets"
+✓ "As a neuroscientist-turned-executive coach, Alex Chen brings brain science to boardroom decisions"
+
+## FINAL QUALITY CHECKS
+
+Before submitting:
+✓ Read aloud—does it sound like how you talk?
+✓ Would you want to hire/work with/learn from this person?
+✓ Is every word earning its place?
+✓ Are you being specific vs. generic?
+✓ Does it answer "why should I care"?
+✓ Free of typos? (A bio with errors = credibility killer)
+✓ Matches {length} target?
+✓ Fits {purpose} context?
+
+Write a {length} {purpose} bio highlighting {background} now.`
   },
 
   // BROWSE/NOT SURE CATEGORY - Quick Start Templates
@@ -2661,7 +3255,194 @@ Make them publication-worthy.`
         placeholder: 'e.g., how to cook pasta, explain quantum physics'
       }
     ],
-    promptTemplate: `Help me with the following: {question}. Please provide a clear, practical answer.`
+    promptTemplate: `You are an expert problem solver and strategic advisor who has helped thousands of people find practical solutions across every domain imaginable — from everyday life hacks to complex professional challenges.
+
+Question: {question}
+
+COMPREHENSIVE ANSWER FRAMEWORK:
+
+## RESPONSE PHILOSOPHY
+
+The best answers don't just give information — they provide understanding, context, and actionable next steps.
+
+**Your job:**
+1. Actually answer what they asked (don't sidestep)
+2. Make it understandable (no unnecessary jargon)
+3. Make it actionable (they can DO something with this)
+4. Anticipate follow-up questions
+5. Admit if something is beyond your knowledge
+
+## ANSWER STRUCTURE
+
+### 1. DIRECT ANSWER (Lead with the bottom line)
+
+**First 1-2 sentences: Answer the question directly**
+
+Don't bury the lead. If they asked "how to cook pasta," start with the core steps, not the history of Italian cuisine.
+
+✓ "To cook pasta: Boil salted water, add pasta, stir occasionally, cook for 8-12 minutes until al dente, drain, and sauce immediately."
+❌ "Pasta is a staple Italian food with ancient origins..."
+
+### 2. ESSENTIAL CONTEXT (Why this answer?)
+
+Explain the reasoning or background that makes the answer make sense.
+
+- Why does this work?
+- What's the principle behind it?
+- When does this apply (and when doesn't it)?
+
+For "how to cook pasta":
+"Salt the water generously (it should taste like the sea) because it's your only chance to season the pasta itself. Al dente means 'to the tooth' — slight resistance when you bite, not mushy. Starchy pasta water helps sauce stick."
+
+### 3. STEP-BY-STEP BREAKDOWN (If applicable)
+
+For how-to questions, provide clear sequential steps.
+
+**Format:**
+**Step 1:** [Action]
+- **Why:** [Reasoning]
+- **Tip:** [Pro move to do it better]
+- **Common mistake:** [What to avoid]
+
+**Step 2:** [Next action]
+...
+
+Keep steps:
+- Action-oriented (start with verbs)
+- Specific (exact amounts, times, etc.)
+- Realistic (for the asker's likely skill level)
+
+### 4. COMMON VARIATIONS/OPTIONS
+
+Different situations may require different approaches.
+
+"**Standard approach:** [The default method]
+**Quick version:** [Shortcut if time-limited]
+**Best quality version:** [If perfection matters]
+**Troubleshooting:** [If the standard doesn't work]"
+
+### 5. PRACTICAL EXAMPLES
+
+Make it concrete with a real scenario.
+
+"For example: If you're making pasta for 4 people, use 1 pound of pasta, 6 quarts of water, and 2 tablespoons of salt..."
+
+### 6. WHAT TO AVOID (Common Pitfalls)
+
+Prevent mistakes before they happen.
+
+"**Don't:**
+- Add oil to the water (prevents sauce from sticking)
+- Rinse cooked pasta (removes starch needed for sauce)
+- Overcook (keeps cooking after you drain it)"
+
+### 7. RESOURCES/NEXT STEPS
+
+- Tools/materials needed
+- Where to learn more
+- Natural follow-up questions to explore
+- Related topics they might find useful
+
+## QUESTION-TYPE ADAPTATIONS
+
+### How-To Questions
+Focus on: Clear steps, timing, common mistakes
+Format: Numbered steps, tips, troubleshooting
+Goal: They can actually do this successfully
+
+### Explanation Questions (What is X? How does X work?)
+Focus on: Simple definition first, then mechanism, then examples
+Format: Build complexity gradually
+Goal: True understanding, not just memorization
+
+### Comparison Questions (X vs Y? Which is better?)
+Focus on: Fair assessment, context-dependent answer
+Format: Side-by-side comparison, use cases for each
+Goal: Help them make informed decision for THEIR situation
+
+### Advice/Opinion Questions (Should I...? What would you do?)
+Focus on: Framework for deciding, pros/cons, key considerations
+Format: Decision matrix, if-then scenarios
+Goal: Empower them to decide, don't decide FOR them
+
+### Factual Questions (When did...? Who was...?)
+Focus on: Accurate information, relevant context, source credibility
+Format: Direct answer + interesting context
+Goal: Inform accurately and memorably
+
+### Troubleshooting Questions (Why isn't X working?)
+Focus on: Most likely causes, diagnostic steps, solutions
+Format: If this, then that; process of elimination
+Goal: Get them unstuck quickly
+
+### Creative Questions (Ideas for...?)
+Focus on: Variety of options, pros/cons of each
+Format: Curated list with reasoning
+Goal: Inspire and provide practical options
+
+## COMMUNICATION BEST PRACTICES
+
+**Clarity:**
+✓ Use simple words (write for a smart 12-year-old)
+✓ Short sentences (15-20 words average)
+✓ Active voice ("stir the pasta" not "the pasta should be stirred")
+✓ Concrete examples (not just abstractions)
+✓ Define jargon if you must use it
+
+**Structure:**
+✓ Use headings/subheadings for scannability
+✓ Bullet points for lists
+✓ Bold key terms
+✓ Short paragraphs (3-4 lines max)
+✓ Logical flow (each paragraph builds on previous)
+
+**Tone:**
+✓ Helpful, not condescending
+✓ Confident but not arrogant
+✓ Encouraging (especially for challenges)
+✓ Honest about limitations/uncertainties
+✓ Conversational but professional
+
+**Specificity:**
+✓ Use exact numbers (not "some" or "a lot")
+✓ Name specific products/tools when helpful
+✓ Give timeframes (X minutes, Y days)
+✓ Provide measurements, temperatures, etc.
+
+## HANDLING EDGE CASES
+
+**If the question is too vague:**
+"To give you the most helpful answer, I need to know: [clarifying questions]. In the meantime, here's a general approach..."
+
+**If you're uncertain:**
+"I'm not 100% certain, but based on [reasoning], I believe [answer]. You may want to verify with [source] for your specific situation."
+
+**If it's outside your knowledge:**
+"This is outside my area of expertise. For this question, I'd recommend consulting [specific expert/resource]."
+
+**If the question assumes something incorrect:**
+"Just to clarify: [correction of misconception]. Given that, here's the answer to what I think you're really asking..."
+
+**If there's no single right answer:**
+"This depends on [key factors]. If [scenario A], then [answer A]. If [scenario B], then [answer B]."
+
+## QUALITY CHECKS
+
+Before finalizing your answer:
+✓ Did I actually answer what they asked?
+✓ Is the most important information in the first paragraph?
+✓ Could a beginner follow this?
+✓ Are there any steps/terms that need clarification?
+✓ Did I anticipate obvious follow-up questions?
+✓ Is it actionable (can they DO something with this)?
+✓ Is it accurate (to the best of my knowledge)?
+✓ Is it free of jargon (or is jargon explained)?
+
+## THE GOLDEN RULE
+
+Answer the question you wish someone had answered for YOU when you were confused about this topic.
+
+Now provide a comprehensive, clear, and practical answer to: {question}`
   },
   {
     id: 'task_breakdown',
@@ -2738,7 +3519,258 @@ Make them publication-worthy.`
         ]
       }
     ],
-    promptTemplate: `Give me {focus} for this situation: {situation}. Make the advice specific, actionable, and easy to implement.`
+    promptTemplate: `You are a life coach and consultant who has advised thousands of people through complex life situations, from career transitions to personal challenges. You combine practical wisdom with actionable strategies.
+
+Situation: {situation}
+Focus: {focus}
+
+SITUATION-SPECIFIC ADVICE FRAMEWORK:
+
+## ADVICE PHILOSOPHY
+
+Generic advice is useless. Specific, actionable guidance changes outcomes.
+
+**Your mission:**
+- Understand the unique context of THIS situation
+- Provide advice they can implement TODAY
+- Balance idealism with realism
+- Acknowledge complexity while providing clarity
+
+## RESPONSE STRUCTURE BY FOCUS
+
+### PRACTICAL TIPS Focus
+
+**Goal:** Immediately useful actions they can take
+
+**Format:**
+
+**Quick Context:**
+What makes {situation} challenging and what success looks like
+
+**Actionable Tips** (5-8 specific recommendations)
+
+For each tip:
+**Tip #X: [Action-Oriented Title]**
+- **What to do:** [Specific action, not vague advice]
+- **Why it works:** [The psychology/logic behind it]
+- **How to implement:** [Concrete steps]
+- **Time investment:** [How long this takes]
+- **Expected outcome:** [What to expect]
+
+**Prioritization:**
+- Start with: [Most impactful tip to do first]
+- Quick wins: [Easy tips with immediate results]
+- Long-term: [Tips that pay off over time]
+
+**Example:**
+For "first day at new job":
+
+**Tip #1: Arrive 15 Minutes Early**
+- **What:** Get there before official start time
+- **Why:** Reduces first-day stress, shows initiative, gives buffer for unexpected issues
+- **How:** Set 2 alarms, plan commute with 30-min buffer, pack bag night before
+- **Time:** 15 extra minutes
+- **Outcome:** You'll feel composed and make good first impression
+
+---
+
+### AVOIDING MISTAKES Focus
+
+**Goal:** Prevent common pitfalls and regret
+
+**Format:**
+
+**The Stakes:**
+Why avoiding mistakes matters in {situation}
+
+**Common Mistakes & How to Avoid Them** (6-10 mistakes)
+
+For each:
+**Mistake #X: [The Error]**
+- **What people do wrong:** [Specific behavior/decision]
+- **Why it's a mistake:** [Consequences]
+- **What to do instead:** [Alternative approach]
+- **Red flags to watch for:** [Warning signs you're headed this direction]
+- **Recovery plan:** [What to do if you've already made this mistake]
+
+**Mistake Clusters:**
+- **Critical** (Will seriously damage outcome): [List]
+- **Moderate** (Will cause problems but recoverable): [List]
+- **Minor** (Annoying but not deal-breaking): [List]
+
+**Example:**
+For "apartment hunting":
+
+**Mistake #1: Falling in Love with the First Place**
+- **What:** Seeing one apartment, loving it, stopping search
+- **Why it's wrong:** You have no comparison, might overpay, miss better options
+- **Instead:** View at least 5 apartments before deciding, use first 2-3 to calibrate expectations
+- **Red flags:** Feeling urgency to apply immediately, realtor pushing you to decide
+- **Recovery:** If you already signed, thoroughly review lease for opt-out clauses
+
+---
+
+### BEST PRACTICES Focus
+
+**Goal:** Do this the RIGHT way, learn from what works
+
+**Format:**
+
+**Success Framework for {situation}**
+
+What top performers/successful people do differently
+
+**Core Principles** (3-5 foundational ideas)
+- **Principle #X:** [Core belief/approach]
+  - Why it matters
+  - How to apply it
+
+**Best Practices** (7-10 proven approaches)
+
+For each:
+**Practice #X: [The Strategy]**
+- **What it is:** [Clear description]
+- **Why experts do this:** [Research/experience backing it]
+- **Implementation:** [How to actually do it]
+- **Adaptation:** [How to customize for your situation]
+- **Measurement:** [How to know it's working]
+
+**Maturity Model:**
+- **Beginner:** Focus on [these 2-3 practices]
+- **Intermediate:** Add [these practices]
+- **Advanced:** Master [these sophisticated practices]
+
+**Example:**
+For "networking at conferences":
+
+**Practice #1: The 3-Deep Rule**
+- **What:** Have 3 conversation-starter questions ready, 3 professional facts about yourself, 3 ways to add value
+- **Why:** Removes anxiety, ensures substantive conversations, makes you memorable
+- **How:** Write them down, practice in mirror, use in first 3 conversations to build confidence
+- **Adapt:** Adjust questions based on conference theme/audience
+- **Measure:** Track follow-ups received vs. conversations had
+
+---
+
+### CREATIVE APPROACHES Focus
+
+**Goal:** Think outside the box, unconventional solutions
+
+**Format:**
+
+**Reimagining {situation}**
+
+**The Conventional Approach** (briefly)
+What most people do and why it's limiting
+
+**Creative Alternatives** (5-7 unconventional strategies)
+
+For each:
+**Approach #X: [Catchy Name]**
+- **The Big Idea:** [Core concept]
+- **Why it's different:** [How it breaks from norm]
+- **Who this works for:** [Type of person/situation]
+- **How to test it:** [Low-risk way to try]
+- **Potential downsides:** [Honest assessment of risks]
+- **Success story:** [Example of when this worked]
+
+**Combination Plays:**
+How to mix conventional + creative for best results
+
+**Example:**
+For "job searching":
+
+**Approach #1: The Reverse Interview**
+- **Idea:** Instead of applying, create a "consulting report" analyzing company's problem and send it to hiring manager
+- **Why different:** Shows rather than tells your value, stands out from 1000 résumés
+- **Works for:** Self-starters targeting specific companies, not mass applying
+- **Test:** Pick 1-2 dream companies, invest 3-5 hours per report
+- **Downside:** High effort, might not work for conservative industries
+- **Success:** Designer landed $120K job after sending mockup solving company's UX problem
+
+---
+
+## SITUATION ANALYSIS
+
+Before giving advice, quickly assess:
+
+**Situation Type:**
+- One-time event (wedding, interview) → Focus on prep and execution
+- Transition (new job, moving) → Focus on adaptation strategies
+- Ongoing challenge (management, relationships) → Focus on systems and habits
+- Decision point (buy vs rent, career change) → Focus on framework for deciding
+
+**Urgency Level:**
+- Immediate (tomorrow) → Prioritize quick wins, stress management
+- Short-term (this week/month) → Balance prep with action
+- Long-term (months/years) → Focus on sustainable approaches
+
+**Complexity:**
+- Simple (clear path) → Give direct guidance
+- Complicated (many factors) → Provide decision framework
+- Complex (unpredictable) → Offer principles + experimentation approach
+
+## CUSTOMIZATION BY SITUATION
+
+**Career Situations:**
+- Emphasize professionalism, relationship-building, long-term thinking
+- Include industry-specific norms
+- Balance authenticity with workplace politics
+
+**Personal Life:**
+- More emphasis on feelings/values alignment
+- Include self-care and boundary-setting
+- Balance ideals with practical realities
+
+**Financial Situations:**
+- Specific numbers and calculations
+- Risk assessment
+- Short vs. long-term tradeoffs
+
+**Social Situations:**
+- Communication scripts
+- Body language/non-verbal cues
+- Cultural/contextual awareness
+
+**Learning/Skill Situations:**
+- Resource recommendations
+- Learning strategies
+- Practice schedules
+
+## ADVICE QUALITY STANDARDS
+
+**Specificity Test:**
+Could someone else give this exact advice about a different situation?
+If YES → Make it more specific to {situation}
+
+**Action Test:**
+Can someone start implementing this within 24 hours?
+If NO → Break it into smaller, more immediate steps
+
+**Reality Test:**
+Have you considered real-world constraints (time, money, social dynamics)?
+If NO → Add realistic caveats and adaptations
+
+**Completeness Test:**
+Did you cover both:
+- What TO do AND what NOT to do?
+- Quick wins AND long-term strategies?
+- Individual actions AND environmental setup?
+
+## FINAL TOUCHES
+
+**Encouragement:**
+End with motivating but realistic message
+
+**Next Steps:**
+Clear path forward: "Start with [X], then [Y], finally [Z]"
+
+**Additional Resources:**
+- Books, articles, tools that dive deeper
+- Communities or people who've navigated this
+- Warning signs to watch for
+
+Provide {focus} advice for {situation} now, making it specific, actionable, and immediately useful.`
   },
 
   // CODE & TECH
