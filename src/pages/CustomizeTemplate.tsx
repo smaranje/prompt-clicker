@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
-import { ArrowLeft, Sparkles } from 'lucide-react';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 
 const CustomizeTemplate = () => {
@@ -43,34 +43,34 @@ const CustomizeTemplate = () => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
-      <div className="container mx-auto px-4 py-12 max-w-2xl">
+    <div className="min-h-screen bg-background page-transition">
+      <div className="container mx-auto px-6 py-12 md:py-16 max-w-2xl">
         <Button
           variant="ghost"
           onClick={() => navigate(-1)}
-          className="mb-6"
+          className="mb-12"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
           Back
         </Button>
 
-        <Card className="p-8">
-          <div className="flex items-center gap-3 mb-6">
-            <span className="text-4xl">{template.icon}</span>
-            <div>
-              <h1 className="text-2xl font-bold text-foreground">
+        <Card className="p-8 md:p-12 border border-border" style={{ boxShadow: 'var(--shadow-md)' }}>
+          <div className="flex items-start gap-6 mb-12">
+            <span className="text-4xl mt-1">{template.icon}</span>
+            <div className="flex-1">
+              <h1 className="text-3xl font-semibold text-foreground font-heading mb-3">
                 {template.title}
               </h1>
-              <p className="text-muted-foreground text-sm">
+              <p className="text-muted-foreground text-base">
                 {template.description}
               </p>
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-8">
             {template.fields.map((field) => (
-              <div key={field.name} className="space-y-2">
-                <Label htmlFor={field.name} className="text-foreground">
+              <div key={field.name} className="space-y-3">
+                <Label htmlFor={field.name} className="text-foreground text-base font-semibold">
                   {field.label}
                 </Label>
 
@@ -80,7 +80,8 @@ const CustomizeTemplate = () => {
                     placeholder={field.placeholder}
                     value={formData[field.name] || ''}
                     onChange={(e) => updateFormData(field.name, e.target.value)}
-                    className="bg-background"
+                    className="bg-background h-12 text-base"
+                    autoFocus={field === template.fields[0]}
                   />
                 )}
 
@@ -89,12 +90,12 @@ const CustomizeTemplate = () => {
                     value={formData[field.name]}
                     onValueChange={(value) => updateFormData(field.name, value)}
                   >
-                    <SelectTrigger className="bg-background">
+                    <SelectTrigger className="bg-background h-12 text-base">
                       <SelectValue />
                     </SelectTrigger>
                     <SelectContent>
                       {field.options.map((option) => (
-                        <SelectItem key={option.value} value={option.value}>
+                        <SelectItem key={option.value} value={option.value} className="text-base">
                           {option.label}
                         </SelectItem>
                       ))}
@@ -103,17 +104,18 @@ const CustomizeTemplate = () => {
                 )}
 
                 {field.type === 'checkbox' && (
-                  <div className="flex items-center gap-2">
+                  <div className="flex items-center gap-3 pt-2">
                     <Checkbox
                       id={field.name}
                       checked={formData[field.name] || false}
                       onCheckedChange={(checked) =>
                         updateFormData(field.name, checked)
                       }
+                      className="h-5 w-5"
                     />
                     <Label
                       htmlFor={field.name}
-                      className="text-sm font-normal cursor-pointer"
+                      className="text-base font-normal cursor-pointer"
                     >
                       Include {field.label.toLowerCase()}
                     </Label>
@@ -122,10 +124,12 @@ const CustomizeTemplate = () => {
               </div>
             ))}
 
-            <Button type="submit" className="w-full" size="lg">
-              <Sparkles className="w-4 h-4 mr-2" />
-              Generate & Preview
-            </Button>
+            <div className="pt-4">
+              <Button type="submit" className="w-full" size="lg">
+                Generate Prompt
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </div>
           </form>
         </Card>
       </div>

@@ -24,27 +24,27 @@ const TemplateSelection = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-background to-secondary/20">
-      <div className="container mx-auto px-4 py-12 max-w-4xl">
+    <div className="min-h-screen bg-background page-transition">
+      <div className="container mx-auto px-6 py-12 md:py-16 max-w-4xl">
         {/* Back Button */}
         <Button
           variant="ghost"
           onClick={() => navigate('/')}
-          className="mb-6"
+          className="mb-12"
         >
           <ArrowLeft className="w-4 h-4 mr-2" />
-          Back to Categories
+          Back
         </Button>
 
-        {/* Header */}
-        <div className="mb-10">
-          <div className="flex items-center gap-3 mb-3">
-            <span className="text-5xl">{category.icon}</span>
-            <div>
-              <h1 className="text-3xl md:text-4xl font-bold text-foreground">
+        {/* Header - Generous spacing */}
+        <div className="mb-16">
+          <div className="flex items-start gap-6 mb-6">
+            <span className="text-4xl mt-1">{category.icon}</span>
+            <div className="flex-1">
+              <h1 className="font-heading mb-3">
                 {category.title}
               </h1>
-              <p className="text-muted-foreground mt-1">
+              <p className="subtitle">
                 {category.description}
               </p>
             </div>
@@ -53,9 +53,6 @@ const TemplateSelection = () => {
 
         {/* Templates */}
         <div className="space-y-4">
-          <h2 className="text-lg font-semibold text-foreground mb-4">
-            Choose a template
-          </h2>
           {categoryTemplates.map((template) => (
             <TemplateCard
               key={template.id}
@@ -65,8 +62,8 @@ const TemplateSelection = () => {
           ))}
 
           {categoryTemplates.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-muted-foreground">
+            <div className="text-center py-20">
+              <p className="text-muted-foreground text-lg">
                 No templates available in this category yet.
               </p>
             </div>
