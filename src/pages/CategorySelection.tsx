@@ -16,26 +16,29 @@ const CategorySelection = () => {
   return (
     <div className="min-h-screen bg-background page-transition">
       <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 lg:py-24 max-w-7xl">
-        {/* Header Actions - Top Right */}
-        <div className="flex justify-end gap-2 sm:gap-3 mb-6 sm:mb-8">
-          <Button
-            variant="outline"
-            size="sm"
-            onClick={() => navigate('/favorites')}
-            className="gap-1.5 sm:gap-2 text-xs sm:text-sm h-9 sm:h-10 px-3 sm:px-4"
-          >
-            <Bookmark className="w-3.5 h-3.5" />
-            <span className="hidden xs:inline">Saved</span>
-          </Button>
-          <ThemeToggle />
+        {/* Header with Logo and Actions */}
+        <div className="flex justify-between items-center mb-12 sm:mb-16 md:mb-20">
+          <div className="flex items-center gap-2">
+            <img src={logo} alt="PromptCraft Logo" className="w-5 h-5 sm:w-6 sm:h-6" />
+            <span className="text-lg sm:text-xl font-semibold font-heading">PromptCraft</span>
+          </div>
+          
+          <div className="flex gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => navigate('/favorites')}
+              className="gap-1.5 text-xs sm:text-sm h-8 px-3"
+            >
+              <Bookmark className="w-3 h-3" />
+              <span className="hidden xs:inline">Saved</span>
+            </Button>
+            <ThemeToggle />
+          </div>
         </div>
         
-        {/* Header - Generous spacing */}
+        {/* Main Heading */}
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
-          <div className="flex items-center justify-center gap-2 mb-6 sm:mb-8">
-            <img src={logo} alt="PromptCraft Logo" className="w-6 h-6 sm:w-7 sm:h-7" />
-            <span className="text-xl sm:text-2xl md:text-3xl font-semibold font-heading">PromptCraft</span>
-          </div>
           <h1 className="font-heading mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl px-4">
             Get better AI results — every time.
           </h1>
