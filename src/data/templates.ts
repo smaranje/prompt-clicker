@@ -99,21 +99,40 @@ export const templates: Template[] = [
         ]
       },
       {
-        name: 'topic',
-        label: 'What to post about',
+        name: 'description',
+        label: 'Describe what you want to post about',
         type: 'text',
-        placeholder: 'product launch, industry insight, team achievement'
+        placeholder: 'e.g., PromptCraft - helps users generate expert AI prompts in seconds without prompt engineering knowledge'
+      },
+      {
+        name: 'key_benefit',
+        label: 'Key benefit to highlight',
+        type: 'text',
+        placeholder: 'e.g., Saves 15 minutes per prompt'
+      },
+      {
+        name: 'target_audience',
+        label: 'Target Audience',
+        type: 'dropdown',
+        default: 'professionals',
+        options: [
+          { value: 'developers', label: 'Developers' },
+          { value: 'marketers', label: 'Marketers' },
+          { value: 'content_creators', label: 'Content Creators' },
+          { value: 'entrepreneurs', label: 'Entrepreneurs' },
+          { value: 'professionals', label: 'General Professionals' }
+        ]
       },
       {
         name: 'goal',
-        label: 'Post goal',
+        label: 'Post Goal',
         type: 'dropdown',
         default: 'engagement',
         options: [
           { value: 'engagement', label: 'Drive engagement' },
           { value: 'awareness', label: 'Build awareness' },
-          { value: 'traffic', label: 'Generate traffic' },
-          { value: 'leads', label: 'Generate leads' }
+          { value: 'leads', label: 'Generate leads' },
+          { value: 'authority', label: 'Establish authority' }
         ]
       },
       {
@@ -123,20 +142,74 @@ export const templates: Template[] = [
         default: 'professional',
         options: [
           { value: 'professional', label: 'Professional' },
-          { value: 'casual', label: 'Casual & Relatable' },
-          { value: 'inspirational', label: 'Inspirational' },
-          { value: 'educational', label: 'Educational' },
-          { value: 'storytelling', label: 'Story-driven' }
+          { value: 'conversational', label: 'Conversational' },
+          { value: 'storytelling', label: 'Storytelling' },
+          { value: 'thought_leadership', label: 'Thought Leadership' }
         ]
-      },
-      {
-        name: 'include_hashtags',
-        label: 'Include hashtags',
-        type: 'checkbox',
-        default: true
       }
     ],
-    promptTemplate: `Create a {style} {platform} post about {topic}. Goal: {goal}. Make it platform-specific, engaging, and include a hook to grab attention in the first line.{include_hashtags} Keep it within {platform} character limits and best practices.`
+    promptTemplate: `You are an expert {platform} content strategist who has helped 50+ companies grow their following to 100K+.
+
+Create a {style} {platform} post about: {description}
+
+Target audience: {target_audience}
+Primary goal: {goal}
+Key value proposition: {key_benefit}
+
+Post Structure (Algorithm-Optimized):
+
+1. HOOK (First Line - Critical!)
+   Choose ONE approach:
+   - Provocative question: "Why do 90% of {target_audience} still struggle with [problem]?"
+   - Surprising stat: "[Shocking number] of {target_audience} don't know this..."
+   - Personal story: "I made a $50K mistake. Here's what I learned:"
+   - Contrarian take: "Unpopular opinion: [Common belief] is wrong"
+   
+   ❌ Don't use: "I'm excited to announce..." "I'm happy to share..." "Just launched..."
+
+2. CONTEXT (Lines 2-4)
+   - Set up the problem/situation
+   - Make it relatable to {target_audience}
+   - Use "you" language (not "I/we" focused)
+
+3. INSIGHT (Lines 5-9)
+   - Share your solution/learning/framework
+   - Break it into 3-5 bullet points OR numbered list
+   - Each point should be 1-2 lines max
+   - Use → or • for visual breaks
+
+4. CALL-TO-ACTION (Last 1-2 lines)
+   - Ask a specific question to drive comments
+   - Examples: "What's your experience with X?" "Which approach works for you?"
+   - Avoid: "Let me know in the comments" (too generic)
+
+Platform-Specific Formatting for {platform}:
+- LinkedIn: 150-200 words, blank lines between sections, first line under 140 chars, 3-5 hashtags at end
+- Twitter/X: Under 280 characters or thread, max 1-2 hashtags, use line breaks
+- Instagram: 125-150 words, first 60 chars crucial, 10-15 hashtags, emojis encouraged  
+- Facebook: Conversational tone, questions drive comments, 3-5 hashtags
+
+Tone Guidelines for {style}:
+- Professional: Authoritative but warm, avoid corporate jargon
+- Conversational: Friendly, use contractions, like talking to a friend
+- Thought Leadership: Data-driven, bold takes, challenge assumptions
+- Storytelling: Personal, vulnerable, with clear arc (problem → solution)
+
+Audience Customization for {target_audience}:
+- Developers: Technical language, coding workflows, efficiency focus
+- Marketers: ROI, metrics, campaign performance terminology
+- Content Creators: Creativity, audience growth, creator challenges
+- Entrepreneurs: Scalability, growth, business impact
+- Professionals: Clear language, practical benefits
+
+Final check:
+✓ Hook stops the scroll?
+✓ Post delivers value (not just announcement)?
+✓ CTA encourages {goal}?
+✓ Formatted for readability?
+✓ Optimized for {platform} algorithm?
+
+Write the post now.`
   },
   {
     id: 'article_draft',
@@ -147,26 +220,25 @@ export const templates: Template[] = [
     fields: [
       {
         name: 'topic',
-        label: 'Article topic',
+        label: 'Article Topic',
         type: 'text',
-        placeholder: '10 productivity tips for remote workers'
+        placeholder: 'e.g., How to build better AI prompts'
       },
       {
         name: 'audience',
-        label: 'Target audience',
+        label: 'Target Audience',
         type: 'text',
-        placeholder: 'remote professionals, startup founders'
+        placeholder: 'e.g., non-technical professionals wanting to use AI'
       },
       {
-        name: 'angle',
-        label: 'Unique angle',
+        name: 'key_takeaway',
+        label: 'Main takeaway readers should have',
         type: 'text',
-        placeholder: 'based on neuroscience research, personal experience',
-        required: false
+        placeholder: 'e.g., Anyone can write great prompts with the right framework'
       },
       {
         name: 'length',
-        label: 'Length',
+        label: 'Article Length',
         type: 'dropdown',
         default: 'medium',
         options: [
@@ -176,13 +248,107 @@ export const templates: Template[] = [
         ]
       },
       {
-        name: 'include_examples',
-        label: 'Include real examples',
-        type: 'checkbox',
-        default: true
+        name: 'angle',
+        label: 'Article Angle',
+        type: 'dropdown',
+        default: 'howto',
+        options: [
+          { value: 'howto', label: 'How-to guide' },
+          { value: 'listicle', label: 'List article' },
+          { value: 'opinion', label: 'Opinion piece' },
+          { value: 'case_study', label: 'Case study' },
+          { value: 'comparison', label: 'Comparison' }
+        ]
+      },
+      {
+        name: 'tone',
+        label: 'Tone',
+        type: 'dropdown',
+        default: 'educational',
+        options: [
+          { value: 'educational', label: 'Educational' },
+          { value: 'conversational', label: 'Conversational' },
+          { value: 'authoritative', label: 'Authoritative' },
+          { value: 'inspirational', label: 'Inspirational' }
+        ]
       }
     ],
-    promptTemplate: `Write a {length} article about "{topic}" for {audience}. Unique angle: {angle}. Structure it with: 1) Attention-grabbing intro with hook, 2) Clear section headers, 3) Actionable takeaways, 4) Strong conclusion with call-to-action.{include_examples} Use storytelling and data to support points.`
+    promptTemplate: `You are a professional content writer who has written 500+ published articles for top publications.
+
+Write a {length} {angle} article about: "{topic}"
+
+Target audience: {audience}
+Core message: {key_takeaway}
+Tone: {tone}
+
+Article Structure:
+
+## 1. HEADLINE
+Create 3 headline options using proven formulas:
+- How-to: "How to [achieve result] [without common objection]"
+- List: "X [Ways/Reasons/Steps] to [achieve benefit]"
+- Question: "[Provocative question about pain point]"
+- Outcome: "The [adjective] Way to [achieve result]"
+
+Pick the strongest and most clickable option.
+
+## 2. INTRODUCTION (100-150 words)
+- Hook: Start with a story, stat, or bold statement
+- Problem: Identify the reader's pain point
+- Promise: Preview what they'll learn
+- Proof: Brief credibility indicator (research, experience, results)
+
+❌ Don't use: "In this article, we will..." "Have you ever wondered..."
+
+## 3. BODY (Main Content)
+Structure based on {angle}:
+- Use subheadings every 200-300 words
+- Include specific examples (not generic)
+- Add data points or statistics where relevant
+- Use short paragraphs (3-4 lines max)
+- Bold key phrases for scannability
+- Include bullet points for lists
+- Add transitional phrases between sections
+
+## 4. PRACTICAL EXAMPLES
+Include 2-3 real-world examples or mini case studies that demonstrate your points.
+Make them specific, not generic.
+
+## 5. COMMON MISTAKES
+Include a "What NOT to do" section with 3-5 common pitfalls.
+
+## 6. ACTIONABLE TAKEAWAYS
+Create a "Quick Start Guide" or "Action Steps" section:
+- 3-5 concrete actions readers can take today
+- Each should be specific and achievable
+- Link back to main article concepts
+
+## 7. CONCLUSION (100 words)
+- Recap: Main benefit/insight
+- Motivation: Encourage action
+- Next step: Clear call-to-action
+- Opening: End with inspiring thought or question
+
+SEO Optimization:
+- Naturally integrate topic keywords
+- Use variations of main topic throughout
+- Include semantic related terms
+- Create descriptive, keyword-rich subheadings
+
+Engagement Elements:
+- Ask questions throughout to keep reader engaged
+- Use "you" language (write TO the reader)
+- Include relatable scenarios
+- Vary sentence length for rhythm
+
+Final Quality Check:
+✓ Does the intro hook readers in 30 seconds?
+✓ Is every section valuable and actionable?
+✓ Could someone implement this TODAY?
+✓ Is it scannable with subheadings and formatting?
+✓ Does it deliver on the promise in the headline?
+
+Write the complete article now.`
   },
   {
     id: 'rewrite_text',
