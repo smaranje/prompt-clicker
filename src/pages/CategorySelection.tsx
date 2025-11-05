@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { Button } from '@/components/ui/button';
 import { Bookmark } from 'lucide-react';
+import logo from '@/assets/logo.png';
 
 const CategorySelection = () => {
   const navigate = useNavigate();
@@ -31,9 +32,9 @@ const CategorySelection = () => {
         
         {/* Header - Generous spacing */}
         <div className="text-center mb-12 sm:mb-16 md:mb-20">
-          <div className="inline-flex items-center gap-2 bg-secondary text-foreground px-3 sm:px-4 py-1.5 sm:py-2 rounded-full mb-4 sm:mb-6 border border-border">
-            <span className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-primary rounded-full"></span>
-            <span className="text-xs sm:text-sm font-semibold font-heading">PromptCraft</span>
+          <div className="flex items-center justify-center gap-3 mb-6 sm:mb-8">
+            <img src={logo} alt="PromptCraft Logo" className="w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14" />
+            <span className="text-2xl sm:text-3xl md:text-4xl font-semibold font-heading">PromptCraft</span>
           </div>
           <h1 className="font-heading mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl px-4">
             What do you want to create?
