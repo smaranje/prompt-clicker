@@ -37,9 +37,9 @@ export const OpenChatGPTDialog = ({ open, onOpenChange, prompt, service }: OpenC
             clearInterval(timer);
             // Open service
             const url = service === 'chatgpt' 
-              ? 'https://chat.openai.com' 
-              : 'https://claude.ai';
-            window.open(url, '_blank');
+              ? 'https://chatgpt.com' 
+              : 'https://claude.ai/new';
+            window.open(url, '_blank', 'noopener,noreferrer');
             return 0;
           }
           return prev - 1;
@@ -102,9 +102,9 @@ export const OpenChatGPTDialog = ({ open, onOpenChange, prompt, service }: OpenC
               className="flex-1"
               onClick={() => {
                 const url = service === 'chatgpt' 
-                  ? 'https://chat.openai.com' 
-                  : 'https://claude.ai';
-                window.open(url, '_blank');
+                  ? 'https://chatgpt.com' 
+                  : 'https://claude.ai/new';
+                window.open(url, '_blank', 'noopener,noreferrer');
                 onOpenChange(false);
               }}
             >

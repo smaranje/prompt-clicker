@@ -36,7 +36,14 @@ export const templates: Template[] = [
         name: 'topic',
         label: 'About',
         type: 'text',
-        placeholder: 'project status',
+        placeholder: 'project status update',
+        required: false
+      },
+      {
+        name: 'key_points',
+        label: 'Key points to cover',
+        type: 'text',
+        placeholder: 'completed tasks, next steps, timeline',
         required: false
       },
       {
@@ -45,31 +52,32 @@ export const templates: Template[] = [
         type: 'dropdown',
         default: 'medium',
         options: [
-          { value: 'brief', label: 'Brief' },
-          { value: 'medium', label: 'Medium' },
-          { value: 'detailed', label: 'Detailed' }
+          { value: 'brief', label: 'Brief (3-4 sentences)' },
+          { value: 'medium', label: 'Medium (2-3 paragraphs)' },
+          { value: 'detailed', label: 'Detailed (4+ paragraphs)' }
         ]
       },
       {
         name: 'tone',
         label: 'Tone',
         type: 'dropdown',
-        default: 'formal',
+        default: 'professional',
         options: [
-          { value: 'formal', label: 'Formal' },
-          { value: 'friendly', label: 'Friendly' },
-          { value: 'direct', label: 'Direct' },
-          { value: 'enthusiastic', label: 'Enthusiastic' }
+          { value: 'professional', label: 'Professional' },
+          { value: 'friendly', label: 'Friendly & Warm' },
+          { value: 'direct', label: 'Direct & Concise' },
+          { value: 'enthusiastic', label: 'Enthusiastic' },
+          { value: 'apologetic', label: 'Apologetic' }
         ]
       },
       {
         name: 'include_cta',
-        label: 'Call-to-action',
+        label: 'Include call-to-action',
         type: 'checkbox',
         default: false
       }
     ],
-    promptTemplate: `Write a {email_type} email to {recipient} about {topic}. The email should be {length} in length with a {tone} tone.{include_cta}`
+    promptTemplate: `Write a {email_type} email to {recipient} about {topic}. Cover these key points: {key_points}. Keep it {length} with a {tone} tone. Use proper email structure with greeting and closing.{include_cta}`
   },
   {
     id: 'social_posts',
@@ -92,9 +100,21 @@ export const templates: Template[] = [
       },
       {
         name: 'topic',
-        label: 'Topic',
+        label: 'What to post about',
         type: 'text',
-        placeholder: 'your announcement or idea'
+        placeholder: 'product launch, industry insight, team achievement'
+      },
+      {
+        name: 'goal',
+        label: 'Post goal',
+        type: 'dropdown',
+        default: 'engagement',
+        options: [
+          { value: 'engagement', label: 'Drive engagement' },
+          { value: 'awareness', label: 'Build awareness' },
+          { value: 'traffic', label: 'Generate traffic' },
+          { value: 'leads', label: 'Generate leads' }
+        ]
       },
       {
         name: 'style',
@@ -103,13 +123,20 @@ export const templates: Template[] = [
         default: 'professional',
         options: [
           { value: 'professional', label: 'Professional' },
-          { value: 'casual', label: 'Casual' },
+          { value: 'casual', label: 'Casual & Relatable' },
           { value: 'inspirational', label: 'Inspirational' },
-          { value: 'humorous', label: 'Humorous' }
+          { value: 'educational', label: 'Educational' },
+          { value: 'storytelling', label: 'Story-driven' }
         ]
+      },
+      {
+        name: 'include_hashtags',
+        label: 'Include hashtags',
+        type: 'checkbox',
+        default: true
       }
     ],
-    promptTemplate: `Create a {style} {platform} post about {topic}. Make it engaging and appropriate for the platform.`
+    promptTemplate: `Create a {style} {platform} post about {topic}. Goal: {goal}. Make it platform-specific, engaging, and include a hook to grab attention in the first line.{include_hashtags} Keep it within {platform} character limits and best practices.`
   },
   {
     id: 'article_draft',
@@ -120,15 +147,22 @@ export const templates: Template[] = [
     fields: [
       {
         name: 'topic',
-        label: 'Topic',
+        label: 'Article topic',
         type: 'text',
-        placeholder: 'your article topic'
+        placeholder: '10 productivity tips for remote workers'
       },
       {
         name: 'audience',
-        label: 'Target Audience',
+        label: 'Target audience',
         type: 'text',
-        placeholder: 'who is this for?'
+        placeholder: 'remote professionals, startup founders'
+      },
+      {
+        name: 'angle',
+        label: 'Unique angle',
+        type: 'text',
+        placeholder: 'based on neuroscience research, personal experience',
+        required: false
       },
       {
         name: 'length',
@@ -140,9 +174,15 @@ export const templates: Template[] = [
           { value: 'medium', label: 'Medium (1000-1500 words)' },
           { value: 'long', label: 'Long (2000+ words)' }
         ]
+      },
+      {
+        name: 'include_examples',
+        label: 'Include real examples',
+        type: 'checkbox',
+        default: true
       }
     ],
-    promptTemplate: `Write a {length} article about {topic} for {audience}. Include an engaging introduction, clear sections, and a strong conclusion.`
+    promptTemplate: `Write a {length} article about "{topic}" for {audience}. Unique angle: {angle}. Structure it with: 1) Attention-grabbing intro with hook, 2) Clear section headers, 3) Actionable takeaways, 4) Strong conclusion with call-to-action.{include_examples} Use storytelling and data to support points.`
   },
   {
     id: 'rewrite_text',
@@ -554,6 +594,101 @@ export const templates: Template[] = [
       }
     ],
     promptTemplate: `Write a {length} {purpose} bio highlighting: {background}. Make it engaging and memorable.`
+  },
+
+  // BROWSE/NOT SURE CATEGORY - Quick Start Templates
+  {
+    id: 'general_helper',
+    category: 'browse',
+    title: 'Ask Me Anything',
+    icon: '❓',
+    description: 'Get help with any question or task',
+    fields: [
+      {
+        name: 'question',
+        label: 'What do you need help with?',
+        type: 'text',
+        placeholder: 'e.g., how to cook pasta, explain quantum physics'
+      }
+    ],
+    promptTemplate: `Help me with the following: {question}. Please provide a clear, practical answer.`
+  },
+  {
+    id: 'task_breakdown',
+    category: 'browse',
+    title: 'Break Down Complex Tasks',
+    icon: '📋',
+    description: 'Get step-by-step guidance for any project',
+    fields: [
+      {
+        name: 'task',
+        label: 'What task or project?',
+        type: 'text',
+        placeholder: 'e.g., plan a wedding, start a podcast'
+      },
+      {
+        name: 'timeframe',
+        label: 'Timeframe',
+        type: 'dropdown',
+        default: 'medium',
+        options: [
+          { value: 'urgent', label: 'Urgent (days)' },
+          { value: 'medium', label: 'Medium (weeks)' },
+          { value: 'long', label: 'Long-term (months)' }
+        ]
+      }
+    ],
+    promptTemplate: `Break down this task into clear, actionable steps: {task}. Consider a {timeframe} timeframe and provide a realistic plan with milestones.`
+  },
+  {
+    id: 'decision_helper',
+    category: 'browse',
+    title: 'Make Better Decisions',
+    icon: '⚖️',
+    description: 'Get pros/cons analysis for tough choices',
+    fields: [
+      {
+        name: 'decision',
+        label: 'What decision are you facing?',
+        type: 'text',
+        placeholder: 'e.g., should I change careers, buy vs rent'
+      },
+      {
+        name: 'priorities',
+        label: 'What matters most to you?',
+        type: 'text',
+        placeholder: 'e.g., financial stability, work-life balance'
+      }
+    ],
+    promptTemplate: `Help me decide: {decision}. My priorities are: {priorities}. Provide a balanced pros and cons analysis with a framework for making this decision.`
+  },
+  {
+    id: 'quick_tips',
+    category: 'browse',
+    title: 'Get Quick Tips & Advice',
+    icon: '💡',
+    description: 'Practical tips for everyday situations',
+    fields: [
+      {
+        name: 'situation',
+        label: 'What situation?',
+        type: 'text',
+        placeholder: 'e.g., first day at new job, apartment hunting'
+      },
+      {
+        name: 'focus',
+        label: 'Focus on',
+        type: 'dropdown',
+        default: 'practical',
+        options: [
+          { value: 'practical', label: 'Practical tips' },
+          { value: 'avoiding_mistakes', label: 'Avoiding mistakes' },
+          { value: 'best_practices', label: 'Best practices' },
+          { value: 'creative', label: 'Creative approaches' }
+        ]
+      }
+    ],
+    promptTemplate: `Give me {focus} for this situation: {situation}. Make the advice specific, actionable, and easy to implement.`
   },
 
   // CODE & TECH
