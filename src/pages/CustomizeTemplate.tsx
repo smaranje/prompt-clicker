@@ -6,9 +6,14 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { ThemeToggle } from '@/components/ThemeToggle';
+
+// Helper function to count words in a string
+const countWords = (text: string): number => {
+  return text.trim().split(/\s+/).filter(word => word.length > 0).length;
+};
 
 const CustomizeTemplate = () => {
   const { templateId } = useParams();
@@ -75,14 +80,31 @@ const CustomizeTemplate = () => {
                 </Label>
 
                 {field.type === 'text' && (
-                  <Input
-                    id={field.name}
-                    placeholder={field.placeholder}
-                    value={formData[field.name] || ''}
-                    onChange={(e) => updateFormData(field.name, e.target.value)}
-                    className="bg-background h-12 text-base"
-                    autoFocus={field === template.fields[0]}
-                  />
+                  <>
+                    <Input
+                      id={field.name}
+                      placeholder={field.placeholder}
+                      value={formData[field.name] || ''}
+                      onChange={(e) => updateFormData(field.name, e.target.value)}
+                      className="bg-background h-12 text-base"
+                      autoFocus={field === template.fields[0]}
+                    />
+                    {(() => {
+                      const wordCount = countWords(formData[field.name] || '');
+                      if (wordCount === 0) return null;
+                      
+                      return wordCount < 8 ? (
+                        <p className="text-sm text-muted-foreground flex items-center gap-1.5 mt-2">
+                          💡 Add more details for better results
+                        </p>
+                      ) : (
+                        <p className="text-sm text-success flex items-center gap-1.5 mt-2">
+                          <CheckCircle2 className="w-4 h-4" />
+                          Good
+                        </p>
+                      );
+                    })()}
+                  </>
                 )}
 
                 {field.type === 'dropdown' && field.options && (
