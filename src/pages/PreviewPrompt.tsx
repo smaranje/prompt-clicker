@@ -246,79 +246,76 @@ const PreviewPrompt = () => {
 
   return (
     <div className="min-h-screen bg-background page-transition">
-      <div className="container mx-auto px-6 py-12 md:py-16 max-w-3xl">
-        <div className="flex items-center justify-between mb-12">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 max-w-3xl">
+        <div className="flex items-center justify-between mb-8 sm:mb-12">
           <Button
             variant="ghost"
             onClick={() => navigate(-1)}
+            size="sm"
+            className="h-9 sm:h-10"
           >
-            <ArrowLeft className="w-4 h-4 mr-2" />
-            Back
+            <ArrowLeft className="w-4 h-4 mr-1.5 sm:mr-2" />
+            <span className="text-sm sm:text-base">Back</span>
           </Button>
           <ThemeToggle />
         </div>
 
-        <Card className="p-8 md:p-12 border border-border" style={{ boxShadow: 'var(--shadow-md)' }}>
+        <Card className="p-5 sm:p-6 md:p-8 lg:p-12 border border-border" style={{ boxShadow: 'var(--shadow-md)' }}>
           {/* Success Header */}
-          <div className="text-center mb-8">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 rounded-full mb-6">
-              <Check className="w-8 h-8 text-accent" />
+          <div className="text-center mb-6 sm:mb-8">
+            <div className="inline-flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 md:w-16 md:h-16 bg-accent/10 rounded-full mb-4 sm:mb-6">
+              <Check className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-accent" />
             </div>
-            <h1 className="text-4xl font-semibold mb-4 text-foreground font-heading">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-3 sm:mb-4 text-foreground font-heading px-4">
               Your Prompt is Ready!
             </h1>
-            <p className="subtitle max-w-xl mx-auto">
+            <p className="subtitle max-w-xl mx-auto px-4 text-sm sm:text-base md:text-lg">
               {generateSummary()}
             </p>
           </div>
 
           {/* Why This Works Section */}
           {whyThisWorks && (
-            <div className="mb-8 p-6 bg-accent/5 rounded-lg border border-accent/20">
-              <h2 className="font-semibold text-foreground mb-4 text-base">
+            <div className="mb-6 sm:mb-8 p-4 sm:p-5 md:p-6 bg-accent/5 rounded-lg border border-accent/20">
+              <h2 className="font-semibold text-foreground mb-3 sm:mb-4 text-sm sm:text-base">
                 {whyThisWorks.title}
               </h2>
-              <div className="space-y-3">
+              <div className="space-y-2.5 sm:space-y-3">
                 {whyThisWorks.points.map((point, index) => (
-                  <div key={index} className="flex gap-3">
-                    <span className="text-xl flex-shrink-0">{point.icon}</span>
-                    <div>
+                  <div key={index} className="flex gap-2 sm:gap-3">
+                    <span className="text-lg sm:text-xl flex-shrink-0">{point.icon}</span>
+                    <div className="text-sm sm:text-base">
                       <span className="font-medium text-foreground">{point.title}:</span>
                       <span className="text-muted-foreground ml-2">{point.description}</span>
                     </div>
                   </div>
                 ))}
               </div>
-              <p className="text-sm text-muted-foreground mt-4 italic">
+              <p className="text-xs sm:text-sm text-muted-foreground mt-3 sm:mt-4 italic">
                 {whyThisWorks.footer}
               </p>
             </div>
           )}
 
           {/* Prompt Preview - Open by Default */}
-          <div className="mb-8">
-            <div className="mb-3">
-              <h2 className="font-semibold text-foreground text-base">Your Expert Prompt:</h2>
-            </div>
-            <div className="p-6 bg-secondary/30 rounded-lg border border-border">
-              <p className="text-sm text-foreground whitespace-pre-wrap leading-relaxed font-mono">
+          <div className="space-y-4 sm:space-y-6">
+            <div className="bg-muted/30 rounded-lg p-4 sm:p-5 md:p-6 border border-border max-h-[400px] sm:max-h-[500px] overflow-y-auto">
+              <pre className="whitespace-pre-wrap text-xs sm:text-sm leading-relaxed font-mono text-foreground">
                 {fullPrompt}
-              </p>
+              </pre>
             </div>
-          </div>
 
-          {/* Actions */}
-          <div className="space-y-6">
+            {/* Actions */}
             <div>
-              <h2 className="font-semibold text-foreground text-center mb-6 text-lg">
+              <h2 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4 text-foreground text-center">
                 What's next?
               </h2>
 
               {/* Primary Actions - Service Buttons */}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mb-3 sm:mb-4">
                 <Button
                   onClick={() => handleOpenService('chatgpt')}
-                  className="w-full"
+                  className="w-full text-sm sm:text-base h-11 sm:h-12"
                   size="lg"
                 >
                   <ExternalLink className="w-4 h-4 mr-2" />
@@ -328,7 +325,7 @@ const PreviewPrompt = () => {
                 <Button
                   onClick={() => handleOpenService('claude')}
                   variant="secondary"
-                  className="w-full"
+                  className="w-full text-sm sm:text-base h-11 sm:h-12"
                   size="lg"
                 >
                   <ExternalLink className="w-4 h-4 mr-2" />
@@ -337,22 +334,24 @@ const PreviewPrompt = () => {
               </div>
 
               {/* Secondary Actions */}
-              <div className="grid grid-cols-2 gap-3 mb-3">
+              <div className="grid grid-cols-2 gap-2 sm:gap-3 mb-2 sm:mb-3">
                 <Button
                   onClick={copyToClipboard}
                   variant="outline"
-                  className="w-full"
+                  className="w-full text-sm sm:text-base h-10 sm:h-11"
                   size="lg"
                 >
                   {copied ? (
                     <>
-                      <Check className="w-4 h-4 mr-2 text-accent" />
-                      Copied!
+                      <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-accent" />
+                      <span className="hidden xs:inline">Copied!</span>
+                      <span className="xs:hidden">✓</span>
                     </>
                   ) : (
                     <>
-                      <Copy className="w-4 h-4 mr-2" />
-                      Copy
+                      <Copy className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
+                      <span className="hidden xs:inline">Copy</span>
+                      <span className="xs:hidden">📋</span>
                     </>
                   )}
                 </Button>
@@ -360,19 +359,21 @@ const PreviewPrompt = () => {
                 <Button
                   onClick={handleSaveFavorite}
                   variant="outline"
-                  className="w-full"
+                  className="w-full text-sm sm:text-base h-10 sm:h-11"
                   size="lg"
                   disabled={saved}
                 >
                   {saved ? (
                     <>
-                      <Check className="w-4 h-4 mr-2 text-accent" />
-                      Saved
+                      <Check className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2 text-accent" />
+                      <span className="hidden xs:inline">Saved</span>
+                      <span className="xs:hidden">✓</span>
                     </>
                   ) : (
                     <>
-                      <Bookmark className="w-4 h-4 mr-2" />
-                      Save
+                      <Bookmark className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
+                      <span className="hidden xs:inline">Save</span>
+                      <span className="xs:hidden">🔖</span>
                     </>
                   )}
                 </Button>
@@ -381,21 +382,21 @@ const PreviewPrompt = () => {
               <Button
                 onClick={() => navigate(-1)}
                 variant="ghost"
-                className="w-full"
+                className="w-full text-sm sm:text-base h-10 sm:h-11"
                 size="lg"
               >
-                <Edit className="w-4 h-4 mr-2" />
+                <Edit className="w-3.5 h-3.5 sm:w-4 sm:h-4 mr-1.5 sm:mr-2" />
                 Edit Settings
               </Button>
             </div>
           </div>
 
           {/* Footer */}
-          <div className="mt-12 pt-8 border-t border-border text-center">
+          <div className="mt-8 sm:mt-10 md:mt-12 pt-6 sm:pt-8 border-t border-border text-center">
             <Button
               onClick={() => navigate('/')}
               variant="link"
-              className="text-muted-foreground hover:text-primary"
+              className="text-muted-foreground hover:text-primary text-sm sm:text-base"
             >
               ← Create Another Prompt
             </Button>
