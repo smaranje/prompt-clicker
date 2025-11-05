@@ -11,25 +11,28 @@ export const CategoryCard = ({ category, onClick }: CategoryCardProps) => {
   return (
     <Card
       onClick={onClick}
-      className="group cursor-pointer transition-all duration-200 ease-out hover:-translate-y-1 active:scale-95 bg-card border border-border hover:border-primary/50 p-5 sm:p-6 md:p-8 h-full"
+      className="group cursor-pointer transition-all duration-300 ease-out hover:-translate-y-2 active:scale-95 bg-gradient-to-br from-card to-card/50 border border-border hover:border-primary/50 p-6 sm:p-8 h-full relative overflow-hidden"
       style={{ boxShadow: 'var(--shadow-sm)' }}
       onMouseEnter={(e) => {
-        e.currentTarget.style.boxShadow = 'var(--shadow-lg)';
+        e.currentTarget.style.boxShadow = 'var(--shadow-glow)';
       }}
       onMouseLeave={(e) => {
         e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
       }}
     >
-      <div className="flex flex-col h-full">
-        <h3 className="text-xl sm:text-2xl font-semibold mb-2 sm:mb-3 text-card-foreground group-hover:text-primary transition-colors font-heading">
+      {/* Gradient overlay on hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      
+      <div className="flex flex-col h-full relative z-10">
+        <h3 className="text-2xl sm:text-3xl font-bold mb-3 text-card-foreground group-hover:text-primary transition-colors font-heading">
           {category.title}
         </h3>
-        <p className="text-muted-foreground text-sm sm:text-base mb-4 sm:mb-6 flex-grow leading-relaxed">
+        <p className="text-muted-foreground text-base sm:text-lg mb-6 flex-grow leading-relaxed">
           {category.description}
         </p>
-        <div className="flex items-center text-primary font-semibold text-xs sm:text-sm">
+        <div className="flex items-center text-primary font-semibold text-sm sm:text-base group-hover:gap-3 transition-all">
           Explore
-          <ArrowRight className="ml-2 w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
         </div>
       </div>
     </Card>

@@ -14,32 +14,36 @@ const CategorySelection = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background page-transition">
-      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 lg:py-24 max-w-7xl">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 page-transition">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 lg:py-20 max-w-7xl">
         {/* Header with Logo and Actions */}
-        <div className="flex justify-between items-center mb-12 sm:mb-16 md:mb-20">
-          <div className="flex items-center gap-2">
-            <img src={logo} alt="PromptCraft Logo" className="w-5 h-5 sm:w-6 sm:h-6" />
-            <span className="text-lg sm:text-xl font-semibold font-heading">PromptCraft</span>
+        <div className="flex justify-between items-center mb-12 sm:mb-16">
+          <div className="flex items-center gap-2.5">
+            <img src={logo} alt="PromptCraft Logo" className="w-7 h-7 sm:w-8 sm:h-8" />
+            <span className="text-xl sm:text-2xl font-bold font-heading bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+              PromptCraft
+            </span>
           </div>
           
-          <div className="flex gap-2">
+          <div className="flex gap-2.5">
             <Button
               variant="outline"
               size="sm"
               onClick={() => navigate('/favorites')}
-              className="gap-1.5 text-xs sm:text-sm h-8 px-3"
+              className="gap-2 text-sm h-9 px-4 hover:scale-105 transition-transform"
             >
-              <Bookmark className="w-3 h-3" />
+              <Bookmark className="w-4 h-4" />
               <span className="hidden xs:inline">Saved</span>
             </Button>
-            <ThemeToggle />
+            <div className="scale-90">
+              <ThemeToggle />
+            </div>
           </div>
         </div>
         
         {/* Main Heading */}
-        <div className="text-center mb-12 sm:mb-16 md:mb-20">
-          <h1 className="font-heading mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl px-4">
+        <div className="text-center mb-16 sm:mb-20">
+          <h1 className="font-heading mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl px-4 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent font-bold leading-tight">
             Get better AI results — every time.
           </h1>
           <p className="subtitle max-w-2xl mx-auto px-4 text-base sm:text-lg md:text-xl">
