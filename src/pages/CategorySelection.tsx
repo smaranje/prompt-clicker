@@ -37,10 +37,10 @@ const CategorySelection = () => {
             <span className="text-2xl sm:text-3xl md:text-4xl font-semibold font-heading">PromptCraft</span>
           </div>
           <h1 className="font-heading mb-4 sm:mb-6 text-3xl sm:text-4xl md:text-5xl lg:text-6xl px-4">
-            What do you want to create?
+            Get better AI results — every time.
           </h1>
           <p className="subtitle max-w-2xl mx-auto px-4 text-base sm:text-lg md:text-xl">
-            Choose a category to generate perfect AI prompts in seconds
+            PromptCraft helps you define what you want before you ask AI — so you stop guessing and start getting accurate outputs.
           </p>
         </div>
 
@@ -56,9 +56,12 @@ const CategorySelection = () => {
         </div>
 
         {/* Footer */}
-        <div className="text-center pt-8 sm:pt-12 border-t border-border">
+        <div className="text-center pt-8 sm:pt-12 border-t border-border space-y-3">
           <p className="text-muted-foreground text-xs sm:text-sm md:text-base px-4">
             No signup required • Works with ChatGPT & Claude • Always free
+          </p>
+          <p className="text-muted-foreground text-xs sm:text-sm px-4">
+            Built for creators, students, and professionals who want the best from AI.
           </p>
         </div>
       </div>
