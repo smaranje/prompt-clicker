@@ -1,12 +1,13 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { ArrowLeft, Copy, ExternalLink, Edit, Check } from 'lucide-react';
+import { ArrowLeft, Copy, ExternalLink, Edit, Check, Bookmark } from 'lucide-react';
 import { Template } from '@/types/templates';
 import { useState } from 'react';
 import { toast } from 'sonner';
 import { OpenChatGPTDialog } from '@/components/OpenChatGPTDialog';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { saveFavorite, isFavorite } from '@/lib/favorites';
 
 const PreviewPrompt = () => {
   const location = useLocation();
@@ -19,6 +20,7 @@ const PreviewPrompt = () => {
   const [copied, setCopied] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<'chatgpt' | 'claude'>('chatgpt');
+  const [saved, setSaved] = useState(() => isFavorite(template.id, formData));
 
   if (!template || !formData) {
     navigate('/');
@@ -137,6 +139,19 @@ const PreviewPrompt = () => {
   const handleOpenService = (service: 'chatgpt' | 'claude') => {
     setSelectedService(service);
     setDialogOpen(true);
+  };
+
+  const handleSaveFavorite = () => {
+    const fullPrompt = generatePrompt();
+    saveFavorite({
+      templateId: template.id,
+      templateTitle: template.title,
+      category: template.category,
+      prompt: fullPrompt,
+      formData
+    });
+    setSaved(true);
+    toast('Saved to favorites! 🎉');
   };
 
   const getWhyThisWorks = () => {
@@ -322,24 +337,46 @@ const PreviewPrompt = () => {
               </div>
 
               {/* Secondary Actions */}
-              <Button
-                onClick={copyToClipboard}
-                variant="outline"
-                className="w-full mb-3"
-                size="lg"
-              >
-                {copied ? (
-                  <>
-                    <Check className="w-4 h-4 mr-2 text-accent" />
-                    Copied!
-                  </>
-                ) : (
-                  <>
-                    <Copy className="w-4 h-4 mr-2" />
-                    Copy Prompt Only
-                  </>
-                )}
-              </Button>
+              <div className="grid grid-cols-2 gap-3 mb-3">
+                <Button
+                  onClick={copyToClipboard}
+                  variant="outline"
+                  className="w-full"
+                  size="lg"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="w-4 h-4 mr-2 text-accent" />
+                      Copied!
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="w-4 h-4 mr-2" />
+                      Copy
+                    </>
+                  )}
+                </Button>
+
+                <Button
+                  onClick={handleSaveFavorite}
+                  variant="outline"
+                  className="w-full"
+                  size="lg"
+                  disabled={saved}
+                >
+                  {saved ? (
+                    <>
+                      <Check className="w-4 h-4 mr-2 text-accent" />
+                      Saved
+                    </>
+                  ) : (
+                    <>
+                      <Bookmark className="w-4 h-4 mr-2" />
+                      Save
+                    </>
+                  )}
+                </Button>
+              </div>
 
               <Button
                 onClick={() => navigate(-1)}

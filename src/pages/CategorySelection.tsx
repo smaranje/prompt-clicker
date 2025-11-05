@@ -2,6 +2,8 @@ import { CategoryCard } from '@/components/CategoryCard';
 import { categories } from '@/data/categories';
 import { useNavigate } from 'react-router-dom';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { Button } from '@/components/ui/button';
+import { Bookmark } from 'lucide-react';
 
 const CategorySelection = () => {
   const navigate = useNavigate();
@@ -13,8 +15,17 @@ const CategorySelection = () => {
   return (
     <div className="min-h-screen bg-background page-transition">
       <div className="container mx-auto px-6 py-16 md:py-24 max-w-7xl">
-        {/* Theme Toggle - Top Right */}
-        <div className="flex justify-end mb-8">
+        {/* Header Actions - Top Right */}
+        <div className="flex justify-end gap-3 mb-8">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => navigate('/favorites')}
+            className="gap-2"
+          >
+            <Bookmark className="w-4 h-4" />
+            Saved
+          </Button>
           <ThemeToggle />
         </div>
         
