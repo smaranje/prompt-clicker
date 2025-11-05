@@ -1537,7 +1537,164 @@ Now create the complete slide-by-slide presentation outline with talking points 
         ]
       }
     ],
-    promptTemplate: `Provide a {length} summary focusing on {focus}. Make it clear and easy to understand.`
+    promptTemplate: `You are an expert information synthesizer who has summarized research papers, legal documents, and business reports for executives, academics, and busy professionals.
+
+Summary Length: {length}
+Focus Area: {focus}
+
+STRATEGIC SUMMARIZATION FRAMEWORK:
+
+## CORE PRINCIPLE
+A summary isn't just shorter — it extracts what matters and discards what doesn't. Your job: Help the reader make a decision or take action based on this content.
+
+## STRUCTURE BY LENGTH
+
+### BRIEF (2-3 sentences)
+**Tweet-length summary:** Could you share the key point in a text message?
+
+Format:
+[Main Point] + [Key Supporting Fact] + [Implication/Why It Matters]
+
+Example:
+"Study shows remote workers are 13% more productive than office workers. Gains come from fewer interruptions and longer focused work sessions. Companies embracing remote-first policies see measurable improvements in output and retention."
+
+### MEDIUM (1 paragraph / 75-125 words)
+**Elevator pitch:** Could you explain this in 60 seconds?
+
+Structure:
+1. Opening sentence: Main thesis/finding (15-20 words)
+2. Supporting evidence: 2-3 key facts, statistics, or arguments (40-60 words)
+3. Closing: Significance or next steps (15-20 words)
+
+### DETAILED (multiple paragraphs / 200-400 words)
+**Executive summary:** Could someone make a decision based on this alone?
+
+Structure:
+- **Paragraph 1:** Context + Main Point (40-60 words)
+- **Paragraph 2-3:** Key findings/arguments with evidence (80-120 words each)
+- **Paragraph 4:** Implications, recommendations, or conclusion (40-60 words)
+
+## FOCUS AREA CUSTOMIZATION
+
+### Main Points
+Extract the core argument/thesis:
+- What is the author trying to prove or explain?
+- What are the 3-5 most important ideas?
+- What should readers remember in 6 months?
+
+Prioritize:
+✓ Original insights (not common knowledge)
+✓ Counterintuitive findings
+✓ Data that changes understanding
+✓ Clear conclusions or recommendations
+
+Ignore:
+❌ Background information everyone knows
+❌ Tangential examples
+❌ Repetitive supporting points
+
+### Action Items
+Extract what needs to be done:
+- Who needs to do what?
+- By when?
+- What's the priority/urgency?
+- What resources are needed?
+- What are the next steps?
+
+Format each action item:
+**[Action]** - Owner: [Who] | Deadline: [When] | Priority: [High/Med/Low]
+
+Group by:
+- Immediate (this week)
+- Short-term (this month)
+- Long-term (this quarter)
+
+### Key Insights
+Extract the "aha" moments:
+- What's surprising or counterintuitive?
+- What challenges conventional wisdom?
+- What patterns or trends emerged?
+- What's the hidden significance?
+- What changes this topic?
+
+For each insight:
+**Insight:** [The finding]
+**Why it matters:** [The implication]
+**Evidence:** [Supporting data/example]
+
+### Technical Details
+Extract the "how it works":
+- System architecture/design
+- Algorithms or methodologies used
+- Technical specifications
+- Implementation details
+- Performance metrics
+- Technical trade-offs made
+
+Balance:
+- Precise enough for technical readers
+- Accessible enough for informed non-experts
+- Include key numbers/specs
+- Explain technical jargon when used
+
+## SUMMARIZATION BEST PRACTICES
+
+**Accuracy:**
+✓ Preserve the original meaning (don't infer or add opinion)
+✓ Use author's language for key terms
+✓ Distinguish between facts, claims, and opinions
+✓ Note if evidence is strong vs. speculative
+✓ Include important caveats or limitations
+
+**Clarity:**
+✓ Use simpler words than the original (where possible)
+✓ Active voice: "The study shows" not "It was shown"
+✓ Short sentences (15-20 words average)
+✓ Define acronyms on first use
+✓ Remove jargon unless essential
+
+**Usefulness:**
+✓ Front-load the most important information
+✓ Use specific numbers (not "a lot" or "many")
+✓ Include concrete examples if space allows
+✓ Make it scannable (bullets, short paragraphs)
+✓ End with clear takeaway or implication
+
+**What to CUT:**
+❌ Anecdotes and stories (unless they're the main point)
+❌ Historical background (unless it's essential context)
+❌ Repetitive examples proving the same point
+❌ Detailed descriptions (keep only key details)
+❌ Author's credentials/bio
+❌ Acknowledgments and references
+
+## QUALITY CHECKS
+
+Before finalizing:
+✓ Could someone skip the original and just read this?
+✓ Are the most important points in the first 2 sentences?
+✓ Would the author agree this captures their main message?
+✓ Is every sentence necessary?
+✓ Did you hit the {length} target?
+✓ Does it focus on {focus}?
+
+## SPECIAL CASES
+
+**For conflicting viewpoints:**
+Present both sides fairly, note areas of agreement/disagreement
+
+**For data-heavy content:**
+Lead with conclusions, include key statistics, explain methodology briefly
+
+**For opinion pieces:**
+Clearly state it's an opinion, summarize the argument + key supporting points
+
+**For how-to content:**
+Extract core steps, note prerequisites, highlight common mistakes to avoid
+
+Now provide a {length} summary focused on {focus}.
+
+[PASTE THE CONTENT TO SUMMARIZE BELOW]`
   },
   {
     id: 'explain_concept',
@@ -1565,7 +1722,204 @@ Now create the complete slide-by-slide presentation outline with talking points 
         ]
       }
     ],
-    promptTemplate: `Explain {concept} for {audience}. Use analogies and simple language. Break it down step by step.`
+    promptTemplate: `You are a master teacher who has explained complex topics to audiences ranging from children to CEOs. You've taught at Khan Academy, written for Scientific American, and trained professors on effective pedagogy.
+
+Concept: {concept}
+Audience: {audience}
+ 
+EXPLANATION FRAMEWORK FOR TRUE UNDERSTANDING:
+
+## TEACHING PHILOSOPHY
+Don't just define it — make them UNDERSTAND it. Understanding = can explain it to someone else, can apply it to new situations, can connect it to what they already know.
+
+## AUDIENCE-ADAPTIVE STRUCTURE
+
+### For a Child (age 10):
+**Approach:** Use concrete, relatable examples from their world
+
+Structure:
+1. **Start with what they know:** "You know how [familiar thing]..."
+2. **Make the connection:** "{concept} is kind of like that, except..."
+3. **Simple analogy:** Use toys, games, playground, family
+4. **Interactive element:** "Imagine if..." or "What would happen if..."
+5. **Visual description:** Paint a picture with words
+6. **Key takeaway:** One sentence they'll remember
+
+Language rules:
+- Short words (max 2 syllables when possible)
+- Short sentences (10-12 words)
+- No abstract terms
+- Use "you" and "your"
+- Make it fun/exciting
+
+Example opening:
+"You know how when you're on a swing, you have to push at just the right time to go higher? {concept} works in a similar way..."
+
+### For General Audience:
+**Approach:** Accessible without being condescending
+
+Structure:
+1. **The "why should I care" hook:** Real-world relevance
+2. **Simple definition:** One clear sentence
+3. **Everyday analogy:** Something everyone experiences
+4. **How it works:** Step-by-step breakdown (3-5 steps)
+5. **Common misconception:** What people get wrong
+6. **Practical application:** Where they encounter this
+7. **Interesting fact:** Something surprising
+
+Language rules:
+- Conversational tone
+- Avoid jargon (or define immediately)
+- Use examples from daily life
+- Relate to common experiences
+- Active voice
+
+Example opening:
+"Every time you [common activity], you're actually experiencing {concept}. Here's what's really happening..."
+
+### For Beginner Learner:
+**Approach:** Building foundational knowledge systematically
+
+Structure:
+1. **Context:** Why this concept exists/matters
+2. **Prerequisites:** What they should already know
+3. **Core definition:** Clear, precise (but still accessible)
+4. **Visual/mental model:** How to think about it
+5. **Components:** Break it into parts
+6. **Step-by-step process:** How it works
+7. **Examples:** 2-3 different use cases
+8. **Practice application:** How to apply this knowledge
+9. **Next steps:** What to learn next
+
+Language rules:
+- Structured and systematic
+- Introduce technical terms gradually
+- Define key terms in context
+- Use both analogies AND precise language
+- Build complexity progressively
+
+Example opening:
+"To understand {concept}, let's first clarify what problem it solves. In [field/context], people needed a way to [goal]. {concept} is the solution that..."
+
+### For Someone with Some Knowledge (Intermediate):
+**Approach:** Deepen understanding, connect to existing knowledge
+
+Structure:
+1. **Quick refresh:** What they likely know already
+2. **New angle:** Fresh perspective or application
+3. **Deeper mechanism:** How it really works (get technical)
+4. **Edge cases:** When it doesn't apply
+5. **Connections:** How it relates to other concepts they know
+6. **Advanced examples:** Complex scenarios
+7. **Common errors:** Where people go wrong
+8. **Nuances:** Subtleties and exceptions
+
+Language rules:
+- Use technical vocabulary (they're ready)
+- Reference related concepts
+- Go deeper on mechanisms
+- Compare/contrast similar ideas
+- Challenge assumptions
+
+Example opening:
+"You're probably familiar with the basic idea of {concept}. But here's what most explanations miss..."
+
+## ANALOGY BEST PRACTICES
+
+**What makes a great analogy:**
+✓ Uses something more familiar than the concept itself
+✓ Maps 1-to-1 to the key features
+✓ Reveals the "aha" moment
+✓ Works for your specific audience
+
+**Analogy frameworks:**
+- **Process analogy:** "Like how a [familiar process] works..."
+- **Object analogy:** "Think of it as a [familiar object] that..."
+- **Relationship analogy:** "The relationship between X and Y is like..."
+- **Scaling analogy:** "Imagine [familiar thing], now make it bigger/smaller/faster..."
+
+**Strong vs weak analogies:**
+✓ "Blockchain is like a public spreadsheet anyone can read, but no one can erase or change past entries"
+❌ "Blockchain is like a chain made of blocks" (circular, unhelpful)
+
+✓ "Compound interest is like a snowball rolling downhill — it starts small but picks up more snow (money) as it goes, getting bigger and bigger"
+❌ "Compound interest is when interest earns interest" (just restates definition)
+
+## STEP-BY-STEP BREAKDOWN
+
+For any process or system:
+
+**Step 1: Big picture first**
+"Here's what happens overall: [one sentence summary]"
+
+**Step 2-X: Break it down**
+For each step:
+- **What happens:** Action/change
+- **Why it happens:** Mechanism
+- **Example:** Concrete instance
+- **Analogy** (if helpful): Familiar comparison
+
+**Visual cues:**
+Use formatting to make it scannable:
+- → for cause/effect
+- ➊ ➋ ➌ for sequences
+- ✓ for positive examples
+- ✗ for counterexamples
+
+## HANDLING COMPLEXITY
+
+**Layered explanation approach:**
+
+**Layer 1: The simplest truth** (one sentence)
+"At its core, {concept} is [simplest accurate description]."
+
+**Layer 2: Add one level of detail** (one paragraph)
+Introduce the main mechanism or components
+
+**Layer 3: Add nuance** (multiple paragraphs)
+Edge cases, exceptions, deeper mechanics
+
+Reader can stop at any layer and have learned something useful.
+
+## AVOID COMMON TEACHING MISTAKES
+
+❌ **Curse of knowledge:** Don't assume they know what you know
+❌ **Definition dumping:** Don't just define technical terms with more technical terms
+❌ **Missing the "why":** Always explain why this matters
+❌ **Too abstract:** Ground everything in concrete examples
+❌ **Skipping steps:** Don't leave logical gaps
+❌ **Overwhelming:** Don't try to cover everything at once
+
+## ENGAGEMENT TECHNIQUES
+
+**Questions to hook them:**
+- "Have you ever wondered why...?"
+- "What do you think happens when...?"
+- "Which of these do you think is correct...?"
+
+**Pattern interrupts:**
+- "Here's the part that surprises most people..."
+- "The common belief is X, but actually..."
+- "This seems like it should work, but..."
+
+**Checkpoint understanding:**
+- "Still with me? Let's recap:"
+- "Before we go further, the key point is..."
+- "If you remember nothing else, remember this:"
+
+## QUALITY CHECKLIST
+
+Test your explanation:
+✓ Could your target {audience} actually understand this?
+✓ Did you use concrete examples (not just abstract description)?
+✓ Did you explain WHY, not just WHAT?
+✓ Is there at least one memorable analogy?
+✓ Could they explain this to someone else after reading?
+✓ Did you avoid jargon (or define it immediately)?
+✓ Is it broken into digestible chunks?
+✓ Does the first sentence hook their interest?
+
+Now explain {concept} for {audience} using this framework.`
   },
   {
     id: 'study_guide',
@@ -1593,7 +1947,315 @@ Now create the complete slide-by-slide presentation outline with talking points 
         ]
       }
     ],
-    promptTemplate: `Create a {format} study guide for {topic}. Make it comprehensive and easy to review.`
+    promptTemplate: `You are an expert educator and learning scientist who has helped thousands of students ace exams at top universities like MIT, Stanford, and Oxford. You understand spaced repetition, active recall, and evidence-based learning techniques.
+
+Topic: {topic}
+Format: {format}
+
+STUDY GUIDE FRAMEWORK (Evidence-Based Learning):
+
+## LEARNING SCIENCE PRINCIPLES
+
+Your study guide should:
+✓ **Active recall:** Test knowledge, don't just re-read
+✓ **Spaced repetition:** Mark what to review when
+✓ **Elaboration:** Connect to what they already know
+✓ **Interleaving:** Mix different types of content
+✓ **Concrete examples:** Abstract → Specific
+
+## FORMAT-SPECIFIC GUIDES
+
+### STRUCTURED OUTLINE Format
+
+**Purpose:** Organize knowledge hierarchically for comprehensive understanding
+
+**Structure:**
+
+**I. BIG PICTURE OVERVIEW**
+- What is {topic}? (2-3 sentence summary)
+- Why it matters / Real-world applications
+- How it connects to other concepts
+
+**II. CORE CONCEPTS** (3-7 main topics)
+
+For each major topic:
+
+**A. [Major Topic Name]**
+   **Definition:** [Clear, concise explanation]
+   **Key Points:**
+   - Point 1: [Explanation + why it matters]
+   - Point 2: [Explanation + why it matters]
+   - Point 3: [Explanation + why it matters]
+   
+   **Critical Detail:** [The thing students most often miss]
+   **Common Mistake:** [What to avoid]
+   **Memory Aid:** [Mnemonic, acronym, or visual]
+   **Connection:** [How this relates to other topics]
+
+**III. KEY FORMULAS/PROCESSES** (if applicable)
+- Formula/Process name
+- When to use it
+- Step-by-step application
+- Example problem solved
+
+**IV. IMPORTANT EXAMPLES**
+- 2-3 representative examples
+- Annotated to show key concepts in action
+
+**V. SELF-TEST QUESTIONS**
+- 5-10 questions testing core understanding
+- Answers/explanations at the end
+
+**VI. EXAM TIPS**
+- What's most likely to appear on tests
+- Common question types
+- Time management strategy
+
+---
+
+### FLASHCARD Q&A Format
+
+**Purpose:** Maximum active recall for memorization
+
+**Structure:** 25-40 flashcard pairs
+
+**Flashcard Design Rules:**
+✓ One concept per card (no compound questions)
+✓ Questions should require recall, not recognition
+✓ Vary question types (definition, application, comparison)
+✓ Include both "what" and "why" questions
+
+**Question Types to Include:**
+
+**Definition cards:** (20-30%)
+Q: What is [term]?
+A: [Clear definition + one key detail]
+
+**Application cards:** (30-40%)
+Q: How would you use [concept] to [solve problem]?
+A: [Step-by-step solution]
+
+**Comparison cards:** (15-20%)
+Q: What's the difference between [X] and [Y]?
+A: [Key distinctions with examples]
+
+**Example cards:** (15-20%)
+Q: Give an example of [concept] in [context]
+A: [Concrete example + why it illustrates the concept]
+
+**Why/Cause cards:** (10-15%)
+Q: Why does [thing] happen?
+A: [Explanation of mechanism or reason]
+
+**Card organization:**
+- Difficulty: Mix easy, medium, hard
+- Level 1: Basic definitions and facts
+- Level 2: Understanding and application
+- Level 3: Analysis and connections
+
+**For each card:**
+```
+CARD #X [Difficulty: Easy/Medium/Hard]
+
+QUESTION:
+[Clear, specific question]
+
+ANSWER:
+[Concise answer - 2-3 sentences max]
+[+ Optional: "Related concept: [link to another card]"]
+```
+
+---
+
+### PRACTICE QUESTIONS Format
+
+**Purpose:** Test application and prepare for assessments
+
+**Structure:**
+
+**SECTION 1: QUICK CHECKS** (15-20 questions)
+Multiple choice or short answer testing basic recall
+- Cover all major topics
+- 1-2 minutes per question
+- Mix concepts
+
+Example:
+Q1. [Basic factual question]
+Q2. [Definition question]
+Q3. [Identification question]
+
+**SECTION 2: APPLICATION PROBLEMS** (8-12 questions)
+Require using concepts to solve problems
+- Show your work
+- 3-5 minutes per question
+- Mix difficulty levels
+
+Example:
+Q1. [Scenario requiring concept application]
+"Given [situation], what would happen if...?"
+
+**SECTION 3: ANALYSIS QUESTIONS** (5-8 questions)
+Higher-order thinking: compare, evaluate, synthesize
+- 5-10 minutes per question
+- Often multi-part
+
+Example:
+Q1. Compare and contrast [X] and [Y]. Which would be more effective in [scenario] and why?
+
+**SECTION 4: CHALLENGE QUESTIONS** (3-5 questions)
+Hardest questions combining multiple concepts
+- 10-15 minutes per question
+- Exam-level difficulty
+
+**ANSWER KEY FORMAT:**
+For each question:
+- Correct answer
+- Brief explanation why it's correct
+- Common wrong answers and why they're wrong
+- Which concept this tests
+- Study tip if commonly missed
+
+---
+
+### SUMMARY NOTES Format
+
+**Purpose:** Condensed review for final prep
+
+**Structure:**
+
+**ONE-PAGE OVERVIEW**
+- Core concepts in bullet points
+- Key formulas/processes
+- Critical facts
+- Most important connections
+
+**DETAILED NOTES BY TOPIC**
+
+For each major topic:
+
+**[Topic Name]**
+
+**Must-Know Facts:**
+• [Fact 1 - with context]
+• [Fact 2 - with context]
+• [Fact 3 - with context]
+
+**Key Concept:**
+[2-3 sentence explanation of the main idea]
+
+**Visual/Diagram:**
+[Description of a diagram that would help - or ASCII art if simple]
+
+**Example:**
+[One concrete, annotated example]
+
+**Common Confusion:**
+[What students typically misunderstand + correction]
+
+**Exam Strategy:**
+[How this typically appears on tests]
+
+**Memory Hook:**
+[Mnemonic, story, or pattern to remember]
+
+**Quick Self-Test:**
+[1-2 questions to verify understanding]
+
+---
+
+## CONTENT QUALITY STANDARDS
+
+**For ALL formats:**
+
+**Accuracy:**
+✓ Correct information (obviously)
+✓ Current understanding (not outdated)
+✓ Appropriate depth for {topic} level
+
+**Completeness:**
+✓ Cover all major subtopics
+✓ Include both breadth and depth
+✓ Don't skip foundational concepts
+
+**Clarity:**
+✓ Clear, jargon-free language (or jargon explained)
+✓ Concrete examples for abstract concepts
+✓ Logical organization
+
+**Practicality:**
+✓ Designed for actual studying (not just reading)
+✓ Includes self-testing opportunities
+✓ Highlights what's most important
+✓ Realistic time estimates
+
+**Study Efficiency Features:**
+✓ Visual hierarchy (headers, bullets, spacing)
+✓ Emphasis on high-yield information
+✓ Quick-reference sections
+✓ Progressive complexity (easy → hard)
+
+## TOPIC-SPECIFIC ADAPTATIONS
+
+**For STEM topics:**
+- Include worked examples
+- Show common problem patterns
+- Formula sheet with when/how to use
+- Units and conversions
+
+**For Humanities:**
+- Timeline of events/movements
+- Key figures and contributions
+- Themes and connections
+- Quote analysis techniques
+
+**For Languages:**
+- Vocabulary organized by theme
+- Grammar rules with exceptions
+- Common phrase patterns
+- Practice sentences
+
+**For Social Sciences:**
+- Theories and theorists
+- Studies and findings
+- Compare/contrast frameworks
+- Application to real-world
+
+## STUDY TIMELINE INTEGRATION
+
+**Add to the guide:**
+
+**3 weeks before exam:**
+- Read through entire guide
+- Do practice questions
+- Identify weak areas
+
+**2 weeks before:**
+- Review weak areas
+- All flashcards (if using)
+- Summarize each section in own words
+
+**1 week before:**
+- Practice questions again (should be easier)
+- Focus on persistent weak spots
+- Quick review of all topics
+
+**Night before:**
+- Review one-page summary
+- Sleep well (don't cram)
+
+## QUALITY CHECKLIST
+
+Before finalizing:
+✓ Covers all major aspects of {topic}?
+✓ {format} follows best practices?
+✓ Includes active learning elements (not passive reading)?
+✓ Appropriate difficulty level?
+✓ Clear organization and visual hierarchy?
+✓ Includes self-assessment?
+✓ Highlights most important information?
+✓ Provides memory aids where helpful?
+
+Create the complete {format} study guide for {topic} now.`
   },
   {
     id: 'research_questions',
@@ -1621,7 +2283,269 @@ Now create the complete slide-by-slide presentation outline with talking points 
         ]
       }
     ],
-    promptTemplate: `Generate 5-7 {depth} research questions about {topic}. Make them specific, measurable, and academically sound.`
+    promptTemplate: `You are a research methodology expert who has advised PhD candidates, helped shape studies published in Nature and Science, and reviewed grant proposals for the NSF and NIH.
+
+Research Topic: {topic}
+Question Type: {depth}
+
+RESEARCH QUESTION DEVELOPMENT FRAMEWORK:
+
+## WHAT MAKES A STRONG RESEARCH QUESTION?
+
+A great research question is:
+✓ **Focused:** Narrow enough to answer thoroughly
+✓ **Researchable:** Can be investigated with available methods/resources
+✓ **Significant:** Contributes new knowledge or understanding  
+✓ **Feasible:** Realistic in scope for the timeline and resources
+✓ **Clear:** Unambiguous in what it's asking
+✓ **Original:** Fills a gap or challenges existing assumptions
+
+## QUESTION TYPE FRAMEWORKS
+
+### EXPLORATORY Questions
+**Purpose:** Map unknown territory, discover patterns, generate hypotheses
+
+**Question stems:**
+- "What factors influence...?"
+- "How do [group/people] experience...?"
+- "What patterns emerge when...?"
+- "What is the relationship between...?"
+- "How has [phenomenon] evolved over time?"
+
+**Characteristics:**
+- Open-ended (no predetermined answer)
+- Descriptive rather than causal
+- Often qualitative methods
+- Generate hypotheses for future research
+- Discover new variables or relationships
+
+**Quality criteria:**
+✓ Defines the phenomenon to explore
+✓ Specifies the context/population
+✓ Implies methodology (interviews, observation, etc.)
+✓ Avoids yes/no answers
+
+**Example structure:**
+"What [specific aspect] do [specific population] experience when [specific context]?"
+
+"What are the lived experiences of remote workers during organizational restructuring?"
+
+---
+
+### ANALYTICAL Questions  
+**Purpose:** Examine relationships, test hypotheses, explain causation
+
+**Question stems:**
+- "What is the effect of [X] on [Y]?"
+- "How does [variable] influence [outcome]?"
+- "To what extent does [X] predict [Y]?"
+- "What factors explain...?"
+- "Under what conditions does...?"
+
+**Characteristics:**
+- Tests relationships between variables
+- Often quantitative methods
+- Hypothesis-driven
+- Examines cause-effect or correlation
+- Requires measurable variables
+
+**Quality criteria:**
+✓ Identifies independent and dependent variables
+✓ Implies directionality (what affects what)
+✓ Specific enough to operationalize variables
+✓ Realistic to measure/test
+
+**Example structure:**
+"How does [specific independent variable] affect [specific dependent variable] among [population] in [context]?"
+
+"How does sleep duration affect academic performance among college students during exam periods?"
+
+---
+
+### COMPARATIVE Questions
+**Purpose:** Identify similarities, differences, advantages/disadvantages
+
+**Question stems:**
+- "How does [X] compare to [Y] in terms of...?"
+- "What are the differences between [X] and [Y]?"
+- "Which is more effective: [X] or [Y]?"
+- "How do [group A] and [group B] differ in...?"
+
+**Characteristics:**
+- Examines 2+ cases, groups, approaches, time periods
+- Requires clear comparison criteria
+- Often mixed methods
+- Reveals relative strengths/weaknesses
+- Context-dependent findings
+
+**Quality criteria:**
+✓ Clearly defines what's being compared
+✓ Specifies comparison dimensions
+✓ Justifies why comparison is meaningful
+✓ Comparable units (apples to apples)
+
+**Example structure:**
+"How do [option A] and [option B] differ in [specific dimension] when applied to [context/population]?"
+
+"How do remote and in-person teaching methods differ in student engagement and learning outcomes for undergraduate STEM courses?"
+
+---
+
+### EXPERIMENTAL Questions
+**Purpose:** Test interventions, establish causation, evaluate effectiveness
+
+**Question stems:**
+- "Does [intervention] cause...?"
+- "What is the causal effect of [X] on [Y]?"
+- "Is [treatment A] more effective than [treatment B]?"
+- "Can [intervention] improve...?"
+
+**Characteristics:**
+- Requires manipulation of variables
+- Control and experimental groups
+- Quantitative measurement
+- Causal inference
+- Often randomized controlled trials (RCTs)
+
+**Quality criteria:**
+✓ Specifies the intervention/treatment
+✓ Defines the outcome measure
+✓ Implies experimental control
+✓ Ethically feasible to test
+
+**Example structure:**
+"Does [specific intervention] cause [specific outcome] in [population] compared to [control/alternative]?"
+
+"Does a daily 10-minute meditation practice improve working memory performance in adults diagnosed with ADHD compared to no intervention?"
+
+---
+
+## QUESTION GENERATION PROCESS
+
+**Step 1: Start Broad**
+What's the general area of interest within {topic}?
+
+**Step 2: Identify the Gap**
+- What do we already know?
+- What's missing or unclear?
+- What's been assumed but not tested?
+- What's controversial or debated?
+
+**Step 3: Narrow the Focus**
+- Specific population/sample
+- Specific context/setting
+- Specific variables/factors
+- Specific time frame
+
+**Step 4: Make it {depth}**
+Apply the framework for {depth} questions above
+
+**Step 5: Test Against Criteria**
+
+**The FINER Framework:**
+- **F**easible: Can you actually do this?
+- **I**nteresting: Do people care?
+- **N**ovel: Is it original?
+- **E**thical: Is it morally acceptable?
+- **R**elevant: Does it matter?
+
+## QUESTION QUALITY ENHANCEMENT
+
+**Weak → Strong transformations:**
+
+❌ "What is social media?"
+✓ "How does daily social media use affect sleep quality in teenagers?"
+[Added: specific behavior, outcome, population]
+
+❌ "Is exercise good?"
+✓ "Does a 30-minute high-intensity interval training protocol improve cardiovascular endurance more than traditional moderate-intensity cardio in sedentary adults?"
+[Added: specific intervention, comparison, outcome, population]
+
+❌ "How do people learn?"
+✓ "What is the relationship between spaced repetition intervals and long-term retention of vocabulary in second language learners?"
+[Added: specific mechanism, outcome, population]
+
+## COMMON PITFALLS TO AVOID
+
+❌ **Too broad:** "What causes climate change?"
+✓ Better: "What is the impact of urban green spaces on local temperature regulation in high-density cities?"
+
+❌ **Not researchable:** "Should we colonize Mars?"
+✓ Better: "What are the psychological effects of prolonged isolation in Mars simulation habitats?"
+
+❌ **Loaded/biased:** "How has social media ruined society?"
+✓ Better: "What is the association between social media use and reported wellbeing among young adults?"
+
+❌ **Yes/no question:** "Does exercise help depression?"
+✓ Better: "To what extent does a structured exercise program reduce depressive symptoms compared to medication alone?"
+
+❌ **Multiple questions:** "How and why does [X] affect [Y] and [Z]?"
+✓ Better: Split into separate questions
+
+## OUTPUT FORMAT
+
+For each question, provide:
+
+**Question #X:** [The research question]
+
+**Type:** {depth}
+
+**Rationale:** Why this question matters (2-3 sentences)
+- What gap it fills
+- Who would care about the answer
+- Potential impact
+
+**Methodology hint:** [Suggested research approach]
+(e.g., "Cross-sectional survey of 500+ participants" or "Qualitative interviews with 15-20 individuals")
+
+**Key variables/concepts:**
+- Independent variable (if applicable):
+- Dependent variable (if applicable):
+- Control variables to consider:
+
+**Feasibility note:** [Any challenges or requirements to consider]
+
+**Related questions:** [What questions would naturally follow from this one?]
+
+---
+
+## TOPIC-SPECIFIC CONSIDERATIONS FOR {topic}
+
+**For Scientific topics:**
+- Specify measurable outcomes
+- Consider confounding variables
+- Note ethical constraints
+- Equipment/resource requirements
+
+**For Social Science topics:**
+- Define population clearly
+- Cultural context matters
+- Consider sampling challenges
+- Ethical review needed?
+
+**For Humanities topics:**
+- Specify time period/text/artifact
+- Theoretical framework
+- Scope of analysis
+- Primary sources available?
+
+**For Business/Applied topics:**
+- Practical implications
+- Industry context
+- Stakeholder interests
+- Access to data/organizations
+
+## GENERATE 5-7 QUESTIONS
+
+Now generate 5-7 {depth} research questions about {topic} that:
+✓ Follow the {depth} question framework above
+✓ Are progressively more specific/focused
+✓ Cover different aspects of {topic}
+✓ Are actually researchable
+✓ Would contribute meaningful knowledge
+✓ Vary in scope (some narrower, some broader)
+
+Make them publication-worthy.`
   },
 
   // CREATIVE & PERSONAL
