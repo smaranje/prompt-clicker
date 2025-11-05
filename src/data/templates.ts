@@ -697,7 +697,7 @@ export const templates: Template[] = [
     category: 'code',
     title: 'Debug Code Issue',
     icon: '🐛',
-    description: 'Get help fixing code errors',
+    description: 'Get help fixing code errors and bugs',
     fields: [
       {
         name: 'language',
@@ -709,17 +709,58 @@ export const templates: Template[] = [
           { value: 'python', label: 'Python' },
           { value: 'typescript', label: 'TypeScript' },
           { value: 'java', label: 'Java' },
+          { value: 'cpp', label: 'C++' },
+          { value: 'csharp', label: 'C#' },
+          { value: 'ruby', label: 'Ruby' },
+          { value: 'go', label: 'Go' },
+          { value: 'rust', label: 'Rust' },
+          { value: 'php', label: 'PHP' },
           { value: 'other', label: 'Other' }
         ]
       },
       {
-        name: 'issue',
-        label: 'What\'s Wrong',
+        name: 'error_message',
+        label: 'Error Message (if any)',
         type: 'text',
-        placeholder: 'describe the error or unexpected behavior'
+        placeholder: 'e.g., TypeError: Cannot read property of undefined',
+        required: false
+      },
+      {
+        name: 'expected_behavior',
+        label: 'What Should Happen',
+        type: 'text',
+        placeholder: 'describe what you expected the code to do',
+        required: false
+      },
+      {
+        name: 'actual_behavior',
+        label: 'What Actually Happens',
+        type: 'text',
+        placeholder: 'describe what is actually happening',
+        required: false
       }
     ],
-    promptTemplate: `Help me debug this {language} code. The issue is: {issue}. Explain what's wrong and how to fix it.`
+    promptTemplate: `You are a debugging expert specializing in {language}.
+
+I'm encountering an issue with my code.
+
+Error message (if any): {error_message}
+Expected behavior: {expected_behavior}
+Actual behavior: {actual_behavior}
+
+I'll paste my code below. Please help me:
+
+1. **Identify the root cause** (not just the symptom)
+2. **Explain WHY this error occurs** (teach me the underlying concept)
+3. **Provide a fixed version** of the code with clear annotations
+4. **Suggest prevention strategies** for this type of error in the future
+
+Think step-by-step:
+- First, analyze what the error actually means
+- Then, trace through the code logic to find where it breaks
+- Finally, explain the fix and the reasoning behind it
+
+[PASTE YOUR CODE HERE]`
   },
   {
     id: 'explain_code',
@@ -729,62 +770,380 @@ export const templates: Template[] = [
     description: 'Understand how code works',
     fields: [
       {
-        name: 'detail_level',
-        label: 'Detail Level',
+        name: 'language',
+        label: 'Programming Language',
         type: 'dropdown',
-        default: 'medium',
+        default: 'javascript',
         options: [
-          { value: 'high_level', label: 'High-level overview' },
-          { value: 'medium', label: 'Medium detail' },
-          { value: 'line_by_line', label: 'Line-by-line explanation' }
+          { value: 'javascript', label: 'JavaScript' },
+          { value: 'python', label: 'Python' },
+          { value: 'typescript', label: 'TypeScript' },
+          { value: 'java', label: 'Java' },
+          { value: 'cpp', label: 'C++' },
+          { value: 'csharp', label: 'C#' },
+          { value: 'ruby', label: 'Ruby' },
+          { value: 'go', label: 'Go' },
+          { value: 'rust', label: 'Rust' },
+          { value: 'php', label: 'PHP' },
+          { value: 'other', label: 'Other' }
         ]
+      },
+      {
+        name: 'skill_level',
+        label: 'Your Experience Level',
+        type: 'dropdown',
+        default: 'intermediate',
+        options: [
+          { value: 'beginner', label: 'Beginner - New to programming' },
+          { value: 'intermediate', label: 'Intermediate - Know the basics' },
+          { value: 'advanced', label: 'Advanced - Want deep insights' }
+        ]
+      },
+      {
+        name: 'explanation_style',
+        label: 'Explanation Style',
+        type: 'dropdown',
+        default: 'line_by_line',
+        options: [
+          { value: 'line_by_line', label: 'Line-by-line walkthrough' },
+          { value: 'high_level_first', label: 'High-level overview first, then details' },
+          { value: 'patterns', label: 'Focus on patterns & concepts' },
+          { value: 'eli5', label: 'ELI5 (Explain Like I\'m 5)' }
+        ]
+      },
+      {
+        name: 'include_purpose',
+        label: 'Include what each part does',
+        type: 'checkbox',
+        default: true
+      },
+      {
+        name: 'include_why',
+        label: 'Include why it\'s written this way',
+        type: 'checkbox',
+        default: true
+      },
+      {
+        name: 'include_mistakes',
+        label: 'Include common mistakes to avoid',
+        type: 'checkbox',
+        default: true
+      },
+      {
+        name: 'include_alternatives',
+        label: 'Include alternative approaches',
+        type: 'checkbox',
+        default: false
       }
     ],
-    promptTemplate: `Provide a {detail_level} explanation of the following code. Make it clear for someone learning.`
+    promptTemplate: `You are an expert {language} developer and teacher. I'm a {skill_level} programmer learning {language}.
+
+I'll paste some code below. Please explain it using a {explanation_style} approach that teaches me the underlying concepts.
+
+For each section, explain:{include_purpose}{include_why}{include_mistakes}{include_alternatives}
+
+Format your response as:
+
+## Lines X-Y: [Purpose]
+**Code:** \`[the code]\`
+**Explanation:** [detailed breakdown in plain English]
+**Key concept:** [the pattern/principle being used]
+
+Focus on teaching concepts and patterns, not just translating syntax into English.
+
+[PASTE YOUR CODE HERE]`
   },
   {
     id: 'code_review',
     category: 'code',
     title: 'Code Review & Improvements',
     icon: '✅',
-    description: 'Get code quality feedback',
+    description: 'Get expert code quality feedback',
     fields: [
       {
-        name: 'focus',
-        label: 'Focus On',
+        name: 'language',
+        label: 'Programming Language',
         type: 'dropdown',
-        default: 'all',
+        default: 'javascript',
         options: [
-          { value: 'all', label: 'Overall quality' },
-          { value: 'performance', label: 'Performance' },
-          { value: 'security', label: 'Security' },
-          { value: 'readability', label: 'Readability' },
-          { value: 'best_practices', label: 'Best practices' }
+          { value: 'javascript', label: 'JavaScript' },
+          { value: 'python', label: 'Python' },
+          { value: 'typescript', label: 'TypeScript' },
+          { value: 'java', label: 'Java' },
+          { value: 'cpp', label: 'C++' },
+          { value: 'csharp', label: 'C#' },
+          { value: 'ruby', label: 'Ruby' },
+          { value: 'go', label: 'Go' },
+          { value: 'rust', label: 'Rust' },
+          { value: 'php', label: 'PHP' },
+          { value: 'other', label: 'Other' }
         ]
+      },
+      {
+        name: 'review_focus',
+        label: 'Review Focus',
+        type: 'dropdown',
+        default: 'comprehensive',
+        options: [
+          { value: 'comprehensive', label: 'Comprehensive review (all aspects)' },
+          { value: 'security', label: 'Security vulnerabilities' },
+          { value: 'performance', label: 'Performance optimization' },
+          { value: 'readability', label: 'Readability & maintainability' },
+          { value: 'best_practices', label: 'Best practices & idioms' },
+          { value: 'bugs', label: 'Potential bugs & edge cases' }
+        ]
+      },
+      {
+        name: 'provide_refactored',
+        label: 'Provide refactored version',
+        type: 'checkbox',
+        default: true
       }
     ],
-    promptTemplate: `Review this code focusing on {focus}. Suggest specific improvements with explanations.`
+    promptTemplate: `You are a senior {language} developer conducting a code review with focus on {review_focus}.
+
+Please review the code I'll paste below and provide:
+
+1. **Issues Found** - Categorized by severity (Critical/Major/Minor)
+   - Security vulnerabilities
+   - Potential bugs or edge cases
+   - Performance bottlenecks
+   - Code smells and anti-patterns
+
+2. **Specific Improvements** - For each issue:
+   - What's wrong and why it matters
+   - How to fix it (with code examples)
+   - Best practice explanation
+
+3. **Best Practices Check**
+   - Language-specific idioms and conventions
+   - Error handling approach
+   - Code organization and structure
+   - Naming conventions and clarity
+{provide_refactored}
+
+Format each finding as:
+**[Severity] Issue Name**
+- **Problem:** [description]
+- **Impact:** [why it matters]
+- **Fix:** [solution with code]
+- **Why:** [best practice explanation]
+
+[PASTE YOUR CODE HERE]`
   },
   {
     id: 'documentation',
     category: 'code',
     title: 'Write Documentation',
     icon: '📄',
-    description: 'Generate code documentation',
+    description: 'Generate professional code documentation',
     fields: [
+      {
+        name: 'language',
+        label: 'Programming Language',
+        type: 'dropdown',
+        default: 'javascript',
+        options: [
+          { value: 'javascript', label: 'JavaScript' },
+          { value: 'python', label: 'Python' },
+          { value: 'typescript', label: 'TypeScript' },
+          { value: 'java', label: 'Java' },
+          { value: 'cpp', label: 'C++' },
+          { value: 'csharp', label: 'C#' },
+          { value: 'ruby', label: 'Ruby' },
+          { value: 'go', label: 'Go' },
+          { value: 'rust', label: 'Rust' },
+          { value: 'php', label: 'PHP' },
+          { value: 'other', label: 'Other' }
+        ]
+      },
       {
         name: 'doc_type',
         label: 'Documentation Type',
         type: 'dropdown',
         default: 'function',
         options: [
-          { value: 'function', label: 'Function/Method docs' },
+          { value: 'function', label: 'Function/Method documentation' },
           { value: 'api', label: 'API documentation' },
           { value: 'readme', label: 'README file' },
-          { value: 'inline', label: 'Inline comments' }
+          { value: 'inline', label: 'Inline comments' },
+          { value: 'class', label: 'Class/Module documentation' }
+        ]
+      },
+      {
+        name: 'doc_standard',
+        label: 'Documentation Standard',
+        type: 'dropdown',
+        default: 'auto',
+        options: [
+          { value: 'auto', label: 'Auto-detect from language' },
+          { value: 'jsdoc', label: 'JSDoc (JavaScript)' },
+          { value: 'sphinx', label: 'Sphinx (Python)' },
+          { value: 'javadoc', label: 'JavaDoc (Java)' },
+          { value: 'xmldoc', label: 'XML Documentation (C#)' },
+          { value: 'markdown', label: 'Markdown' }
+        ]
+      },
+      {
+        name: 'include_examples',
+        label: 'Include usage examples',
+        type: 'checkbox',
+        default: true
+      }
+    ],
+    promptTemplate: `You are a technical writer creating {doc_type} for {language} code.
+
+Documentation standard: {doc_standard}
+
+Please generate comprehensive documentation that includes:
+
+1. **Overview/Purpose** - What this code does and why it exists
+2. **Parameters/Arguments** - Type, description, and constraints for each
+3. **Return Value** - What it returns and under what conditions
+4. **Exceptions/Errors** - What can go wrong and when
+5. **Side Effects** - Any state changes or external impacts{include_examples}
+7. **Notes** - Important implementation details or gotchas
+
+Follow {language}-specific documentation conventions and best practices.
+
+[PASTE YOUR CODE HERE]`
+  },
+  {
+    id: 'optimize_code',
+    category: 'code',
+    title: 'Optimize Performance',
+    icon: '⚡',
+    description: 'Improve code speed and efficiency',
+    fields: [
+      {
+        name: 'language',
+        label: 'Programming Language',
+        type: 'dropdown',
+        default: 'javascript',
+        options: [
+          { value: 'javascript', label: 'JavaScript' },
+          { value: 'python', label: 'Python' },
+          { value: 'typescript', label: 'TypeScript' },
+          { value: 'java', label: 'Java' },
+          { value: 'cpp', label: 'C++' },
+          { value: 'csharp', label: 'C#' },
+          { value: 'go', label: 'Go' },
+          { value: 'rust', label: 'Rust' }
+        ]
+      },
+      {
+        name: 'performance_issue',
+        label: 'Performance Issue',
+        type: 'text',
+        placeholder: 'e.g., slow with large datasets, high memory usage',
+        required: false
+      },
+      {
+        name: 'optimization_goal',
+        label: 'Optimization Goal',
+        type: 'dropdown',
+        default: 'speed',
+        options: [
+          { value: 'speed', label: 'Faster execution time' },
+          { value: 'memory', label: 'Lower memory usage' },
+          { value: 'both', label: 'Both speed and memory' },
+          { value: 'scalability', label: 'Better scalability' }
         ]
       }
     ],
-    promptTemplate: `Generate {doc_type} for the following code. Include parameter descriptions, return values, and usage examples.`
+    promptTemplate: `You are a performance optimization expert for {language}.
+
+Performance issue: {performance_issue}
+Optimization goal: {optimization_goal}
+
+Please analyze the code I'll paste below and provide:
+
+1. **Performance Analysis**
+   - Identify bottlenecks and inefficiencies
+   - Big-O complexity analysis (time and space)
+   - Profiling insights and hotspots
+
+2. **Optimized Version**
+   - Provide refactored code with improvements
+   - Explain each optimization technique used
+   - Compare before/after complexity
+
+3. **Trade-offs**
+   - What was gained vs. what was sacrificed
+   - When to use this optimization
+   - Alternative approaches for different scenarios
+
+4. **Benchmarking Guidance**
+   - How to measure the improvement
+   - What metrics to track
+   - Testing recommendations
+
+[PASTE YOUR CODE HERE]`
+  },
+  {
+    id: 'convert_code',
+    category: 'code',
+    title: 'Convert Between Languages',
+    icon: '🔄',
+    description: 'Translate code from one language to another',
+    fields: [
+      {
+        name: 'from_language',
+        label: 'From Language',
+        type: 'dropdown',
+        default: 'javascript',
+        options: [
+          { value: 'javascript', label: 'JavaScript' },
+          { value: 'python', label: 'Python' },
+          { value: 'typescript', label: 'TypeScript' },
+          { value: 'java', label: 'Java' },
+          { value: 'cpp', label: 'C++' },
+          { value: 'csharp', label: 'C#' },
+          { value: 'ruby', label: 'Ruby' },
+          { value: 'go', label: 'Go' },
+          { value: 'rust', label: 'Rust' },
+          { value: 'php', label: 'PHP' }
+        ]
+      },
+      {
+        name: 'to_language',
+        label: 'To Language',
+        type: 'dropdown',
+        default: 'python',
+        options: [
+          { value: 'javascript', label: 'JavaScript' },
+          { value: 'python', label: 'Python' },
+          { value: 'typescript', label: 'TypeScript' },
+          { value: 'java', label: 'Java' },
+          { value: 'cpp', label: 'C++' },
+          { value: 'csharp', label: 'C#' },
+          { value: 'ruby', label: 'Ruby' },
+          { value: 'go', label: 'Go' },
+          { value: 'rust', label: 'Rust' },
+          { value: 'php', label: 'PHP' }
+        ]
+      },
+      {
+        name: 'preserve_style',
+        label: 'Use idiomatic style',
+        type: 'checkbox',
+        default: true
+      }
+    ],
+    promptTemplate: `You are an expert in both {from_language} and {to_language}.
+
+I need to convert code from {from_language} to {to_language}.
+
+Important: {preserve_style}
+
+Please provide:
+
+1. **Converted Code** - Not just a literal translation, but an idiomatic {to_language} version
+2. **Key Differences** - Explain how the languages handle this differently
+3. **Idioms & Patterns** - {to_language}-specific best practices applied
+4. **Dependencies** - Any libraries or imports needed in {to_language}
+5. **Notes** - Things that don't translate directly and why
+
+[PASTE YOUR {from_language} CODE HERE]`
   }
 ];

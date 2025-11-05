@@ -51,17 +51,74 @@ const PreviewPrompt = () => {
   const fullPrompt = generatePrompt();
 
   const generateSummary = () => {
-    const emailType = formData.email_type
-      ? template.fields
-          .find((f) => f.name === 'email_type')
-          ?.options?.find((o) => o.value === formData.email_type)?.label
-      : '';
-    const recipient = formData.recipient || 'your recipient';
-    const topic = formData.topic || 'the topic';
-    const length = formData.length || 'medium';
-    const tone = formData.tone || 'formal';
-
-    return `A ${emailType?.toLowerCase() || 'professional'} email to ${recipient} about ${topic}, ${length} length with a ${tone} tone.`;
+    // Generate dynamic summary based on template type
+    switch (template.id) {
+      case 'email_professional': {
+        const emailType = formData.email_type
+          ? template.fields.find((f) => f.name === 'email_type')?.options?.find((o) => o.value === formData.email_type)?.label
+          : 'professional';
+        const recipient = formData.recipient || 'your recipient';
+        const topic = formData.topic || 'the topic';
+        const length = formData.length || 'medium';
+        const tone = formData.tone || 'professional';
+        return `A ${emailType?.toLowerCase()} email to ${recipient} about ${topic}, ${length} length with a ${tone} tone.`;
+      }
+      
+      case 'debug_code': {
+        const language = template.fields.find((f) => f.name === 'language')?.options?.find((o) => o.value === formData.language)?.label || 'JavaScript';
+        const hasError = formData.error_message;
+        return `Expert debugging help for ${language} code${hasError ? ' with error analysis' : ''} including root cause identification and prevention strategies.`;
+      }
+      
+      case 'explain_code': {
+        const language = template.fields.find((f) => f.name === 'language')?.options?.find((o) => o.value === formData.language)?.label || 'JavaScript';
+        const skillLevel = template.fields.find((f) => f.name === 'skill_level')?.options?.find((o) => o.value === formData.skill_level)?.label || 'Intermediate';
+        const style = template.fields.find((f) => f.name === 'explanation_style')?.options?.find((o) => o.value === formData.explanation_style)?.label || 'Line-by-line walkthrough';
+        return `${style} explanation of ${language} code for ${skillLevel.toLowerCase()} programmers, focusing on concepts and patterns.`;
+      }
+      
+      case 'code_review': {
+        const language = template.fields.find((f) => f.name === 'language')?.options?.find((o) => o.value === formData.language)?.label || 'JavaScript';
+        const focus = template.fields.find((f) => f.name === 'review_focus')?.options?.find((o) => o.value === formData.review_focus)?.label || 'Comprehensive review';
+        return `${focus} of ${language} code with severity-categorized issues and best practice recommendations.`;
+      }
+      
+      case 'documentation': {
+        const language = template.fields.find((f) => f.name === 'language')?.options?.find((o) => o.value === formData.language)?.label || 'JavaScript';
+        const docType = template.fields.find((f) => f.name === 'doc_type')?.options?.find((o) => o.value === formData.doc_type)?.label || 'Function documentation';
+        return `Professional ${docType.toLowerCase()} for ${language} following language-specific standards${formData.include_examples ? ' with usage examples' : ''}.`;
+      }
+      
+      case 'optimize_code': {
+        const language = template.fields.find((f) => f.name === 'language')?.options?.find((o) => o.value === formData.language)?.label || 'JavaScript';
+        const goal = template.fields.find((f) => f.name === 'optimization_goal')?.options?.find((o) => o.value === formData.optimization_goal)?.label || 'performance';
+        return `Performance optimization for ${language} focused on ${goal.toLowerCase()} with Big-O analysis and benchmarking guidance.`;
+      }
+      
+      case 'convert_code': {
+        const fromLang = template.fields.find((f) => f.name === 'from_language')?.options?.find((o) => o.value === formData.from_language)?.label || 'JavaScript';
+        const toLang = template.fields.find((f) => f.name === 'to_language')?.options?.find((o) => o.value === formData.to_language)?.label || 'Python';
+        return `Convert ${fromLang} to idiomatic ${toLang} with language-specific patterns and best practices.`;
+      }
+      
+      case 'social_posts': {
+        const platform = template.fields.find((f) => f.name === 'platform')?.options?.find((o) => o.value === formData.platform)?.label || 'LinkedIn';
+        const style = template.fields.find((f) => f.name === 'style')?.options?.find((o) => o.value === formData.style)?.label || 'Professional';
+        return `${style} ${platform} post about ${formData.topic || 'your topic'} with engaging hook and platform-specific optimization.`;
+      }
+      
+      case 'article_draft': {
+        const length = template.fields.find((f) => f.name === 'length')?.options?.find((o) => o.value === formData.length)?.label || 'Medium';
+        return `${length} article about "${formData.topic || 'your topic'}" for ${formData.audience || 'your audience'} with structured sections and actionable takeaways.`;
+      }
+      
+      default: {
+        // Generic summary for other templates
+        const firstTextField = template.fields.find(f => f.type === 'text');
+        const mainValue = firstTextField ? formData[firstTextField.name] || template.title.toLowerCase() : template.title.toLowerCase();
+        return `${template.title} - ${mainValue}`;
+      }
+    }
   };
 
   const copyToClipboard = async () => {
