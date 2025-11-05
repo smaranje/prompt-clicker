@@ -20,8 +20,7 @@ export const TemplateCard = ({ template, onClick }: TemplateCardProps) => {
         e.currentTarget.style.boxShadow = 'var(--shadow-sm)';
       }}
     >
-      <div className="flex items-start gap-5">
-        <div className="text-2xl flex-shrink-0 mt-1">{template.icon}</div>
+      <div className="flex items-start justify-between gap-5">
         <div className="flex-1 min-w-0">
           <h3 className="text-xl font-semibold mb-2 text-card-foreground group-hover:text-primary transition-colors font-heading">
             {template.title}

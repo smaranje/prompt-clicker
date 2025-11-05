@@ -55,16 +55,13 @@ const CustomizeTemplate = () => {
         </Button>
 
         <Card className="p-8 md:p-12 border border-border" style={{ boxShadow: 'var(--shadow-md)' }}>
-          <div className="flex items-start gap-6 mb-12">
-            <span className="text-4xl mt-1">{template.icon}</span>
-            <div className="flex-1">
-              <h1 className="text-3xl font-semibold text-foreground font-heading mb-3">
-                {template.title}
-              </h1>
-              <p className="text-muted-foreground text-base">
-                {template.description}
-              </p>
-            </div>
+          <div className="mb-12">
+            <h1 className="text-3xl font-semibold text-foreground font-heading mb-3">
+              {template.title}
+            </h1>
+            <p className="text-muted-foreground text-base">
+              {template.description}
+            </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-8">

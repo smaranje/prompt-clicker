@@ -1,7 +1,7 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { ArrowLeft, Copy, ExternalLink, Edit, Check, Sparkles } from 'lucide-react';
+import { ArrowLeft, Copy, ExternalLink, Edit, Check } from 'lucide-react';
 import { Template } from '@/types/templates';
 import { useState } from 'react';
 import { toast } from 'sonner';
@@ -95,7 +95,7 @@ const PreviewPrompt = () => {
           {/* Success Header */}
           <div className="text-center mb-12">
             <div className="inline-flex items-center justify-center w-16 h-16 bg-accent/10 rounded-full mb-6">
-              <Sparkles className="w-8 h-8 text-accent" />
+              <Check className="w-8 h-8 text-accent" />
             </div>
             <h1 className="text-4xl font-semibold mb-4 text-foreground font-heading">
               Your Prompt is Ready!

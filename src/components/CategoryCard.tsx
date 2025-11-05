@@ -21,7 +21,6 @@ export const CategoryCard = ({ category, onClick }: CategoryCardProps) => {
       }}
     >
       <div className="flex flex-col h-full">
-        <div className="text-2xl mb-6">{category.icon}</div>
         <h3 className="text-2xl font-semibold mb-3 text-card-foreground group-hover:text-primary transition-colors font-heading">
           {category.title}
         </h3>

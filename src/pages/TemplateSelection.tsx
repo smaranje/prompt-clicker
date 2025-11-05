@@ -38,17 +38,12 @@ const TemplateSelection = () => {
 
         {/* Header - Generous spacing */}
         <div className="mb-16">
-          <div className="flex items-start gap-6 mb-6">
-            <span className="text-4xl mt-1">{category.icon}</span>
-            <div className="flex-1">
-              <h1 className="font-heading mb-3">
-                {category.title}
-              </h1>
-              <p className="subtitle">
-                {category.description}
-              </p>
-            </div>
-          </div>
+          <h1 className="font-heading mb-3">
+            {category.title}
+          </h1>
+          <p className="subtitle">
+            {category.description}
+          </p>
         </div>
 
         {/* Templates */}
