@@ -18,26 +18,24 @@ const CategorySelection = () => {
       <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 lg:py-20 max-w-7xl">
         {/* Header with Logo and Actions */}
         <div className="flex justify-between items-center mb-12 sm:mb-16">
-          <div className="flex items-center gap-2.5">
-            <img src={logo} alt="PromptCraft Logo" className="w-7 h-7 sm:w-8 sm:h-8" />
-            <span className="text-xl sm:text-2xl font-bold font-heading bg-gradient-to-r from-primary to-primary/70 bg-clip-text text-transparent">
+          <div className="flex items-center gap-2">
+            <img src={logo} alt="PromptCraft Logo" className="w-8 h-8" />
+            <span className="text-xl font-bold font-heading text-foreground">
               PromptCraft
             </span>
           </div>
           
-          <div className="flex gap-2.5">
+          <div className="flex items-center gap-2">
             <Button
               variant="outline"
               size="sm"
               onClick={() => navigate('/favorites')}
-              className="gap-2 text-sm h-9 px-4 hover:scale-105 transition-transform"
+              className="gap-2 h-9 px-3 hover:scale-105 transition-transform"
             >
               <Bookmark className="w-4 h-4" />
-              <span className="hidden xs:inline">Saved</span>
+              <span className="hidden sm:inline">Saved</span>
             </Button>
-            <div className="scale-90">
-              <ThemeToggle />
-            </div>
+            <ThemeToggle />
           </div>
         </div>
         
