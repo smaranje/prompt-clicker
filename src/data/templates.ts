@@ -3480,7 +3480,7 @@ Now provide a comprehensive, clear, and practical answer to: {question}`
         ]
       }
     ],
-    promptTemplate: \`You are a project management expert who has broken down thousands of complex projects into actionable plans that real people successfully execute.
+    promptTemplate: `You are a project management expert who has broken down thousands of complex projects into actionable plans that real people successfully execute.
 
 Task: {task}
 Timeframe: {timeframe}
@@ -3667,7 +3667,7 @@ You'll know you're done when:
 - [Measurable outcome 2]
 - [Measurable outcome 3]
 
-Now create an actionable, realistic breakdown for {task} that a {experience_level} person can actually follow within a {timeframe} timeframe.\`
+Now create an actionable, realistic breakdown for {task} that a {experience_level} person can actually follow within a {timeframe} timeframe.`
   },
   {
     id: 'decision_helper',
@@ -3708,7 +3708,7 @@ Now create an actionable, realistic breakdown for {task} that a {experience_leve
         ]
       }
     ],
-    promptTemplate: \`You are a decision strategist who has counseled CEOs, entrepreneurs, and individuals through thousands of high-stakes decisions using proven frameworks from behavioral economics, game theory, and decision science.
+    promptTemplate: `You are a decision strategist who has counseled CEOs, entrepreneurs, and individuals through thousands of high-stakes decisions using proven frameworks from behavioral economics, game theory, and decision science.
 
 Decision: {decision}
 Priorities: {priorities}
@@ -3969,7 +3969,7 @@ After [timeframe], you'll know this was the right decision if:
 
 ## THE DECISION
 
-Now provide a comprehensive, weighted analysis of "{decision}" that accounts for {priorities}, context of {context}, and a {decision_timeline} timeline. Be specific, honest, and practical.\`
+Now provide a comprehensive, weighted analysis of "{decision}" that accounts for {priorities}, context of {context}, and a {decision_timeline} timeline. Be specific, honest, and practical.`
   },
   {
     id: 'quick_tips',
@@ -3997,7 +3997,7 @@ Now provide a comprehensive, weighted analysis of "{decision}" that accounts for
         ]
       }
     ],
-    promptTemplate: \`You are a life coach and consultant who has advised thousands of people through complex life situations, from career transitions to personal challenges. You combine practical wisdom with actionable strategies.
+    promptTemplate: `You are a life coach and consultant who has advised thousands of people through complex life situations, from career transitions to personal challenges. You combine practical wisdom with actionable strategies.
 
 Situation: {situation}
 Focus: {focus}
@@ -4076,7 +4076,7 @@ For each:
 - **Moderate** (Will cause problems but recoverable): [List]
 - **Minor** (Annoying but not deal-breaking): [List]
 ...
-Provide {focus} advice for {situation} now, making it specific, actionable, and immediately useful.\`
+Provide {focus} advice for {situation} now, making it specific, actionable, and immediately useful.`
   },
 
   // CODE & TECH
@@ -4379,7 +4379,7 @@ Format each finding as:
         default: true
       }
     ],
-    promptTemplate: \`You are a senior technical writer who has documented thousands of codebases, from open-source libraries with millions of users to internal enterprise systems. You understand that great documentation isn't just about describing what code does — it's about helping developers use it correctly, debug problems faster, and maintain it over time.
+    promptTemplate: `You are a senior technical writer who has documented thousands of codebases, from open-source libraries with millions of users to internal enterprise systems. You understand that great documentation isn't just about describing what code does — it's about helping developers use it correctly, debug problems faster, and maintain it over time.
 
 Language: {language}
 Documentation Type: {doc_type}
@@ -4708,7 +4708,7 @@ Track changes to API:
 
 Now generate professional, maintainable {doc_type} for {language} code following {doc_standard} standards.
 
-[PASTE YOUR CODE HERE]\`
+[PASTE YOUR CODE HERE]`
   },
   {
     id: 'optimize_code',
