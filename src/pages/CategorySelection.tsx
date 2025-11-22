@@ -3,7 +3,8 @@ import { categories } from '@/data/categories';
 import { useNavigate } from 'react-router-dom';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { Button } from '@/components/ui/button';
-import { Bookmark } from 'lucide-react';
+import { Badge } from '@/components/ui/badge';
+import { Bookmark, Info } from 'lucide-react';
 import logo from '@/assets/logo.png';
 import { SmartSearch } from '@/components/SmartSearch';
 
@@ -27,6 +28,15 @@ const CategorySelection = () => {
           </div>
           
           <div className="flex items-center gap-2">
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => navigate('/about')}
+              className="gap-2 h-9 px-3 hover:scale-105 transition-transform"
+            >
+              <Info className="w-4 h-4" />
+              <span className="hidden sm:inline">About</span>
+            </Button>
             <Button
               variant="outline"
               size="sm"
@@ -77,6 +87,11 @@ const CategorySelection = () => {
           <p className="text-muted-foreground text-xs sm:text-sm px-4">
             Built for creators, students, and professionals who want the best from AI.
           </p>
+          <div className="flex items-center justify-center gap-2 mt-4">
+            <Badge variant="secondary" className="text-xs">
+              Made by Smaran
+            </Badge>
+          </div>
         </div>
       </div>
     </div>
