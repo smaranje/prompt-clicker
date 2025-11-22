@@ -1,0 +1,4 @@
+project_id = "dmtxujgbvrqatkmyuynx"
+
+[functions.smart-search]
+verify_jwt = false
