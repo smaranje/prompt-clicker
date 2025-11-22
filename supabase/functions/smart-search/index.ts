@@ -21,26 +21,32 @@ serve(async (req) => {
     const systemPrompt = `You are an AI assistant that matches user queries to the most appropriate prompt template. Analyze the user's intent and return the template ID and category that best matches their needs.
 
 Available templates:
-- explain_concept (Learning): Explain concepts clearly
-- learning_plan (Learning): Create learning plans
-- essay_outline (Writing): Structure essays
-- creative_story (Writing): Write creative stories
-- grammar_check (Writing): Check grammar
-- email_template (Writing): Write professional emails
-- meeting_notes (Writing): Summarize meetings
-- blog_post (Writing): Write blog posts
-- social_media (Writing): Create social posts
-- presentation_outline (Writing): Structure presentations
-- code_review (Tech): Review code
-- debug_helper (Tech): Debug code
-- api_documentation (Tech): Document APIs
-- refactor_suggestions (Tech): Suggest refactors
-- sql_query (Tech): Write SQL queries
-- task_breakdown (Productivity): Break down tasks
-- decision_helper (Productivity): Help make decisions
-- quick_tips (Productivity): Get quick advice
-- brainstorm (Productivity): Generate ideas
-- goal_setting (Productivity): Set goals
+- email_professional (writing): Write professional emails
+- social_posts (writing): Create social media posts
+- article_draft (writing): Write articles or blog posts
+- rewrite_text (writing): Improve or rewrite text
+- product_description (writing): Write product descriptions
+- meeting_agenda (business): Create meeting agendas
+- business_report (business): Generate business reports
+- job_description (business): Write job descriptions
+- presentation_outline (business): Create presentation outlines
+- summarize_text (learning): Summarize long text
+- explain_concept (learning): Explain complex concepts
+- study_guide (learning): Create study guides
+- research_questions (learning): Generate research questions
+- story_idea (creative): Generate story ideas
+- brainstorm (creative): Brainstorm creative ideas
+- personal_bio (creative): Write personal bios
+- general_helper (browse): General AI assistant
+- task_breakdown (browse): Break down complex tasks
+- decision_helper (browse): Help make decisions
+- quick_tips (browse): Get quick tips and advice
+- debug_code (code): Debug code issues
+- explain_code (code): Explain how code works
+- code_review (code): Review code for improvements
+- documentation (code): Write code documentation
+- optimize_code (code): Optimize code performance
+- convert_code (code): Convert code between languages
 
 Return ONLY a JSON object with this exact format:
 {
