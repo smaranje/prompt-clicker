@@ -63,36 +63,37 @@ export const SmartSearch = () => {
   };
 
   return (
-    <form onSubmit={handleSearch} className="w-full max-w-2xl mx-auto">
-      <div className="relative flex items-center gap-2">
+    <form onSubmit={handleSearch} className="w-full max-w-2xl mx-auto px-4">
+      <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-2">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground" />
           <Input
             type="text"
-            placeholder="Describe what you want... (e.g., 'I want to learn French', 'help me write a blog post')"
+            placeholder="What do you want to create?"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             disabled={isSearching}
-            className="pl-10 h-12 text-base bg-background/50 backdrop-blur-sm border-border/50 focus:border-primary"
+            className="pl-9 sm:pl-10 h-11 sm:h-12 text-sm sm:text-base bg-background/50 backdrop-blur-sm border-border/50 focus:border-primary"
           />
         </div>
         <Button 
           type="submit" 
           disabled={isSearching || !query.trim()}
-          className="h-12 px-6"
+          className="h-11 sm:h-12 px-6 w-full sm:w-auto"
         >
           {isSearching ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-              Searching...
+              <span className="hidden sm:inline">Searching...</span>
+              <span className="sm:hidden">Search</span>
             </>
           ) : (
             "Search"
           )}
         </Button>
       </div>
-      <p className="text-xs text-muted-foreground mt-2 text-center">
-        AI will understand your intent and guide you to the perfect prompt template
+      <p className="text-xs sm:text-sm text-muted-foreground mt-2 sm:mt-3 text-center px-2">
+        AI finds the perfect template for you
       </p>
     </form>
   );
