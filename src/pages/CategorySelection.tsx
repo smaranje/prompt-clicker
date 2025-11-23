@@ -21,30 +21,30 @@ const CategorySelection = () => {
         {/* Header with Logo and Actions */}
         <div className="flex justify-between items-center mb-8 sm:mb-12 md:mb-16 gap-4">
           <div className="flex items-center gap-2">
-            <img src={logo} alt="PromptCraft Logo" className="w-7 h-7 sm:w-8 sm:h-8 flex-shrink-0" />
+            <img src={logo} alt="PromptCraft Logo" className="w-9 h-9 sm:w-8 sm:h-8 flex-shrink-0" />
             <span className="text-base sm:text-xl font-bold font-heading text-foreground whitespace-nowrap">
               PromptCraft
             </span>
           </div>
           
-          <div className="flex items-center gap-1.5 sm:gap-2 flex-shrink-0">
+          <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
             <Button
               variant="ghost"
-              size="sm"
+              size="icon"
               onClick={() => navigate('/about')}
-              className="gap-1.5 h-8 sm:h-9 px-2 sm:px-3 hover:bg-accent"
+              className="h-8 w-8 sm:h-9 sm:w-9 hover:bg-accent"
+              aria-label="About"
             >
-              <Info className="w-4 h-4 flex-shrink-0" />
-              <span className="text-xs sm:text-sm">About</span>
+              <Info className="w-4 h-4 sm:w-5 sm:h-5" />
             </Button>
             <Button
               variant="ghost"
-              size="sm"
+              size="icon"
               onClick={() => navigate('/favorites')}
-              className="gap-1.5 h-8 sm:h-9 px-2 sm:px-3 hover:bg-accent"
+              className="h-8 w-8 sm:h-9 sm:w-9 hover:bg-accent"
+              aria-label="Saved prompts"
             >
-              <Bookmark className="w-4 h-4 flex-shrink-0" />
-              <span className="text-xs sm:text-sm">Saved</span>
+              <Bookmark className="w-4 h-4 sm:w-5 sm:h-5" />
             </Button>
             <ThemeToggle />
           </div>
