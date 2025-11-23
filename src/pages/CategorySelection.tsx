@@ -51,11 +51,11 @@ const CategorySelection = () => {
         </div>
         
         {/* Main Heading */}
-        <div className="text-center mb-12 sm:mb-16">
-          <h1 className="font-heading mb-6 text-4xl sm:text-5xl md:text-6xl lg:text-7xl px-4 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent font-bold leading-tight">
+        <div className="text-center mb-8 sm:mb-12">
+          <h1 className="font-heading mb-4 sm:mb-5 text-3xl sm:text-4xl md:text-5xl lg:text-6xl px-4 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent font-bold leading-tight">
             Get better AI results — every time.
           </h1>
-          <p className="subtitle max-w-2xl mx-auto px-4 text-base sm:text-lg md:text-xl mb-8">
+          <p className="subtitle max-w-2xl mx-auto px-4 text-sm sm:text-base md:text-lg mb-6 sm:mb-8">
             Just describe what you want, and AI will find the perfect template for you.
           </p>
           <SmartSearch />
