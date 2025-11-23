@@ -73,7 +73,7 @@ export const SmartSearch = () => {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             disabled={isSearching}
-            className="pl-9 sm:pl-10 h-11 sm:h-12 text-sm sm:text-base bg-background/50 backdrop-blur-sm border-border/50 focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:border-primary transition-all"
+            className="pl-9 sm:pl-10 h-11 sm:h-12 text-sm sm:text-base bg-background border-border focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:border-primary transition-all"
           />
         </div>
         <Button 
