@@ -66,14 +66,14 @@ export const SmartSearch = () => {
     <form onSubmit={handleSearch} className="w-full max-w-2xl mx-auto px-4">
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 sm:h-5 sm:w-5 text-muted-foreground pointer-events-none" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground pointer-events-none" />
           <Input
             type="text"
             placeholder="What do you want to create?"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             disabled={isSearching}
-            className="pl-9 sm:pl-10 h-11 sm:h-12 text-sm sm:text-base bg-background border-border focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:border-primary transition-all"
+            className="pl-9 h-11 sm:h-12 text-sm sm:text-base bg-background border-border focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:border-primary transition-all"
           />
         </div>
         <Button 

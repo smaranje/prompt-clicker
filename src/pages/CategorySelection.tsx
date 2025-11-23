@@ -19,8 +19,8 @@ const CategorySelection = () => {
     <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 page-transition">
       <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 lg:py-20 max-w-7xl">
         {/* Header with Logo and Actions */}
-        <div className="flex justify-between items-center mb-8 sm:mb-12 md:mb-16 gap-2">
-          <div className="flex items-center gap-2 flex-1 min-w-0 max-w-[140px] sm:max-w-none">
+        <div className="flex justify-between items-center mb-8 sm:mb-12 md:mb-16 gap-4">
+          <div className="flex items-center gap-2">
             <img src={logo} alt="PromptCraft Logo" className="w-7 h-7 sm:w-8 sm:h-8 flex-shrink-0" />
             <span className="text-base sm:text-xl font-bold font-heading text-foreground whitespace-nowrap">
               PromptCraft
@@ -34,7 +34,7 @@ const CategorySelection = () => {
               onClick={() => navigate('/about')}
               className="gap-1.5 h-8 sm:h-9 px-2 sm:px-3 hover:bg-accent"
             >
-              <Info className="w-4 h-4" />
+              <Info className="w-4 h-4 flex-shrink-0" />
               <span className="text-xs sm:text-sm">About</span>
             </Button>
             <Button
@@ -43,7 +43,7 @@ const CategorySelection = () => {
               onClick={() => navigate('/favorites')}
               className="gap-1.5 h-8 sm:h-9 px-2 sm:px-3 hover:bg-accent"
             >
-              <Bookmark className="w-4 h-4" />
+              <Bookmark className="w-4 h-4 flex-shrink-0" />
               <span className="text-xs sm:text-sm">Saved</span>
             </Button>
             <ThemeToggle />
