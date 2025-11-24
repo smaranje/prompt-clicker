@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { CategoryCard } from '@/components/CategoryCard';
 import { categories } from '@/data/categories';
+import { templates } from '@/data/templates';
 import { useNavigate } from 'react-router-dom';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { Button } from '@/components/ui/button';
@@ -8,16 +10,38 @@ import { Card } from '@/components/ui/card';
 import { Bookmark, Info, ArrowRight } from 'lucide-react';
 import logo from '@/assets/logo.png';
 import { SmartSearch } from '@/components/SmartSearch';
+import { MobileBottomNav } from '@/components/MobileBottomNav';
+import { FirstTimeTutorial } from '@/components/FirstTimeTutorial';
+import { TemplatePreviewDialog } from '@/components/TemplatePreviewDialog';
+import { Template } from '@/types/templates';
 
 const CategorySelection = () => {
   const navigate = useNavigate();
+  const [previewTemplate, setPreviewTemplate] = useState<Template | null>(null);
+  const [previewOpen, setPreviewOpen] = useState(false);
 
   const handleCategoryClick = (categoryId: string) => {
     navigate(`/templates/${categoryId}`);
   };
 
+  const handleTemplatePreview = (templateId: string) => {
+    const template = templates.find(t => t.id === templateId);
+    if (template) {
+      setPreviewTemplate(template);
+      setPreviewOpen(true);
+    }
+  };
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 page-transition">
+    <>
+      <FirstTimeTutorial />
+      <TemplatePreviewDialog
+        template={previewTemplate}
+        open={previewOpen}
+        onOpenChange={setPreviewOpen}
+      />
+      
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 page-transition pb-20 md:pb-8">
       <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 lg:py-20 max-w-7xl">
         {/* Header with Logo and Actions */}
         <div className="flex justify-between items-center mb-8 sm:mb-12 md:mb-16 gap-4">
@@ -102,7 +126,7 @@ const CategorySelection = () => {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 mb-8">
             <Card
-              onClick={() => navigate('/customize/email_professional')}
+              onClick={() => handleTemplatePreview('email_professional')}
               className="group cursor-pointer transition-all duration-200 ease-out hover:-translate-y-0.5 active:scale-[0.98] hover:border-primary/50 bg-card border border-border p-4 sm:p-5"
               style={{ boxShadow: 'var(--shadow-sm)' }}
               onMouseEnter={(e) => {
@@ -125,7 +149,7 @@ const CategorySelection = () => {
               </div>
             </Card>
             <Card
-              onClick={() => navigate('/customize/social_posts')}
+              onClick={() => handleTemplatePreview('social_posts')}
               className="group cursor-pointer transition-all duration-200 ease-out hover:-translate-y-0.5 active:scale-[0.98] hover:border-primary/50 bg-card border border-border p-4 sm:p-5"
               style={{ boxShadow: 'var(--shadow-sm)' }}
               onMouseEnter={(e) => {
@@ -148,7 +172,7 @@ const CategorySelection = () => {
               </div>
             </Card>
             <Card
-              onClick={() => navigate('/customize/article_draft')}
+              onClick={() => handleTemplatePreview('article_draft')}
               className="group cursor-pointer transition-all duration-200 ease-out hover:-translate-y-0.5 active:scale-[0.98] hover:border-primary/50 bg-card border border-border p-4 sm:p-5"
               style={{ boxShadow: 'var(--shadow-sm)' }}
               onMouseEnter={(e) => {
@@ -206,7 +230,9 @@ const CategorySelection = () => {
           </div>
         </div>
       </div>
+      <MobileBottomNav />
     </div>
+    </>
   );
 };
 

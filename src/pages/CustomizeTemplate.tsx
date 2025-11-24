@@ -9,6 +9,7 @@ import { Checkbox } from '@/components/ui/checkbox';
 import { ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { MobileBottomNav } from '@/components/MobileBottomNav';
 
 // Helper function to count words in a string
 const countWords = (text: string): number => {
@@ -49,7 +50,7 @@ const CustomizeTemplate = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background page-transition">
+    <div className="min-h-screen bg-background page-transition pb-20 md:pb-8">
       <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 max-w-2xl">
         <div className="flex items-center justify-between mb-8 sm:mb-12">
           <Button
@@ -158,6 +159,7 @@ const CustomizeTemplate = () => {
           </form>
         </Card>
       </div>
+      <MobileBottomNav />
     </div>
   );
 };
