@@ -7,6 +7,7 @@ import { useState } from 'react';
 import { toast } from 'sonner';
 import { OpenChatGPTDialog } from '@/components/OpenChatGPTDialog';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { MobileBottomNav } from '@/components/MobileBottomNav';
 import { saveFavorite, isFavorite } from '@/lib/favorites';
 
 const PreviewPrompt = () => {
@@ -245,7 +246,7 @@ const PreviewPrompt = () => {
   const whyThisWorks = getWhyThisWorks();
 
   return (
-    <div className="min-h-screen bg-background page-transition">
+    <div className="min-h-screen bg-background page-transition pb-20 md:pb-8">
       <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 max-w-3xl">
         <div className="flex items-center justify-between mb-8 sm:mb-12">
           <Button
@@ -410,6 +411,7 @@ const PreviewPrompt = () => {
         prompt={fullPrompt}
         service={selectedService}
       />
+      <MobileBottomNav />
     </div>
   );
 };
