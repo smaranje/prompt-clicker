@@ -2,14 +2,14 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft, Zap, Target, Clock, Sparkles } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { MobileBottomNav } from '@/components/MobileBottomNav';
+
 import logo from '@/assets/logo.png';
 
 const About = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 pb-20 md:pb-8">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 pb-8">
       <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 max-w-4xl">
         {/* Header */}
         <div className="flex justify-between items-center mb-12">
@@ -128,7 +128,6 @@ const About = () => {
           </p>
         </div>
       </div>
-      <MobileBottomNav />
     </div>
   );
 };

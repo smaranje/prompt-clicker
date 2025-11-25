@@ -6,7 +6,7 @@ import { categories } from '@/data/categories';
 import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { MobileBottomNav } from '@/components/MobileBottomNav';
+
 import { TemplatePreviewDialog } from '@/components/TemplatePreviewDialog';
 import { Template } from '@/types/templates';
 
@@ -43,7 +43,7 @@ const TemplateSelection = () => {
         onOpenChange={setPreviewOpen}
       />
       
-    <div className="min-h-screen bg-background page-transition pb-20 md:pb-8">
+    <div className="min-h-screen bg-background page-transition pb-8">
       <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 max-w-4xl">
         {/* Top Bar - Back Button + Theme Toggle */}
         <div className="flex items-center justify-between mb-8 sm:mb-12">
@@ -88,7 +88,6 @@ const TemplateSelection = () => {
           )}
         </div>
       </div>
-      <MobileBottomNav />
     </div>
     </>
   );

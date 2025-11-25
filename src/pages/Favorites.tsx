@@ -4,7 +4,7 @@ import { ArrowLeft, Trash2, ExternalLink, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { MobileBottomNav } from '@/components/MobileBottomNav';
+
 import { getFavorites, removeFavorite, SavedPrompt } from '@/lib/favorites';
 import { useToast } from '@/hooks/use-toast';
 
@@ -48,7 +48,7 @@ const Favorites = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background pb-20 md:pb-8">
+    <div className="min-h-screen bg-background pb-8">
       {/* Header */}
       <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-10">
         <div className="container mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
@@ -140,7 +140,6 @@ const Favorites = () => {
           </div>
         )}
       </main>
-      <MobileBottomNav />
     </div>
   );
 };
