@@ -48,8 +48,8 @@ export const FirstTimeTutorial = () => {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed inset-0 bg-background/80 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fade-in">
-      <div className="bg-card border border-border rounded-lg max-w-md w-full p-6 shadow-lg animate-scale-in">
+    <div className="fixed inset-0 bg-background/95 backdrop-blur-md z-50 flex items-center justify-center p-4 animate-fade-in">
+      <div className="bg-card border-2 border-primary/20 rounded-lg max-w-md w-full p-6 shadow-xl animate-scale-in">
         <div className="flex justify-between items-start mb-4">
           <div className="flex-1">
             <h2 className="text-xl font-bold mb-2">{steps[step].title}</h2>

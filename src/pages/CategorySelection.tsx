@@ -10,7 +10,7 @@ import { Card } from '@/components/ui/card';
 import { Bookmark, Info, ArrowRight } from 'lucide-react';
 import logo from '@/assets/logo.png';
 import { SmartSearch } from '@/components/SmartSearch';
-import { MobileBottomNav } from '@/components/MobileBottomNav';
+
 import { FirstTimeTutorial } from '@/components/FirstTimeTutorial';
 import { TemplatePreviewDialog } from '@/components/TemplatePreviewDialog';
 import { Template } from '@/types/templates';
@@ -41,7 +41,7 @@ const CategorySelection = () => {
         onOpenChange={setPreviewOpen}
       />
       
-    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 page-transition pb-20 md:pb-8">
+    <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 page-transition pb-8">
       <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 lg:py-20 max-w-7xl">
         {/* Header with Logo and Actions */}
         <div className="flex justify-between items-center mb-8 sm:mb-12 md:mb-16 gap-4">
@@ -230,7 +230,6 @@ const CategorySelection = () => {
           </div>
         </div>
       </div>
-      <MobileBottomNav />
     </div>
     </>
   );
