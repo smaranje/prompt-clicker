@@ -13,6 +13,7 @@ import { SmartSearch } from '@/components/SmartSearch';
 
 import { FirstTimeTutorial } from '@/components/FirstTimeTutorial';
 import { TemplatePreviewDialog } from '@/components/TemplatePreviewDialog';
+import { InstantPromptDemo } from '@/components/InstantPromptDemo';
 import { Template } from '@/types/templates';
 
 const CategorySelection = () => {
@@ -101,6 +102,9 @@ const CategorySelection = () => {
             <div className="text-sm text-muted-foreground">Get it right immediately</div>
           </div>
         </div>
+
+        {/* Instant Demo */}
+        <InstantPromptDemo />
 
         {/* Comparison Demo */}
         <div className="max-w-4xl mx-auto mb-12 sm:mb-16 px-4">

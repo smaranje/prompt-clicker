@@ -20,7 +20,7 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter basename="/prompt-clicker">
+        <BrowserRouter>
           <Routes>
             <Route path="/" element={<CategorySelection />} />
             <Route path="/templates/:categoryId" element={<TemplateSelection />} />
