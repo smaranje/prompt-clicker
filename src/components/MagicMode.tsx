@@ -66,17 +66,17 @@ export const MagicMode = () => {
   return (
     <div className="w-full max-w-3xl mx-auto">
       {/* Magic Input */}
-      <Card className="p-6 sm:p-8 border-2 border-primary/20 bg-gradient-to-br from-background to-primary/5">
-        <div className="flex items-center gap-2 mb-4">
-          <Sparkles className="w-5 h-5 text-primary" />
-          <h2 className="text-xl font-semibold">Magic Mode</h2>
+      <Card className="p-4 sm:p-6 md:p-8 border-2 border-primary/20 bg-gradient-to-br from-background to-primary/5">
+        <div className="flex items-center gap-2 mb-3 sm:mb-4">
+          <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
+          <h2 className="text-base sm:text-xl font-semibold">Magic Mode</h2>
         </div>
         
-        <p className="text-sm text-muted-foreground mb-6">
+        <p className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6">
           Just tell us what you want, and we'll create the perfect prompt for you
         </p>
 
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           <div className="relative">
             <Input
               type="text"
@@ -85,7 +85,7 @@ export const MagicMode = () => {
               onChange={(e) => setUserInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleMagicGenerate()}
               disabled={isProcessing}
-              className="h-14 text-base pr-4"
+              className="h-11 sm:h-14 text-sm sm:text-base pr-4"
               autoFocus
             />
           </div>
@@ -93,7 +93,7 @@ export const MagicMode = () => {
           <Button
             onClick={handleMagicGenerate}
             disabled={isProcessing || !userInput.trim()}
-            className="w-full h-12 text-base"
+            className="w-full h-10 sm:h-12 text-sm sm:text-base"
             size="lg"
           >
             {isProcessing ? (
@@ -113,20 +113,20 @@ export const MagicMode = () => {
 
       {/* Generated Prompt Result */}
       {generatedPrompt && (
-        <Card className="mt-6 p-6 sm:p-8 border border-border animate-in fade-in slide-in-from-bottom-4">
-          <div className="space-y-4">
+        <Card className="mt-4 sm:mt-6 p-4 sm:p-6 md:p-8 border border-border animate-in fade-in slide-in-from-bottom-4">
+          <div className="space-y-3 sm:space-y-4">
             <div className="flex items-center gap-2 mb-2">
-              <Check className="w-5 h-5 text-accent" />
-              <h3 className="text-lg font-semibold">Your Perfect Prompt</h3>
+              <Check className="w-4 h-4 sm:w-5 sm:h-5 text-accent flex-shrink-0" />
+              <h3 className="text-base sm:text-lg font-semibold">Your Perfect Prompt</h3>
             </div>
 
-            <div className="bg-muted/30 rounded-lg p-4 border border-border max-h-[300px] overflow-y-auto">
-              <pre className="whitespace-pre-wrap text-sm leading-relaxed font-mono">
+            <div className="bg-muted/30 rounded-lg p-3 sm:p-4 border border-border max-h-[250px] sm:max-h-[300px] overflow-y-auto">
+              <pre className="whitespace-pre-wrap text-xs sm:text-sm leading-relaxed font-mono">
                 {generatedPrompt}
               </pre>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
               <Button
                 onClick={handleCopy}
                 variant="outline"
@@ -173,39 +173,39 @@ export const MagicMode = () => {
 
       {/* Quick Start Buttons */}
       {!generatedPrompt && (
-        <div className="mt-8">
-          <p className="text-sm text-muted-foreground text-center mb-4">
+        <div className="mt-6 sm:mt-8">
+          <p className="text-xs sm:text-sm text-muted-foreground text-center mb-3 sm:mb-4">
             Or try these popular tasks:
           </p>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
             <Button
               variant="outline"
               onClick={() => setUserInput('Fix grammar and improve my writing')}
-              className="h-auto py-3 px-4 text-left justify-start"
+              className="h-auto py-2.5 sm:py-3 px-3 sm:px-4 text-left justify-start"
             >
-              <div>
-                <div className="font-semibold text-sm mb-1">Fix Grammar</div>
-                <div className="text-xs text-muted-foreground">Polish your text</div>
+              <div className="min-w-0">
+                <div className="font-semibold text-xs sm:text-sm mb-0.5 sm:mb-1 truncate">Fix Grammar</div>
+                <div className="text-[10px] sm:text-xs text-muted-foreground truncate">Polish your text</div>
               </div>
             </Button>
             <Button
               variant="outline"
               onClick={() => setUserInput('Summarize this article for me')}
-              className="h-auto py-3 px-4 text-left justify-start"
+              className="h-auto py-2.5 sm:py-3 px-3 sm:px-4 text-left justify-start"
             >
-              <div>
-                <div className="font-semibold text-sm mb-1">Summarize</div>
-                <div className="text-xs text-muted-foreground">Quick overview</div>
+              <div className="min-w-0">
+                <div className="font-semibold text-xs sm:text-sm mb-0.5 sm:mb-1 truncate">Summarize</div>
+                <div className="text-[10px] sm:text-xs text-muted-foreground truncate">Quick overview</div>
               </div>
             </Button>
             <Button
               variant="outline"
               onClick={() => setUserInput('Write a professional email')}
-              className="h-auto py-3 px-4 text-left justify-start"
+              className="h-auto py-2.5 sm:py-3 px-3 sm:px-4 text-left justify-start"
             >
-              <div>
-                <div className="font-semibold text-sm mb-1">Write Email</div>
-                <div className="text-xs text-muted-foreground">Professional tone</div>
+              <div className="min-w-0">
+                <div className="font-semibold text-xs sm:text-sm mb-0.5 sm:mb-1 truncate">Write Email</div>
+                <div className="text-[10px] sm:text-xs text-muted-foreground truncate">Professional tone</div>
               </div>
             </Button>
           </div>
