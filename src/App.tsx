@@ -1,3 +1,4 @@
+import React from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -20,7 +21,8 @@ const App = () => (
       <TooltipProvider>
         <Toaster />
         <Sonner />
-        <BrowserRouter basename="/prompt-clicker">          <Routes>
+        <BrowserRouter basename="/prompt-clicker">
+          <Routes>
             <Route path="/" element={<CategorySelection />} />
             <Route path="/templates/:categoryId" element={<TemplateSelection />} />
             <Route path="/customize/:templateId" element={<CustomizeTemplate />} />
