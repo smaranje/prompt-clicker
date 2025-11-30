@@ -3,7 +3,7 @@ import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { ArrowLeft, Copy, ExternalLink, Edit, Check, Bookmark } from 'lucide-react';
 import { Template } from '@/types/templates';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 import { OpenChatGPTDialog } from '@/components/OpenChatGPTDialog';
 import { ThemeToggle } from '@/components/ThemeToggle';
@@ -127,7 +127,7 @@ const PreviewPrompt = () => {
   };
 
   // Auto-copy on mount
-  useState(() => {
+  useEffect(() => {
     const autoCopy = async () => {
       try {
         await navigator.clipboard.writeText(fullPrompt);
@@ -137,7 +137,7 @@ const PreviewPrompt = () => {
       }
     };
     autoCopy();
-  });
+  }, [fullPrompt]);
 
   const copyToClipboard = async () => {
     try {
