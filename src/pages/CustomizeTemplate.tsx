@@ -6,9 +6,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
-import { ArrowLeft, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { ArrowLeft, ArrowRight, CheckCircle2, Sparkles } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { ThemeToggle } from '@/components/ThemeToggle';
+import { toast } from 'sonner';
 
 
 // Helper function to count words in a string
@@ -28,6 +29,37 @@ const CustomizeTemplate = () => {
     });
     return initial;
   });
+
+  const handleFillForMe = () => {
+    const smartDefaults: Record<string, any> = {};
+    
+    template?.fields.forEach((field) => {
+      if (field.type === 'text') {
+        // Generate contextual smart defaults based on field name
+        if (field.name.includes('topic') || field.name.includes('subject')) {
+          smartDefaults[field.name] = 'quarterly performance review';
+        } else if (field.name.includes('recipient') || field.name.includes('audience')) {
+          smartDefaults[field.name] = 'team members';
+        } else if (field.name.includes('context') || field.name.includes('background')) {
+          smartDefaults[field.name] = 'recent project completion with positive outcomes';
+        } else if (field.name.includes('code')) {
+          smartDefaults[field.name] = 'function example() { return data; }';
+        } else if (field.name.includes('error')) {
+          smartDefaults[field.name] = 'TypeError: Cannot read property';
+        } else {
+          smartDefaults[field.name] = field.placeholder || 'example content';
+        }
+      } else if (field.type === 'dropdown' && field.options) {
+        // Select first non-default option for variety
+        smartDefaults[field.name] = field.options[1]?.value || field.options[0]?.value;
+      } else if (field.type === 'checkbox') {
+        smartDefaults[field.name] = true;
+      }
+    });
+
+    setFormData(smartDefaults);
+    toast.success('Form filled with smart defaults! ✨');
+  };
 
   if (!template) {
     return (
@@ -67,12 +99,25 @@ const CustomizeTemplate = () => {
 
         <Card className="p-5 sm:p-6 md:p-8 lg:p-12 border border-border" style={{ boxShadow: 'var(--shadow-md)' }}>
           <div className="mb-8 sm:mb-10 md:mb-12">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground font-heading mb-2 sm:mb-3">
-              {template.title}
-            </h1>
-            <p className="text-muted-foreground text-sm sm:text-base">
-              {template.description}
-            </p>
+            <div className="flex items-start justify-between gap-4 mb-4">
+              <div className="flex-1">
+                <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground font-heading mb-2 sm:mb-3">
+                  {template.title}
+                </h1>
+                <p className="text-muted-foreground text-sm sm:text-base">
+                  {template.description}
+                </p>
+              </div>
+              <Button
+                type="button"
+                variant="outline"
+                onClick={handleFillForMe}
+                className="flex-shrink-0"
+              >
+                <Sparkles className="w-4 h-4 mr-2" />
+                Fill for me
+              </Button>
+            </div>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6 sm:space-y-8">

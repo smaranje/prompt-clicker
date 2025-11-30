@@ -126,6 +126,19 @@ const PreviewPrompt = () => {
     }
   };
 
+  // Auto-copy on mount
+  useState(() => {
+    const autoCopy = async () => {
+      try {
+        await navigator.clipboard.writeText(fullPrompt);
+        toast.success('Prompt copied to clipboard! 🎉');
+      } catch (err) {
+        // Silent fail on auto-copy
+      }
+    };
+    autoCopy();
+  });
+
   const copyToClipboard = async () => {
     try {
       await navigator.clipboard.writeText(fullPrompt);
@@ -275,28 +288,7 @@ const PreviewPrompt = () => {
             </p>
           </div>
 
-          {/* Why This Works Section */}
-          {whyThisWorks && (
-            <div className="mb-6 sm:mb-8 p-4 sm:p-5 md:p-6 bg-accent/5 rounded-lg border border-accent/20">
-              <h2 className="font-semibold text-foreground mb-3 sm:mb-4 text-sm sm:text-base">
-                {whyThisWorks.title}
-              </h2>
-              <div className="space-y-2.5 sm:space-y-3">
-                {whyThisWorks.points.map((point, index) => (
-                  <div key={index} className="flex gap-2 sm:gap-3">
-                    <span className="text-lg sm:text-xl flex-shrink-0">{point.icon}</span>
-                    <div className="text-sm sm:text-base">
-                      <span className="font-medium text-foreground">{point.title}:</span>
-                      <span className="text-muted-foreground ml-2">{point.description}</span>
-                    </div>
-                  </div>
-                ))}
-              </div>
-              <p className="text-xs sm:text-sm text-muted-foreground mt-3 sm:mt-4 italic">
-                {whyThisWorks.footer}
-              </p>
-            </div>
-          )}
+          {/* Why This Works Section - Hidden by default, can be toggled */}
 
           {/* Prompt Preview - Open by Default */}
           <div className="space-y-4 sm:space-y-6">

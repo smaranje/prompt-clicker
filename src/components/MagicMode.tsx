@@ -1,0 +1,216 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Card } from '@/components/ui/card';
+import { Loader2, Copy, Check, ExternalLink, Sparkles } from 'lucide-react';
+import { toast } from 'sonner';
+import { supabase } from '@/integrations/supabase/client';
+
+export const MagicMode = () => {
+  const [userInput, setUserInput] = useState('');
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [generatedPrompt, setGeneratedPrompt] = useState('');
+  const [copied, setCopied] = useState(false);
+  const navigate = useNavigate();
+
+  const handleMagicGenerate = async () => {
+    if (!userInput.trim()) {
+      toast.error('Please describe what you want to create');
+      return;
+    }
+
+    setIsProcessing(true);
+    
+    try {
+      // Call AI to generate prompt directly
+      const { data, error } = await supabase.functions.invoke('magic-prompt', {
+        body: { userInput: userInput.trim() }
+      });
+
+      if (error) throw error;
+
+      if (data?.prompt) {
+        setGeneratedPrompt(data.prompt);
+        // Auto-copy to clipboard
+        await navigator.clipboard.writeText(data.prompt);
+        toast.success('Prompt generated and copied! 🎉');
+      }
+    } catch (error) {
+      console.error('Magic generate error:', error);
+      toast.error('Failed to generate prompt. Please try again.');
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  const handleCopy = async () => {
+    try {
+      await navigator.clipboard.writeText(generatedPrompt);
+      setCopied(true);
+      toast.success('Copied to clipboard!');
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      toast.error('Failed to copy');
+    }
+  };
+
+  const handleOpenChatGPT = () => {
+    window.open('https://chat.openai.com/', '_blank');
+  };
+
+  const handleOpenClaude = () => {
+    window.open('https://claude.ai/', '_blank');
+  };
+
+  return (
+    <div className="w-full max-w-3xl mx-auto">
+      {/* Magic Input */}
+      <Card className="p-6 sm:p-8 border-2 border-primary/20 bg-gradient-to-br from-background to-primary/5">
+        <div className="flex items-center gap-2 mb-4">
+          <Sparkles className="w-5 h-5 text-primary" />
+          <h2 className="text-xl font-semibold">Magic Mode</h2>
+        </div>
+        
+        <p className="text-sm text-muted-foreground mb-6">
+          Just tell us what you want, and we'll create the perfect prompt for you
+        </p>
+
+        <div className="space-y-4">
+          <div className="relative">
+            <Input
+              type="text"
+              placeholder="I want to write an email to my boss about..."
+              value={userInput}
+              onChange={(e) => setUserInput(e.target.value)}
+              onKeyDown={(e) => e.key === 'Enter' && handleMagicGenerate()}
+              disabled={isProcessing}
+              className="h-14 text-base pr-4"
+              autoFocus
+            />
+          </div>
+
+          <Button
+            onClick={handleMagicGenerate}
+            disabled={isProcessing || !userInput.trim()}
+            className="w-full h-12 text-base"
+            size="lg"
+          >
+            {isProcessing ? (
+              <>
+                <Loader2 className="w-5 h-5 mr-2 animate-spin" />
+                Creating your prompt...
+              </>
+            ) : (
+              <>
+                <Sparkles className="w-5 h-5 mr-2" />
+                Generate Perfect Prompt
+              </>
+            )}
+          </Button>
+        </div>
+      </Card>
+
+      {/* Generated Prompt Result */}
+      {generatedPrompt && (
+        <Card className="mt-6 p-6 sm:p-8 border border-border animate-in fade-in slide-in-from-bottom-4">
+          <div className="space-y-4">
+            <div className="flex items-center gap-2 mb-2">
+              <Check className="w-5 h-5 text-accent" />
+              <h3 className="text-lg font-semibold">Your Perfect Prompt</h3>
+            </div>
+
+            <div className="bg-muted/30 rounded-lg p-4 border border-border max-h-[300px] overflow-y-auto">
+              <pre className="whitespace-pre-wrap text-sm leading-relaxed font-mono">
+                {generatedPrompt}
+              </pre>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              <Button
+                onClick={handleCopy}
+                variant="outline"
+                className="w-full"
+              >
+                {copied ? (
+                  <>
+                    <Check className="w-4 h-4 mr-2 text-accent" />
+                    Copied!
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-4 h-4 mr-2" />
+                    Copy
+                  </>
+                )}
+              </Button>
+
+              <Button
+                onClick={handleOpenChatGPT}
+                variant="default"
+                className="w-full"
+              >
+                <ExternalLink className="w-4 h-4 mr-2" />
+                ChatGPT
+              </Button>
+
+              <Button
+                onClick={handleOpenClaude}
+                variant="secondary"
+                className="w-full"
+              >
+                <ExternalLink className="w-4 h-4 mr-2" />
+                Claude
+              </Button>
+            </div>
+
+            <p className="text-xs text-center text-muted-foreground">
+              Prompt automatically copied to clipboard ✨
+            </p>
+          </div>
+        </Card>
+      )}
+
+      {/* Quick Start Buttons */}
+      {!generatedPrompt && (
+        <div className="mt-8">
+          <p className="text-sm text-muted-foreground text-center mb-4">
+            Or try these popular tasks:
+          </p>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+            <Button
+              variant="outline"
+              onClick={() => setUserInput('Fix grammar and improve my writing')}
+              className="h-auto py-3 px-4 text-left justify-start"
+            >
+              <div>
+                <div className="font-semibold text-sm mb-1">Fix Grammar</div>
+                <div className="text-xs text-muted-foreground">Polish your text</div>
+              </div>
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => setUserInput('Summarize this article for me')}
+              className="h-auto py-3 px-4 text-left justify-start"
+            >
+              <div>
+                <div className="font-semibold text-sm mb-1">Summarize</div>
+                <div className="text-xs text-muted-foreground">Quick overview</div>
+              </div>
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => setUserInput('Write a professional email')}
+              className="h-auto py-3 px-4 text-left justify-start"
+            >
+              <div>
+                <div className="font-semibold text-sm mb-1">Write Email</div>
+                <div className="text-xs text-muted-foreground">Professional tone</div>
+              </div>
+            </Button>
+          </div>
+        </div>
+      )}
+    </div>
+  );
+};
