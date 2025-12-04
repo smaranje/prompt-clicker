@@ -10,6 +10,7 @@ import logo from '@/assets/logo.png';
 import { FirstTimeTutorial } from '@/components/FirstTimeTutorial';
 import { MagicMode } from '@/components/MagicMode';
 import { StudioMode } from '@/components/StudioMode';
+import { PromptComparison } from '@/components/PromptComparison';
 
 const CategorySelection = () => {
   const navigate = useNavigate();
@@ -62,6 +63,9 @@ const CategorySelection = () => {
             Choose your experience: instant magic or full control
           </p>
         </div>
+
+        {/* Before/After Comparison */}
+        <PromptComparison />
 
         {/* Dual Mode Tabs */}
         <div className="max-w-5xl mx-auto mb-8 sm:mb-16">
