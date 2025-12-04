@@ -16,172 +16,267 @@ interface ComparisonExample {
 
 const comparisonExamples: ComparisonExample[] = [
   {
-    id: 'email',
-    category: 'Email Writing',
-    scenario: 'Ask for a project extension',
-    basicPrompt: 'Write an email asking my boss for more time on the project.',
-    basicResponse: `Subject: Request for Extension
+    id: 'manager',
+    category: 'Executive Analysis',
+    scenario: 'Quarterly portfolio risk assessment',
+    basicPrompt: 'Analyze the risk in my investment portfolio.',
+    basicResponse: `Here are some general tips for analyzing portfolio risk:
 
-Dear Boss,
+1. Look at your asset allocation
+2. Consider diversification across sectors
+3. Check the volatility of individual holdings
+4. Review your risk tolerance
+5. Consider market conditions
 
-I hope this email finds you well. I am writing to request an extension for the project deadline. I have been working hard but need more time to complete it. Please let me know if this is possible.
+Would you like me to explain any of these in more detail?`,
+    craftedPrompt: `You are a senior portfolio risk analyst with 15+ years at major financial institutions (RBC, TD, Goldman).
 
-Thank you for your understanding.
+Analyze portfolio risk for a $2.5M institutional portfolio with the following allocation:
+- 45% Canadian equities (heavy in energy/financials)
+- 30% US tech growth stocks
+- 15% corporate bonds (BBB-rated)
+- 10% cash
 
-Best regards,
-[Your name]`,
-    craftedPrompt: `You are a professional business communication expert who has coached C-level executives on email strategy.
+Current concerns: Rising interest rates, tech sector correction, CAD/USD exposure
 
-Write a Request email to my manager about needing a deadline extension for the Q4 analytics project.
+ANALYSIS FRAMEWORK:
+1. CONCENTRATION RISK: Identify sector/geographic overexposure with specific % thresholds
+2. CORRELATION ANALYSIS: Which holdings move together during downturns?
+3. STRESS SCENARIOS: Model impact of -20% tech correction + 100bps rate hike
+4. ACTIONABLE RECOMMENDATIONS: Specific rebalancing with target allocations
+5. TIMELINE: Prioritize actions by urgency (immediate/30-day/quarterly)
 
-Key points to address: completed 70% of deliverables, unexpected data quality issues discovered, specific new timeline needed
-Length: Medium (2-3 paragraphs)
-Tone: Professional
+Output as executive summary for investment committee review.`,
+    craftedResponse: `## PORTFOLIO RISK ASSESSMENT - EXECUTIVE SUMMARY
 
-EMAIL STRUCTURE:
-1. Lead with progress made (not the problem)
-2. Explain specific blocker with solution already in mind
-3. Propose concrete new timeline with reasoning
-4. End with commitment and accountability
+### Critical Risk Flags 🔴
 
-✓ Show ownership, not excuses
-✓ Propose solution, don't just present problem
-✓ Be specific with dates and deliverables`,
-    craftedResponse: `Subject: Q4 Analytics Project – Progress Update & Revised Timeline
+**1. Concentration Risk: HIGH**
+- Canadian equity exposure (45%) exceeds recommended 30% for institutional portfolios
+- Energy/financials represent ~60% of Canadian holdings = 27% total portfolio in 2 sectors
+- US tech (30%) concentrated in growth names with avg P/E >35
 
-Hi [Manager's Name],
+**2. Correlation Concern**
+- Energy + Financials correlation: 0.72 during rate hike cycles
+- Tech growth correlation during corrections: 0.85
+- Effective diversification: Only 3 independent risk factors
 
-I wanted to share a progress update on the Q4 analytics project. We've completed 70% of the deliverables, including the full customer segmentation analysis and revenue forecasting models.
+### Stress Test Results
 
-During the data validation phase, we discovered significant inconsistencies in the legacy CRM data that weren't flagged in the initial audit. Rather than deliver potentially inaccurate insights, I've already coordinated with the data engineering team to run a cleanup script (ETA: 2 days). 
+| Scenario | Portfolio Impact | Recovery Timeline |
+|----------|-----------------|-------------------|
+| Tech -20% | -$150K (-6%) | 8-14 months |
+| +100bps rates | -$95K (-3.8%) | 12-18 months |
+| Combined | -$285K (-11.4%) | 18-24 months |
 
-To ensure we deliver accurate, actionable insights, I'm proposing we adjust the deadline from Friday to next Wednesday. This gives us time to validate the corrected data and complete the final dashboards. I'll send you a status update Monday with confirmation we're on track.
+### Recommended Actions
 
-Happy to discuss if you'd like more detail on what we've found.
+**Immediate (This Week):**
+- Reduce US tech to 20% → reallocate $250K to international developed markets
+- Add currency hedge on USD exposure (cost: ~0.3% annually)
 
-Best,
-[Your name]`
+**30-Day:**
+- Rotate $200K from Canadian financials → Canadian REITs (lower rate sensitivity)
+- Upgrade corporate bonds to A-rated (sacrifice 40bps yield for stability)
+
+**Target Allocation:** 35% CAD equity | 20% US | 15% International | 20% Fixed Income | 10% Cash`
   },
   {
-    id: 'code',
-    category: 'Code Help',
-    scenario: 'Debug a React state issue',
-    basicPrompt: 'My React state is not updating. Help me fix it.',
-    basicResponse: `There are several reasons why React state might not update:
+    id: 'engineer',
+    category: 'Technical Architecture',
+    scenario: 'Design a scalable microservices system',
+    basicPrompt: 'How do I build a microservices architecture?',
+    basicResponse: `Microservices architecture involves breaking down your application into smaller, independent services. Here's what you need to know:
 
-1. Make sure you're using setState correctly
-2. Check if you're mutating state directly
-3. Try using the functional form of setState
-4. Make sure your component is re-rendering
+1. Each service should handle one specific function
+2. Services communicate via APIs
+3. Use containers like Docker
+4. Consider using Kubernetes for orchestration
+5. Implement proper logging and monitoring
 
-If you share your code, I can help you identify the specific issue.`,
-    craftedPrompt: `You are a senior React developer with 10+ years debugging complex applications.
+Would you like more details on any of these points?`,
+    craftedPrompt: `You are a principal engineer who has designed systems at Netflix/Uber scale (10M+ daily users).
 
-Debug this issue: React useState not reflecting new value after setState call
+Design a microservices architecture for an e-commerce platform with these requirements:
+- Expected load: 50K concurrent users, 500 orders/minute peak
+- Current pain point: Monolith with 4-second checkout latency
+- Team: 12 engineers, 3 teams
+- Budget: AWS, ~$15K/month infrastructure
 
-Context: I'm calling setState inside a click handler, but when I console.log the state right after, it shows the old value
+ARCHITECTURE DELIVERABLES:
+1. SERVICE BOUNDARIES: Define 5-7 core services with clear ownership
+2. DATA STRATEGY: Database-per-service vs shared DB tradeoffs for our scale
+3. COMMUNICATION: Sync (REST/gRPC) vs Async (events) for each interaction
+4. FAILURE MODES: Circuit breaker patterns, graceful degradation paths
+5. MIGRATION PATH: Strangler fig pattern steps from monolith (prioritized)
 
-DEBUGGING FRAMEWORK:
-1. Identify root cause (async behavior, closure, batching)
-2. Show the wrong pattern with ❌
-3. Show the correct pattern with ✅
-4. Explain WHY it works
-5. Provide prevention strategies for future`,
-    craftedResponse: `## Root Cause: React's Asynchronous State Updates
+Include specific AWS services with cost estimates. Flag anti-patterns to avoid.`,
+    craftedResponse: `## E-COMMERCE MICROSERVICES ARCHITECTURE
 
-React batches state updates for performance. When you call \`setState\`, it schedules an update but doesn't immediately change the value.
+### Service Boundaries & Team Ownership
 
-### ❌ The Problem Pattern
-\`\`\`javascript
-const handleClick = () => {
-  setCount(count + 1);
-  console.log(count); // Still shows old value!
-  // React hasn't re-rendered yet
-}
+\`\`\`
+┌─────────────────────────────────────────────────────────────┐
+│                      API Gateway (Kong)                       │
+│                    Rate limiting, Auth, Routing               │
+└─────────────────────────────────────────────────────────────┘
+         │              │              │              │
+    ┌────┴────┐   ┌────┴────┐   ┌────┴────┐   ┌────┴────┐
+    │ Catalog │   │  Cart   │   │  Order  │   │ Payment │
+    │ Service │   │ Service │   │ Service │   │ Service │
+    │ Team A  │   │ Team B  │   │ Team B  │   │ Team C  │
+    └────┬────┘   └────┬────┘   └────┬────┘   └────┬────┘
+         │              │              │              │
+    [PostgreSQL]   [Redis]      [PostgreSQL]   [Stripe API]
+      (RDS)       (ElastiCache)    (RDS)       + Event Log
 \`\`\`
 
-### ✅ Solution 1: Use useEffect to React to Changes
+### Communication Matrix
+
+| From → To | Pattern | Why |
+|-----------|---------|-----|
+| Cart → Catalog | Sync (gRPC) | Need real-time inventory |
+| Order → Payment | Sync (REST) | Transaction integrity |
+| Order → Inventory | **Async (SQS)** | Decouple for resilience |
+| All → Analytics | Async (Kinesis) | Fire-and-forget |
+
+### Checkout Latency Fix (4s → <800ms)
+
+**Root cause analysis:**
+- Current: Sequential DB calls (inventory → pricing → tax → payment)
+- Fix: Parallel calls + Redis cart cache + pre-computed pricing
+
 \`\`\`javascript
-useEffect(() => {
-  console.log(count); // Now shows updated value
-}, [count]);
+// Before: 4 sequential calls = 4000ms
+// After: Parallel + cached
+await Promise.all([
+  getCachedCart(userId),           // 50ms (Redis)
+  validateInventoryBatch(items),    // 200ms (gRPC)
+  calculateTax(precomputed),        // 100ms (cached rates)
+]);
+// + Payment: 400ms = Total: ~750ms
 \`\`\`
 
-### ✅ Solution 2: Use Functional Update (if you need previous value)
-\`\`\`javascript
-setCount(prevCount => {
-  const newCount = prevCount + 1;
-  console.log(newCount); // Correct value here
-  return newCount;
-});
-\`\`\`
+### AWS Cost Breakdown (~$14.2K/month)
 
-### Why This Happens
-- \`setState\` is asynchronous in React
-- State updates are batched for performance
-- The variable \`count\` is captured in a closure at render time
+| Service | Config | Cost |
+|---------|--------|------|
+| EKS | 6x m5.large | $4,800 |
+| RDS PostgreSQL | 2x db.r5.large (Multi-AZ) | $3,200 |
+| ElastiCache | r5.large cluster | $2,400 |
+| ALB + API Gateway | - | $1,800 |
+| SQS/SNS/Kinesis | - | $800 |
+| Monitoring (DataDog) | - | $1,200 |
 
-### Prevention Checklist
-✓ Never console.log state immediately after setState
-✓ Use useEffect for side effects that depend on state
-✓ Use functional updates when new state depends on old state`
+### Migration Priority (Strangler Fig)
+
+1. **Week 1-2:** Extract Payment service (highest risk isolation)
+2. **Week 3-4:** Cart service + Redis (biggest latency win)
+3. **Month 2:** Order service (complex, needs careful data migration)
+4. **Month 3:** Catalog service (read-heavy, easiest to scale independently)`
   },
   {
-    id: 'content',
-    category: 'Content Creation',
-    scenario: 'Write a LinkedIn post about a product launch',
-    basicPrompt: 'Write a LinkedIn post about my new app that helps people save time.',
-    basicResponse: `🚀 Exciting news! 
+    id: 'student',
+    category: 'Research & Learning',
+    scenario: 'Understanding complex academic concepts',
+    basicPrompt: 'Explain machine learning to me.',
+    basicResponse: `Machine learning is a type of artificial intelligence that allows computers to learn from data without being explicitly programmed.
 
-I'm thrilled to announce the launch of my new app that helps people save time! 
+There are three main types:
+1. Supervised learning - learning from labeled examples
+2. Unsupervised learning - finding patterns in unlabeled data  
+3. Reinforcement learning - learning through trial and error
 
-After months of hard work, we're finally live. The app is designed to make your life easier and more productive.
+Common applications include image recognition, recommendation systems, and natural language processing.
 
-Check it out and let me know what you think!
+Would you like me to explain any of these in more detail?`,
+    craftedPrompt: `You are a CS professor at Stanford known for making complex topics intuitive. You've taught ML to 10,000+ students.
 
-#NewApp #Productivity #Launch #Excited`,
-    craftedPrompt: `You are an expert LinkedIn content strategist who has helped 50+ companies grow their following to 100K+.
+Explain machine learning for a 3rd-year computer science student who:
+- Understands basic statistics (mean, variance, probability)
+- Can code in Python
+- Has never touched ML before
+- Needs to build their first model for a class project (predicting house prices)
 
-Create a professional LinkedIn post about: Launching a time-tracking app that saved beta users 5+ hours per week
+TEACHING FRAMEWORK:
+1. INTUITION FIRST: Real-world analogy before any math
+2. THE "WHY": Why does this approach work mathematically? (conceptual, not proofs)
+3. CODE CONNECTION: Pseudocode showing exactly where math meets implementation
+4. COMMON TRAPS: Top 3 mistakes students make on their first project
+5. NEXT STEPS: What to learn after grasping basics (specific resources)
 
-Target audience: Busy professionals and entrepreneurs
-Primary goal: Drive engagement and signups
-Key value proposition: Automatic time tracking with zero manual entry
+Optimize for "aha moments" over comprehensive coverage.`,
+    craftedResponse: `## Machine Learning: The Mental Model That Actually Sticks
 
-POST STRUCTURE (Algorithm-Optimized):
-1. HOOK: Start with relatable pain point or surprising result
-2. CONTEXT: Make it personal, share the "why"
-3. VALUE: 3-5 specific benefits with → bullets
-4. PROOF: Include real numbers/results
-5. CTA: Specific question to drive comments
+### The Intuition (Forget Algorithms for a Minute)
 
-❌ Don't use: "Excited to announce" "Thrilled to share" generic hashtag spam`,
-    craftedResponse: `Last month I tracked my time manually for a week.
+Imagine you're a real estate agent who's seen 1,000 houses sell. After a while, you develop "gut feelings" about prices. You notice patterns:
+- Bigger houses → higher prices
+- Good school district → +15% 
+- Near highway → -10%
 
-The result? I spent 47 minutes PER DAY just logging what I was doing.
+**That's machine learning.** You're finding a function that maps inputs (features) to outputs (price). The difference? Computers do it with math instead of gut feelings.
 
-That's 4+ hours a week. On tracking time. Not doing actual work.
+### The Math That Matters (Just This, I Promise)
 
-So I built something different.
+For your house price project, you'll use **Linear Regression**:
 
-Our new app tracks your time automatically by understanding context:
-→ Detects which project you're working on
-→ Knows when you switch tasks (no manual entry)
-→ Generates timesheets and invoices in one click
-→ Works silently in the background
+\`\`\`
+Price = w₁(sqft) + w₂(bedrooms) + w₃(location_score) + b
+\`\`\`
 
-Beta users are reporting:
-• 5.2 hours saved per week (average)
-• 94% accuracy on automatic categorization
-• Zero "forgot to start timer" moments
+**The "learning" part:** Finding the weights (w₁, w₂, w₃) that minimize prediction errors.
 
-The irony of time-tracking tools eating your time is finally solved.
+\`\`\`python
+# What your code is actually doing:
+for each training example:
+    prediction = weights @ features + bias
+    error = (prediction - actual_price)²
+    
+    # Gradient descent: adjust weights to reduce error
+    weights -= learning_rate * gradient(error)
+\`\`\`
 
-We're opening up 100 spots for early access this week.
+**Why it works:** Calculus guarantees that following the gradient downhill eventually finds the minimum error. That's it. That's the magic.
 
-Drop a "⏱️" in the comments if you want the link.
+### Your First Model (Copy This Structure)
 
-What's your biggest frustration with current time-tracking tools?`
+\`\`\`python
+import pandas as pd
+from sklearn.model_selection import train_test_split
+from sklearn.linear_model import LinearRegression
+from sklearn.metrics import mean_absolute_error
+
+# 1. Load & split (ALWAYS split before anything else)
+df = pd.read_csv('houses.csv')
+X = df[['sqft', 'bedrooms', 'bathrooms']]
+y = df['price']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2)
+
+# 2. Train (this is where the "learning" happens)
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# 3. Evaluate (on data the model has NEVER seen)
+predictions = model.predict(X_test)
+print(f"Avg error: \${mean_absolute_error(y_test, predictions):,.0f}")
+\`\`\`
+
+### The 3 Traps You'll Fall Into (Everyone Does)
+
+| Trap | What Happens | Fix |
+|------|--------------|-----|
+| **Data leakage** | Test on training data → 99% accuracy → model fails in production | Split data FIRST, before any preprocessing |
+| **Feature scaling** | sqft (1000s) dominates bedrooms (1-5) | \`StandardScaler()\` on numeric features |
+| **Overfitting** | Model memorizes training data | Watch for train acc >> test acc; use regularization |
+
+### What to Learn Next (In This Order)
+
+1. **Decision Trees** → More intuitive, handles non-linear patterns
+2. **Cross-validation** → More reliable than single train/test split
+3. **Feature engineering** → Where the real performance gains come from
+
+📚 Best resource: [Fast.ai Practical ML Course](https://course.fast.ai/) - Skip theory, build things first`
   }
 ];
 

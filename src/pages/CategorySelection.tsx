@@ -55,20 +55,17 @@ const CategorySelection = () => {
         </div>
         
         {/* Main Heading */}
-        <div className="text-center mb-6 sm:mb-12">
-          <h1 className="font-heading mb-3 sm:mb-5 text-2xl sm:text-4xl md:text-5xl lg:text-6xl px-2 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent font-bold leading-tight">
+        <div className="text-center mb-6 sm:mb-10">
+          <h1 className="font-heading mb-3 sm:mb-4 text-2xl sm:text-4xl md:text-5xl lg:text-6xl px-2 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent font-bold leading-tight">
             Get Perfect AI Prompts in 30 Seconds
           </h1>
-          <p className="subtitle max-w-2xl mx-auto px-3 text-xs sm:text-base md:text-lg mb-4 sm:mb-8">
+          <p className="subtitle max-w-2xl mx-auto px-3 text-xs sm:text-base md:text-lg">
             Choose your experience: instant magic or full control
           </p>
         </div>
 
-        {/* Before/After Comparison */}
-        <PromptComparison />
-
-        {/* Dual Mode Tabs */}
-        <div className="max-w-5xl mx-auto mb-8 sm:mb-16">
+        {/* Dual Mode Tabs - Now First */}
+        <div className="max-w-5xl mx-auto mb-10 sm:mb-16">
           <Tabs defaultValue="magic" value={activeMode} onValueChange={(v) => setActiveMode(v as 'magic' | 'studio')} className="w-full">
             <TabsList className="grid w-full max-w-md mx-auto grid-cols-2 h-auto p-1 mb-6 sm:mb-8">
               <TabsTrigger 
@@ -103,18 +100,18 @@ const CategorySelection = () => {
           </Tabs>
         </div>
 
+        {/* Before/After Comparison - Now After Modes */}
+        <PromptComparison />
+
         {/* Footer */}
-        <div className="text-center pt-8 sm:pt-12 border-t border-border space-y-3">
+        <div className="text-center pt-8 sm:pt-12 border-t border-border space-y-4">
           <p className="text-muted-foreground text-xs sm:text-sm md:text-base px-4">
             No signup required. Works with ChatGPT and Claude. Always free.
           </p>
-          <p className="text-muted-foreground text-xs sm:text-sm px-4">
-            For professionals who actually get stuff done with AI.
-          </p>
-          <div className="flex items-center justify-center gap-2 mt-4">
-            <Badge variant="secondary" className="text-xs">
-              Made by Smaran
-            </Badge>
+          <div className="flex items-center justify-center gap-3 pt-2">
+            <div className="h-px w-12 bg-border"></div>
+            <span className="text-sm sm:text-base font-medium text-foreground/80">Built by Smaran</span>
+            <div className="h-px w-12 bg-border"></div>
           </div>
         </div>
       </div>
