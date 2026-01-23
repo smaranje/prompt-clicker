@@ -2,6 +2,7 @@ import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Category } from '@/types/templates';
 import { ArrowRight } from 'lucide-react';
+import { DynamicIcon } from '@/components/DynamicIcon';
 
 interface CategoryCardProps {
   category: Category;
@@ -27,9 +28,15 @@ export const CategoryCard = ({ category, onClick, templateCount }: CategoryCardP
 
       <div className="flex flex-col h-full relative z-10">
         <div className="flex items-start justify-between mb-3">
-          <h3 className="text-2xl sm:text-3xl font-bold text-card-foreground group-hover:text-primary transition-colors font-heading">
-            {category.title}
-          </h3>
+          <div className="flex items-center gap-3">
+            <DynamicIcon
+              name={category.icon}
+              className="w-8 h-8 text-primary flex-shrink-0"
+            />
+            <h3 className="text-2xl sm:text-3xl font-bold text-card-foreground group-hover:text-primary transition-colors font-heading">
+              {category.title}
+            </h3>
+          </div>
           {templateCount !== undefined && templateCount > 0 && (
             <Badge variant="secondary" className="text-xs ml-2 flex-shrink-0">
               {templateCount}
