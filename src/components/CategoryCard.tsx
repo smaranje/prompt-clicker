@@ -1,13 +1,15 @@
 import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
 import { Category } from '@/types/templates';
 import { ArrowRight } from 'lucide-react';
 
 interface CategoryCardProps {
   category: Category;
   onClick: () => void;
+  templateCount?: number;
 }
 
-export const CategoryCard = ({ category, onClick }: CategoryCardProps) => {
+export const CategoryCard = ({ category, onClick, templateCount }: CategoryCardProps) => {
   return (
     <Card
       onClick={onClick}
@@ -22,11 +24,18 @@ export const CategoryCard = ({ category, onClick }: CategoryCardProps) => {
     >
       {/* Gradient overlay on hover */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-      
+
       <div className="flex flex-col h-full relative z-10">
-        <h3 className="text-2xl sm:text-3xl font-bold mb-3 text-card-foreground group-hover:text-primary transition-colors font-heading">
-          {category.title}
-        </h3>
+        <div className="flex items-start justify-between mb-3">
+          <h3 className="text-2xl sm:text-3xl font-bold text-card-foreground group-hover:text-primary transition-colors font-heading">
+            {category.title}
+          </h3>
+          {templateCount !== undefined && templateCount > 0 && (
+            <Badge variant="secondary" className="text-xs ml-2 flex-shrink-0">
+              {templateCount}
+            </Badge>
+          )}
+        </div>
         <p className="text-muted-foreground text-base sm:text-lg mb-6 flex-grow leading-relaxed">
           {category.description}
         </p>
