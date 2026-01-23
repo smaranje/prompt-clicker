@@ -6,7 +6,7 @@ export const templates: Template[] = [
     id: 'email_professional',
     category: 'writing',
     title: 'Write a Professional Email',
-    icon: '✉️',
+    icon: 'Mail',
     description: 'Generate well-structured professional emails',
     fields: [
       {
@@ -164,7 +164,7 @@ Write the complete email now with subject line options.`
     id: 'social_posts',
     category: 'writing',
     title: 'Create Social Media Posts',
-    icon: '📱',
+    icon: 'Smartphone',
     description: 'Generate engaging social media content',
     fields: [
       {
@@ -296,7 +296,7 @@ Write the post now.`
     id: 'article_draft',
     category: 'writing',
     title: 'Draft an Article or Blog Post',
-    icon: '📄',
+    icon: 'FileText',
     description: 'Create article outlines and drafts',
     fields: [
       {
@@ -435,7 +435,7 @@ Write the complete article now.`
     id: 'rewrite_text',
     category: 'writing',
     title: 'Improve/Rewrite Existing Text',
-    icon: '✍️',
+    icon: 'PenTool',
     description: 'Enhance and refine your writing',
     fields: [
       {
@@ -544,7 +544,7 @@ Provide:
     id: 'product_description',
     category: 'writing',
     title: 'Write Product Descriptions',
-    icon: '🏷️',
+    icon: 'Tag',
     description: 'Create compelling product copy',
     fields: [
       {
@@ -690,7 +690,7 @@ Write the complete product description now, including headline, body, and CTA.`
     id: 'meeting_agenda',
     category: 'business',
     title: 'Create Meeting Agenda',
-    icon: '📋',
+    icon: 'ClipboardList',
     description: 'Structure effective meeting agendas',
     fields: [
       {
@@ -1510,7 +1510,7 @@ Now create the complete slide-by-slide presentation outline with talking points 
     id: 'summarize_text',
     category: 'learning',
     title: 'Summarize Long Text',
-    icon: '📝',
+    icon: 'FileEdit',
     description: 'Get concise summaries of articles or documents',
     fields: [
       {
@@ -1700,7 +1700,7 @@ Now provide a {length} summary focused on {focus}.
     id: 'explain_concept',
     category: 'learning',
     title: 'Explain Complex Concepts',
-    icon: '💡',
+    icon: 'Lightbulb',
     description: 'Break down difficult topics into simple terms',
     fields: [
       {
@@ -2260,7 +2260,7 @@ Create the complete {format} study guide for {topic} now.`
     id: 'research_questions',
     category: 'learning',
     title: 'Generate Research Questions',
-    icon: '🔍',
+    icon: 'Search',
     description: 'Develop research questions and hypotheses',
     fields: [
       {
@@ -2552,7 +2552,7 @@ Make them publication-worthy.`
     id: 'story_idea',
     category: 'creative',
     title: 'Generate Story Ideas',
-    icon: '📖',
+    icon: 'Book',
     description: 'Create creative story concepts and plots',
     fields: [
       {
@@ -3448,7 +3448,7 @@ Now provide a comprehensive, clear, and practical answer to: {question}`
     id: 'task_breakdown',
     category: 'browse',
     title: 'Break Down Complex Tasks',
-    icon: '📋',
+    icon: 'ClipboardList',
     description: 'Get step-by-step guidance for any project',
     fields: [
       {
@@ -3975,7 +3975,7 @@ Now provide a comprehensive, weighted analysis of "{decision}" that accounts for
     id: 'quick_tips',
     category: 'browse',
     title: 'Get Quick Tips & Advice',
-    icon: '💡',
+    icon: 'Lightbulb',
     description: 'Practical tips for everyday situations',
     fields: [
       {
@@ -4084,7 +4084,7 @@ Provide {focus} advice for {situation} now, making it specific, actionable, and 
     id: 'debug_code',
     category: 'code',
     title: 'Debug Code Issue',
-    icon: '🐛',
+    icon: 'Bug',
     description: 'Get help fixing code errors and bugs',
     fields: [
       {
@@ -4154,7 +4154,7 @@ Think step-by-step:
     id: 'explain_code',
     category: 'code',
     title: 'Explain Code',
-    icon: '📖',
+    icon: 'Book',
     description: 'Understand how code works',
     fields: [
       {
@@ -4323,7 +4323,7 @@ Format each finding as:
     id: 'documentation',
     category: 'code',
     title: 'Write Documentation',
-    icon: '📄',
+    icon: 'FileText',
     description: 'Generate professional code documentation',
     fields: [
       {
@@ -4714,7 +4714,7 @@ Now generate professional, maintainable {doc_type} for {language} code following
     id: 'optimize_code',
     category: 'code',
     title: 'Optimize Performance',
-    icon: '⚡',
+    icon: 'Zap',
     description: 'Improve code speed and efficiency',
     fields: [
       {
