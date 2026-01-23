@@ -29,15 +29,10 @@ export const EnterpriseHeader = () => {
                         className="flex items-center gap-2 sm:gap-3 group cursor-pointer"
                     >
                         <img src={logo} alt="PromptCraft Logo" className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" />
-                        <div className="flex flex-col items-start">
-                            <span className="text-sm sm:text-base font-bold text-foreground leading-tight flex items-center gap-1.5">
-                                PromptCraft
-                                <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-primary" />
-                            </span>
-                            <span className="text-[10px] sm:text-xs text-muted-foreground leading-tight">
-                                Community
-                            </span>
-                        </div>
+                        <span className="text-base sm:text-xl font-bold text-foreground leading-tight flex items-center gap-1.5">
+                            PromptCraft
+                            <Sparkles className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
+                        </span>
                     </button>
 
                     {/* Navigation */}
