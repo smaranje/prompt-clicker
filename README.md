@@ -381,9 +381,7 @@ This project is licensed under the **MIT License** - see the [LICENSE](LICENSE) 
 
 **Built by Smaran**
 
-- GitHub: [@yourusername](https://github.com/yourusername)
-- LinkedIn: [Your LinkedIn](https://linkedin.com/in/yourprofile)
-- Twitter: [@yourhandle](https://twitter.com/yourhandle)
+- GitHub: [@yourusername](https://github.com/smaranje)
 
 ---
 
