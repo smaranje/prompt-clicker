@@ -1,7 +1,8 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { Building2, Home, Users, Bookmark } from 'lucide-react';
+import { Home, Compass, PlusCircle, Bookmark, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import logo from '@/assets/logo.png';
 
 export const EnterpriseHeader = () => {
     const location = useLocation();
@@ -9,7 +10,8 @@ export const EnterpriseHeader = () => {
 
     const navItems = [
         { path: '/', label: 'Home', icon: Home },
-        { path: '/team-library', label: 'Team Library', icon: Users },
+        { path: '/discover', label: 'Discover', icon: Compass },
+        { path: '/submit', label: 'Submit', icon: PlusCircle },
         { path: '/favorites', label: 'Favorites', icon: Bookmark },
     ];
 
@@ -21,20 +23,19 @@ export const EnterpriseHeader = () => {
         <header className="border-b border-border bg-card/50 backdrop-blur-sm sticky top-0 z-50">
             <div className="container mx-auto px-4 sm:px-6 py-3 sm:py-4">
                 <div className="flex items-center justify-between">
-                    {/* Logo & Company Name */}
+                    {/* Logo & Brand Name */}
                     <button
                         onClick={() => navigate('/')}
                         className="flex items-center gap-2 sm:gap-3 group cursor-pointer"
                     >
-                        <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-lg bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center shadow-md group-hover:shadow-lg transition-shadow">
-                            <Building2 className="w-5 h-5 sm:w-6 sm:h-6 text-primary-foreground" />
-                        </div>
+                        <img src={logo} alt="PromptCraft Logo" className="w-8 h-8 sm:w-10 sm:h-10 flex-shrink-0" />
                         <div className="flex flex-col items-start">
-                            <span className="text-sm sm:text-base font-semibold text-foreground leading-tight">
-                                Acme Corp
+                            <span className="text-sm sm:text-base font-bold text-foreground leading-tight flex items-center gap-1.5">
+                                PromptCraft
+                                <Sparkles className="w-3 h-3 sm:w-3.5 sm:h-3.5 text-primary" />
                             </span>
-                            <span className="text-xs text-muted-foreground leading-tight">
-                                Prompt Portal
+                            <span className="text-[10px] sm:text-xs text-muted-foreground leading-tight">
+                                Community
                             </span>
                         </div>
                     </button>

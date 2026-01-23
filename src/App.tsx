@@ -10,7 +10,7 @@ import TemplateSelection from "./pages/TemplateSelection";
 import CustomizeTemplate from "./pages/CustomizeTemplate";
 import PreviewPrompt from "./pages/PreviewPrompt";
 import Favorites from "./pages/Favorites";
-import TeamLibrary from "./pages/TeamLibrary";
+import Discover from "./pages/Discover";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,7 +28,7 @@ const App = () => (
             <Route path="/customize/:templateId" element={<CustomizeTemplate />} />
             <Route path="/preview" element={<PreviewPrompt />} />
             <Route path="/favorites" element={<Favorites />} />
-            <Route path="/team-library" element={<TeamLibrary />} />
+            <Route path="/discover" element={<Discover />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
@@ -37,5 +37,7 @@ const App = () => (
     </ThemeProvider>
   </QueryClientProvider>
 );
+
+export default App;
 
 export default App;
