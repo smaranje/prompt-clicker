@@ -1,19 +1,14 @@
 import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { ThemeToggle } from '@/components/ThemeToggle';
-import { Button } from '@/components/ui/button';
-import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
-import { Bookmark, Sparkles, Code2 } from 'lucide-react';
-import logo from '@/assets/logo.png';
+import { Sparkles, Code2 } from 'lucide-react';
 
+import { EnterpriseHeader } from '@/components/EnterpriseHeader';
 import { FirstTimeTutorial } from '@/components/FirstTimeTutorial';
 import { MagicMode } from '@/components/MagicMode';
 import { StudioMode } from '@/components/StudioMode';
 import { PromptComparison } from '@/components/PromptComparison';
 
 const CategorySelection = () => {
-  const navigate = useNavigate();
   const [activeMode, setActiveMode] = useState<'magic' | 'studio'>('magic');
 
   return (
@@ -21,30 +16,10 @@ const CategorySelection = () => {
       <FirstTimeTutorial />
 
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 page-transition pb-24 md:pb-8">
+        {/* Enterprise Header */}
+        <EnterpriseHeader />
+
         <div className="container mx-auto px-3 sm:px-6 py-6 sm:py-12 md:py-16 lg:py-20 max-w-7xl">
-          {/* Header with Logo and Actions */}
-          <div className="flex justify-between items-center mb-6 sm:mb-12 md:mb-16 gap-2">
-            <div className="flex items-center gap-1.5 sm:gap-2 min-w-0">
-              <img src={logo} alt="PromptCraft Logo" className="w-7 h-7 sm:w-8 sm:h-8 flex-shrink-0" />
-              <span className="text-sm sm:text-xl font-bold font-heading text-foreground truncate">
-                PromptCraft
-              </span>
-            </div>
-
-            <div className="flex items-center gap-1 sm:gap-2 flex-shrink-0">
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => navigate('/favorites')}
-                className="h-8 w-8 sm:h-9 sm:w-9 hover:bg-accent"
-                aria-label="Saved prompts"
-              >
-                <Bookmark className="w-4 h-4 sm:w-5 sm:h-5" />
-              </Button>
-              <ThemeToggle />
-            </div>
-          </div>
-
           {/* Main Heading */}
           <div className="text-center mb-6 sm:mb-10">
             <h1 className="font-heading mb-3 sm:mb-4 text-2xl sm:text-4xl md:text-5xl lg:text-6xl px-2 bg-gradient-to-r from-foreground to-foreground/70 bg-clip-text text-transparent font-bold leading-tight">
