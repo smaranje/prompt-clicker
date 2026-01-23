@@ -32,7 +32,7 @@ const CustomizeTemplate = () => {
 
   const handleFillForMe = () => {
     const smartDefaults: Record<string, any> = {};
-    
+
     template?.fields.forEach((field) => {
       if (field.type === 'text') {
         // Generate contextual smart defaults based on field name
@@ -83,28 +83,44 @@ const CustomizeTemplate = () => {
 
   return (
     <div className="min-h-screen bg-background page-transition pb-8">
-      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 max-w-2xl">
+      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 max-w-3xl">
+        {/* Top Bar - Improved Navigation */}
         <div className="flex items-center justify-between mb-8 sm:mb-12">
-          <Button
-            variant="ghost"
-            onClick={() => navigate(-1)}
-            size="sm"
-            className="h-9 sm:h-10"
-          >
-            <ArrowLeft className="w-4 h-4 mr-1.5 sm:mr-2" />
-            <span className="text-sm sm:text-base">Back</span>
-          </Button>
+          <nav className="flex items-center text-sm text-muted-foreground flex-wrap gap-1">
+            <Button
+              variant="link"
+              onClick={() => navigate('/')}
+              className="p-0 h-auto font-normal text-muted-foreground hover:text-foreground"
+            >
+              Home
+            </Button>
+            <span className="text-muted-foreground/40">/</span>
+            <Button
+              variant="link"
+              onClick={() => navigate(`/templates/${template.category}`)}
+              className="p-0 h-auto font-normal text-muted-foreground hover:text-foreground capitalize"
+            >
+              {template.category}
+            </Button>
+            <span className="text-muted-foreground/40">/</span>
+            <span className="text-foreground font-medium truncate max-w-[150px] sm:max-w-[200px]">
+              {template.title}
+            </span>
+          </nav>
           <ThemeToggle />
         </div>
 
         <Card className="p-5 sm:p-6 md:p-8 lg:p-12 border border-border" style={{ boxShadow: 'var(--shadow-md)' }}>
           <div className="mb-8 sm:mb-10 md:mb-12">
-            <div className="flex items-start justify-between gap-4 mb-4">
-              <div className="flex-1">
-                <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground font-heading mb-2 sm:mb-3">
-                  {template.title}
-                </h1>
-                <p className="text-muted-foreground text-sm sm:text-base">
+            <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-4 mb-4">
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-3 mb-3">
+                  <span className="text-3xl sm:text-4xl flex-shrink-0">{template.icon}</span>
+                  <h1 className="text-2xl sm:text-3xl md:text-4xl font-semibold text-foreground font-heading break-words leading-tight">
+                    {template.title}
+                  </h1>
+                </div>
+                <p className="text-muted-foreground text-sm sm:text-base leading-relaxed ml-1">
                   {template.description}
                 </p>
               </div>
@@ -112,7 +128,7 @@ const CustomizeTemplate = () => {
                 type="button"
                 variant="outline"
                 onClick={handleFillForMe}
-                className="flex-shrink-0"
+                className="flex-shrink-0 self-start sm:self-auto mt-2 sm:mt-0"
               >
                 <Sparkles className="w-4 h-4 mr-2" />
                 Fill for me
@@ -141,7 +157,7 @@ const CustomizeTemplate = () => {
                     {(() => {
                       const wordCount = countWords(formData[field.name] || '');
                       if (wordCount === 0) return null;
-                      
+
                       return wordCount < 8 ? (
                         <p className="text-xs sm:text-sm text-muted-foreground flex items-center gap-1.5 mt-2">
                           💡 Add more details for better results

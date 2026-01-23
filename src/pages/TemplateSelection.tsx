@@ -42,53 +42,66 @@ const TemplateSelection = () => {
         open={previewOpen}
         onOpenChange={setPreviewOpen}
       />
-      
-    <div className="min-h-screen bg-background page-transition pb-8">
-      <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 max-w-4xl">
-        {/* Top Bar - Back Button + Theme Toggle */}
-        <div className="flex items-center justify-between mb-8 sm:mb-12">
-          <Button
-            variant="ghost"
-            onClick={() => navigate('/')}
-            size="sm"
-            className="h-9 sm:h-10"
-          >
-            <ArrowLeft className="w-4 h-4 mr-1.5 sm:mr-2" />
-            <span className="text-sm sm:text-base">Back</span>
-          </Button>
-          <ThemeToggle />
-        </div>
 
-        {/* Header - Generous spacing */}
-        <div className="mb-10 sm:mb-12 md:mb-16 px-2">
-          <h1 className="font-heading mb-2 sm:mb-3 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
-            {category.title}
-          </h1>
-          <p className="subtitle text-base sm:text-lg md:text-xl">
-            {category.description}
-          </p>
-        </div>
+      <div className="min-h-screen bg-background page-transition pb-8">
+        <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 max-w-4xl">
+          {/* Top Bar - Improved Navigation */}
+          <div className="flex items-center justify-between mb-8 sm:mb-12">
+            <nav className="flex items-center text-sm text-muted-foreground">
+              <Button
+                variant="link"
+                onClick={() => navigate('/')}
+                className="p-0 h-auto font-normal text-muted-foreground hover:text-foreground"
+              >
+                Home
+              </Button>
+              <span className="mx-2">/</span>
+              <span className="text-foreground font-medium truncate max-w-[150px] sm:max-w-none">
+                {category.title}
+              </span>
+            </nav>
+            <ThemeToggle />
+          </div>
 
-        {/* Templates */}
-        <div className="space-y-3 sm:space-y-4">
-          {categoryTemplates.map((template) => (
-            <TemplateCard
-              key={template.id}
-              template={template}
-              onClick={() => handleTemplateClick(template)}
-            />
-          ))}
-
-          {categoryTemplates.length === 0 && (
-            <div className="text-center py-12 sm:py-20 px-4">
-              <p className="text-muted-foreground text-base sm:text-lg">
-                No templates available in this category yet.
+          {/* Header - Generous spacing & Responsive Layout */}
+          <div className="mb-10 sm:mb-12 md:mb-16">
+            <div className="flex flex-col gap-4">
+              <div className="flex items-start gap-3 sm:gap-4">
+                <span className="text-4xl sm:text-5xl md:text-6xl flex-shrink-0 leading-none filter drop-shadow-sm">
+                  {category.icon}
+                </span>
+                <div className="flex-1 min-w-0">
+                  <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight break-words">
+                    {category.title}
+                  </h1>
+                </div>
+              </div>
+              <p className="subtitle text-base sm:text-lg md:text-xl leading-relaxed max-w-2xl text-muted-foreground ml-1">
+                {category.description}
               </p>
             </div>
-          )}
+          </div>
+
+          {/* Templates */}
+          <div className="space-y-3 sm:space-y-4">
+            {categoryTemplates.map((template) => (
+              <TemplateCard
+                key={template.id}
+                template={template}
+                onClick={() => handleTemplateClick(template)}
+              />
+            ))}
+
+            {categoryTemplates.length === 0 && (
+              <div className="text-center py-12 sm:py-20 px-4">
+                <p className="text-muted-foreground text-base sm:text-lg">
+                  No templates available in this category yet.
+                </p>
+              </div>
+            )}
+          </div>
         </div>
       </div>
-    </div>
     </>
   );
 };
