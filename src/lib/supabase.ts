@@ -5,14 +5,6 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 
 if (!supabaseUrl || !supabaseAnonKey) {
     console.warn('Supabase credentials not found. Using mock data.');
-    console.log('Debug Info:', {
-        hasUrl: !!supabaseUrl,
-        hasKey: !!supabaseAnonKey,
-        urlLength: supabaseUrl?.length || 0,
-        envMode: import.meta.env.MODE
-    });
-} else {
-    console.log('Supabase initialized successfully with URL:', supabaseUrl);
 }
 
 export const supabase = supabaseUrl && supabaseAnonKey
