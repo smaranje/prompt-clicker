@@ -21,7 +21,7 @@ export const MagicMode = () => {
     }
 
     setIsProcessing(true);
-    
+
     try {
       // Call AI to generate prompt directly
       const { data, error } = await supabase.functions.invoke('magic-prompt', {
@@ -34,7 +34,7 @@ export const MagicMode = () => {
         setGeneratedPrompt(data.prompt);
         // Auto-copy to clipboard
         await navigator.clipboard.writeText(data.prompt);
-        toast.success('Prompt generated and copied! 🎉');
+        toast.success('Prompt generated and copied!', { icon: <Sparkles className="w-4 h-4 text-primary" /> });
       }
     } catch (error) {
       console.error('Magic generate error:', error);
@@ -71,7 +71,7 @@ export const MagicMode = () => {
           <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
           <h2 className="text-base sm:text-xl font-semibold">Magic Mode</h2>
         </div>
-        
+
         <p className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6">
           Just tell us what you want, and we'll create the perfect prompt for you
         </p>
@@ -86,7 +86,6 @@ export const MagicMode = () => {
               onKeyDown={(e) => e.key === 'Enter' && handleMagicGenerate()}
               disabled={isProcessing}
               className="h-11 sm:h-14 text-sm sm:text-base pr-4"
-              autoFocus
             />
           </div>
 
@@ -175,37 +174,37 @@ export const MagicMode = () => {
       {!generatedPrompt && (
         <div className="mt-6 sm:mt-8">
           <p className="text-xs sm:text-sm text-muted-foreground text-center mb-3 sm:mb-4">
-            Or try these popular tasks:
+            Try these high-impact tasks:
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-2 sm:gap-3">
             <Button
               variant="outline"
-              onClick={() => setUserInput('Fix grammar and improve my writing')}
-              className="h-auto py-2.5 sm:py-3 px-3 sm:px-4 text-left justify-start"
+              onClick={() => setUserInput('Analyze this contract for potential loopholes and risky clauses')}
+              className="h-auto py-2.5 sm:py-3 px-3 sm:px-4 text-left justify-start hover:border-primary/50 transition-colors"
             >
               <div className="min-w-0">
-                <div className="font-semibold text-xs sm:text-sm mb-0.5 sm:mb-1 truncate">Fix Grammar</div>
-                <div className="text-[10px] sm:text-xs text-muted-foreground truncate">Polish your text</div>
+                <div className="font-semibold text-xs sm:text-sm mb-0.5 sm:mb-1 truncate">Analyze Contract</div>
+                <div className="text-[10px] sm:text-xs text-muted-foreground truncate">Find risks & loopholes</div>
               </div>
             </Button>
             <Button
               variant="outline"
-              onClick={() => setUserInput('Summarize this article for me')}
-              className="h-auto py-2.5 sm:py-3 px-3 sm:px-4 text-left justify-start"
+              onClick={() => setUserInput('Create a 30-day viral content calendar for LinkedIn focusing on AI trends')}
+              className="h-auto py-2.5 sm:py-3 px-3 sm:px-4 text-left justify-start hover:border-primary/50 transition-colors"
             >
               <div className="min-w-0">
-                <div className="font-semibold text-xs sm:text-sm mb-0.5 sm:mb-1 truncate">Summarize</div>
-                <div className="text-[10px] sm:text-xs text-muted-foreground truncate">Quick overview</div>
+                <div className="font-semibold text-xs sm:text-sm mb-0.5 sm:mb-1 truncate">Viral Strategy</div>
+                <div className="text-[10px] sm:text-xs text-muted-foreground truncate">30-day content plan</div>
               </div>
             </Button>
             <Button
               variant="outline"
-              onClick={() => setUserInput('Write a professional email')}
-              className="h-auto py-2.5 sm:py-3 px-3 sm:px-4 text-left justify-start"
+              onClick={() => setUserInput('Refactor this legacy code to use modern patterns and improve performance')}
+              className="h-auto py-2.5 sm:py-3 px-3 sm:px-4 text-left justify-start hover:border-primary/50 transition-colors"
             >
               <div className="min-w-0">
-                <div className="font-semibold text-xs sm:text-sm mb-0.5 sm:mb-1 truncate">Write Email</div>
-                <div className="text-[10px] sm:text-xs text-muted-foreground truncate">Professional tone</div>
+                <div className="font-semibold text-xs sm:text-sm mb-0.5 sm:mb-1 truncate">Refactor Code</div>
+                <div className="text-[10px] sm:text-xs text-muted-foreground truncate">Modernize & optimize</div>
               </div>
             </Button>
           </div>

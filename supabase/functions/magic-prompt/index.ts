@@ -20,9 +20,9 @@ serve(async (req) => {
       );
     }
 
-    const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
-    if (!LOVABLE_API_KEY) {
-      throw new Error("LOVABLE_API_KEY not configured");
+    const GROQ_API_KEY = Deno.env.get("GROQ_API_KEY");
+    if (!GROQ_API_KEY) {
+      throw new Error("GROQ_API_KEY not configured");
     }
 
     // System prompt to generate expert-level prompts
@@ -38,23 +38,32 @@ Guidelines:
 
 The user's simple request will be transformed into a professional, structured prompt that would be used by an expert.`;
 
-    const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        "Authorization": `Bearer ${LOVABLE_API_KEY}`,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        model: "google/gemini-2.5-flash",
-        messages: [
-          { role: "system", content: systemPrompt },
-          { 
-            role: "user", 
-            content: `Transform this simple request into an expert-level AI prompt: "${userInput}"` 
-          }
-        ],
-      }),
-    });
+    // Use Groq API (OpenAI-compatible endpoint)
+    const response = await fetch(
+      "https://api.groq.com/openai/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          "Authorization": `Bearer ${GROQ_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            {
+              role: "system",
+              content: systemPrompt
+            },
+            {
+              role: "user",
+              content: `Transform this simple request into an expert-level AI prompt: "${userInput}"`
+            }
+          ],
+          temperature: 0.7,
+          max_tokens: 1024,
+        }),
+      }
+    );
 
     if (!response.ok) {
       if (response.status === 429) {
@@ -63,14 +72,8 @@ The user's simple request will be transformed into a professional, structured pr
           { status: 429, headers: { ...corsHeaders, "Content-Type": "application/json" } }
         );
       }
-      if (response.status === 402) {
-        return new Response(
-          JSON.stringify({ error: "Payment required. Please add credits to continue." }),
-          { status: 402, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-        );
-      }
       const errorText = await response.text();
-      console.error("AI API error:", response.status, errorText);
+      console.error("Groq API error:", response.status, errorText);
       throw new Error("AI API request failed");
     }
 
@@ -89,8 +92,8 @@ The user's simple request will be transformed into a professional, structured pr
   } catch (error) {
     console.error("Error in magic-prompt function:", error);
     return new Response(
-      JSON.stringify({ 
-        error: error instanceof Error ? error.message : "An unexpected error occurred" 
+      JSON.stringify({
+        error: error instanceof Error ? error.message : "An unexpected error occurred"
       }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );

@@ -1,69 +1,136 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { EnterpriseHeader } from '@/components/EnterpriseHeader';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Heart, TrendingUp, Star, Flame, Gem } from 'lucide-react';
+import { Heart, TrendUp, Star, Fire, Diamond, CircleNotch } from 'phosphor-react';
 import { DynamicIcon } from '@/components/DynamicIcon';
+import { supabase, type CommunityPrompt } from '@/lib/supabase';
+import { motion } from 'framer-motion';
+import { staggerContainer, staggerItem, pageTransitionConfig, skeletonPulse } from '@/lib/animations';
+import { Input } from '@/components/ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { categories } from '@/data/categories';
 
-// Mock community-curated prompts
-const communityPrompts = [
+// Fallback mock data if Supabase is unavailable
+const fallbackPrompts: CommunityPrompt[] = [
     {
-        id: 'viral-twitter-thread',
-        title: 'Viral Twitter Thread Generator',
-        description: 'The exact prompt that got 2M+ impressions. Creates engaging thread hooks.',
+        id: 'viral-thread-hook',
+        title: 'Viral Thread Hook Generator',
+        description: 'Generate scroll-stopping hooks for Twitter/X threads. Proven to increase CTR by 40%.',
         icon: 'Twitter',
         category: 'writing',
-        loves: 2847,
-        author: '@sarah_writes',
+        loves: 3421,
+        author: '@growth_guru',
         badge: 'viral',
+        created_at: new Date().toISOString(),
     },
     {
-        id: 'code-review-wizard',
-        title: 'Senior Dev Code Review',
-        description: 'Get code reviews like a 10x engineer. Finds bugs others miss.',
+        id: 'senior-code-review',
+        title: 'Senior Engineer Code Review',
+        description: 'Simulates a FAANG staff engineer reviewing your code. Finds optimization, security, and style issues.',
         icon: 'Code2',
         category: 'code',
-        loves: 1923,
-        author: '@dev_wizard',
+        loves: 2847,
+        author: '@tech_lead_sarah',
         badge: 'trending',
+        created_at: new Date().toISOString(),
     },
     {
-        id: 'midjourney-magic',
-        title: 'Midjourney Cinematic Prompts',
-        description: 'Creates movie-quality AI images. Used by 500+ designers.',
+        id: 'midjourney-cinematic',
+        title: 'Midjourney Cinematic v6',
+        description: 'Detailed lighting, camera angles, and composition parameters for photorealistic generation.',
         icon: 'Image',
         category: 'creative',
-        loves: 3421,
-        author: '@ai_artist',
+        loves: 1954,
+        author: '@prompt_artist_jay',
         badge: 'gem',
+        created_at: new Date().toISOString(),
     },
     {
-        id: 'linkedin-viral',
-        title: 'LinkedIn Thought Leadership',
-        description: 'The framework that got me 100K followers in 6 months.',
-        icon: 'Linkedin',
-        category: 'writing',
+        id: 'seo-blog-optimizer',
+        title: 'SEO Blog Post Optimizer',
+        description: 'Rewrites content to target keywords without sounding robotic. Includes meta descriptions.',
+        icon: 'FileText',
+        category: 'marketing',
         loves: 1654,
-        author: '@growth_hacker',
-        badge: 'trending',
+        author: '@content_king',
+        badge: 'featured',
+        created_at: new Date().toISOString(),
     },
     {
-        id: 'debugging-ai',
-        title: 'AI Debugging Assistant',
-        description: 'Finds bugs 10x faster than Stack Overflow. Mind-blowing results.',
+        id: 'react-component-gen',
+        title: 'Modern React Component Gen',
+        description: 'Generates Tailwind + Shadcn/UI components with proper TypeScript typing and accessibility.',
+        icon: 'Layout',
+        category: 'code',
+        loves: 1203,
+        author: '@frontend_wizard',
+        badge: 'trending',
+        created_at: new Date().toISOString(),
+    },
+    {
+        id: 'cold-email-sales',
+        title: 'B2B Cold Email Architect',
+        description: 'Creates personalized 3-step email sequences based on prospect value proposition.',
+        icon: 'Mail',
+        category: 'business',
+        loves: 982,
+        author: '@sales_closer',
+        badge: 'featured',
+        created_at: new Date().toISOString(),
+    },
+    {
+        id: 'regex-explained',
+        title: 'Regex Explainer & Fixer',
+        description: 'Paste your broken regex and get a fix + plain English explanation.',
         icon: 'Bug',
         category: 'code',
-        loves: 2103,
-        author: '@code_ninja',
+        loves: 876,
+        author: '@regex_god',
         badge: 'gem',
+        created_at: new Date().toISOString(),
     },
 ];
 
 const Discover = () => {
     const navigate = useNavigate();
+    const [communityPrompts, setCommunityPrompts] = useState<CommunityPrompt[]>(fallbackPrompts);
     const [lovedPrompts, setLovedPrompts] = useState<Set<string>>(new Set());
+    const [loading, setLoading] = useState(true);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filterCategory, setFilterCategory] = useState('all');
+
+    useEffect(() => {
+        const fetchPrompts = async () => {
+            if (!supabase) {
+                console.log('Supabase not configured, using fallback data');
+                setLoading(false);
+                return;
+            }
+
+            try {
+                const { data, error } = await supabase
+                    .from('community_prompts')
+                    .select('*')
+                    .order('loves', { ascending: false });
+
+                if (error) throw error;
+
+                if (data && data.length > 0) {
+                    setCommunityPrompts(data);
+                }
+            } catch (error) {
+                console.error('Error fetching prompts:', error);
+                // Fallback to mock data on error
+            } finally {
+                setLoading(false);
+            }
+        };
+
+        fetchPrompts();
+    }, []);
 
     const handleLove = (id: string) => {
         setLovedPrompts(prev => {
@@ -77,21 +144,36 @@ const Discover = () => {
         });
     };
 
-    const getBadgeInfo = (badge: string) => {
+    const getBadgeInfo = (badge: string | null | undefined) => {
         switch (badge) {
             case 'viral':
-                return { icon: Flame, label: '🔥 Viral', color: 'bg-orange-500/10 text-orange-700 dark:text-orange-400 border-orange-500/20' };
+                return { icon: Fire, label: 'Viral', color: 'bg-orange-500/10 text-orange-700 dark:text-orange-400 border-orange-500/20' };
             case 'trending':
-                return { icon: TrendingUp, label: '📈 Trending', color: 'bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20' };
+                return { icon: TrendUp, label: 'Trending', color: 'bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20' };
             case 'gem':
-                return { icon: Gem, label: '💎 Hidden Gem', color: 'bg-purple-500/10 text-purple-700 dark:text-purple-400 border-purple-500/20' };
+                return { icon: Diamond, label: 'Hidden Gem', color: 'bg-purple-500/10 text-purple-700 dark:text-purple-400 border-purple-500/20' };
             default:
                 return { icon: Star, label: 'Featured', color: 'bg-yellow-500/10 text-yellow-700 dark:text-yellow-400 border-yellow-500/20' };
         }
     };
 
+    // Filter prompts based on search and category
+    const filteredPrompts = communityPrompts.filter(prompt => {
+        const matchesSearch = searchQuery === '' ||
+            prompt.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            prompt.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            prompt.author.toLowerCase().includes(searchQuery.toLowerCase());
+
+        const matchesCategory = filterCategory === 'all' || prompt.category === filterCategory;
+
+        return matchesSearch && matchesCategory;
+    });
+
     return (
-        <div className="min-h-screen bg-background">
+        <motion.div
+            className="min-h-screen bg-background"
+            {...pageTransitionConfig}
+        >
             <EnterpriseHeader />
 
             <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 max-w-6xl">
@@ -122,87 +204,136 @@ const Discover = () => {
                         </Card>
                         <Card className="p-4">
                             <div className="flex items-center gap-2 mb-1">
-                                <Flame className="w-4 h-4 text-orange-500" />
+                                <Fire className="w-4 h-4 text-orange-500" />
                                 <span className="text-sm text-muted-foreground">Prompts</span>
                             </div>
                             <div className="text-2xl font-bold">{communityPrompts.length}</div>
                         </Card>
                         <Card className="p-4">
                             <div className="flex items-center gap-2 mb-1">
-                                <TrendingUp className="w-4 h-4 text-green-500" />
+                                <TrendUp className="w-4 h-4 text-green-500" />
                                 <span className="text-sm text-muted-foreground">This Week</span>
                             </div>
                             <div className="text-2xl font-bold">+127</div>
                         </Card>
                     </div>
+
+                    {/* Search and Filter */}
+                    <div className="mb-6 space-y-4">
+                        <div className="flex flex-col sm:flex-row gap-3">
+                            {/* Search Input */}
+                            <div className="flex-1">
+                                <Input
+                                    placeholder="Search prompts by title, description, or author..."
+                                    value={searchQuery}
+                                    onChange={(e) => setSearchQuery(e.target.value)}
+                                    className="w-full"
+                                />
+                            </div>
+
+                            {/* Category Filter */}
+                            <Select value={filterCategory} onValueChange={setFilterCategory}>
+                                <SelectTrigger className="w-full sm:w-[180px]">
+                                    <SelectValue placeholder="All Categories" />
+                                </SelectTrigger>
+                                <SelectContent>
+                                    <SelectItem value="all">All Categories</SelectItem>
+                                    {categories.map(cat => (
+                                        <SelectItem key={cat.id} value={cat.id}>{cat.title}</SelectItem>
+                                    ))}
+                                </SelectContent>
+                            </Select>
+                        </div>
+                    </div>
                 </div>
 
                 {/* Prompts Grid */}
                 <div className="space-y-4">
+                    {loading && (
+                        <motion.div className="grid gap-4" {...skeletonPulse}>
+                            {[...Array(5)].map((_, i) => (
+                                <Card key={i} className="p-5 h-32 bg-muted/50 animate-pulse" />
+                            ))}
+                        </motion.div>
+                    )}
                     <div className="flex items-center justify-between">
                         <h2 className="text-lg font-semibold">Most Loved</h2>
-                        <Badge variant="secondary">{communityPrompts.length} prompts</Badge>
+                        <Badge variant="secondary">{filteredPrompts.length} prompts</Badge>
                     </div>
 
-                    <div className="grid gap-4">
-                        {communityPrompts.map((prompt) => {
-                            const badgeInfo = getBadgeInfo(prompt.badge);
-                            const BadgeIcon = badgeInfo.icon;
-                            const isLoved = lovedPrompts.has(prompt.id);
+                    {!loading && (
+                        <motion.div
+                            className="grid gap-4"
+                            variants={staggerContainer}
+                            initial="initial"
+                            animate="animate"
+                        >
+                            {filteredPrompts.map((prompt) => {
+                                const badgeInfo = getBadgeInfo(prompt.badge);
+                                const BadgeIcon = badgeInfo.icon;
+                                const isLoved = lovedPrompts.has(prompt.id);
 
-                            return (
-                                <Card
-                                    key={prompt.id}
-                                    className="p-5 hover:border-primary/50 transition-colors group cursor-pointer"
-                                    onClick={() => navigate(`/customize/${prompt.id}`)}
-                                >
-                                    <div className="flex items-start justify-between gap-4">
-                                        <div className="flex items-start gap-4 flex-1">
-                                            <DynamicIcon
-                                                name={prompt.icon}
-                                                className="w-8 h-8 text-primary flex-shrink-0 mt-1"
-                                            />
-                                            <div className="flex-1 min-w-0">
-                                                <div className="flex items-center gap-2 mb-1 flex-wrap">
-                                                    <h3 className="font-semibold text-lg group-hover:text-primary transition-colors">
-                                                        {prompt.title}
-                                                    </h3>
-                                                    <Badge variant="outline" className={badgeInfo.color}>
-                                                        {badgeInfo.label}
-                                                    </Badge>
+                                return (
+                                    <motion.div
+                                        key={prompt.id}
+                                        variants={staggerItem}
+                                    >
+                                        <Card
+                                            className="p-5 hover:border-primary/50 transition-all duration-300 group cursor-pointer hover:shadow-lg hover:-translate-y-1"
+                                            onClick={() => navigate(`/prompt/${prompt.id}`)}
+                                        >
+                                            <div className="flex items-start justify-between gap-4">
+                                                <div className="flex items-start gap-4 flex-1">
+                                                    <DynamicIcon
+                                                        name={prompt.icon}
+                                                        className="w-8 h-8 text-primary flex-shrink-0 mt-1"
+                                                    />
+                                                    <div className="flex-1 min-w-0">
+                                                        <div className="flex items-center gap-2 mb-1 flex-wrap">
+                                                            <h3 className="font-semibold text-lg group-hover:text-primary transition-colors">
+                                                                {prompt.title}
+                                                            </h3>
+                                                            <Badge variant="outline" className={badgeInfo.color}>
+                                                                {badgeInfo.label}
+                                                            </Badge>
+                                                        </div>
+                                                        <p className="text-muted-foreground text-sm mb-3">
+                                                            {prompt.description}
+                                                        </p>
+                                                        <div className="flex items-center gap-4 text-xs text-muted-foreground">
+                                                            <button
+                                                                onClick={(e) => {
+                                                                    e.stopPropagation();
+                                                                    handleLove(prompt.id);
+                                                                }}
+                                                                className="flex items-center gap-1 hover:text-red-500 transition-colors"
+                                                            >
+                                                                <Heart
+                                                                    className={`w-3.5 h-3.5 transition-all ${isLoved ? 'fill-red-500 text-red-500' : ''}`}
+                                                                />
+                                                                {prompt.loves + (isLoved ? 1 : 0)}
+                                                            </button>
+                                                            <span>•</span>
+                                                            <span>by {prompt.author}</span>
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <p className="text-muted-foreground text-sm mb-3">
-                                                    {prompt.description}
-                                                </p>
-                                                <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                                                    <button
-                                                        onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            handleLove(prompt.id);
-                                                        }}
-                                                        className="flex items-center gap-1 hover:text-red-500 transition-colors"
-                                                    >
-                                                        <Heart
-                                                            className={`w-4 h-4 transition-all ${isLoved ? 'fill-red-500 text-red-500' : ''}`}
-                                                        />
-                                                        {prompt.loves + (isLoved ? 1 : 0)}
-                                                    </button>
-                                                    <span>•</span>
-                                                    <span>by {prompt.author}</span>
-                                                </div>
+                                                <Button variant="outline" size="sm" onClick={(e) => {
+                                                    e.stopPropagation();
+                                                    navigate(`/prompt/${prompt.id}`);
+                                                }}>
+                                                    View Prompt
+                                                </Button>
                                             </div>
-                                        </div>
-                                        <Button variant="outline" size="sm" onClick={(e) => e.stopPropagation()}>
-                                            Try It
-                                        </Button>
-                                    </div>
-                                </Card>
-                            );
-                        })}
-                    </div>
+                                        </Card>
+                                    </motion.div>
+                                );
+                            })}
+                        </motion.div>
+                    )}
                 </div>
             </div>
-        </div>
+        </motion.div>
     );
 };
 

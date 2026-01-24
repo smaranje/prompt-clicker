@@ -1,17 +1,19 @@
-import * as LucideIcons from 'lucide-react';
-import { LucideProps } from 'lucide-react';
+import * as PhosphorIcons from 'phosphor-react';
 
-interface DynamicIconProps extends Omit<LucideProps, 'ref'> {
+interface DynamicIconProps {
     name: string;
+    className?: string;
+    size?: number;
+    weight?: 'thin' | 'light' | 'regular' | 'bold' | 'fill' | 'duotone';
 }
 
-export const DynamicIcon = ({ name, ...props }: DynamicIconProps) => {
-    const IconComponent = (LucideIcons as any)[name];
+export const DynamicIcon = ({ name, className, size = 24, weight = 'regular' }: DynamicIconProps) => {
+    const IconComponent = (PhosphorIcons as any)[name];
 
     if (!IconComponent) {
-        // Fallback to HelpCircle if icon not found
-        return <LucideIcons.HelpCircle {...props} />;
+        // Fallback to Question icon if not found
+        return <PhosphorIcons.Question className={className} size={size} weight={weight} />;
     }
 
-    return <IconComponent {...props} />;
+    return <IconComponent className={className} size={size} weight={weight} />;
 };

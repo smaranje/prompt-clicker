@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Trash2, ExternalLink, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { ThemeToggle } from '@/components/ThemeToggle';
+import { EnterpriseHeader } from '@/components/EnterpriseHeader';
 
 import { getFavorites, removeFavorite, SavedPrompt } from '@/lib/favorites';
 import { useToast } from '@/hooks/use-toast';
@@ -50,27 +50,14 @@ const Favorites = () => {
   return (
     <div className="min-h-screen bg-background pb-8">
       {/* Header */}
-      <header className="border-b bg-card/50 backdrop-blur-sm sticky top-0 z-10">
-        <div className="container mx-auto px-4 sm:px-6 h-14 sm:h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3 sm:gap-4 min-w-0">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={() => navigate('/')}
-              className="flex-shrink-0 w-9 h-9 sm:w-10 sm:h-10"
-            >
-              <ArrowLeft className="w-4 h-4 sm:w-5 sm:h-5" />
-            </Button>
-            <div className="min-w-0">
-              <h1 className="text-base sm:text-lg md:text-xl font-semibold truncate">Saved Prompts</h1>
-              <p className="text-xs sm:text-sm text-muted-foreground">
-                {favorites.length} {favorites.length === 1 ? 'prompt' : 'prompts'}
-              </p>
-            </div>
-          </div>
-          <ThemeToggle />
-        </div>
-      </header>
+      <EnterpriseHeader />
+
+      <div className="container mx-auto px-4 sm:px-6 py-6 border-b border-border/40">
+        <h1 className="text-2xl sm:text-3xl font-bold">Saved Prompts</h1>
+        <p className="text-muted-foreground mt-1">
+          {favorites.length} {favorites.length === 1 ? 'prompt' : 'prompts'} saved for later
+        </p>
+      </div>
 
       {/* Content */}
       <main className="container mx-auto px-4 sm:px-6 py-6 sm:py-8 max-w-4xl">

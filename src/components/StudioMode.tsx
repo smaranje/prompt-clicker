@@ -82,7 +82,7 @@ export const StudioMode = () => {
           placeholder={`Search ${totalTemplates} templates...`}
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="pl-10 pr-10 h-11 text-sm bg-muted/30 border-muted-foreground/20 focus:border-primary focus:bg-background transition-colors"
+          className="pl-12 pr-10 h-11 text-sm bg-muted/30 border-muted-foreground/20 focus:border-primary focus:bg-background transition-colors"
         />
         {searchQuery && (
           <Button
@@ -141,7 +141,9 @@ export const StudioMode = () => {
       {/* No Results - Improved Empty State */}
       {isSearching && searchResults.length === 0 && (
         <div className="text-center py-12 mb-6 animate-in fade-in-0 duration-200">
-          <div className="text-4xl mb-3">🔍</div>
+          <div className="flex justify-center mb-3">
+            <Search className="w-12 h-12 text-muted-foreground/30" />
+          </div>
           <p className="text-sm text-muted-foreground mb-1">No templates found for "{searchQuery}"</p>
           <p className="text-xs text-muted-foreground mb-4">Try a different search term</p>
           <Button variant="outline" size="sm" onClick={clearSearch}>

@@ -105,7 +105,7 @@ Email Type Strategies:
 - Thank You: Be specific about what you're thanking them for
 - Cold Outreach: Personalized observation about them/their company
 
-❌ Avoid: "I hope this email finds you well" "I wanted to reach out"
+[AVOID] Avoid: "I hope this email finds you well" "I wanted to reach out"
 
 3. BODY (2-4 paragraphs for {length})
 Brief: 3-4 sentences, single main point
@@ -134,9 +134,9 @@ Tone Customization for {tone}:
 - Follow-up: Gentle nudge + value-add
 
 Make it easy to respond:
-✓ Single, clear action
-✓ Provide specific options/times
-✓ Remove friction (no multi-step process)
+[TIP] Single, clear action
+[TIP] Provide specific options/times
+[TIP] Remove friction (no multi-step process)
 
 5. CLOSING
 Match tone:
@@ -151,12 +151,12 @@ RECIPIENT CUSTOMIZATION:
 - Strangers: Build credibility quickly, personalize
 
 BEST PRACTICES:
-✓ Front-load important information
-✓ Use active voice ("I will" not "it will be")
-✓ Avoid jargon unless industry-specific
-✓ Proofread for typos (undermines credibility)
-✓ Preview on mobile (60% of emails opened on mobile)
-✓ If over 200 words, consider if a call would be better
+[TIP] Front-load important information
+[TIP] Use active voice ("I will" not "it will be")
+[TIP] Avoid jargon unless industry-specific
+[TIP] Proofread for typos (undermines credibility)
+[TIP] Preview on mobile (60% of emails opened on mobile)
+[TIP] If over 200 words, consider if a call would be better
 
 Write the complete email now with subject line options.`
   },
@@ -246,7 +246,7 @@ Post Structure (Algorithm-Optimized):
    - Personal story: "I made a $50K mistake. Here's what I learned:"
    - Contrarian take: "Unpopular opinion: [Common belief] is wrong"
    
-   ❌ Don't use: "I'm excited to announce..." "I'm happy to share..." "Just launched..."
+   [AVOID] Don't use: "I'm excited to announce..." "I'm happy to share..." "Just launched..."
 
 2. CONTEXT (Lines 2-4)
    - Set up the problem/situation
@@ -284,11 +284,11 @@ Audience Customization for {target_audience}:
 - Professionals: Clear language, practical benefits
 
 Final check:
-✓ Hook stops the scroll?
-✓ Post delivers value (not just announcement)?
-✓ CTA encourages {goal}?
-✓ Formatted for readability?
-✓ Optimized for {platform} algorithm?
+[TIP] Hook stops the scroll?
+[TIP] Post delivers value (not just announcement)?
+[TIP] CTA encourages {goal}?
+[TIP] Formatted for readability?
+[TIP] Optimized for {platform} algorithm?
 
 Write the post now.`
   },
@@ -379,7 +379,7 @@ Pick the strongest and most clickable option.
 - Promise: Preview what they'll learn
 - Proof: Brief credibility indicator (research, experience, results)
 
-❌ Don't use: "In this article, we will..." "Have you ever wondered..."
+[AVOID] Don't use: "In this article, we will..." "Have you ever wondered..."
 
 ## 3. BODY (Main Content)
 Structure based on {angle}:
@@ -423,11 +423,11 @@ Engagement Elements:
 - Vary sentence length for rhythm
 
 Final Quality Check:
-✓ Does the intro hook readers in 30 seconds?
-✓ Is every section valuable and actionable?
-✓ Could someone implement this TODAY?
-✓ Is it scannable with subheadings and formatting?
-✓ Does it deliver on the promise in the headline?
+[TIP] Does the intro hook readers in 30 seconds?
+[TIP] Is every section valuable and actionable?
+[TIP] Could someone implement this TODAY?
+[TIP] Is it scannable with subheadings and formatting?
+[TIP] Does it deliver on the promise in the headline?
 
 Write the complete article now.`
   },
@@ -490,7 +490,7 @@ Add valuable depth:
 - Explain "why" behind key points
 - Include concrete scenarios or case studies
 
-❌ Don't add fluff or repeat the same idea
+[AVOID] Don't add fluff or repeat the same idea
 
 ## MORE PROFESSIONAL
 - Replace casual contractions: "can't" → "cannot"
@@ -519,13 +519,13 @@ Professional: "We request that you provide your feedback"
 Casual: "Let us know what you think"
 
 UNIVERSAL IMPROVEMENTS:
-✓ Check for typos and grammar errors
-✓ Ensure consistent tense
-✓ Verify logical flow
-✓ Remove clichés ("think outside the box", "game changer")
-✓ Improve weak verbs: "utilize" → "use", "facilitate" → "help"
-✓ Vary sentence length for rhythm
-✓ Front-load key information
+[TIP] Check for typos and grammar errors
+[TIP] Ensure consistent tense
+[TIP] Verify logical flow
+[TIP] Remove clichés ("think outside the box", "game changer")
+[TIP] Improve weak verbs: "utilize" → "use", "facilitate" → "help"
+[TIP] Vary sentence length for rhythm
+[TIP] Front-load key information
 
 READABILITY CHECKS:
 - Could a busy executive scan this in 30 seconds?
@@ -582,8 +582,8 @@ CONVERSION-OPTIMIZED PRODUCT DESCRIPTION FRAMEWORK:
 
 ## 1. HEADLINE (5-10 words)
 Don't just name the product. Sell the transformation.
-❌ "Blue Wireless Headphones"
-✓ "Block Out Distractions, Amplify Your Focus"
+[AVOID] "Blue Wireless Headphones"
+[TIP] "Block Out Distractions, Amplify Your Focus"
 
 Formula: [Desired Outcome] + [Without Common Objection]
 
@@ -603,11 +603,11 @@ Lead with the problem or desire, NOT the product.
 Transform each feature into a customer benefit using "so you can" framework:
 
 Feature → Benefit transformation:
-❌ "24-hour battery life"
-✓ "24-hour battery life — so you can power through your workday and commute without ever reaching for a charger"
+[AVOID] "24-hour battery life"
+[TIP] "24-hour battery life — so you can power through your workday and commute without ever reaching for a charger"
 
-❌ "Waterproof design"  
-✓ "Waterproof to 50 meters — so you can take calls in the rain or track your swim without worry"
+[AVOID] "Waterproof design"  
+[TIP] "Waterproof to 50 meters — so you can take calls in the rain or track your swim without worry"
 
 Structure each bullet:
 [Feature specification] — so you can [specific outcome/benefit]
@@ -670,17 +670,17 @@ CASUAL TONE ELEMENTS:
 - Conversational rhythm
 
 WRITING RULES:
-✓ Show, don't tell: "whisper-quiet motor" not "very quiet"
-✓ Specific numbers: "charges in 90 minutes" not "fast charging"
-✓ Active voice: "Delivers crystal-clear sound" not "Sound is delivered"
-✓ Scannable format: Short paragraphs, bullets, bold key phrases
-✓ Mobile-optimized: Front-load key benefits (mobile users skim)
+[TIP] Show, don't tell: "whisper-quiet motor" not "very quiet"
+[TIP] Specific numbers: "charges in 90 minutes" not "fast charging"
+[TIP] Active voice: "Delivers crystal-clear sound" not "Sound is delivered"
+[TIP] Scannable format: Short paragraphs, bullets, bold key phrases
+[TIP] Mobile-optimized: Front-load key benefits (mobile users skim)
 
 AVOID:
-❌ Generic claims: "high quality", "best in class" (prove it instead)
-❌ Jargon without context
-❌ Feature lists without benefits
-❌ All caps or excessive punctuation!!!
+[AVOID] Generic claims: "high quality", "best in class" (prove it instead)
+[AVOID] Jargon without context
+[AVOID] Feature lists without benefits
+[AVOID] All caps or excessive punctuation!!!
 
 Write the complete product description now, including headline, body, and CTA.`
   },
@@ -812,33 +812,33 @@ Time Allocation Formula:
 ## MEETING BEST PRACTICES
 
 **Before the meeting:**
-✓ Send agenda 24 hours in advance
-✓ Include any pre-read materials
-✓ State if attendees need to prepare anything
-✓ Invite only essential people
+[TIP] Send agenda 24 hours in advance
+[TIP] Include any pre-read materials
+[TIP] State if attendees need to prepare anything
+[TIP] Invite only essential people
 
 **During the meeting:**
-✓ Start on time (even if people are missing)
-✓ Assign a note-taker
-✓ Park off-topic items (keep a list to review at end)
-✓ Use a timer for each segment
-✓ Make decisions, don't just discuss
-✓ End on time (respect calendars)
+[TIP] Start on time (even if people are missing)
+[TIP] Assign a note-taker
+[TIP] Park off-topic items (keep a list to review at end)
+[TIP] Use a timer for each segment
+[TIP] Make decisions, don't just discuss
+[TIP] End on time (respect calendars)
 
 **After the meeting:**
-✓ Share notes within 24 hours
-✓ Include action items with owners & deadlines
-✓ Send to attendees + relevant stakeholders
-✓ Track action item completion
+[TIP] Share notes within 24 hours
+[TIP] Include action items with owners & deadlines
+[TIP] Send to attendees + relevant stakeholders
+[TIP] Track action item completion
 
 ## AGENDA QUALITY CHECKLIST
-✓ Is the purpose crystal clear?
-✓ Could we cancel this and just send an email? (If yes, do that)
-✓ Are time blocks realistic?
-✓ Does every topic have a clear goal/output?
-✓ Are the right people invited (not too many)?
-✓ Is there time for questions/discussion?
-✓ Does it end with actionable next steps?
+[TIP] Is the purpose crystal clear?
+[TIP] Could we cancel this and just send an email? (If yes, do that)
+[TIP] Are time blocks realistic?
+[TIP] Does every topic have a clear goal/output?
+[TIP] Are the right people invited (not too many)?
+[TIP] Is there time for questions/discussion?
+[TIP] Does it end with actionable next steps?
 
 Create the complete agenda now with specific time allocations and clear objectives.`
   },
@@ -846,7 +846,7 @@ Create the complete agenda now with specific time allocations and clear objectiv
     id: 'business_report',
     category: 'business',
     title: 'Generate Business Report',
-    icon: '📊',
+    icon: 'BarChart2',
     description: 'Create professional business reports',
     fields: [
       {
@@ -909,8 +909,8 @@ Keep brief—readers want findings, not lengthy setup.
 Structure findings as: **Insight → Evidence → Implication**
 
 Use data-driven headings that tell the story:
-❌ "Sales Data"
-✓ "Sales Declined 15% in Q3, Driven by Enterprise Churn"
+[AVOID] "Sales Data"
+[TIP] "Sales Declined 15% in Q3, Driven by Enterprise Churn"
 
 For each major finding:
 
@@ -1045,13 +1045,13 @@ Include:
 Plus appendix if needed (doesn't count toward page limit).
 
 ## QUALITY CHECKLIST
-✓ Can a busy exec understand the key message in 2 minutes?
-✓ Is every finding supported by data?
-✓ Are recommendations specific and actionable?
-✓ Is the business impact clear for each finding?
-✓ Have you answered "so what?" throughout?
-✓ Is it free of jargon and acronyms (or are they defined)?
-✓ Could someone act on this report immediately?
+[TIP] Can a busy exec understand the key message in 2 minutes?
+[TIP] Is every finding supported by data?
+[TIP] Are recommendations specific and actionable?
+[TIP] Is the business impact clear for each finding?
+[TIP] Have you answered "so what?" throughout?
+[TIP] Is it free of jargon and acronyms (or are they defined)?
+[TIP] Could someone act on this report immediately?
 
 Generate the complete {report_type} report now, following this framework.`
   },
@@ -1059,7 +1059,7 @@ Generate the complete {report_type} report now, following this framework.`
     id: 'job_description',
     category: 'business',
     title: 'Write Job Description',
-    icon: '💼',
+    icon: 'Briefcase',
     description: 'Draft clear job postings',
     fields: [
       {
@@ -1113,10 +1113,10 @@ Make candidates want to keep reading.
 What will they ACTUALLY do day-to-day?
 
 Format: Action verb + outcome + context
-✓ "Ship user-facing features that directly impact our 4.8-star app rating"
-✓ "Lead technical architecture decisions for our payments infrastructure"
-❌ "Develop software" (too vague)
-❌ "Collaborate with team members" (assumed)
+[TIP] "Ship user-facing features that directly impact our 4.8-star app rating"
+[TIP] "Lead technical architecture decisions for our payments infrastructure"
+[AVOID] "Develop software" (too vague)
+[AVOID] "Collaborate with team members" (assumed)
 
 Experience Level Customization:
 - Entry: Focus on learning opportunities, mentorship, defined scope
@@ -1139,11 +1139,11 @@ Split into "Must Have" and "Nice to Have" — most companies only do "required."
 ### Must Have:
 Focus on {key_skills} but frame as outcomes, not years.
 
-❌ "5+ years of experience"  
-✓ "Shipped production features handling 100K+ daily users"
+[AVOID] "5+ years of experience"  
+[TIP] "Shipped production features handling 100K+ daily users"
 
-❌ "Expert in React"
-✓ "Built complex React applications with state management (Redux/Context)"
+[AVOID] "Expert in React"
+[TIP] "Built complex React applications with state management (Redux/Context)"
 
 Experience Level Guidelines:
 - Entry: 0-2 years, strong fundamentals, willingness to learn
@@ -1181,11 +1181,11 @@ Top talent has options. Why choose you?
 
 ### Benefits:
 Highlight what's unique or exceptional:
-✓ "Unlimited PTO (team average: 25 days/year)"
-✓ "Remote-first (work from anywhere)"
-✓ "$5K annual learning budget"
-❌ "Competitive salary" (meaningless)
-❌ "Health insurance" (expected)
+[TIP] "Unlimited PTO (team average: 25 days/year)"
+[TIP] "Remote-first (work from anywhere)"
+[TIP] "$5K annual learning budget"
+[AVOID] "Competitive salary" (meaningless)
+[AVOID] "Health insurance" (expected)
 
 ### Culture & Work Environment:
 - Team size & structure
@@ -1200,8 +1200,8 @@ Highlight what's unique or exceptional:
 - Traction (users, revenue, growth)
 - Mission or differentiator
 
-❌ Long company history
-❌ Buzzword bingo ("synergistic", "rockstar")
+[AVOID] Long company history
+[AVOID] Buzzword bingo ("synergistic", "rockstar")
 
 ## INTERVIEW PROCESS
 Transparency builds trust.
@@ -1223,11 +1223,11 @@ Make it easy to apply. Reduce friction.
 Asking for cover letters reduces applications by 40%.
 
 ## INCLUSIVE LANGUAGE CHECKLIST
-✓ Use "they" pronouns in examples
-✓ Avoid gendered language ("ninja", "rockstar")
-✓ Don't require unnecessary credentials (degree requirements cut qualified candidates)
-✓ Research shows women apply when 100% qualified, men at 60% - explicitly encourage diverse candidates
-✓ Include: "We value diverse perspectives. If you don't meet 100% of qualifications but are excited about the role, apply anyway."
+[TIP] Use "they" pronouns in examples
+[TIP] Avoid gendered language ("ninja", "rockstar")
+[TIP] Don't require unnecessary credentials (degree requirements cut qualified candidates)
+[TIP] Research shows women apply when 100% qualified, men at 60% - explicitly encourage diverse candidates
+[TIP] Include: "We value diverse perspectives. If you don't meet 100% of qualifications but are excited about the role, apply anyway."
 
 ## SEO & JOB BOARD OPTIMIZATION
 - Job title matches what candidates search (not internal titles)
@@ -1236,20 +1236,20 @@ Asking for cover letters reduces applications by 40%.
 - Length: 500-800 words (too short = low quality, too long = low completion)
 
 ## RED FLAGS TO AVOID
-❌ "Rockstar/Ninja/Guru" (dated, cringe)
-❌ "Wear many hats" (code for understaffed)
-❌ "Fast-paced environment" (code for chaos)
-❌ "Family" culture (code for boundary issues)
-❌ Salary "based on experience" (just share the range)
-❌ Excessive requirements (PhD for junior role)
+[AVOID] "Rockstar/Ninja/Guru" (dated, cringe)
+[AVOID] "Wear many hats" (code for understaffed)
+[AVOID] "Fast-paced environment" (code for chaos)
+[AVOID] "Family" culture (code for boundary issues)
+[AVOID] Salary "based on experience" (just share the range)
+[AVOID] Excessive requirements (PhD for junior role)
 
 ## QUALITY CHECKLIST
-✓ Would I want to apply to this role?
-✓ Is the day-to-day clear?
-✓ Are requirements realistic?
-✓ Does it respect candidates' time?
-✓ Is it free of jargon and buzzwords?
-✓ Would underrepresented candidates feel welcome?
+[TIP] Would I want to apply to this role?
+[TIP] Is the day-to-day clear?
+[TIP] Are requirements realistic?
+[TIP] Does it respect candidates' time?
+[TIP] Is it free of jargon and buzzwords?
+[TIP] Would underrepresented candidates feel welcome?
 
 Generate the complete job description now.`
   },
@@ -1305,8 +1305,8 @@ Time allocation rule: 1-2 minutes per slide for {duration} minutes = {duration}/
 - Date
 
 **Opening line** (while this slide shows):
-❌ "Thanks for having me today..."
-✓ Start with: A question, startling statistic, or bold statement
+[AVOID] "Thanks for having me today..."
+[TIP] Start with: A question, startling statistic, or bold statement
 
 ### SLIDE 2: HOOK (1-2 minutes)  
 **Goal:** Grab attention and establish relevance
@@ -1333,8 +1333,8 @@ Audience-Specific Hooks for {audience}:
 **Content:** 3-5 main points you'll cover
 
 Format as outcomes:
-❌ "I'll talk about X, Y, Z"
-✓ "You'll learn how to: [X], [Y], [Z]"
+[AVOID] "I'll talk about X, Y, Z"
+[TIP] "You'll learn how to: [X], [Y], [Z]"
 
 Make it benefits-driven.
 
@@ -1382,8 +1382,8 @@ For each main point:
 Format: "Remember: [takeaway]"
 
 Make them actionable:
-❌ "{topic} is important"
-✓ "Start using [specific technique] this week"
+[AVOID] "{topic} is important"
+[TIP] "Start using [specific technique] this week"
 
 ### SLIDE [X-1]: CALL-TO-ACTION (1 minute)
 **Goal:** What should {audience} DO now?
@@ -1398,10 +1398,10 @@ Examples:
 - "Join our community at [link]"
 
 Make it:
-✓ Specific
-✓ Achievable  
-✓ Low friction
-✓ Time-bound if possible
+[TIP] Specific
+[TIP] Achievable  
+[TIP] Low friction
+[TIP] Time-bound if possible
 
 ### SLIDE [X]: QUESTIONS / THANK YOU (remaining time)
 **Visual:** Contact info, QR code to resources
@@ -1420,8 +1420,8 @@ Make it:
 ### Opening (First 30 seconds - CRITICAL)
 Don't waste time thanking everyone and apologizing.
 
-❌ "Thanks for coming... I know you're all busy... I'm a bit nervous..."
-✓ [Hook] → [Why this matters to you] → [What you'll learn]
+[AVOID] "Thanks for coming... I know you're all busy... I'm a bit nervous..."
+[TIP] [Hook] → [Why this matters to you] → [What you'll learn]
 
 ### Body Language & Delivery:
 - Stand, don't sit (if possible - increases energy)
@@ -1469,14 +1469,14 @@ Stories make facts memorable.
 ## PRESENTATION CHECKLIST
 
 Before you present:
-✓ Practiced out loud 3+ times?
-✓ Fits within time limit (with 20% buffer)?
-✓ Slides readable from back of room?
-✓ Tested tech (screen sharing, clicker, etc.)?
-✓ Have backup plan (PDF if slides fail)?
-✓ Memorized opening & closing?
-✓ Prepared for likely questions?
-✓ Removed filler words ("um", "like", "you know")?
+[TIP] Practiced out loud 3+ times?
+[TIP] Fits within time limit (with 20% buffer)?
+[TIP] Slides readable from back of room?
+[TIP] Tested tech (screen sharing, clicker, etc.)?
+[TIP] Have backup plan (PDF if slides fail)?
+[TIP] Memorized opening & closing?
+[TIP] Prepared for likely questions?
+[TIP] Removed filler words ("um", "like", "you know")?
 
 ## SLIDE DESIGN PRINCIPLES
 
@@ -1583,15 +1583,15 @@ Extract the core argument/thesis:
 - What should readers remember in 6 months?
 
 Prioritize:
-✓ Original insights (not common knowledge)
-✓ Counterintuitive findings
-✓ Data that changes understanding
-✓ Clear conclusions or recommendations
+[TIP] Original insights (not common knowledge)
+[TIP] Counterintuitive findings
+[TIP] Data that changes understanding
+[TIP] Clear conclusions or recommendations
 
 Ignore:
-❌ Background information everyone knows
-❌ Tangential examples
-❌ Repetitive supporting points
+[AVOID] Background information everyone knows
+[AVOID] Tangential examples
+[AVOID] Repetitive supporting points
 
 ### Action Items
 Extract what needs to be done:
@@ -1640,43 +1640,43 @@ Balance:
 ## SUMMARIZATION BEST PRACTICES
 
 **Accuracy:**
-✓ Preserve the original meaning (don't infer or add opinion)
-✓ Use author's language for key terms
-✓ Distinguish between facts, claims, and opinions
-✓ Note if evidence is strong vs. speculative
-✓ Include important caveats or limitations
+[TIP] Preserve the original meaning (don't infer or add opinion)
+[TIP] Use author's language for key terms
+[TIP] Distinguish between facts, claims, and opinions
+[TIP] Note if evidence is strong vs. speculative
+[TIP] Include important caveats or limitations
 
 **Clarity:**
-✓ Use simpler words than the original (where possible)
-✓ Active voice: "The study shows" not "It was shown"
-✓ Short sentences (15-20 words average)
-✓ Define acronyms on first use
-✓ Remove jargon unless essential
+[TIP] Use simpler words than the original (where possible)
+[TIP] Active voice: "The study shows" not "It was shown"
+[TIP] Short sentences (15-20 words average)
+[TIP] Define acronyms on first use
+[TIP] Remove jargon unless essential
 
 **Usefulness:**
-✓ Front-load the most important information
-✓ Use specific numbers (not "a lot" or "many")
-✓ Include concrete examples if space allows
-✓ Make it scannable (bullets, short paragraphs)
-✓ End with clear takeaway or implication
+[TIP] Front-load the most important information
+[TIP] Use specific numbers (not "a lot" or "many")
+[TIP] Include concrete examples if space allows
+[TIP] Make it scannable (bullets, short paragraphs)
+[TIP] End with clear takeaway or implication
 
 **What to CUT:**
-❌ Anecdotes and stories (unless they're the main point)
-❌ Historical background (unless it's essential context)
-❌ Repetitive examples proving the same point
-❌ Detailed descriptions (keep only key details)
-❌ Author's credentials/bio
-❌ Acknowledgments and references
+[AVOID] Anecdotes and stories (unless they're the main point)
+[AVOID] Historical background (unless it's essential context)
+[AVOID] Repetitive examples proving the same point
+[AVOID] Detailed descriptions (keep only key details)
+[AVOID] Author's credentials/bio
+[AVOID] Acknowledgments and references
 
 ## QUALITY CHECKS
 
 Before finalizing:
-✓ Could someone skip the original and just read this?
-✓ Are the most important points in the first 2 sentences?
-✓ Would the author agree this captures their main message?
-✓ Is every sentence necessary?
-✓ Did you hit the {length} target?
-✓ Does it focus on {focus}?
+[TIP] Could someone skip the original and just read this?
+[TIP] Are the most important points in the first 2 sentences?
+[TIP] Would the author agree this captures their main message?
+[TIP] Is every sentence necessary?
+[TIP] Did you hit the {length} target?
+[TIP] Does it focus on {focus}?
 
 ## SPECIAL CASES
 
@@ -1827,10 +1827,10 @@ Example opening:
 ## ANALOGY BEST PRACTICES
 
 **What makes a great analogy:**
-✓ Uses something more familiar than the concept itself
-✓ Maps 1-to-1 to the key features
-✓ Reveals the "aha" moment
-✓ Works for your specific audience
+[TIP] Uses something more familiar than the concept itself
+[TIP] Maps 1-to-1 to the key features
+[TIP] Reveals the "aha" moment
+[TIP] Works for your specific audience
 
 **Analogy frameworks:**
 - **Process analogy:** "Like how a [familiar process] works..."
@@ -1839,11 +1839,11 @@ Example opening:
 - **Scaling analogy:** "Imagine [familiar thing], now make it bigger/smaller/faster..."
 
 **Strong vs weak analogies:**
-✓ "Blockchain is like a public spreadsheet anyone can read, but no one can erase or change past entries"
-❌ "Blockchain is like a chain made of blocks" (circular, unhelpful)
+[TIP] "Blockchain is like a public spreadsheet anyone can read, but no one can erase or change past entries"
+[AVOID] "Blockchain is like a chain made of blocks" (circular, unhelpful)
 
-✓ "Compound interest is like a snowball rolling downhill — it starts small but picks up more snow (money) as it goes, getting bigger and bigger"
-❌ "Compound interest is when interest earns interest" (just restates definition)
+[TIP] "Compound interest is like a snowball rolling downhill — it starts small but picks up more snow (money) as it goes, getting bigger and bigger"
+[AVOID] "Compound interest is when interest earns interest" (just restates definition)
 
 ## STEP-BY-STEP BREAKDOWN
 
@@ -1863,7 +1863,7 @@ For each step:
 Use formatting to make it scannable:
 - → for cause/effect
 - ➊ ➋ ➌ for sequences
-- ✓ for positive examples
+- [TIP] for positive examples
 - ✗ for counterexamples
 
 ## HANDLING COMPLEXITY
@@ -1883,12 +1883,12 @@ Reader can stop at any layer and have learned something useful.
 
 ## AVOID COMMON TEACHING MISTAKES
 
-❌ **Curse of knowledge:** Don't assume they know what you know
-❌ **Definition dumping:** Don't just define technical terms with more technical terms
-❌ **Missing the "why":** Always explain why this matters
-❌ **Too abstract:** Ground everything in concrete examples
-❌ **Skipping steps:** Don't leave logical gaps
-❌ **Overwhelming:** Don't try to cover everything at once
+[AVOID] **Curse of knowledge:** Don't assume they know what you know
+[AVOID] **Definition dumping:** Don't just define technical terms with more technical terms
+[AVOID] **Missing the "why":** Always explain why this matters
+[AVOID] **Too abstract:** Ground everything in concrete examples
+[AVOID] **Skipping steps:** Don't leave logical gaps
+[AVOID] **Overwhelming:** Don't try to cover everything at once
 
 ## ENGAGEMENT TECHNIQUES
 
@@ -1910,14 +1910,14 @@ Reader can stop at any layer and have learned something useful.
 ## QUALITY CHECKLIST
 
 Test your explanation:
-✓ Could your target {audience} actually understand this?
-✓ Did you use concrete examples (not just abstract description)?
-✓ Did you explain WHY, not just WHAT?
-✓ Is there at least one memorable analogy?
-✓ Could they explain this to someone else after reading?
-✓ Did you avoid jargon (or define it immediately)?
-✓ Is it broken into digestible chunks?
-✓ Does the first sentence hook their interest?
+[TIP] Could your target {audience} actually understand this?
+[TIP] Did you use concrete examples (not just abstract description)?
+[TIP] Did you explain WHY, not just WHAT?
+[TIP] Is there at least one memorable analogy?
+[TIP] Could they explain this to someone else after reading?
+[TIP] Did you avoid jargon (or define it immediately)?
+[TIP] Is it broken into digestible chunks?
+[TIP] Does the first sentence hook their interest?
 
 Now explain {concept} for {audience} using this framework.`
   },
@@ -1925,7 +1925,7 @@ Now explain {concept} for {audience} using this framework.`
     id: 'study_guide',
     category: 'learning',
     title: 'Create Study Guide',
-    icon: '📚',
+    icon: 'BookOpen',
     description: 'Generate comprehensive study materials',
     fields: [
       {
@@ -1957,11 +1957,11 @@ STUDY GUIDE FRAMEWORK (Evidence-Based Learning):
 ## LEARNING SCIENCE PRINCIPLES
 
 Your study guide should:
-✓ **Active recall:** Test knowledge, don't just re-read
-✓ **Spaced repetition:** Mark what to review when
-✓ **Elaboration:** Connect to what they already know
-✓ **Interleaving:** Mix different types of content
-✓ **Concrete examples:** Abstract → Specific
+[TIP] **Active recall:** Test knowledge, don't just re-read
+[TIP] **Spaced repetition:** Mark what to review when
+[TIP] **Elaboration:** Connect to what they already know
+[TIP] **Interleaving:** Mix different types of content
+[TIP] **Concrete examples:** Abstract → Specific
 
 ## FORMAT-SPECIFIC GUIDES
 
@@ -2020,10 +2020,10 @@ For each major topic:
 **Structure:** 25-40 flashcard pairs
 
 **Flashcard Design Rules:**
-✓ One concept per card (no compound questions)
-✓ Questions should require recall, not recognition
-✓ Vary question types (definition, application, comparison)
-✓ Include both "what" and "why" questions
+[TIP] One concept per card (no compound questions)
+[TIP] Questions should require recall, not recognition
+[TIP] Vary question types (definition, application, comparison)
+[TIP] Include both "what" and "why" questions
 
 **Question Types to Include:**
 
@@ -2167,31 +2167,31 @@ For each major topic:
 **For ALL formats:**
 
 **Accuracy:**
-✓ Correct information (obviously)
-✓ Current understanding (not outdated)
-✓ Appropriate depth for {topic} level
+[TIP] Correct information (obviously)
+[TIP] Current understanding (not outdated)
+[TIP] Appropriate depth for {topic} level
 
 **Completeness:**
-✓ Cover all major subtopics
-✓ Include both breadth and depth
-✓ Don't skip foundational concepts
+[TIP] Cover all major subtopics
+[TIP] Include both breadth and depth
+[TIP] Don't skip foundational concepts
 
 **Clarity:**
-✓ Clear, jargon-free language (or jargon explained)
-✓ Concrete examples for abstract concepts
-✓ Logical organization
+[TIP] Clear, jargon-free language (or jargon explained)
+[TIP] Concrete examples for abstract concepts
+[TIP] Logical organization
 
 **Practicality:**
-✓ Designed for actual studying (not just reading)
-✓ Includes self-testing opportunities
-✓ Highlights what's most important
-✓ Realistic time estimates
+[TIP] Designed for actual studying (not just reading)
+[TIP] Includes self-testing opportunities
+[TIP] Highlights what's most important
+[TIP] Realistic time estimates
 
 **Study Efficiency Features:**
-✓ Visual hierarchy (headers, bullets, spacing)
-✓ Emphasis on high-yield information
-✓ Quick-reference sections
-✓ Progressive complexity (easy → hard)
+[TIP] Visual hierarchy (headers, bullets, spacing)
+[TIP] Emphasis on high-yield information
+[TIP] Quick-reference sections
+[TIP] Progressive complexity (easy → hard)
 
 ## TOPIC-SPECIFIC ADAPTATIONS
 
@@ -2245,14 +2245,14 @@ For each major topic:
 ## QUALITY CHECKLIST
 
 Before finalizing:
-✓ Covers all major aspects of {topic}?
-✓ {format} follows best practices?
-✓ Includes active learning elements (not passive reading)?
-✓ Appropriate difficulty level?
-✓ Clear organization and visual hierarchy?
-✓ Includes self-assessment?
-✓ Highlights most important information?
-✓ Provides memory aids where helpful?
+[TIP] Covers all major aspects of {topic}?
+[TIP] {format} follows best practices?
+[TIP] Includes active learning elements (not passive reading)?
+[TIP] Appropriate difficulty level?
+[TIP] Clear organization and visual hierarchy?
+[TIP] Includes self-assessment?
+[TIP] Highlights most important information?
+[TIP] Provides memory aids where helpful?
 
 Create the complete {format} study guide for {topic} now.`
   },
@@ -2292,12 +2292,12 @@ RESEARCH QUESTION DEVELOPMENT FRAMEWORK:
 ## WHAT MAKES A STRONG RESEARCH QUESTION?
 
 A great research question is:
-✓ **Focused:** Narrow enough to answer thoroughly
-✓ **Researchable:** Can be investigated with available methods/resources
-✓ **Significant:** Contributes new knowledge or understanding  
-✓ **Feasible:** Realistic in scope for the timeline and resources
-✓ **Clear:** Unambiguous in what it's asking
-✓ **Original:** Fills a gap or challenges existing assumptions
+[TIP] **Focused:** Narrow enough to answer thoroughly
+[TIP] **Researchable:** Can be investigated with available methods/resources
+[TIP] **Significant:** Contributes new knowledge or understanding  
+[TIP] **Feasible:** Realistic in scope for the timeline and resources
+[TIP] **Clear:** Unambiguous in what it's asking
+[TIP] **Original:** Fills a gap or challenges existing assumptions
 
 ## QUESTION TYPE FRAMEWORKS
 
@@ -2319,10 +2319,10 @@ A great research question is:
 - Discover new variables or relationships
 
 **Quality criteria:**
-✓ Defines the phenomenon to explore
-✓ Specifies the context/population
-✓ Implies methodology (interviews, observation, etc.)
-✓ Avoids yes/no answers
+[TIP] Defines the phenomenon to explore
+[TIP] Specifies the context/population
+[TIP] Implies methodology (interviews, observation, etc.)
+[TIP] Avoids yes/no answers
 
 **Example structure:**
 "What [specific aspect] do [specific population] experience when [specific context]?"
@@ -2349,10 +2349,10 @@ A great research question is:
 - Requires measurable variables
 
 **Quality criteria:**
-✓ Identifies independent and dependent variables
-✓ Implies directionality (what affects what)
-✓ Specific enough to operationalize variables
-✓ Realistic to measure/test
+[TIP] Identifies independent and dependent variables
+[TIP] Implies directionality (what affects what)
+[TIP] Specific enough to operationalize variables
+[TIP] Realistic to measure/test
 
 **Example structure:**
 "How does [specific independent variable] affect [specific dependent variable] among [population] in [context]?"
@@ -2378,10 +2378,10 @@ A great research question is:
 - Context-dependent findings
 
 **Quality criteria:**
-✓ Clearly defines what's being compared
-✓ Specifies comparison dimensions
-✓ Justifies why comparison is meaningful
-✓ Comparable units (apples to apples)
+[TIP] Clearly defines what's being compared
+[TIP] Specifies comparison dimensions
+[TIP] Justifies why comparison is meaningful
+[TIP] Comparable units (apples to apples)
 
 **Example structure:**
 "How do [option A] and [option B] differ in [specific dimension] when applied to [context/population]?"
@@ -2407,10 +2407,10 @@ A great research question is:
 - Often randomized controlled trials (RCTs)
 
 **Quality criteria:**
-✓ Specifies the intervention/treatment
-✓ Defines the outcome measure
-✓ Implies experimental control
-✓ Ethically feasible to test
+[TIP] Specifies the intervention/treatment
+[TIP] Defines the outcome measure
+[TIP] Implies experimental control
+[TIP] Ethically feasible to test
 
 **Example structure:**
 "Does [specific intervention] cause [specific outcome] in [population] compared to [control/alternative]?"
@@ -2452,34 +2452,34 @@ Apply the framework for {depth} questions above
 
 **Weak → Strong transformations:**
 
-❌ "What is social media?"
-✓ "How does daily social media use affect sleep quality in teenagers?"
+[AVOID] "What is social media?"
+[TIP] "How does daily social media use affect sleep quality in teenagers?"
 [Added: specific behavior, outcome, population]
 
-❌ "Is exercise good?"
-✓ "Does a 30-minute high-intensity interval training protocol improve cardiovascular endurance more than traditional moderate-intensity cardio in sedentary adults?"
+[AVOID] "Is exercise good?"
+[TIP] "Does a 30-minute high-intensity interval training protocol improve cardiovascular endurance more than traditional moderate-intensity cardio in sedentary adults?"
 [Added: specific intervention, comparison, outcome, population]
 
-❌ "How do people learn?"
-✓ "What is the relationship between spaced repetition intervals and long-term retention of vocabulary in second language learners?"
+[AVOID] "How do people learn?"
+[TIP] "What is the relationship between spaced repetition intervals and long-term retention of vocabulary in second language learners?"
 [Added: specific mechanism, outcome, population]
 
 ## COMMON PITFALLS TO AVOID
 
-❌ **Too broad:** "What causes climate change?"
-✓ Better: "What is the impact of urban green spaces on local temperature regulation in high-density cities?"
+[AVOID] **Too broad:** "What causes climate change?"
+[TIP] Better: "What is the impact of urban green spaces on local temperature regulation in high-density cities?"
 
-❌ **Not researchable:** "Should we colonize Mars?"
-✓ Better: "What are the psychological effects of prolonged isolation in Mars simulation habitats?"
+[AVOID] **Not researchable:** "Should we colonize Mars?"
+[TIP] Better: "What are the psychological effects of prolonged isolation in Mars simulation habitats?"
 
-❌ **Loaded/biased:** "How has social media ruined society?"
-✓ Better: "What is the association between social media use and reported wellbeing among young adults?"
+[AVOID] **Loaded/biased:** "How has social media ruined society?"
+[TIP] Better: "What is the association between social media use and reported wellbeing among young adults?"
 
-❌ **Yes/no question:** "Does exercise help depression?"
-✓ Better: "To what extent does a structured exercise program reduce depressive symptoms compared to medication alone?"
+[AVOID] **Yes/no question:** "Does exercise help depression?"
+[TIP] Better: "To what extent does a structured exercise program reduce depressive symptoms compared to medication alone?"
 
-❌ **Multiple questions:** "How and why does [X] affect [Y] and [Z]?"
-✓ Better: Split into separate questions
+[AVOID] **Multiple questions:** "How and why does [X] affect [Y] and [Z]?"
+[TIP] Better: Split into separate questions
 
 ## OUTPUT FORMAT
 
@@ -2537,12 +2537,12 @@ For each question, provide:
 ## GENERATE 5-7 QUESTIONS
 
 Now generate 5-7 {depth} research questions about {topic} that:
-✓ Follow the {depth} question framework above
-✓ Are progressively more specific/focused
-✓ Cover different aspects of {topic}
-✓ Are actually researchable
-✓ Would contribute meaningful knowledge
-✓ Vary in scope (some narrower, some broader)
+[TIP] Follow the {depth} question framework above
+[TIP] Are progressively more specific/focused
+[TIP] Cover different aspects of {topic}
+[TIP] Are actually researchable
+[TIP] Would contribute meaningful knowledge
+[TIP] Vary in scope (some narrower, some broader)
 
 Make them publication-worthy.`
   },
@@ -2712,21 +2712,21 @@ Who will love this story and why? (Be specific - "readers who loved [similar boo
 ## ORIGINALITY CHECKS
 
 For each idea, verify:
-✓ Not just a retelling of a famous story (unless that's intentional)
-✓ Protagonist actively drives the plot (not just reacting)
-✓ Conflict is specific to THESE characters (not generic)
-✓ Has emotional resonance (makes reader feel something)
-✓ Visual and cinematic (reader can "see" key scenes)
-✓ Theme emerges naturally from story (not preachy)
+[TIP] Not just a retelling of a famous story (unless that's intentional)
+[TIP] Protagonist actively drives the plot (not just reacting)
+[TIP] Conflict is specific to THESE characters (not generic)
+[TIP] Has emotional resonance (makes reader feel something)
+[TIP] Visual and cinematic (reader can "see" key scenes)
+[TIP] Theme emerges naturally from story (not preachy)
 
 ## COMMON PITFALLS TO AVOID
 
-❌ **Passive protagonist:** Things happen TO them, they don't MAKE things happen
-❌ **Stakes too low:** "Will they or won't they?" isn't enough - what's really at risk?
-❌ **Conflict without depth:** Just obstacle after obstacle with no character growth
-❌ **Deux ex machina:** Problem solved by coincidence or outside force
-❌ **Predictable arc:** Reader can guess every beat from the logline
-❌ **Theme stated instead of shown:** Don't lecture, illustrate
+[AVOID] **Passive protagonist:** Things happen TO them, they don't MAKE things happen
+[AVOID] **Stakes too low:** "Will they or won't they?" isn't enough - what's really at risk?
+[AVOID] **Conflict without depth:** Just obstacle after obstacle with no character growth
+[AVOID] **Deux ex machina:** Problem solved by coincidence or outside force
+[AVOID] **Predictable arc:** Reader can guess every beat from the logline
+[AVOID] **Theme stated instead of shown:** Don't lecture, illustrate
 
 ## IDEA DEVELOPMENT PROMPTS
 
@@ -2748,7 +2748,7 @@ Generate 3 complete, unique {genre} story ideas incorporating {theme}, following
     id: 'brainstorm',
     category: 'creative',
     title: 'Brainstorm Ideas',
-    icon: '💭',
+    icon: 'Lightbulb',
     description: 'Generate creative solutions and ideas',
     fields: [
       {
@@ -2938,22 +2938,22 @@ Mark top 3 ideas based on combined scores.
 ## BRAINSTORMING BEST PRACTICES
 
 **Expand thinking:**
-✓ "Yes, and..." not "Yes, but..."
-✓ Build on ideas rather than shoot them down
-✓ Quantity first, quality later
-✓ No idea too wild in initial generation
+[TIP] "Yes, and..." not "Yes, but..."
+[TIP] Build on ideas rather than shoot them down
+[TIP] Quantity first, quality later
+[TIP] No idea too wild in initial generation
 
 **Evaluate honestly:**
-✓ Does this actually solve the problem?
-✓ Would I personally use/buy/do this?
-✓ What's the absolute minimum version?
-✓ Has someone tried this before and why did it fail/succeed?
+[TIP] Does this actually solve the problem?
+[TIP] Would I personally use/buy/do this?
+[TIP] What's the absolute minimum version?
+[TIP] Has someone tried this before and why did it fail/succeed?
 
 **Avoid:**
-❌ Self-censoring during idea generation
-❌ Falling in love with your first idea
-❌ Dismissing ideas without proper consideration
-❌ Ignoring practical constraints entirely
+[AVOID] Self-censoring during idea generation
+[AVOID] Falling in love with your first idea
+[AVOID] Dismissing ideas without proper consideration
+[AVOID] Ignoring practical constraints entirely
 
 ## BONUS: NEXT STEPS
 
@@ -2974,7 +2974,7 @@ Generate 10 {style} ideas for {topic} now.`
     id: 'personal_bio',
     category: 'creative',
     title: 'Write Personal Bio',
-    icon: '👤',
+    icon: 'User',
     description: 'Craft professional or personal bios',
     fields: [
       {
@@ -3020,11 +3020,11 @@ COMPELLING BIO FRAMEWORK:
 A bio isn't a resume — it's a story that makes people think "I want to work with/hire/learn from this person."
 
 **What makes a bio work:**
-✓ Leads with impact, not chronology
-✓ Shows personality, not just credentials
-✓ Makes reader feel something
-✓ Answers: "Why should I care about you?"
-✓ Balances authority with approachability
+[TIP] Leads with impact, not chronology
+[TIP] Shows personality, not just credentials
+[TIP] Makes reader feel something
+[TIP] Answers: "Why should I care about you?"
+[TIP] Balances authority with approachability
 
 ## LENGTH-SPECIFIC STRUCTURES
 
@@ -3099,10 +3099,10 @@ Transformed, Led, Built, Scaled, Launched, Delivered, Drove, Increased
 "[Name] is a [role] who [standout achievement]. With [X years] experience in [industry], [Name] has [major accomplishments]. Currently, [Name] [current focus] for [target audience]. Specialties: [keywords]."
 
 **Avoid:**
-❌ Starting with "I am a..."
-❌ Listing every job ever held
-❌ Corporate jargon without substance ("synergistic innovator")
-❌ Being too humble (this isn't the place for modesty)
+[AVOID] Starting with "I am a..."
+[AVOID] Listing every job ever held
+[AVOID] Corporate jargon without substance ("synergistic innovator")
+[AVOID] Being too humble (this isn't the place for modesty)
 
 ### Creative Portfolio Bio
 
@@ -3154,9 +3154,9 @@ Crafts, Imagines, Transforms, Weaves, Brings to life, Captures, Designs, Creates
 "[Name] writes [genre] novels featuring [themes/style]. [Previous books/achievements]. [Background that informs writing]. [Name] lives in [place] with [humanizing detail]. Find more at [website]."
 
 **Avoid:**
-❌ "aspiring writer" (you're either a writer or not)
-❌ Listing every short story published
-❌ Irrelevant day job (unless it informs the writing)
+[AVOID] "aspiring writer" (you're either a writer or not)
+[AVOID] Listing every short story published
+[AVOID] Irrelevant day job (unless it informs the writing)
 
 ## BACKGROUND INTEGRATION
 
@@ -3164,13 +3164,13 @@ Transform {background} into compelling narrative:
 
 **For achievements:**
 Don't list — translate to impact
-❌ "10 years of experience in marketing"
-✓ "Led marketing strategies that drove 300% revenue growth for B2B SaaS companies"
+[AVOID] "10 years of experience in marketing"
+[TIP] "Led marketing strategies that drove 300% revenue growth for B2B SaaS companies"
 
 **For skills:**
 Show through results, not résumé
-❌ "Skilled in data analysis and strategy"
-✓ "Turns complex data into actionable strategies that increase conversion by 40%+"
+[AVOID] "Skilled in data analysis and strategy"
+[TIP] "Turns complex data into actionable strategies that increase conversion by 40%+"
 
 **For education:**
 Only mention if it adds credibility
@@ -3179,9 +3179,9 @@ Skip: Unrelated degrees, old coursework
 
 **For personal interests:**
 Only if they humanize OR relate to your professional brand
-✓ "Marathon runner who brings the same endurance to long-term client partnerships"
-✓ "Coffee enthusiast constantly experimenting with new brew methods"
-❌ "Enjoys spending time with family" (too generic)
+[TIP] "Marathon runner who brings the same endurance to long-term client partnerships"
+[TIP] "Coffee enthusiast constantly experimenting with new brew methods"
+[AVOID] "Enjoys spending time with family" (too generic)
 
 ## WRITING BEST PRACTICES
 
@@ -3192,10 +3192,10 @@ Only if they humanize OR relate to your professional brand
 - Match your actual speaking style
 
 **Power Positioning:**
-✓ Start sentences with strong verbs
-✓ Use active voice
-✓ Be specific (numbers, names, outcomes)
-✓ Show don't tell ("award-winning" > "very talented")
+[TIP] Start sentences with strong verbs
+[TIP] Use active voice
+[TIP] Be specific (numbers, names, outcomes)
+[TIP] Show don't tell ("award-winning" > "very talented")
 
 **Credibility Signals:**
 - Specific numbers (300+ clients, $2M raised, 10K students)
@@ -3204,38 +3204,38 @@ Only if they humanize OR relate to your professional brand
 - Unique positioning ("the only...", "one of few...")
 
 **Avoid:**
-❌ Clichés ("think outside the box", "game changer")
-❌ Vague buzzwords ("innovative", "passionate", "results-driven")
-❌ Unnecessary modifiers ("very", "quite", "extremely")
-❌ Speaking in resume-speak ("responsible for")
-❌ False humility or excessive humility
+[AVOID] Clichés ("think outside the box", "game changer")
+[AVOID] Vague buzzwords ("innovative", "passionate", "results-driven")
+[AVOID] Unnecessary modifiers ("very", "quite", "extremely")
+[AVOID] Speaking in resume-speak ("responsible for")
+[AVOID] False humility or excessive humility
 
 ## THE OPENING SENTENCE TEST
 
 Your first sentence is CRITICAL. Test it:
-✓ Could someone else in your field say the same thing? (If yes, make it more specific)
-✓ Does it make the reader want to keep reading?
-✓ Does it position you uniquely?
+[TIP] Could someone else in your field say the same thing? (If yes, make it more specific)
+[TIP] Does it make the reader want to keep reading?
+[TIP] Does it position you uniquely?
 
 **Weak openings:**
-❌ "I am a passionate professional with years of experience"
-❌ "John Smith is a creative thinker and problem solver"
+[AVOID] "I am a passionate professional with years of experience"
+[AVOID] "John Smith is a creative thinker and problem solver"
 
 **Strong openings:**
-✓ "Maya Rodriguez turns struggling startups into acquisition targets"
-✓ "As a neuroscientist-turned-executive coach, Alex Chen brings brain science to boardroom decisions"
+[TIP] "Maya Rodriguez turns struggling startups into acquisition targets"
+[TIP] "As a neuroscientist-turned-executive coach, Alex Chen brings brain science to boardroom decisions"
 
 ## FINAL QUALITY CHECKS
 
 Before submitting:
-✓ Read aloud—does it sound like how you talk?
-✓ Would you want to hire/work with/learn from this person?
-✓ Is every word earning its place?
-✓ Are you being specific vs. generic?
-✓ Does it answer "why should I care"?
-✓ Free of typos? (A bio with errors = credibility killer)
-✓ Matches {length} target?
-✓ Fits {purpose} context?
+[TIP] Read aloud—does it sound like how you talk?
+[TIP] Would you want to hire/work with/learn from this person?
+[TIP] Is every word earning its place?
+[TIP] Are you being specific vs. generic?
+[TIP] Does it answer "why should I care"?
+[TIP] Free of typos? (A bio with errors = credibility killer)
+[TIP] Matches {length} target?
+[TIP] Fits {purpose} context?
 
 Write a {length} {purpose} bio highlighting {background} now.`
   },
@@ -3245,7 +3245,7 @@ Write a {length} {purpose} bio highlighting {background} now.`
     id: 'general_helper',
     category: 'browse',
     title: 'Ask Me Anything',
-    icon: '❓',
+    icon: 'HelpCircle',
     description: 'Get help with any question or task',
     fields: [
       {
@@ -3280,8 +3280,8 @@ The best answers don't just give information — they provide understanding, con
 
 Don't bury the lead. If they asked "how to cook pasta," start with the core steps, not the history of Italian cuisine.
 
-✓ "To cook pasta: Boil salted water, add pasta, stir occasionally, cook for 8-12 minutes until al dente, drain, and sauce immediately."
-❌ "Pasta is a staple Italian food with ancient origins..."
+[TIP] "To cook pasta: Boil salted water, add pasta, stir occasionally, cook for 8-12 minutes until al dente, drain, and sauce immediately."
+[AVOID] "Pasta is a staple Italian food with ancient origins..."
 
 ### 2. ESSENTIAL CONTEXT (Why this answer?)
 
@@ -3383,31 +3383,31 @@ Goal: Inspire and provide practical options
 ## COMMUNICATION BEST PRACTICES
 
 **Clarity:**
-✓ Use simple words (write for a smart 12-year-old)
-✓ Short sentences (15-20 words average)
-✓ Active voice ("stir the pasta" not "the pasta should be stirred")
-✓ Concrete examples (not just abstractions)
-✓ Define jargon if you must use it
+[TIP] Use simple words (write for a smart 12-year-old)
+[TIP] Short sentences (15-20 words average)
+[TIP] Active voice ("stir the pasta" not "the pasta should be stirred")
+[TIP] Concrete examples (not just abstractions)
+[TIP] Define jargon if you must use it
 
 **Structure:**
-✓ Use headings/subheadings for scannability
-✓ Bullet points for lists
-✓ Bold key terms
-✓ Short paragraphs (3-4 lines max)
-✓ Logical flow (each paragraph builds on previous)
+[TIP] Use headings/subheadings for scannability
+[TIP] Bullet points for lists
+[TIP] Bold key terms
+[TIP] Short paragraphs (3-4 lines max)
+[TIP] Logical flow (each paragraph builds on previous)
 
 **Tone:**
-✓ Helpful, not condescending
-✓ Confident but not arrogant
-✓ Encouraging (especially for challenges)
-✓ Honest about limitations/uncertainties
-✓ Conversational but professional
+[TIP] Helpful, not condescending
+[TIP] Confident but not arrogant
+[TIP] Encouraging (especially for challenges)
+[TIP] Honest about limitations/uncertainties
+[TIP] Conversational but professional
 
 **Specificity:**
-✓ Use exact numbers (not "some" or "a lot")
-✓ Name specific products/tools when helpful
-✓ Give timeframes (X minutes, Y days)
-✓ Provide measurements, temperatures, etc.
+[TIP] Use exact numbers (not "some" or "a lot")
+[TIP] Name specific products/tools when helpful
+[TIP] Give timeframes (X minutes, Y days)
+[TIP] Provide measurements, temperatures, etc.
 
 ## HANDLING EDGE CASES
 
@@ -3429,14 +3429,14 @@ Goal: Inspire and provide practical options
 ## QUALITY CHECKS
 
 Before finalizing your answer:
-✓ Did I actually answer what they asked?
-✓ Is the most important information in the first paragraph?
-✓ Could a beginner follow this?
-✓ Are there any steps/terms that need clarification?
-✓ Did I anticipate obvious follow-up questions?
-✓ Is it actionable (can they DO something with this)?
-✓ Is it accurate (to the best of my knowledge)?
-✓ Is it free of jargon (or is jargon explained)?
+[TIP] Did I actually answer what they asked?
+[TIP] Is the most important information in the first paragraph?
+[TIP] Could a beginner follow this?
+[TIP] Are there any steps/terms that need clarification?
+[TIP] Did I anticipate obvious follow-up questions?
+[TIP] Is it actionable (can they DO something with this)?
+[TIP] Is it accurate (to the best of my knowledge)?
+[TIP] Is it free of jargon (or is jargon explained)?
 
 ## THE GOLDEN RULE
 
@@ -4245,7 +4245,7 @@ Focus on teaching concepts and patterns, not just translating syntax into Englis
     id: 'code_review',
     category: 'code',
     title: 'Code Review & Improvements',
-    icon: '✅',
+    icon: 'CheckCircle',
     description: 'Get expert code quality feedback',
     fields: [
       {
@@ -4399,12 +4399,12 @@ Bad documentation:
 ✗ No error cases documented
 
 Great documentation:
-✓ Explains intent and design decisions
-✓ Shows real-world usage patterns
-✓ Covers edge cases and gotchas
-✓ Includes what NOT to do
-✓ Helps debugging when things fail
-✓ Maintained as code changes
+[TIP] Explains intent and design decisions
+[TIP] Shows real-world usage patterns
+[TIP] Covers edge cases and gotchas
+[TIP] Includes what NOT to do
+[TIP] Helps debugging when things fail
+[TIP] Maintained as code changes
 
 ## DOC TYPE: {doc_type}
 
@@ -4562,13 +4562,13 @@ Common problems and solutions
 ### For INLINE COMMENTS:
 
 **When to Comment:**
-✓ WHY, not WHAT (code shows what)
-✓ Non-obvious algorithms
-✓ Business logic rationale
-✓ Workarounds and hacks (with explanation)
-✓ Performance-critical sections
-✓ Security implications
-✓ TODO/FIXME with context
+[TIP] WHY, not WHAT (code shows what)
+[TIP] Non-obvious algorithms
+[TIP] Business logic rationale
+[TIP] Workarounds and hacks (with explanation)
+[TIP] Performance-critical sections
+[TIP] Security implications
+[TIP] TODO/FIXME with context
 
 **When NOT to Comment:**
 ✗ Self-explanatory code
@@ -4673,12 +4673,12 @@ def create_user(name: str, options: dict = None) -> User:
 ## EXAMPLE QUALITY STANDARDS
 
 **Good Examples:**
-✓ Real-world scenarios
-✓ Copy-paste ready
-✓ Show common patterns
-✓ Include error handling
-✓ Demonstrate best practices
-✓ Cover edge cases
+[TIP] Real-world scenarios
+[TIP] Copy-paste ready
+[TIP] Show common patterns
+[TIP] Include error handling
+[TIP] Demonstrate best practices
+[TIP] Cover edge cases
 
 **Bad Examples:**
 ✗ Toy examples (foo, bar, baz)
@@ -4786,7 +4786,7 @@ Please analyze the code I'll paste below and provide:
     id: 'convert_code',
     category: 'code',
     title: 'Convert Between Languages',
-    icon: '🔄',
+    icon: 'RefreshCcw',
     description: 'Translate code from one language to another',
     fields: [
       {
