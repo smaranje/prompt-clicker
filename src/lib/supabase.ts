@@ -21,5 +21,7 @@ export interface CommunityPrompt {
     loves: number;
     badge?: 'viral' | 'trending' | 'gem' | 'featured' | null;
     content?: string;
+    example_image?: string;
+    example_input?: string;
     created_at: string;
 }

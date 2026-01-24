@@ -279,51 +279,94 @@ const Discover = () => {
                                         variants={staggerItem}
                                     >
                                         <Card
-                                            className="p-5 hover:border-primary/50 transition-all duration-300 group cursor-pointer hover:shadow-lg hover:-translate-y-1"
+                                            className="group cursor-pointer hover:shadow-lg hover:-translate-y-1 transition-all duration-300 overflow-hidden border-border/50"
                                             onClick={() => navigate(`/prompt/${prompt.id}`)}
                                         >
-                                            <div className="flex items-start justify-between gap-4">
-                                                <div className="flex items-start gap-4 flex-1">
-                                                    <DynamicIcon
-                                                        name={prompt.icon}
-                                                        className="w-8 h-8 text-primary flex-shrink-0 mt-1"
+                                            {/* Image Cover if available */}
+                                            {prompt.example_image ? (
+                                                <div className="relative h-48 overflow-hidden bg-muted">
+                                                    <img
+                                                        src={prompt.example_image}
+                                                        alt={prompt.title}
+                                                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                                                     />
-                                                    <div className="flex-1 min-w-0">
-                                                        <div className="flex items-center gap-2 mb-1 flex-wrap">
-                                                            <h3 className="font-semibold text-lg group-hover:text-primary transition-colors">
-                                                                {prompt.title}
-                                                            </h3>
-                                                            <Badge variant="outline" className={badgeInfo.color}>
-                                                                {badgeInfo.label}
-                                                            </Badge>
+                                                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+
+                                                    {/* Badge on Image */}
+                                                    <div className="absolute top-3 right-3">
+                                                        <Badge variant="secondary" className={`${badgeInfo.color} bg-background/95 backdrop-blur-sm shadow-sm border-0`}>
+                                                            {badgeInfo.label}
+                                                        </Badge>
+                                                    </div>
+
+                                                    {/* Title & Icon on Image */}
+                                                    <div className="absolute bottom-3 left-3 right-3 text-white">
+                                                        <div className="flex items-center gap-2 mb-1">
+                                                            <div className="p-1.5 rounded-md bg-white/20 backdrop-blur-md">
+                                                                <DynamicIcon name={prompt.icon} className="w-4 h-4 text-white" />
+                                                            </div>
+                                                            <span className="text-xs font-medium text-white/90 uppercase tracking-wider">
+                                                                {categories.find(c => c.id === prompt.category)?.title || prompt.category}
+                                                            </span>
                                                         </div>
-                                                        <p className="text-muted-foreground text-sm mb-3">
-                                                            {prompt.description}
-                                                        </p>
-                                                        <div className="flex items-center gap-4 text-xs text-muted-foreground">
-                                                            <button
-                                                                onClick={(e) => {
-                                                                    e.stopPropagation();
-                                                                    handleLove(prompt.id);
-                                                                }}
-                                                                className="flex items-center gap-1 hover:text-red-500 transition-colors"
-                                                            >
-                                                                <Heart
-                                                                    className={`w-3.5 h-3.5 transition-all ${isLoved ? 'fill-red-500 text-red-500' : ''}`}
-                                                                />
-                                                                {prompt.loves + (isLoved ? 1 : 0)}
-                                                            </button>
-                                                            <span>•</span>
-                                                            <span>by {prompt.author}</span>
-                                                        </div>
+                                                        <h3 className="font-bold text-lg leading-tight text-white mb-1 shadow-sm">
+                                                            {prompt.title}
+                                                        </h3>
                                                     </div>
                                                 </div>
-                                                <Button variant="outline" size="sm" onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    navigate(`/prompt/${prompt.id}`);
-                                                }}>
-                                                    View Prompt
-                                                </Button>
+                                            ) : (
+                                                <div className="p-5 border-b bg-muted/30">
+                                                    <div className="flex items-start justify-between mb-2">
+                                                        <div className="p-2.5 rounded-lg bg-primary/10 text-primary">
+                                                            <DynamicIcon name={prompt.icon} className="w-6 h-6" />
+                                                        </div>
+                                                        <Badge variant="outline" className={badgeInfo.color}>
+                                                            {badgeInfo.label}
+                                                        </Badge>
+                                                    </div>
+                                                    <h3 className="font-semibold text-lg group-hover:text-primary transition-colors line-clamp-1">
+                                                        {prompt.title}
+                                                    </h3>
+                                                </div>
+                                            )}
+
+                                            <div className="p-4">
+                                                {!prompt.example_image && (
+                                                    <p className="text-muted-foreground text-sm mb-4 line-clamp-2 min-h-[40px]">
+                                                        {prompt.description}
+                                                    </p>
+                                                )}
+                                                {prompt.example_image && (
+                                                    <div className="flex items-center gap-2 text-xs font-medium text-primary mb-3">
+                                                        <span className="flex items-center gap-1.5 bg-primary/10 px-2 py-1 rounded-md">
+                                                            <img src={prompt.example_input} className="w-4 h-4 rounded-full object-cover" alt="Before" />
+                                                            <span>Before</span>
+                                                        </span>
+                                                        <span className="text-muted-foreground">→</span>
+                                                        <span className="flex items-center gap-1.5 bg-green-500/10 text-green-600 px-2 py-1 rounded-md">
+                                                            <img src={prompt.example_image} className="w-4 h-4 rounded-full object-cover" alt="After" />
+                                                            <span>Result</span>
+                                                        </span>
+                                                    </div>
+                                                )}
+
+                                                <div className="flex items-center justify-between text-xs text-muted-foreground mt-auto">
+                                                    <div className="flex items-center gap-3">
+                                                        <button
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                handleLove(prompt.id);
+                                                            }}
+                                                            className="flex items-center gap-1.5 hover:text-red-500 transition-colors group/love"
+                                                        >
+                                                            <Heart
+                                                                className={`w-4 h-4 transition-all ${isLoved ? 'fill-red-500 text-red-500 scale-110' : 'group-hover/love:scale-110'}`}
+                                                            />
+                                                            <span className="font-medium">{prompt.loves + (isLoved ? 1 : 0)}</span>
+                                                        </button>
+                                                        <span>by {prompt.author}</span>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </Card>
                                     </motion.div>
