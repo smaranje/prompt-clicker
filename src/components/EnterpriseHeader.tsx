@@ -1,12 +1,14 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { House, Compass, PlusCircle, Bookmark } from 'phosphor-react';
+import { House, Compass, PlusCircle, Bookmark, List } from 'phosphor-react';
 import { Button } from '@/components/ui/button';
-import logo from '@/assets/logo.png';
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { useState } from 'react';
 
 export const EnterpriseHeader = () => {
     const location = useLocation();
     const navigate = useNavigate();
+    const [open, setOpen] = useState(false);
 
     const navItems = [
         { path: '/', label: 'Home', icon: House },
@@ -17,6 +19,11 @@ export const EnterpriseHeader = () => {
 
     const isActive = (path: string) => {
         return location.pathname === path;
+    };
+
+    const handleMobileNavClick = (path: string) => {
+        navigate(path);
+        setOpen(false);
     };
 
     return (
@@ -64,7 +71,7 @@ export const EnterpriseHeader = () => {
                     </div>
 
                     {/* Center: Desktop Navigation */}
-                    <nav className="absolute left-1/2 -translate-x-1/2 hidden md:flex items-center gap-1">
+                    <nav className="absolute left-1/2 -translate-x-1/2 hidden lg:flex items-center gap-1">
                         {navItems.map((item) => {
                             const Icon = item.icon;
                             return (
@@ -88,25 +95,40 @@ export const EnterpriseHeader = () => {
 
                     {/* Right Side: Mobile Nav & Theme Toggle */}
                     <div className="flex items-center gap-2 flex-shrink-0">
-                        {/* Mobile Navigation */}
-                        <div className="flex md:hidden items-center gap-1">
-                            {navItems.map((item) => {
-                                const Icon = item.icon;
-                                return (
-                                    <Button
-                                        key={item.path}
-                                        variant={isActive(item.path) ? "default" : "ghost"}
-                                        size="icon"
-                                        onClick={() => navigate(item.path)}
-                                        className="h-9 w-9"
-                                    >
-                                        <Icon className="w-4 h-4" />
-                                    </Button>
-                                );
-                            })}
-                        </div>
-
                         <ThemeToggle />
+
+                        {/* Mobile Navigation */}
+                        <div className="lg:hidden">
+                            <Sheet open={open} onOpenChange={setOpen}>
+                                <SheetTrigger asChild>
+                                    <Button variant="ghost" size="icon" className="h-9 w-9">
+                                        <List className="w-5 h-5" />
+                                        <span className="sr-only">Toggle navigation menu</span>
+                                    </Button>
+                                </SheetTrigger>
+                                <SheetContent side="right">
+                                    <SheetHeader className="text-left mb-6">
+                                        <SheetTitle>Menu</SheetTitle>
+                                    </SheetHeader>
+                                    <div className="flex flex-col gap-2">
+                                        {navItems.map((item) => {
+                                            const Icon = item.icon;
+                                            return (
+                                                <Button
+                                                    key={item.path}
+                                                    variant={isActive(item.path) ? "secondary" : "ghost"}
+                                                    className="w-full justify-start gap-3 px-4 py-6"
+                                                    onClick={() => handleMobileNavClick(item.path)}
+                                                >
+                                                    <Icon className="w-5 h-5" weight={isActive(item.path) ? "fill" : "regular"} />
+                                                    <span className="text-base">{item.label}</span>
+                                                </Button>
+                                            );
+                                        })}
+                                    </div>
+                                </SheetContent>
+                            </Sheet>
+                        </div>
                     </div>
                 </div>
             </div>
