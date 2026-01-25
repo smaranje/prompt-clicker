@@ -34,7 +34,7 @@ const TemplateSelection = () => {
   return (
     <>
       <div className="min-h-screen bg-background page-transition pb-8">
-        <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 max-w-4xl">
+        <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 max-w-7xl">
           {/* Top Bar - Improved Navigation */}
           <div className="flex items-center justify-between mb-8 sm:mb-12">
             <nav className="flex items-center text-sm text-muted-foreground">
@@ -73,7 +73,7 @@ const TemplateSelection = () => {
           </div>
 
           {/* Templates */}
-          <div className="space-y-3 sm:space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
             {categoryTemplates.map((template) => (
               <TemplateCard
                 key={template.id}
@@ -83,7 +83,7 @@ const TemplateSelection = () => {
             ))}
 
             {categoryTemplates.length === 0 && (
-              <div className="text-center py-12 sm:py-20 px-4">
+              <div className="col-span-full text-center py-12 sm:py-20 px-4">
                 <p className="text-muted-foreground text-base sm:text-lg">
                   No templates available in this category yet.
                 </p>
