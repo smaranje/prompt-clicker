@@ -12,6 +12,7 @@ import { ThemeToggle } from '@/components/ThemeToggle';
 import { toast } from 'sonner';
 import { supabase, type CommunityPrompt } from '@/lib/supabase';
 import { Textarea } from '@/components/ui/textarea';
+import { communityPrompts } from '@/data/community_prompts';
 import { saveFavorite, isFavorite } from '@/lib/favorites';
 import { OpenChatGPTDialog } from '@/components/OpenChatGPTDialog';
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -38,7 +39,7 @@ export const CustomizeTemplate = () => {
 
   useEffect(() => {
     const loadTemplate = async () => {
-      // 1. Try to find in local templates first
+      // 1. Try to find in local templates first (Standard Templates)
       const localTemplate = templates.find((t) => t.id === templateId);
 
       if (localTemplate) {
@@ -54,7 +55,14 @@ export const CustomizeTemplate = () => {
         return;
       }
 
-      // 2. If not found locally, try fetching from Supabase
+      // 2. Try to find in Community Prompts (Discover Items)
+      const communityPrompt = communityPrompts.find((c) => c.id === templateId);
+      if (communityPrompt) {
+        setupCommunityTemplate(communityPrompt);
+        return;
+      }
+
+      // 3. If not found locally, try fetching from Supabase
       if (supabase && templateId) {
         try {
           const { data, error } = await supabase

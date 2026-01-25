@@ -13,103 +13,17 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { categories } from '@/data/categories';
 
+import { communityPrompts } from '@/data/community_prompts';
+
 // Helper to get image path respecting base URL
 const getImagePath = (path: string) => {
     const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
     return `${base}${path}`;
 };
 
-// Fallback mock data if Supabase is unavailable
-const fallbackPrompts: CommunityPrompt[] = [
-    {
-        id: 'viral-thread-hook',
-        title: 'Viral Thread Hook Generator',
-        description: 'Generate scroll-stopping hooks for Twitter/X threads. Proven to increase CTR by 40%.',
-        icon: 'Twitter',
-        category: 'writing',
-        loves: 3421,
-        author: '@growth_guru',
-        badge: 'viral',
-        example_image: 'images/viral-hook.png',
-        created_at: new Date().toISOString(),
-    },
-    {
-        id: 'senior-code-review',
-        title: 'Senior Engineer Code Review',
-        description: 'Simulates a FAANG staff engineer reviewing your code. Finds optimization, security, and style issues.',
-        icon: 'Code2',
-        category: 'code',
-        loves: 2847,
-        author: '@tech_lead_sarah',
-        badge: 'trending',
-        example_image: 'images/code-review.png',
-        created_at: new Date().toISOString(),
-    },
-    {
-        id: 'midjourney-cinematic',
-        title: 'Midjourney Cinematic v6',
-        description: 'Detailed lighting, camera angles, and composition parameters for photorealistic generation.',
-        icon: 'Image',
-        category: 'creative',
-        loves: 1954,
-        author: '@prompt_artist_jay',
-        badge: 'gem',
-        example_image: 'images/midjourney-cinematic.png',
-        created_at: new Date().toISOString(),
-    },
-    {
-        id: 'seo-blog-optimizer',
-        title: 'SEO Blog Post Optimizer',
-        description: 'Rewrites content to target keywords without sounding robotic. Includes meta descriptions.',
-        icon: 'FileText',
-        category: 'marketing',
-        loves: 1654,
-        author: '@content_king',
-        badge: 'featured',
-        example_image: 'images/seo-blog.png',
-        created_at: new Date().toISOString(),
-    },
-    {
-        id: 'react-component-gen',
-        title: 'Modern React Component Gen',
-        description: 'Generates Tailwind + Shadcn/UI components with proper TypeScript typing and accessibility.',
-        icon: 'Layout',
-        category: 'code',
-        loves: 1203,
-        author: '@frontend_wizard',
-        badge: 'trending',
-        example_image: 'images/react-component.png',
-        created_at: new Date().toISOString(),
-    },
-    {
-        id: 'cold-email-sales',
-        title: 'B2B Cold Email Architect',
-        description: 'Creates personalized 3-step email sequences based on prospect value proposition.',
-        icon: 'Mail',
-        category: 'business',
-        loves: 982,
-        author: '@sales_closer',
-        badge: 'featured',
-        example_image: 'images/cold-email.png',
-        created_at: new Date().toISOString(),
-    },
-    {
-        id: 'regex-explained',
-        title: 'Regex Explainer & Fixer',
-        description: 'Paste your broken regex and get a fix + plain English explanation.',
-        icon: 'Bug',
-        category: 'code',
-        loves: 876,
-        author: '@regex_god',
-        badge: 'gem',
-        example_image: 'images/regex-explainer.png',
-        created_at: new Date().toISOString(),
-    },
-];
-
 const Discover = () => {
     const navigate = useNavigate();
-    const [communityPrompts, setCommunityPrompts] = useState<CommunityPrompt[]>(fallbackPrompts);
+    const [communityPromptsData, setCommunityPrompts] = useState<CommunityPrompt[]>(communityPrompts);
     const [lovedPrompts, setLovedPrompts] = useState<Set<string>>(new Set());
     const [isLoading, setIsLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState('');
@@ -130,7 +44,7 @@ const Discover = () => {
 
         if (!useSupabase || !supabase) {
             console.log('Using curated premium prompts');
-            setCommunityPrompts(fallbackPrompts);
+            setCommunityPrompts(communityPrompts);
             setIsLoading(false);
             return;
         }
@@ -146,11 +60,11 @@ const Discover = () => {
             if (data && data.length > 0) {
                 setCommunityPrompts(data);
             } else {
-                setCommunityPrompts(fallbackPrompts);
+                setCommunityPrompts(communityPrompts);
             }
         } catch (error) {
             console.error('Error fetching prompts:', error);
-            setCommunityPrompts(fallbackPrompts);
+            setCommunityPrompts(communityPrompts);
         } finally {
             setIsLoading(false);
         }
@@ -184,7 +98,7 @@ const Discover = () => {
     };
 
     // Filter prompts based on search and category
-    const filteredPrompts = communityPrompts.filter(prompt => {
+    const filteredPrompts = communityPromptsData.filter(prompt => {
         const matchesSearch = searchQuery === '' ||
             prompt.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
             prompt.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -260,7 +174,7 @@ const Discover = () => {
                             placeholder="Find a solution (e.g., 'Cold Email', 'SQL Debug')..."
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
-                            className="w-full pl-9 h-10 bg-muted/50 border-transparent focus:bg-background focus:border-input transition-all"
+                            className="w-full pl-12 h-10 bg-muted/50 border-transparent focus:bg-background focus:border-input transition-all"
                         />
                     </div>
                     <Select value={filterCategory} onValueChange={setFilterCategory}>

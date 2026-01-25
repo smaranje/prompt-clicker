@@ -10,6 +10,7 @@ import { DynamicIcon } from '@/components/DynamicIcon';
 import { toast } from 'sonner';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cascadeContainer, cascadeItem, pageTransitionConfig, copySuccess, heartPulse } from '@/lib/animations';
+import { communityPrompts } from '@/data/community_prompts';
 
 const ViewPrompt = () => {
     const { promptId } = useParams();
@@ -19,9 +20,24 @@ const ViewPrompt = () => {
     const [copied, setCopied] = useState(false);
     const [isLoved, setIsLoved] = useState(false);
 
+
     useEffect(() => {
         const fetchPrompt = async () => {
-            if (!promptId || !supabase) {
+            if (!promptId) {
+                setLoading(false);
+                return;
+            }
+
+            // 1. Check local community prompts first
+            const localPrompt = communityPrompts.find(p => p.id === promptId);
+            if (localPrompt) {
+                setPrompt(localPrompt);
+                setLoading(false);
+                return;
+            }
+
+            // 2. Fallback to Supabase
+            if (!supabase) {
                 setLoading(false);
                 return;
             }
