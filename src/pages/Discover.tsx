@@ -4,7 +4,7 @@ import { EnterpriseHeader } from '@/components/EnterpriseHeader';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { Heart, TrendUp, Star, Fire, Diamond, CircleNotch } from 'phosphor-react';
+import { Heart, TrendUp, Star, Fire, Diamond, CircleNotch, Sparkle, MagnifyingGlass as Search } from 'phosphor-react';
 import { DynamicIcon } from '@/components/DynamicIcon';
 import { supabase, type CommunityPrompt } from '@/lib/supabase';
 import { motion } from 'framer-motion';
@@ -177,206 +177,196 @@ const Discover = () => {
             <EnterpriseHeader />
 
             <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 max-w-6xl">
-                {/* Header */}
-                <div className="mb-10">
-                    <div className="flex items-center gap-3 mb-4">
-                        <div className="w-12 h-12 rounded-lg bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center">
-                            <Star className="w-6 h-6 text-primary-foreground" />
-                        </div>
-                        <div>
-                            <h1 className="text-3xl sm:text-4xl font-bold">Discover</h1>
-                            <p className="text-muted-foreground mt-1">
-                                Mind-blowing prompts curated by the community
+                {/* Featured Spotlight Hero */}
+                <div className="mb-12 rounded-3xl bg-gradient-to-br from-primary/90 to-primary/70 text-primary-foreground p-6 sm:p-10 relative overflow-hidden shadow-2xl">
+                    {/* Background Pattern */}
+                    <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
+
+                    <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
+                        <div className="flex-1 text-center md:text-left">
+                            <Badge className="mb-4 bg-white/20 hover:bg-white/30 text-white border-0 backdrop-blur-md">
+                                <Star className="w-3.5 h-3.5 mr-1.5 fill-current" />
+                                Daily Spotlight
+                            </Badge>
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 leading-tight">
+                                The "Salary Negotiator" Playbook
+                            </h1>
+                            <p className="text-lg text-primary-foreground/90 mb-6 max-w-xl mx-auto md:mx-0 leading-relaxed">
+                                Don't leave money on the table. This research-backed script helps you confidently ask for a raise or negotiate a new offer.
                             </p>
+                            <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
+                                <Button
+                                    size="lg"
+                                    variant="secondary"
+                                    className="font-semibold h-12 px-8 shadow-lg transition-transform hover:-translate-y-0.5"
+                                    onClick={() => navigate('/customize/salary-negotiator')}
+                                >
+                                    <Diamond className="w-4 h-4 mr-2" />
+                                    Use This Playbook
+                                </Button>
+                                <Button
+                                    size="lg"
+                                    variant="outline"
+                                    className="bg-transparent border-white/30 text-white hover:bg-white/10 h-12"
+                                >
+                                    Read Strategy
+                                </Button>
+                            </div>
                         </div>
-                    </div>
 
-                    {/* Stats */}
-                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
-                        <Card className="p-6 border-border/60 bg-card/50 backdrop-blur-sm">
-                            <div className="flex flex-col gap-2">
-                                <div className="flex items-center gap-2 text-muted-foreground">
-                                    <div className="p-1.5 rounded-full bg-red-500/10">
-                                        <Heart className="w-4 h-4 text-red-500 fill-red-500" />
+                        {/* Visual Preview */}
+                        <div className="w-full md:w-1/3 aspect-[4/3] bg-background/10 backdrop-blur-sm rounded-xl border border-white/20 p-4 shadow-inner hidden md:block rotate-3 hover:rotate-0 transition-transform duration-500">
+                            <div className="h-full bg-background rounded-lg shadow-sm p-4 overflow-hidden relative">
+                                <div className="space-y-3">
+                                    <div className="h-2 w-1/3 bg-muted rounded animate-pulse" />
+                                    <div className="h-2 w-3/4 bg-muted rounded animate-pulse" />
+                                    <div className="h-2 w-5/6 bg-muted rounded animate-pulse" />
+                                    <div className="h-2 w-full bg-muted rounded animate-pulse" />
+                                    <div className="h-20 w-full bg-blue-500/5 rounded border border-blue-500/10 p-2 mt-4">
+                                        <p className="text-[10px] text-blue-600 font-mono">
+                                            "Based on my performance review, I believe a 15% adjustment reflects..."
+                                        </p>
                                     </div>
-                                    <span className="text-sm font-medium">Total Loves</span>
                                 </div>
-                                <div className="text-3xl font-bold tracking-tight">
-                                    {communityPrompts.reduce((sum, p) => sum + p.loves, 0).toLocaleString()}
-                                </div>
+                                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background to-transparent" />
                             </div>
-                        </Card>
-                        <Card className="p-6 border-border/60 bg-card/50 backdrop-blur-sm">
-                            <div className="flex flex-col gap-2">
-                                <div className="flex items-center gap-2 text-muted-foreground">
-                                    <div className="p-1.5 rounded-full bg-orange-500/10">
-                                        <Fire className="w-4 h-4 text-orange-500" />
-                                    </div>
-                                    <span className="text-sm font-medium">Prompts</span>
-                                </div>
-                                <div className="text-3xl font-bold tracking-tight">{communityPrompts.length}</div>
-                            </div>
-                        </Card>
-                        <Card className="p-6 border-border/60 bg-card/50 backdrop-blur-sm">
-                            <div className="flex items-col gap-2">
-                                <div className="flex items-center gap-2 text-muted-foreground">
-                                    <div className="p-1.5 rounded-full bg-green-500/10">
-                                        <TrendUp className="w-4 h-4 text-green-500" />
-                                    </div>
-                                    <span className="text-sm font-medium">This Week</span>
-                                </div>
-                                <div className="text-3xl font-bold tracking-tight text-green-600 dark:text-green-500">+127</div>
-                            </div>
-                        </Card>
-                    </div>
-
-                    {/* Search and Filter */}
-                    <div className="mb-6 space-y-4">
-                        <div className="flex flex-col sm:flex-row gap-3">
-                            {/* Search Input */}
-                            <div className="flex-1">
-                                <Input
-                                    placeholder="Search prompts by title, description, or author..."
-                                    value={searchQuery}
-                                    onChange={(e) => setSearchQuery(e.target.value)}
-                                    className="w-full"
-                                />
-                            </div>
-
-                            {/* Category Filter */}
-                            <Select value={filterCategory} onValueChange={setFilterCategory}>
-                                <SelectTrigger className="w-full sm:w-[180px]">
-                                    <SelectValue placeholder="All Categories" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    <SelectItem value="all">All Categories</SelectItem>
-                                    {categories.map(cat => (
-                                        <SelectItem key={cat.id} value={cat.id}>{cat.title}</SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
                         </div>
                     </div>
                 </div>
 
-                {/* Prompts Grid - Pinterest Style */}
-                <div className="space-y-6">
-                    {loading && (
-                        <motion.div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" {...skeletonPulse}>
-                            {[...Array(6)].map((_, i) => (
-                                <Card key={i} className="h-64 bg-muted/50 animate-pulse" />
-                            ))}
-                        </motion.div>
-                    )}
-                    <div className="flex items-center justify-between">
-                        <h2 className="text-lg font-semibold">Most Loved</h2>
-                        <Badge variant="secondary">{filteredPrompts.length} prompts</Badge>
+                {/* Search & Filters */}
+                <div className="flex flex-col md:flex-row gap-4 mb-8 sticky top-2 z-20 bg-background/95 backdrop-blur-md p-2 -mx-2 rounded-xl border border-border/50 shadow-sm supports-[backdrop-filter]:bg-background/60">
+                    <div className="flex-1 relative">
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+                        <Input
+                            placeholder="Find a solution (e.g., 'Cold Email', 'SQL Debug')..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="w-full pl-9 h-10 bg-muted/50 border-transparent focus:bg-background focus:border-input transition-all"
+                        />
                     </div>
+                    <Select value={filterCategory} onValueChange={setFilterCategory}>
+                        <SelectTrigger className="w-full md:w-[200px] h-10 bg-muted/50 border-transparent focus:bg-background focus:border-input">
+                            <SelectValue placeholder="All Goals" />
+                        </SelectTrigger>
+                        <SelectContent>
+                            <SelectItem value="all">All Goals</SelectItem>
+                            {categories.map(cat => (
+                                <SelectItem key={cat.id} value={cat.id}>{cat.title}</SelectItem>
+                            ))}
+                        </SelectContent>
+                    </Select>
+                </div>
 
-                    {!loading && (
-                        <motion.div
-                            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
-                            variants={staggerContainer}
-                            initial="initial"
-                            animate="animate"
-                        >
-                            {filteredPrompts.map((prompt) => {
-                                const badgeInfo = getBadgeInfo(prompt.badge);
-                                const BadgeIcon = badgeInfo.icon;
-                                const isLoved = lovedPrompts.has(prompt.id);
+                <div className="flex items-center justify-between mb-6">
+                    <h2 className="text-2xl font-bold">Trending Workflows</h2>
+                    <Badge variant="outline" className="px-3 py-1">{filteredPrompts.length} solutions</Badge>
+                </div>
 
-                                return (
-                                    <motion.div
-                                        key={prompt.id}
-                                        variants={staggerItem}
+                {!loading && (
+                    <motion.div
+                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+                        variants={staggerContainer}
+                        initial="initial"
+                        animate="animate"
+                    >
+                        {filteredPrompts.map((prompt) => {
+                            const badgeInfo = getBadgeInfo(prompt.badge);
+                            const BadgeIcon = badgeInfo.icon;
+                            const isLoved = lovedPrompts.has(prompt.id);
+
+                            return (
+                                <motion.div
+                                    key={prompt.id}
+                                    variants={staggerItem}
+                                >
+                                    <Card
+                                        className="group cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-300 overflow-hidden border-border/50 h-full flex flex-col"
+                                        onClick={() => navigate(`/prompt/${prompt.id}`)}
                                     >
-                                        <Card
-                                            className="group cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-300 overflow-hidden border-border/50 h-full flex flex-col"
-                                            onClick={() => navigate(`/prompt/${prompt.id}`)}
-                                        >
-                                            {/* Image Cover - Portrait Aspect */}
-                                            {prompt.example_image ? (
-                                                <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-br from-muted to-muted/50">
-                                                    <img
-                                                        src={prompt.example_image}
-                                                        alt={prompt.title}
-                                                        className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                                    />
+                                        {/* Image Cover - Portrait Aspect */}
+                                        {prompt.example_image ? (
+                                            <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-br from-muted to-muted/50">
+                                                <img
+                                                    src={prompt.example_image}
+                                                    alt={prompt.title}
+                                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                                                />
 
-                                                    {/* Subtle Overlay */}
-                                                    <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-transparent to-transparent" />
+                                                {/* Subtle Overlay */}
+                                                <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-transparent to-transparent" />
 
-                                                    {/* Badge */}
-                                                    <div className="absolute top-3 right-3">
-                                                        <Badge className={`${badgeInfo.color} shadow-lg border-0`}>
-                                                            {badgeInfo.label}
-                                                        </Badge>
-                                                    </div>
+                                                {/* Badge */}
+                                                <div className="absolute top-3 right-3">
+                                                    <Badge className={`${badgeInfo.color} shadow-lg border-0`}>
+                                                        {badgeInfo.label}
+                                                    </Badge>
+                                                </div>
 
-                                                    {/* Before/After Pill - Bottom Center */}
-                                                    {prompt.example_input && (
-                                                        <div className="absolute bottom-3 left-1/2 -translate-x-1/2">
-                                                            <div className="flex items-center gap-1.5 bg-background/95 backdrop-blur-md px-3 py-1.5 rounded-full border border-border shadow-xl">
-                                                                <img src={prompt.example_input} className="w-6 h-6 rounded-full object-cover ring-2 ring-primary/20" alt="Before" />
-                                                                <span className="text-xs text-muted-foreground">→</span>
-                                                                <img src={prompt.example_image} className="w-6 h-6 rounded-full object-cover ring-2 ring-green-500/30" alt="After" />
-                                                            </div>
+                                                {/* Before/After Pill - Bottom Center */}
+                                                {prompt.example_input && (
+                                                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2">
+                                                        <div className="flex items-center gap-1.5 bg-background/95 backdrop-blur-md px-3 py-1.5 rounded-full border border-border shadow-xl">
+                                                            <img src={prompt.example_input} className="w-6 h-6 rounded-full object-cover ring-2 ring-primary/20" alt="Before" />
+                                                            <span className="text-xs text-muted-foreground">→</span>
+                                                            <img src={prompt.example_image} className="w-6 h-6 rounded-full object-cover ring-2 ring-green-500/30" alt="After" />
                                                         </div>
-                                                    )}
-                                                </div>
-                                            ) : (
-                                                <div className="aspect-[4/5] bg-gradient-to-br from-primary/5 to-primary/10 flex items-center justify-center relative">
-                                                    <DynamicIcon name={prompt.icon} className="w-16 h-16 text-primary/30" />
-                                                    <div className="absolute top-3 right-3">
-                                                        <Badge variant="outline" className={badgeInfo.color}>
-                                                            {badgeInfo.label}
-                                                        </Badge>
                                                     </div>
-                                                </div>
-                                            )}
-
-                                            {/* Content */}
-                                            <div className="p-4 flex-1 flex flex-col">
-                                                <div className="flex items-start gap-2 mb-2">
-                                                    <div className="p-1.5 rounded-md bg-primary/10 flex-shrink-0">
-                                                        <DynamicIcon name={prompt.icon} className="w-4 h-4 text-primary" />
-                                                    </div>
-                                                    <div className="flex-1 min-w-0">
-                                                        <h3 className="font-semibold text-base group-hover:text-primary transition-colors line-clamp-2 leading-tight">
-                                                            {prompt.title}
-                                                        </h3>
-                                                    </div>
-                                                </div>
-
-                                                <p className="text-xs text-muted-foreground line-clamp-2 mb-3 flex-1">
-                                                    {prompt.description}
-                                                </p>
-
-                                                <div className="flex items-center justify-between text-xs text-muted-foreground pt-2 border-t border-border/50">
-                                                    <button
-                                                        onClick={(e) => {
-                                                            e.stopPropagation();
-                                                            handleLove(prompt.id);
-                                                        }}
-                                                        className="flex items-center gap-1.5 hover:text-red-500 transition-colors"
-                                                    >
-                                                        <Heart
-                                                            className={`w-3.5 h-3.5 ${isLoved ? 'fill-red-500 text-red-500' : ''}`}
-                                                        />
-                                                        <span className="font-medium">{(prompt.loves + (isLoved ? 1 : 0)).toLocaleString()}</span>
-                                                    </button>
-                                                    <span className="text-xs truncate">{prompt.author}</span>
+                                                )}
+                                            </div>
+                                        ) : (
+                                            <div className="aspect-[4/5] bg-gradient-to-br from-primary/5 to-primary/10 flex items-center justify-center relative">
+                                                <DynamicIcon name={prompt.icon} className="w-16 h-16 text-primary/30" />
+                                                <div className="absolute top-3 right-3">
+                                                    <Badge variant="outline" className={badgeInfo.color}>
+                                                        {badgeInfo.label}
+                                                    </Badge>
                                                 </div>
                                             </div>
-                                        </Card>
-                                    </motion.div>
-                                );
-                            })}
-                        </motion.div>
-                    )}
-                </div>
+                                        )}
+
+                                        {/* Content */}
+                                        <div className="p-4 flex-1 flex flex-col">
+                                            <div className="flex items-start gap-2 mb-2">
+                                                <div className="p-1.5 rounded-md bg-primary/10 flex-shrink-0">
+                                                    <DynamicIcon name={prompt.icon} className="w-4 h-4 text-primary" />
+                                                </div>
+                                                <div className="flex-1 min-w-0">
+                                                    <h3 className="font-semibold text-base group-hover:text-primary transition-colors line-clamp-2 leading-tight">
+                                                        {prompt.title}
+                                                    </h3>
+                                                </div>
+                                            </div>
+
+                                            <p className="text-xs text-muted-foreground line-clamp-2 mb-3 flex-1">
+                                                {prompt.description}
+                                            </p>
+
+                                            <div className="flex items-center justify-between text-xs text-muted-foreground pt-2 border-t border-border/50">
+                                                <button
+                                                    onClick={(e) => {
+                                                        e.stopPropagation();
+                                                        handleLove(prompt.id);
+                                                    }}
+                                                    className="flex items-center gap-1.5 hover:text-red-500 transition-colors"
+                                                >
+                                                    <Heart
+                                                        className={`w-3.5 h-3.5 ${isLoved ? 'fill-red-500 text-red-500' : ''}`}
+                                                    />
+                                                    <span className="font-medium">{(prompt.loves + (isLoved ? 1 : 0)).toLocaleString()}</span>
+                                                </button>
+                                                <span className="text-xs truncate">{prompt.author}</span>
+                                            </div>
+                                        </div>
+                                    </Card>
+                                </motion.div>
+                            );
+                        })}
+                    </motion.div>
+                )}
             </div>
-        </motion.div>
+        </div>
+        </motion.div >
     );
 };
 
