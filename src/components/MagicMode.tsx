@@ -34,7 +34,10 @@ export const MagicMode = () => {
         setGeneratedPrompt(data.prompt);
         // Auto-copy to clipboard
         await navigator.clipboard.writeText(data.prompt);
-        toast.success('Prompt generated and copied!', { icon: <Sparkles className="w-4 h-4 text-primary" /> });
+        toast.success('Prompt generated and copied!', {
+          icon: <Sparkles className="w-5 h-5 text-blue-500 fill-blue-500/20" />,
+          style: { background: 'var(--background)', border: '1px solid var(--border)', padding: '16px' }
+        });
       }
     } catch (error) {
       console.error('Magic generate error:', error);

@@ -192,29 +192,41 @@ const Discover = () => {
                     </div>
 
                     {/* Stats */}
-                    <div className="grid grid-cols-3 gap-4 mt-6">
-                        <Card className="p-4">
-                            <div className="flex items-center gap-2 mb-1">
-                                <Heart className="w-4 h-4 text-red-500 fill-red-500" />
-                                <span className="text-sm text-muted-foreground">Total Loves</span>
-                            </div>
-                            <div className="text-2xl font-bold">
-                                {communityPrompts.reduce((sum, p) => sum + p.loves, 0).toLocaleString()}
+                    <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-8">
+                        <Card className="p-6 border-border/60 bg-card/50 backdrop-blur-sm">
+                            <div className="flex flex-col gap-2">
+                                <div className="flex items-center gap-2 text-muted-foreground">
+                                    <div className="p-1.5 rounded-full bg-red-500/10">
+                                        <Heart className="w-4 h-4 text-red-500 fill-red-500" />
+                                    </div>
+                                    <span className="text-sm font-medium">Total Loves</span>
+                                </div>
+                                <div className="text-3xl font-bold tracking-tight">
+                                    {communityPrompts.reduce((sum, p) => sum + p.loves, 0).toLocaleString()}
+                                </div>
                             </div>
                         </Card>
-                        <Card className="p-4">
-                            <div className="flex items-center gap-2 mb-1">
-                                <Fire className="w-4 h-4 text-orange-500" />
-                                <span className="text-sm text-muted-foreground">Prompts</span>
+                        <Card className="p-6 border-border/60 bg-card/50 backdrop-blur-sm">
+                            <div className="flex flex-col gap-2">
+                                <div className="flex items-center gap-2 text-muted-foreground">
+                                    <div className="p-1.5 rounded-full bg-orange-500/10">
+                                        <Fire className="w-4 h-4 text-orange-500" />
+                                    </div>
+                                    <span className="text-sm font-medium">Prompts</span>
+                                </div>
+                                <div className="text-3xl font-bold tracking-tight">{communityPrompts.length}</div>
                             </div>
-                            <div className="text-2xl font-bold">{communityPrompts.length}</div>
                         </Card>
-                        <Card className="p-4">
-                            <div className="flex items-center gap-2 mb-1">
-                                <TrendUp className="w-4 h-4 text-green-500" />
-                                <span className="text-sm text-muted-foreground">This Week</span>
+                        <Card className="p-6 border-border/60 bg-card/50 backdrop-blur-sm">
+                            <div className="flex items-col gap-2">
+                                <div className="flex items-center gap-2 text-muted-foreground">
+                                    <div className="p-1.5 rounded-full bg-green-500/10">
+                                        <TrendUp className="w-4 h-4 text-green-500" />
+                                    </div>
+                                    <span className="text-sm font-medium">This Week</span>
+                                </div>
+                                <div className="text-3xl font-bold tracking-tight text-green-600 dark:text-green-500">+127</div>
                             </div>
-                            <div className="text-2xl font-bold">+127</div>
                         </Card>
                     </div>
 

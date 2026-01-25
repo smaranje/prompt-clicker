@@ -331,7 +331,7 @@ export const PromptComparison = () => {
           <p className="text-xl sm:text-2xl font-bold text-primary">2-3x</p>
           <p className="text-xs text-muted-foreground">More specific output</p>
           {/* Doodle: Rocket anchored to performance stat */}
-          <div className="absolute -bottom-4 -left-8 w-14 h-14 -rotate-12 opacity-80 text-foreground dark:text-foreground/80 hidden sm:block pointer-events-none">
+          <div className="absolute top-1/2 -left-12 -translate-y-1/2 w-12 h-12 -rotate-12 opacity-80 text-foreground dark:text-foreground/80 hidden sm:block pointer-events-none">
             <DoodleRocket className="w-full h-full" />
           </div>
         </div>

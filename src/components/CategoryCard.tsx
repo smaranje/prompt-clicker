@@ -33,7 +33,7 @@ export const CategoryCard = ({ category, onClick, templateCount }: CategoryCardP
               name={category.icon}
               className="w-8 h-8 text-primary flex-shrink-0"
             />
-            <h3 className="text-2xl sm:text-3xl font-bold text-card-foreground group-hover:text-primary transition-colors font-heading">
+            <h3 className="text-2xl sm:text-3xl font-bold text-card-foreground group-hover:text-primary transition-colors font-heading text-balance leading-tight">
               {category.title}
             </h3>
           </div>
