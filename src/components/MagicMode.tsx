@@ -67,7 +67,7 @@ export const MagicMode = () => {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto">
+    <div className="w-full max-w-5xl mx-auto">
       {/* Magic Input */}
       <Card className="p-4 sm:p-6 md:p-8 border border-border shadow-sm">
         <div className="flex items-center gap-2 mb-3 sm:mb-4">

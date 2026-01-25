@@ -39,7 +39,7 @@ const CategorySelection = () => {
           </div>
 
           {/* Dual Mode Tabs - Now First */}
-          <div className="max-w-5xl mx-auto mb-10 sm:mb-16 relative">
+          <div className="max-w-6xl mx-auto mb-10 sm:mb-16 relative">
 
 
             <Tabs defaultValue="magic" value={activeMode} onValueChange={(v) => setActiveMode(v as 'magic' | 'studio')} className="w-full">
