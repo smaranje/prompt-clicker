@@ -124,8 +124,12 @@ const Discover = () => {
         // Simulate network delay for "live" feel
         await new Promise(resolve => setTimeout(resolve, 800));
 
-        if (!supabase) {
-            console.log('Supabase not configured, using fallback data');
+        // FOR DEMO: Prioritize curated fallbacks to avoid "fake" or duplicate DB data
+        // Check if we want to mix in DB data later, but for now enforce quality
+        const useSupabase = false;
+
+        if (!useSupabase || !supabase) {
+            console.log('Using curated premium prompts');
             setCommunityPrompts(fallbackPrompts);
             setIsLoading(false);
             return;
@@ -142,12 +146,10 @@ const Discover = () => {
             if (data && data.length > 0) {
                 setCommunityPrompts(data);
             } else {
-                console.log('No data from Supabase, using fallback prompts');
                 setCommunityPrompts(fallbackPrompts);
             }
         } catch (error) {
             console.error('Error fetching prompts:', error);
-            console.log('Using fallback prompts due to error');
             setCommunityPrompts(fallbackPrompts);
         } finally {
             setIsLoading(false);
@@ -168,6 +170,7 @@ const Discover = () => {
     };
 
     const getBadgeStyle = (badge: string | null | undefined) => {
+        if (!badge) return null;
         switch (badge) {
             case 'viral':
                 return { icon: Fire, label: 'Viral', color: 'bg-orange-500/10 text-orange-700 dark:text-orange-400 border-orange-500/20' };
@@ -201,7 +204,7 @@ const Discover = () => {
 
             <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 max-w-6xl">
                 {/* Featured Spotlight Hero */}
-                <div className="mb-12 rounded-3xl bg-gradient-to-br from-primary/90 to-primary/70 text-primary-foreground p-6 sm:p-10 relative overflow-hidden shadow-2xl group">
+                <div className="mb-8 rounded-3xl bg-gradient-to-br from-primary/90 to-primary/70 text-primary-foreground p-6 sm:p-10 relative overflow-hidden shadow-2xl group">
                     {/* Background Pattern */}
                     <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
@@ -277,9 +280,9 @@ const Discover = () => {
 
                 {/* Prompts Grid */}
                 <div className="space-y-6">
-                    <div className="flex items-baseline justify-between">
+                    <div className="flex items-center justify-between">
                         <h2 className="text-2xl font-bold tracking-tight">Trending Workflows</h2>
-                        <Badge variant="outline" className="rounded-full px-3">
+                        <Badge variant="outline" className="rounded-full px-3 h-7">
                             {filteredPrompts.length} solutions
                         </Badge>
                     </div>
