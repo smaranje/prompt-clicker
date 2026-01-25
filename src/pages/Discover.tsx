@@ -365,8 +365,7 @@ const Discover = () => {
                     </motion.div>
                 )}
             </div>
-        </div>
-        </motion.div >
+        </motion.div>
     );
 };
 
