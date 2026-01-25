@@ -66,9 +66,8 @@ export const MagicMode = () => {
   return (
     <div className="w-full max-w-3xl mx-auto">
       {/* Magic Input */}
-      <Card className="p-4 sm:p-6 md:p-8 border-2 border-primary/20 bg-gradient-to-br from-background to-primary/5">
+      <Card className="p-4 sm:p-6 md:p-8 border border-border shadow-sm">
         <div className="flex items-center gap-2 mb-3 sm:mb-4">
-          <Sparkles className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
           <h2 className="text-base sm:text-xl font-semibold">Magic Mode</h2>
         </div>
 
@@ -98,12 +97,11 @@ export const MagicMode = () => {
             {isProcessing ? (
               <>
                 <Loader2 className="w-5 h-5 mr-2 animate-spin" />
-                Creating your prompt...
+                Creating...
               </>
             ) : (
               <>
-                <Sparkles className="w-5 h-5 mr-2" />
-                Generate Perfect Prompt
+                Generate Prompt
               </>
             )}
           </Button>

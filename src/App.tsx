@@ -10,7 +10,6 @@ import { ScrollToTop } from "@/components/ScrollToTop";
 import CategorySelection from "./pages/CategorySelection";
 import TemplateSelection from "./pages/TemplateSelection";
 import CustomizeTemplate from "./pages/CustomizeTemplate";
-import PreviewPrompt from "./pages/PreviewPrompt";
 import Favorites from "./pages/Favorites";
 import Discover from "./pages/Discover";
 import ViewPrompt from "./pages/ViewPrompt";
@@ -29,7 +28,6 @@ const AnimatedRoutes = () => {
         <Route path="/templates/:categoryId" element={<TemplateSelection />} />
         <Route path="/customize/:templateId" element={<CustomizeTemplate />} />
         <Route path="/prompt/:promptId" element={<ViewPrompt />} />
-        <Route path="/preview" element={<PreviewPrompt />} />
         <Route path="/favorites" element={<Favorites />} />
         <Route path="/discover" element={<Discover />} />
         <Route path="/submit" element={<SubmitPrompt />} />
