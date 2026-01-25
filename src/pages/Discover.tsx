@@ -13,6 +13,12 @@ import { Input } from '@/components/ui/input';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { categories } from '@/data/categories';
 
+// Helper to get image path respecting base URL
+const getImagePath = (path: string) => {
+    const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+    return `${base}${path}`;
+};
+
 // Fallback mock data if Supabase is unavailable
 const fallbackPrompts: CommunityPrompt[] = [
     {
@@ -24,6 +30,7 @@ const fallbackPrompts: CommunityPrompt[] = [
         loves: 3421,
         author: '@growth_guru',
         badge: 'viral',
+        example_image: 'images/viral-hook.png',
         created_at: new Date().toISOString(),
     },
     {
@@ -35,6 +42,7 @@ const fallbackPrompts: CommunityPrompt[] = [
         loves: 2847,
         author: '@tech_lead_sarah',
         badge: 'trending',
+        example_image: 'images/code-review.png',
         created_at: new Date().toISOString(),
     },
     {
@@ -46,6 +54,7 @@ const fallbackPrompts: CommunityPrompt[] = [
         loves: 1954,
         author: '@prompt_artist_jay',
         badge: 'gem',
+        example_image: 'images/midjourney-cinematic.png',
         created_at: new Date().toISOString(),
     },
     {
@@ -57,6 +66,7 @@ const fallbackPrompts: CommunityPrompt[] = [
         loves: 1654,
         author: '@content_king',
         badge: 'featured',
+        example_image: 'images/seo-blog.png',
         created_at: new Date().toISOString(),
     },
     {
@@ -68,6 +78,7 @@ const fallbackPrompts: CommunityPrompt[] = [
         loves: 1203,
         author: '@frontend_wizard',
         badge: 'trending',
+        example_image: 'images/react-component.png',
         created_at: new Date().toISOString(),
     },
     {
@@ -79,6 +90,7 @@ const fallbackPrompts: CommunityPrompt[] = [
         loves: 982,
         author: '@sales_closer',
         badge: 'featured',
+        example_image: 'images/cold-email.png',
         created_at: new Date().toISOString(),
     },
     {
@@ -90,6 +102,7 @@ const fallbackPrompts: CommunityPrompt[] = [
         loves: 876,
         author: '@regex_god',
         badge: 'gem',
+        example_image: 'images/regex-explainer.png',
         created_at: new Date().toISOString(),
     },
 ];
@@ -98,41 +111,51 @@ const Discover = () => {
     const navigate = useNavigate();
     const [communityPrompts, setCommunityPrompts] = useState<CommunityPrompt[]>(fallbackPrompts);
     const [lovedPrompts, setLovedPrompts] = useState<Set<string>>(new Set());
-    const [loading, setLoading] = useState(true);
+    const [isLoading, setIsLoading] = useState(true);
     const [searchQuery, setSearchQuery] = useState('');
     const [filterCategory, setFilterCategory] = useState('all');
 
     useEffect(() => {
-        const fetchPrompts = async () => {
-            if (!supabase) {
-                console.log('Supabase not configured, using fallback data');
-                setLoading(false);
-                return;
-            }
-
-            try {
-                const { data, error } = await supabase
-                    .from('community_prompts')
-                    .select('*')
-                    .order('loves', { ascending: false });
-
-                if (error) throw error;
-
-                if (data && data.length > 0) {
-                    setCommunityPrompts(data);
-                }
-            } catch (error) {
-                console.error('Error fetching prompts:', error);
-                // Fallback to mock data on error
-            } finally {
-                setLoading(false);
-            }
-        };
-
         fetchPrompts();
     }, []);
 
-    const handleLove = (id: string) => {
+    const fetchPrompts = async () => {
+        setIsLoading(true);
+        // Simulate network delay for "live" feel
+        await new Promise(resolve => setTimeout(resolve, 800));
+
+        if (!supabase) {
+            console.log('Supabase not configured, using fallback data');
+            setCommunityPrompts(fallbackPrompts);
+            setIsLoading(false);
+            return;
+        }
+
+        try {
+            const { data, error } = await supabase
+                .from('community_prompts')
+                .select('*')
+                .order('loves', { ascending: false });
+
+            if (error) throw error;
+
+            if (data && data.length > 0) {
+                setCommunityPrompts(data);
+            } else {
+                console.log('No data from Supabase, using fallback prompts');
+                setCommunityPrompts(fallbackPrompts);
+            }
+        } catch (error) {
+            console.error('Error fetching prompts:', error);
+            console.log('Using fallback prompts due to error');
+            setCommunityPrompts(fallbackPrompts);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    const toggleLove = (e: React.MouseEvent, id: string) => {
+        e.stopPropagation();
         setLovedPrompts(prev => {
             const newSet = new Set(prev);
             if (newSet.has(id)) {
@@ -144,7 +167,7 @@ const Discover = () => {
         });
     };
 
-    const getBadgeInfo = (badge: string | null | undefined) => {
+    const getBadgeStyle = (badge: string | null | undefined) => {
         switch (badge) {
             case 'viral':
                 return { icon: Fire, label: 'Viral', color: 'bg-orange-500/10 text-orange-700 dark:text-orange-400 border-orange-500/20' };
@@ -178,7 +201,7 @@ const Discover = () => {
 
             <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 max-w-6xl">
                 {/* Featured Spotlight Hero */}
-                <div className="mb-12 rounded-3xl bg-gradient-to-br from-primary/90 to-primary/70 text-primary-foreground p-6 sm:p-10 relative overflow-hidden shadow-2xl">
+                <div className="mb-12 rounded-3xl bg-gradient-to-br from-primary/90 to-primary/70 text-primary-foreground p-6 sm:p-10 relative overflow-hidden shadow-2xl group">
                     {/* Background Pattern */}
                     <div className="absolute top-0 right-0 w-96 h-96 bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
 
@@ -215,21 +238,13 @@ const Discover = () => {
                         </div>
 
                         {/* Visual Preview */}
-                        <div className="w-full md:w-1/3 aspect-[4/3] bg-background/10 backdrop-blur-sm rounded-xl border border-white/20 p-4 shadow-inner hidden md:block rotate-3 hover:rotate-0 transition-transform duration-500">
-                            <div className="h-full bg-background rounded-lg shadow-sm p-4 overflow-hidden relative">
-                                <div className="space-y-3">
-                                    <div className="h-2 w-1/3 bg-muted rounded animate-pulse" />
-                                    <div className="h-2 w-3/4 bg-muted rounded animate-pulse" />
-                                    <div className="h-2 w-5/6 bg-muted rounded animate-pulse" />
-                                    <div className="h-2 w-full bg-muted rounded animate-pulse" />
-                                    <div className="h-20 w-full bg-blue-500/5 rounded border border-blue-500/10 p-2 mt-4">
-                                        <p className="text-[10px] text-blue-600 font-mono">
-                                            "Based on my performance review, I believe a 15% adjustment reflects..."
-                                        </p>
-                                    </div>
-                                </div>
-                                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-background to-transparent" />
-                            </div>
+                        <div className="w-full md:w-1/3 aspect-[4/3] relative rounded-xl overflow-hidden shadow-2xl border border-white/10 transform md:rotate-3 transition-all duration-500 group-hover:rotate-0 group-hover:scale-105">
+                            <img
+                                src={getImagePath('images/salary-negotiation.png')}
+                                alt="Salary Negotiation Playbook"
+                                className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-60" />
                         </div>
                     </div>
                 </div>
@@ -251,119 +266,128 @@ const Discover = () => {
                         </SelectTrigger>
                         <SelectContent>
                             <SelectItem value="all">All Goals</SelectItem>
-                            {categories.map(cat => (
-                                <SelectItem key={cat.id} value={cat.id}>{cat.title}</SelectItem>
+                            {categories.map((cat) => (
+                                <SelectItem key={cat.id} value={cat.id}>
+                                    {cat.title}
+                                </SelectItem>
                             ))}
                         </SelectContent>
                     </Select>
                 </div>
 
-                <div className="flex items-center justify-between mb-6">
-                    <h2 className="text-2xl font-bold">Trending Workflows</h2>
-                    <Badge variant="outline" className="px-3 py-1">{filteredPrompts.length} solutions</Badge>
-                </div>
+                {/* Prompts Grid */}
+                <div className="space-y-6">
+                    <div className="flex items-baseline justify-between">
+                        <h2 className="text-2xl font-bold tracking-tight">Trending Workflows</h2>
+                        <Badge variant="outline" className="rounded-full px-3">
+                            {filteredPrompts.length} solutions
+                        </Badge>
+                    </div>
 
-                {!loading && (
                     <motion.div
-                        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5"
+                        className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
                         variants={staggerContainer}
-                        initial="initial"
-                        animate="animate"
+                        initial="hidden"
+                        animate="show"
                     >
-                        {filteredPrompts.map((prompt) => {
-                            const badgeInfo = getBadgeInfo(prompt.badge);
-                            const BadgeIcon = badgeInfo.icon;
-                            const isLoved = lovedPrompts.has(prompt.id);
+                        {isLoading
+                            ? Array.from({ length: 6 }).map((_, i) => (
+                                <Card key={i} className="h-[320px] bg-muted/30 border-0 animate-pulse rounded-xl" />
+                            ))
+                            : filteredPrompts.map((prompt) => {
+                                const badgeStyle = getBadgeStyle(prompt.badge);
+                                const isLoved = lovedPrompts.has(prompt.id);
 
-                            return (
-                                <motion.div
-                                    key={prompt.id}
-                                    variants={staggerItem}
-                                >
-                                    <Card
-                                        className="group cursor-pointer hover:shadow-xl hover:-translate-y-2 transition-all duration-300 overflow-hidden border-border/50 h-full flex flex-col"
-                                        onClick={() => navigate(`/prompt/${prompt.id}`)}
-                                    >
-                                        {/* Image Cover - Portrait Aspect */}
-                                        {prompt.example_image ? (
-                                            <div className="relative aspect-[4/5] overflow-hidden bg-gradient-to-br from-muted to-muted/50">
-                                                <img
-                                                    src={prompt.example_image}
-                                                    alt={prompt.title}
-                                                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                                                />
-
-                                                {/* Subtle Overlay */}
-                                                <div className="absolute inset-0 bg-gradient-to-t from-background/95 via-transparent to-transparent" />
+                                return (
+                                    <motion.div key={prompt.id} variants={staggerItem}>
+                                        <Card
+                                            className="group relative overflow-hidden border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg bg-card/50 backdrop-blur-sm h-full flex flex-col"
+                                            onClick={() => navigate(`/prompt/${prompt.id}`)}
+                                        >
+                                            {/* Card Header / Image Area */}
+                                            <div className="relative aspect-video w-full overflow-hidden bg-muted/30 group-hover:bg-muted/50 transition-colors">
+                                                {prompt.example_image ? (
+                                                    <div className="w-full h-full relative">
+                                                        <img
+                                                            src={getImagePath(prompt.example_image)}
+                                                            alt={prompt.title}
+                                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                                                        />
+                                                        <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
+                                                    </div>
+                                                ) : (
+                                                    <div className="w-full h-full flex items-center justify-center">
+                                                        <DynamicIcon
+                                                            name={prompt.icon}
+                                                            className="w-12 h-12 text-muted-foreground/20 group-hover:text-primary/40 transition-colors duration-300"
+                                                        />
+                                                    </div>
+                                                )}
 
                                                 {/* Badge */}
-                                                <div className="absolute top-3 right-3">
-                                                    <Badge className={`${badgeInfo.color} shadow-lg border-0`}>
-                                                        {badgeInfo.label}
-                                                    </Badge>
-                                                </div>
-
-                                                {/* Before/After Pill - Bottom Center */}
-                                                {prompt.example_input && (
-                                                    <div className="absolute bottom-3 left-1/2 -translate-x-1/2">
-                                                        <div className="flex items-center gap-1.5 bg-background/95 backdrop-blur-md px-3 py-1.5 rounded-full border border-border shadow-xl">
-                                                            <img src={prompt.example_input} className="w-6 h-6 rounded-full object-cover ring-2 ring-primary/20" alt="Before" />
-                                                            <span className="text-xs text-muted-foreground">→</span>
-                                                            <img src={prompt.example_image} className="w-6 h-6 rounded-full object-cover ring-2 ring-green-500/30" alt="After" />
+                                                {badgeStyle && (
+                                                    <div className={`absolute top-3 right-3 px-2 py-0.5 rounded-full text-xs font-medium border backdrop-blur-md shadow-sm ${badgeStyle.color}`}>
+                                                        <div className="flex items-center gap-1">
+                                                            <badgeStyle.icon className="w-3 h-3" weight="fill" />
+                                                            {badgeStyle.label}
                                                         </div>
                                                     </div>
                                                 )}
-                                            </div>
-                                        ) : (
-                                            <div className="aspect-[4/5] bg-gradient-to-br from-primary/5 to-primary/10 flex items-center justify-center relative">
-                                                <DynamicIcon name={prompt.icon} className="w-16 h-16 text-primary/30" />
-                                                <div className="absolute top-3 right-3">
-                                                    <Badge variant="outline" className={badgeInfo.color}>
-                                                        {badgeInfo.label}
+
+                                                {/* Category Pill */}
+                                                <div className="absolute top-3 left-3">
+                                                    <Badge variant="secondary" className="backdrop-blur-md bg-background/80 hover:bg-background/90 text-xs px-2 py-0.5 h-6">
+                                                        {categories.find(c => c.id === prompt.category)?.title || prompt.category}
                                                     </Badge>
                                                 </div>
                                             </div>
-                                        )}
 
-                                        {/* Content */}
-                                        <div className="p-4 flex-1 flex flex-col">
-                                            <div className="flex items-start gap-2 mb-2">
-                                                <div className="p-1.5 rounded-md bg-primary/10 flex-shrink-0">
-                                                    <DynamicIcon name={prompt.icon} className="w-4 h-4 text-primary" />
-                                                </div>
-                                                <div className="flex-1 min-w-0">
-                                                    <h3 className="font-semibold text-base group-hover:text-primary transition-colors line-clamp-2 leading-tight">
-                                                        {prompt.title}
-                                                    </h3>
+                                            {/* Content */}
+                                            <div className="p-5 flex-1 flex flex-col">
+                                                <h3 className="font-semibold text-lg leading-tight mb-2 group-hover:text-primary transition-colors line-clamp-1">
+                                                    {prompt.title}
+                                                </h3>
+                                                <p className="text-sm text-muted-foreground line-clamp-2 mb-4 flex-1">
+                                                    {prompt.description}
+                                                </p>
+
+                                                {/* Footer */}
+                                                <div className="mt-auto pt-4 border-t border-border/50 flex items-center justify-between gap-3">
+                                                    <div className="flex items-center text-xs text-muted-foreground">
+                                                        <span className="font-medium text-foreground">{prompt.author}</span>
+                                                    </div>
+
+                                                    <div className="flex items-center gap-2">
+                                                        <Button
+                                                            size="sm"
+                                                            variant="default" // Primary button for action
+                                                            className="h-8 px-3 text-xs font-medium bg-primary/90 hover:bg-primary shadow-sm"
+                                                            onClick={(e) => {
+                                                                e.stopPropagation();
+                                                                navigate(`/customize/${prompt.category === 'writing' ? 'viral-hook' : 'salary-negotiator'}`);
+                                                            }}
+                                                        >
+                                                            Remix
+                                                        </Button>
+                                                        <Button
+                                                            variant="ghost"
+                                                            size="icon"
+                                                            className={`h-8 w-8 hover:bg-red-500/10 hover:text-red-500 transition-colors ${isLoved ? 'text-red-500' : 'text-muted-foreground'
+                                                                }`}
+                                                            onClick={(e) => toggleLove(e, prompt.id)}
+                                                        >
+                                                            <Heart weight={isLoved ? "fill" : "regular"} className={`w-4 h-4 ${isLoved ? "animate-pulse-once" : ""}`} />
+                                                            <span className="sr-only">Love</span>
+                                                        </Button>
+                                                    </div>
                                                 </div>
                                             </div>
-
-                                            <p className="text-xs text-muted-foreground line-clamp-2 mb-3 flex-1">
-                                                {prompt.description}
-                                            </p>
-
-                                            <div className="flex items-center justify-between text-xs text-muted-foreground pt-2 border-t border-border/50">
-                                                <button
-                                                    onClick={(e) => {
-                                                        e.stopPropagation();
-                                                        handleLove(prompt.id);
-                                                    }}
-                                                    className="flex items-center gap-1.5 hover:text-red-500 transition-colors"
-                                                >
-                                                    <Heart
-                                                        className={`w-3.5 h-3.5 ${isLoved ? 'fill-red-500 text-red-500' : ''}`}
-                                                    />
-                                                    <span className="font-medium">{(prompt.loves + (isLoved ? 1 : 0)).toLocaleString()}</span>
-                                                </button>
-                                                <span className="text-xs truncate">{prompt.author}</span>
-                                            </div>
-                                        </div>
-                                    </Card>
-                                </motion.div>
-                            );
-                        })}
+                                        </Card>
+                                    </motion.div>
+                                );
+                            })}
                     </motion.div>
-                )}
+                </div>
             </div>
         </motion.div>
     );
