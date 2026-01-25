@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
-import { ArrowLeft, Check, Copy, Wand2, ArrowRight, Bookmark, ExternalLink } from 'lucide-react';
+import { ArrowLeft, Check, Copy, Wand2, ArrowRight, Bookmark, ExternalLink, RefreshCw } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { toast } from 'sonner';
@@ -14,6 +14,7 @@ import { supabase, type CommunityPrompt } from '@/lib/supabase';
 import { Textarea } from '@/components/ui/textarea';
 import { saveFavorite, isFavorite } from '@/lib/favorites';
 import { OpenChatGPTDialog } from '@/components/OpenChatGPTDialog';
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 export const CustomizeTemplate = () => {
   const { templateId } = useParams();
@@ -26,7 +27,7 @@ export const CustomizeTemplate = () => {
 
   // Preview States
   const [generatedPrompt, setGeneratedPrompt] = useState('');
-  const [showPreview, setShowPreview] = useState(false);
+  const [showPreview, setShowPreview] = useState(true); // Always show preview
   const [copied, setCopied] = useState(false);
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<'chatgpt' | 'claude'>('chatgpt');
@@ -78,6 +79,15 @@ export const CustomizeTemplate = () => {
 
     loadTemplate();
   }, [templateId]);
+
+  // Effect to auto-generate prompt when template or formData changes
+  useEffect(() => {
+    if (template && !loading) {
+      const prompt = generatePromptText();
+      setGeneratedPrompt(prompt);
+      setSaved(isFavorite(template.id, formData));
+    }
+  }, [template, formData, loading]);
 
   const setupCommunityTemplate = (data: CommunityPrompt) => {
     const content = data.content || '';
@@ -132,7 +142,6 @@ export const CustomizeTemplate = () => {
   const updateFormData = (name: string, value: any) => {
     setFormData((prev) => {
       const newData = { ...prev, [name]: value };
-      // Check favorite status with new data combo if needed, though usually favorite is checked on generation
       return newData;
     });
   };
@@ -159,15 +168,18 @@ export const CustomizeTemplate = () => {
     let prompt = template.promptTemplate;
 
     Object.entries(formData).forEach(([key, value]) => {
+      // If value is empty, show placeholder like [Topic]
+      const distinctValue = value ? value : `[${template.fields.find((f: any) => f.name === key)?.label || key}]`;
+
       if (isCommunity) {
         if (key !== 'custom_input') {
-          prompt = prompt.replace(new RegExp(`\\[${key}\\]`, 'gi'), value);
+          prompt = prompt.replace(new RegExp(`\\[${key}\\]`, 'gi'), value || `[${key}]`);
         }
       } else {
         const field = template.fields.find((f: any) => f.name === key);
         if (field?.type === 'dropdown' && field.options) {
           const option = field.options.find((o: any) => o.value === value);
-          const label = option?.label || value;
+          const label = option?.label || value || distinctValue;
           prompt = prompt.replace(`{${key}}`, label);
         } else if (field?.type === 'checkbox') {
           const addition = value ? ` Include ${field.label.toLowerCase()}.` : '';
@@ -185,17 +197,12 @@ export const CustomizeTemplate = () => {
     return prompt;
   };
 
+  // Deprecated explicit generate button, now just scrolls check
   const handleGenerate = (e?: React.FormEvent) => {
     if (e) e.preventDefault();
-    const prompt = generatePromptText();
-    setGeneratedPrompt(prompt);
-    setShowPreview(true);
-    setSaved(isFavorite(template.id, formData));
-
-    // On mobile, scroll to preview
-    setTimeout(() => {
-      previewRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }, 100);
+    // Scroll to preview on mobile
+    previewRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    toast.success("Prompt is ready!");
   };
 
   const copyToClipboard = async () => {
@@ -240,16 +247,16 @@ export const CustomizeTemplate = () => {
           <ThemeToggle />
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8 items-start">
+        <div className="flex flex-col lg:flex-row gap-8 items-start h-[calc(100vh-140px)]">
 
-          {/* LEFT: Input Form */}
-          <div className="w-full lg:w-1/2 space-y-6">
+          {/* LEFT: Input Form (Scrollable) */}
+          <ScrollArea className="w-full lg:w-1/2 h-full pr-4 overflow-y-auto">
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <span className="text-3xl">{template.icon}</span>
                 <h1 className="text-2xl font-bold font-heading">{template.title}</h1>
               </div>
-              <p className="text-muted-foreground">{template.description}</p>
+              <p className="text-muted-foreground mb-6">{template.description}</p>
             </div>
 
             <Card className="p-6 border-border shadow-sm">
@@ -313,54 +320,44 @@ export const CustomizeTemplate = () => {
                   </div>
                 ))}
 
-                <Button type="submit" className="w-full" size="lg">
-                  Generate Prompt <ArrowRight className="w-4 h-4 ml-2" />
-                </Button>
+                {/* Hidden submit to allow enter key */}
+                <button type="submit" className="hidden" />
               </form>
             </Card>
-          </div>
+          </ScrollArea>
 
-          {/* RIGHT: Live Preview */}
-          <div ref={previewRef} className={`w-full lg:w-1/2 lg:sticky lg:top-24 transition-all duration-500 ${showPreview ? 'opacity-100 translate-y-0' : 'opacity-50 lg:opacity-100'}`}>
-            {showPreview ? (
-              <Card className="p-6 border-primary/20 bg-primary/5 shadow-md h-full flex flex-col">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="font-semibold text-lg flex items-center gap-2">
-                    <Check className="w-5 h-5 text-primary" />
-                    Result
-                  </h3>
-                  <div className="flex gap-2">
-                    <Button size="sm" variant="outline" onClick={copyToClipboard}>
-                      {copied ? <Check className="w-4 h-4 mr-1" /> : <Copy className="w-4 h-4 mr-1" />}
-                      {copied ? 'Copied' : 'Copy'}
-                    </Button>
-                    <Button size="sm" variant="outline" onClick={handleSaveFavorite} disabled={saved}>
-                      <Bookmark className={`w-4 h-4 mr-1 ${saved ? "fill-current" : ""}`} />
-                    </Button>
-                  </div>
-                </div>
-
-                <div className="bg-background rounded-md p-5 border border-border font-mono text-sm whitespace-pre-wrap leading-relaxed shadow-inner flex-grow">
-                  {generatedPrompt}
-                </div>
-
-                <div className="grid grid-cols-2 gap-3 mt-6">
-                  <Button onClick={() => handleOpenService('chatgpt')} className="w-full">
-                    <ExternalLink className="w-4 h-4 mr-2" /> Open ChatGPT
+          {/* RIGHT: Live Preview (Sticky) */}
+          <div ref={previewRef} className="w-full lg:w-1/2 lg:h-full flex flex-col">
+            <Card className="p-6 border-primary/20 bg-primary/5 shadow-md h-full flex flex-col">
+              <div className="flex items-center justify-between mb-4 flex-shrink-0">
+                <h3 className="font-semibold text-lg flex items-center gap-2">
+                  <Check className="w-5 h-5 text-primary" />
+                  Live Preview
+                </h3>
+                <div className="flex gap-2">
+                  <Button size="sm" variant="outline" onClick={copyToClipboard}>
+                    {copied ? <Check className="w-4 h-4 mr-1" /> : <Copy className="w-4 h-4 mr-1" />}
+                    {copied ? 'Copied' : 'Copy'}
                   </Button>
-                  <Button onClick={() => handleOpenService('claude')} variant="secondary" className="w-full">
-                    <ExternalLink className="w-4 h-4 mr-2" /> Open Claude
+                  <Button size="sm" variant="outline" onClick={handleSaveFavorite} disabled={saved}>
+                    <Bookmark className={`w-4 h-4 mr-1 ${saved ? "fill-current" : ""}`} />
                   </Button>
                 </div>
-              </Card>
-            ) : (
-              // Placeholder State on Desktop
-              <div className="hidden lg:flex flex-col items-center justify-center h-full min-h-[400px] border-2 border-dashed border-muted-foreground/20 rounded-xl p-8 text-center text-muted-foreground">
-                <Wand2 className="w-12 h-12 mb-4 opacity-20" />
-                <p className="text-lg font-medium">Ready to generate?</p>
-                <p className="text-sm">Fill out the form and click Generate to see your prompt here.</p>
               </div>
-            )}
+
+              <div className="bg-background rounded-md p-5 border border-border font-mono text-sm whitespace-pre-wrap leading-relaxed shadow-inner flex-grow overflow-y-auto">
+                {generatedPrompt}
+              </div>
+
+              <div className="grid grid-cols-2 gap-3 mt-6 flex-shrink-0">
+                <Button onClick={() => handleOpenService('chatgpt')} className="w-full">
+                  <ExternalLink className="w-4 h-4 mr-2" /> Open ChatGPT
+                </Button>
+                <Button onClick={() => handleOpenService('claude')} variant="secondary" className="w-full">
+                  <ExternalLink className="w-4 h-4 mr-2" /> Open Claude
+                </Button>
+              </div>
+            </Card>
           </div>
         </div>
 
@@ -374,5 +371,5 @@ export const CustomizeTemplate = () => {
     </div>
   );
 };
-
 export default CustomizeTemplate;
+

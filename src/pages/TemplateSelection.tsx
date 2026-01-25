@@ -7,21 +7,17 @@ import { Button } from '@/components/ui/button';
 import { ArrowLeft } from 'lucide-react';
 import { ThemeToggle } from '@/components/ThemeToggle';
 
-import { TemplatePreviewDialog } from '@/components/TemplatePreviewDialog';
 import { Template } from '@/types/templates';
 
 const TemplateSelection = () => {
   const { categoryId } = useParams();
   const navigate = useNavigate();
-  const [previewTemplate, setPreviewTemplate] = useState<Template | null>(null);
-  const [previewOpen, setPreviewOpen] = useState(false);
 
   const category = categories.find((c) => c.id === categoryId);
   const categoryTemplates = templates.filter((t) => t.category === categoryId);
 
   const handleTemplateClick = (template: Template) => {
-    setPreviewTemplate(template);
-    setPreviewOpen(true);
+    navigate(`/customize/${template.id}`);
   };
 
   if (!category) {
@@ -37,12 +33,6 @@ const TemplateSelection = () => {
 
   return (
     <>
-      <TemplatePreviewDialog
-        template={previewTemplate}
-        open={previewOpen}
-        onOpenChange={setPreviewOpen}
-      />
-
       <div className="min-h-screen bg-background page-transition pb-8">
         <div className="container mx-auto px-4 sm:px-6 py-8 sm:py-12 md:py-16 max-w-4xl">
           {/* Top Bar - Improved Navigation */}
