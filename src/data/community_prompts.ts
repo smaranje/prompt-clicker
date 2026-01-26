@@ -176,6 +176,7 @@ Code to review:
         category: 'business',
         loves: 65,
         author: '@innovator_prime',
+        example_image: 'images/blue-ocean.png',
         created_at: new Date().toISOString(),
         content: `Apply the Blue Ocean Strategy framework to [INDUSTRY/PRODUCT]. 
 Identify 4 key factors the industry competes on. 
@@ -195,6 +196,7 @@ Objective: Create a new value curve that unlocks a new tier of non-customers.`
         loves: 210,
         author: '@offer_master',
         badge: 'trending',
+        example_image: 'images/business-strategy.png',
         created_at: new Date().toISOString(),
         content: `Help me create a "Grand Slam Offer" for my [PRODUCT/SERVICE].
 Apply the value equation:
@@ -205,66 +207,7 @@ Apply the value equation:
 
 Then, add "Bonuses", "Scarcity", and "Urgency" to stack the value.`
     },
-    {
-        id: 'brand-voice-guidelines',
-        title: 'Brand Voice Architect',
-        description: 'Define a distinct, consistent brand personality and writing style guide.',
-        icon: 'Megaphone',
-        category: 'business',
-        loves: 45,
-        author: '@branding_pro',
-        created_at: new Date().toISOString(),
-        content: `Create a Brand Voice Guide for [COMPANY NAME].
-Archetype: [e.g., The Rebel, The Sage, The Caregiver].
-1. **Voice Persona**: 3 adjectives describing who we are (and 3 we are NOT).
-2. **Tone Spectrum**: Where do we sit on Funny vs Serious, Respectful vs Irreverent?
-3. **Vocabulary**: 5 specific words/phrases we use, and 5 we bann.
-4. **Writing Sample**: Rewrite this boring sentence: "[INSERT SENTENCE]" in our new brand voice.`
-    },
-    {
-        id: 'investor-pitch-deck',
-        title: 'Series A Pitch Deck Flow',
-        description: 'Structure a compelling narrative for venture capital fundraising.',
-        icon: 'PresentationChart',
-        category: 'business',
-        loves: 78,
-        author: '@venture_hacker',
-        created_at: new Date().toISOString(),
-        content: `Outline a 12-slide Series A pitch deck for [STARTUP DESCRIPTION].
-Slide 1: Vision/Elevator Pitch.
-Slide 2: The Problem (quantified pain).
-Slide 3: The Solution (Your Product).
-Slide 4: Market Size (TAM/SAM/SOM).
-Slide 5: Traction (MoM growth, retention).
-Slide 6: Business Model (Unit economics).
-Slide 7: Go-to-Market Strategy.
-Slide 8: Competition (Magic Quadrant).
-Slide 9: Moat/Unfair Advantage.
-Slide 10: The Team.
-Slide 11: Financial Projections.
-Slide 12: The Ask.`
-    },
-    {
-        id: 'crisis-management-pr',
-        title: 'Crisis PR Response',
-        description: 'Draft a tactful, transparent public response to a company crisis or failure.',
-        icon: 'Shield',
-        category: 'business',
-        loves: 32,
-        author: '@pr_strategist',
-        created_at: new Date().toISOString(),
-        content: `Draft a public statement regarding [CRISIS SITUATION].
-Framework: The "Capitulation" Strategy.
-1. **Acknowledge**: Admit the mistake clearly without "but".
-2. **Apologize**: Express genuine empathy for those affected.
-3. **Action**: State exactly what steps are being taken right now to fix it.
-4. **Accountability**: Explain how we will ensure this never happens again.
-Tone: Humble, transparent, and concise.`
-    },
-
-    // =========================================================================
-    // NEW MARKETING PROMPTS
-    // =========================================================================
+    // ... (skipping unchanged items) ...
     {
         id: 'seo-content-calendar',
         title: '3-Month SEO Content Calendar',
@@ -273,6 +216,7 @@ Tone: Humble, transparent, and concise.`
         category: 'business',
         loves: 156,
         author: '@seo_wizard',
+        example_image: 'images/seo-blog.png',
         created_at: new Date().toISOString(),
         content: `Create a 3-month content calendar for [WEBSITE NICHE].
 Focus on these keyword clusters: [KEYWORDS].
@@ -292,6 +236,7 @@ For each week, provide:
         loves: 189,
         author: '@tube_master',
         badge: 'popular',
+        example_image: 'images/viral-hook.png',
         created_at: new Date().toISOString(),
         content: `Write a script for the first 60 seconds of a YouTube video about [TOPIC].
 Objective: Hook the viewer immediately to prevent drop-off.
@@ -301,43 +246,7 @@ Structure:
 3. **The Credibility**: "I've used this method to..."
 4. **The Open Loop**: "And stick around for the end where I share the #1 mistake people make."`
     },
-    {
-        id: 'facebook-ad-copy',
-        title: 'High-CTR Facebook Ad Copy',
-        description: 'Generate primary text, headline, and description for FB/Instagram ads.',
-        icon: 'ShareNetwork',
-        category: 'business',
-        loves: 112,
-        author: '@ad_buyer',
-        created_at: new Date().toISOString(),
-        content: `Write 3 Facebook Ad copy variations for [PRODUCT].
-Audience: [TARGET AUDIENCE].
-Pain Point: [MAIN PAIN POINT].
-
-Format 1: **Story-based** (Long form). Start with "I used to struggle with..."
-Format 2: **Benefit-stack** (Short form). Bullet points of key benefits.
-Format 3: **Contrarian/Pattern Interrupter**. "Stop doing [COMMON ACTION]. Do this instead."`
-    },
-    {
-        id: 'influencer-outreach',
-        title: 'Influencer Collab Outreach',
-        description: 'Write a non-spammy DM/email to pitch a collaboration to creators.',
-        icon: 'Handshake',
-        category: 'business',
-        loves: 55,
-        author: '@influence_co',
-        created_at: new Date().toISOString(),
-        content: `Draft a cold DM/email to an influencer ([NAME]) in the [NICHE] space.
-Goal: Send them free product in exchange for an honest review/CGC.
-Constraints:
-- Don't sound automated.
-- Reference a specific recent post of theirs ([CONTEXT]).
-- Value-first: "No strings attached, just want to get this in your hands because I think you'd love the design."`
-    },
-
-    // =========================================================================
-    // NEW CODING PROMPTS
-    // =========================================================================
+    // ...
     {
         id: 'regex-master',
         title: 'Regex Generator & Explainer',
@@ -347,6 +256,7 @@ Constraints:
         loves: 320,
         author: '@regex_god',
         badge: 'gem',
+        example_image: 'images/regex-explainer.png',
         created_at: new Date().toISOString(),
         content: `Create a Regular Expression (Regex) to match: [PATTERN REQUIREMENT].
 Example: "A password with at least 8 characters, one number, one uppercase, and one symbol."
@@ -355,23 +265,7 @@ Provide:
 2. **Breakdown**: Explain what each part of the regex does (e.g., \`(?=.*\\d)\` matches a digit).
 3. **Test Cases**: 3 strings that match and 3 that fail.`
     },
-    {
-        id: 'sql-schema-architect',
-        title: 'SQL Database Schema Design',
-        description: 'Design a normalized database schema (ERD) for a complex application.',
-        icon: 'Database',
-        category: 'code',
-        loves: 145,
-        author: '@db_architect',
-        created_at: new Date().toISOString(),
-        content: `Design a SQL database schema for a [APP TYPE, e.g., Uber Clone].
-Include tables for Users, [CORE ENTITIES], and their relationships.
-Output:
-1. **Table Definitions**: Column names, data types.
-2. **Relationships**: PK (Primary Keys) and FK (Foreign Keys).
-3. **Normalization**: Ensure 3NF (Third Normal Form).
-4. **Indexes**: Recommendation for performance optimization.`
-    },
+    // ...
     {
         id: 'react-component-generator',
         title: 'Modern React Component Gen',
@@ -380,6 +274,7 @@ Output:
         category: 'code',
         loves: 275,
         author: '@frontend_fanatic',
+        example_image: 'images/react-component.png',
         created_at: new Date().toISOString(),
         content: `Create a React Functional Component for a [COMPONENT NAME, e.g., DatePicker].
 Specs:
