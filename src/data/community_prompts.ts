@@ -45,7 +45,7 @@ Tone: Professional, direct, and insight-heavy. Avoid generic advice.`
         loves: 12503,
         author: '@visual_alchemist',
         badge: 'gem',
-        example_image: 'images/midjourney-cinematic.png',
+        example_image: 'images/midjourney-v6.png',
         created_at: new Date().toISOString(),
         content: `/imagine prompt: A candid portrait photograph of [SUBJECT], shot on a Leica Q2 with a 28mm Summilux lens at f/1.7. 
 Lighting: Natural window light, soft wrap-around illumination, slight dust motes in the air.
@@ -78,6 +78,30 @@ Output format:
 - **Critical Issues** (Must fix)
 - **Optimization Opportunities** (Nice to have)
 - **Refactored Code Block** (The "Right Way" to write it)`
+    },
+    {
+        id: 'saas-landing-page-optimizer',
+        title: 'SaaS Landing Page Optimizer',
+        description: 'Design high-converting landing pages with scientific precision. Focuses on fold layout, CTA placement, and social proof.',
+        icon: 'Layout',
+        category: 'business',
+        loves: 7200,
+        author: '@conversion_rate_expert',
+        badge: 'trending',
+        example_image: 'images/saas-optimizer.png',
+        created_at: new Date().toISOString(),
+        content: `Analyze this landing page structure for [PRODUCT/SERVICE].
+        
+Goal: Maximize sign-ups.
+
+Provide a section-by-section optimization plan:
+1. **Hero Section**: Headline (Value Prop), Subheadline (Objection handling), Primary CTA.
+2. **Social ProofBar**: Logos, specific numbers (e.g., "Trusted by 500+ teams").
+3. **Problem/Solution**: "Old Way" (Pain) vs "New Way" (Your Product).
+4. **Feature Breakdown**: Benefit-driven copy, not just specs.
+5. **Trust Battery**: Testimonials, Guarantee, FAQ.
+
+Critique the current approach and offer 3 A/B test ideas.`
     },
     {
         id: 'viral-thread-hook-v2',
@@ -131,15 +155,15 @@ Format: Simple text, no emojis, under 280 characters.`
 Keep all emails under 120 words. No fluff.`
     },
     {
-        id: 'react-component-wizard',
+        id: 'react-component-architect',
         title: 'React Component Architect',
         description: 'Generates production-ready React components with Tailwind, Shadcn/UI, and Zod validation built-in.',
         icon: 'Browsers',
         category: 'code',
-        loves: 2800,
+        loves: 6800,
         author: '@frontend_god',
         badge: 'trending',
-        example_image: 'images/react-component.png',
+        example_image: 'images/react-architect.png',
         created_at: new Date().toISOString(),
         content: `Create a highly polished React component for: [COMPONENT DESCRIPTION].
 

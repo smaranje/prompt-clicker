@@ -15,12 +15,48 @@ import { supabase } from '@/lib/supabase';
 const SubmitPrompt = () => {
     const navigate = useNavigate();
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [dragActive, setDragActive] = useState(false);
+    const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+
     const [formData, setFormData] = useState({
         title: '',
         category: '',
         description: '',
         author: '',
     });
+
+    const handleDrag = (e: React.DragEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        if (e.type === "dragenter" || e.type === "dragover") {
+            setDragActive(true);
+        } else if (e.type === "dragleave") {
+            setDragActive(false);
+        }
+    };
+
+    const handleDrop = (e: React.DragEvent) => {
+        e.preventDefault();
+        e.stopPropagation();
+        setDragActive(false);
+        if (e.dataTransfer.files && e.dataTransfer.files[0]) {
+            handleFile(e.dataTransfer.files[0]);
+        }
+    };
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        e.preventDefault();
+        if (e.target.files && e.target.files[0]) {
+            handleFile(e.target.files[0]);
+        }
+    };
+
+    const handleFile = (file: File) => {
+        setSelectedFile(file);
+        const url = URL.createObjectURL(file);
+        setPreviewUrl(url);
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -37,6 +73,9 @@ const SubmitPrompt = () => {
             const categoryData = categories.find(c => c.id === formData.category);
             const icon = categoryData?.icon || 'Sparkles';
 
+            // Note: In a real app, we would upload the file to storage here
+            // const imagePath = await uploadImage(selectedFile);
+
             const { error } = await supabase
                 .from('community_prompts')
                 .insert([
@@ -48,7 +87,8 @@ const SubmitPrompt = () => {
                         author: formData.author || 'Anonymous',
                         loves: 0,
                         badge: null,
-                        content: (document.getElementById('content') as HTMLTextAreaElement)?.value || ''
+                        content: (document.getElementById('content') as HTMLTextAreaElement)?.value || '',
+                        // example_image: imagePath 
                     }
                 ]);
 
@@ -68,114 +108,192 @@ const SubmitPrompt = () => {
         <div className="min-h-screen bg-background">
             <EnterpriseHeader />
 
-            <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-6 max-w-3xl">
-                <div className="mb-4 text-center">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center mx-auto mb-3">
-                        <Sparkle className="w-5 h-5 text-primary-foreground" />
+            <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8 max-w-6xl">
+                <div className="mb-8 text-center">
+                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-primary/20">
+                        <Sparkle className="w-6 h-6 text-primary-foreground" />
                     </div>
-                    <h1 className="text-2xl sm:text-3xl font-bold mb-2">Submit a Prompt</h1>
-                    <p className="text-sm text-muted-foreground max-w-lg mx-auto">
+                    <h1 className="text-3xl sm:text-4xl font-extrabold mb-3 tracking-tight">Submit a Prompt</h1>
+                    <p className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
                         Share your best prompts with the community. Help others achieve better results.
+                        Top rated prompts get featured in the Discover editor's choice.
                     </p>
                 </div>
 
-                <Card className="p-5 sm:p-6">
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                        <div className="space-y-2">
-                            <Label htmlFor="title">Prompt Title</Label>
-                            <Input
-                                id="title"
-                                placeholder="e.g., SEO Blog Post Generator"
-                                value={formData.title}
-                                onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
-                                required
-                            />
-                        </div>
+                <div className="grid lg:grid-cols-3 gap-8">
+                    {/* Main Form Area */}
+                    <div className="lg:col-span-2">
+                        <Card className="p-6 sm:p-8 border-border/60 shadow-sm">
+                            <form onSubmit={handleSubmit} className="space-y-6">
+                                <div className="space-y-2">
+                                    <Label htmlFor="title" className="text-base">Prompt Title</Label>
+                                    <Input
+                                        id="title"
+                                        placeholder="e.g., SEO Blog Post Generator"
+                                        value={formData.title}
+                                        onChange={(e) => setFormData(prev => ({ ...prev, title: e.target.value }))}
+                                        required
+                                        className="h-12 text-lg"
+                                    />
+                                </div>
 
+                                <div className="grid sm:grid-cols-2 gap-6">
+                                    <div className="space-y-2">
+                                        <Label htmlFor="category">Category</Label>
+                                        <Select
+                                            value={formData.category}
+                                            onValueChange={(value) => setFormData(prev => ({ ...prev, category: value }))}
+                                            required
+                                        >
+                                            <SelectTrigger className="h-11">
+                                                <SelectValue placeholder="Select a category" />
+                                            </SelectTrigger>
+                                            <SelectContent>
+                                                {categories.map(cat => (
+                                                    <SelectItem key={cat.id} value={cat.id}>
+                                                        {cat.title}
+                                                    </SelectItem>
+                                                ))}
+                                            </SelectContent>
+                                        </Select>
+                                    </div>
+
+                                    <div className="space-y-2">
+                                        <Label htmlFor="author">Your Handle (Optional)</Label>
+                                        <Input
+                                            id="author"
+                                            placeholder="@username"
+                                            value={formData.author}
+                                            onChange={(e) => setFormData(prev => ({ ...prev, author: e.target.value }))}
+                                            className="h-11"
+                                        />
+                                    </div>
+                                </div>
+
+                                <div className="space-y-2">
+                                    <Label htmlFor="description">Short Description</Label>
+                                    <Input
+                                        id="description"
+                                        placeholder="Briefly explain what this prompt achieves..."
+                                        value={formData.description}
+                                        onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
+                                        required
+                                        className="h-11"
+                                    />
+                                </div>
+
+                                <div className="space-y-2">
+                                    <Label htmlFor="content">Prompt Content *</Label>
+                                    <div className="relative">
+                                        <Textarea
+                                            id="content"
+                                            placeholder="Paste your full prompt here...&#10;&#10;[Topic]&#10;[Context]&#10;[Constraints]"
+                                            className="min-h-[250px] font-mono text-sm leading-relaxed p-4 bg-muted/20"
+                                            required
+                                        />
+                                        <div className="absolute top-3 right-3 text-[10px] text-muted-foreground uppercase font-semibold tracking-wider bg-background/50 px-2 py-1 rounded border">
+                                            Markdown Supported
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="pt-4 flex justify-end gap-3">
+                                    <Button variant="outline" size="lg" type="button" onClick={() => navigate(-1)} className="px-6">
+                                        Cancel
+                                    </Button>
+                                    <Button type="submit" size="lg" disabled={isSubmitting} className="px-8 font-semibold shadow-lg shadow-primary/20">
+                                        {isSubmitting ? (
+                                            'Submitting...'
+                                        ) : (
+                                            <>
+                                                <PaperPlaneRight className="w-4 h-4 mr-2" />
+                                                Submit Prompt
+                                            </>
+                                        )}
+                                    </Button>
+                                </div>
+                            </form>
+                        </Card>
+                    </div>
+
+                    {/* Sidebar / Drag Drop Area */}
+                    <div className="space-y-6">
                         <div className="space-y-2">
-                            <Label htmlFor="category">Category</Label>
-                            <Select
-                                value={formData.category}
-                                onValueChange={(value) => setFormData(prev => ({ ...prev, category: value }))}
-                                required
+                            <Label className="text-base font-semibold">Example Output Image</Label>
+                            <div
+                                className={`
+                                    relative border-2 border-dashed rounded-xl p-8 text-center transition-all duration-200 cursor-pointer
+                                    ${dragActive ? 'border-primary bg-primary/5 scale-[1.02]' : 'border-muted-foreground/25 hover:border-primary/50 hover:bg-muted/30'}
+                                    ${previewUrl ? 'p-0 overflow-hidden border-solid border-border' : ''}
+                                `}
+                                onDragEnter={handleDrag}
+                                onDragLeave={handleDrag}
+                                onDragOver={handleDrag}
+                                onDrop={handleDrop}
+                                onClick={() => document.getElementById('image-upload')?.click()}
                             >
-                                <SelectTrigger>
-                                    <SelectValue placeholder="Select a category" />
-                                </SelectTrigger>
-                                <SelectContent>
-                                    {categories.map(cat => (
-                                        <SelectItem key={cat.id} value={cat.id}>
-                                            {cat.title}
-                                        </SelectItem>
-                                    ))}
-                                </SelectContent>
-                            </Select>
-                        </div>
+                                <input
+                                    id="image-upload"
+                                    type="file"
+                                    className="hidden"
+                                    accept="image/*"
+                                    onChange={handleChange}
+                                />
 
-                        <div className="space-y-2">
-                            <Label htmlFor="description">Short Description</Label>
-                            <Input
-                                id="description"
-                                placeholder="What does this prompt do?"
-                                value={formData.description}
-                                onChange={(e) => setFormData(prev => ({ ...prev, description: e.target.value }))}
-                                required
-                            />
-                            <p className="text-xs text-muted-foreground">
-                                Briefly explain the purpose and output of your prompt.
-                            </p>
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="content">Prompt Content *</Label>
-                            <Textarea
-                                id="content"
-                                placeholder="Paste your full prompt here...&#10;&#10;Example:&#10;You are an expert SEO copywriter. Write a blog post about [TOPIC] that:&#10;- Targets the keyword [KEYWORD]&#10;- Is 1500-2000 words&#10;- Includes 3 H2 subheadings&#10;- Has a conversational tone"
-                                className="min-h-[150px] font-mono text-sm"
-                                required
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="image">Example Image (Optional)</Label>
-                            <Input
-                                id="image"
-                                type="file"
-                                accept="image/*"
-                            />
-                        </div>
-
-                        <div className="space-y-2">
-                            <Label htmlFor="author">Your Name (Optional)</Label>
-                            <Input
-                                id="author"
-                                placeholder="e.g., @yourhandle or Your Name"
-                                value={formData.author}
-                                onChange={(e) => setFormData(prev => ({ ...prev, author: e.target.value }))}
-                            />
-                            <p className="text-xs text-muted-foreground">
-                                Leave blank to submit as Anonymous.
-                            </p>
-                        </div>
-
-                        <div className="pt-3 flex justify-end gap-3">
-                            <Button variant="outline" type="button" onClick={() => navigate(-1)}>
-                                Cancel
-                            </Button>
-                            <Button type="submit" disabled={isSubmitting}>
-                                {isSubmitting ? (
-                                    'Submitting...'
+                                {previewUrl ? (
+                                    <div className="relative group w-full aspect-video">
+                                        <img src={previewUrl} alt="Preview" className="w-full h-full object-cover" />
+                                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white font-medium">
+                                            Click to change
+                                        </div>
+                                    </div>
                                 ) : (
-                                    <>
-                                        <PaperPlaneRight className="w-4 h-4 mr-2" />
-                                        Submit Prompt
-                                    </>
+                                    <div className="flex flex-col items-center justify-center py-6 min-h-[200px]">
+                                        <div className="w-16 h-16 rounded-full bg-muted flex items-center justify-center mb-4">
+                                            <div className="w-8 h-8 text-muted-foreground">
+                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                                                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909m-18 3.75h16.5a1.5 1.5 0 001.5-1.5V6a1.5 1.5 0 00-1.5-1.5H3.75A1.5 1.5 0 002.25 6v12a1.5 1.5 0 001.5 1.5zm10.5-11.25h.008v.008h-.008V8.25zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+                                                </svg>
+                                            </div>
+                                        </div>
+                                        <p className="font-medium text-foreground mb-1">Drag and drop an image</p>
+                                        <p className="text-sm text-muted-foreground mb-4">or click to browse</p>
+                                        <Button variant="secondary" size="sm" type="button" className="pointer-events-none">
+                                            Upload Preview
+                                        </Button>
+                                    </div>
                                 )}
-                            </Button>
+                            </div>
+                            <p className="text-xs text-muted-foreground mt-2">
+                                Recommended: 16:9 ratio, min 1280px width.
+                            </p>
                         </div>
-                    </form>
-                </Card>
+
+                        {/* Tips Card */}
+                        <Card className="p-6 bg-gradient-to-br from-indigo-500/5 to-purple-500/5 border-indigo-500/10">
+                            <h3 className="font-semibold mb-3 flex items-center gap-2">
+                                <Sparkle className="w-4 h-4 text-indigo-500" />
+                                Pro Tips
+                            </h3>
+                            <ul className="space-y-3 text-sm text-muted-foreground">
+                                <li className="flex gap-2">
+                                    <span className="text-primary">•</span>
+                                    Use [Bracket] placeholders for user inputs.
+                                </li>
+                                <li className="flex gap-2">
+                                    <span className="text-primary">•</span>
+                                    Provide a clear Example Output image.
+                                </li>
+                                <li className="flex gap-2">
+                                    <span className="text-primary">•</span>
+                                    Mention which LLM (GPT-4, Claude) it works best with.
+                                </li>
+                            </ul>
+                        </Card>
+                    </div>
+                </div>
             </div>
+
         </div>
     );
 };
