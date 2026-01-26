@@ -109,7 +109,7 @@ const ViewPrompt = () => {
     return (
         <motion.div
             className="min-h-screen bg-background pb-12"
-            {...pageTransitionConfig}
+            {...(pageTransitionConfig as any)}
         >
             <div className="container mx-auto px-4 sm:px-6 py-6 max-w-4xl">
                 {/* Navigation Bar */}
@@ -221,7 +221,7 @@ const ViewPrompt = () => {
                                 </Button>
                             </motion.div>
                             <Button variant="outline" size="lg" className="flex-1 md:w-48" onClick={handleLove}>
-                                <motion.div animate={isLoved ? heartPulse : {}}>
+                                <motion.div animate={isLoved ? (heartPulse as any) : {}}>
                                     <Heart className={`w-4 h-4 mr-2 transition-all ${isLoved ? "fill-red-500 text-red-500" : ""}`} />
                                 </motion.div>
                                 {isLoved ? "Favorited" : "Favorite"}
@@ -236,15 +236,18 @@ const ViewPrompt = () => {
 
                             <div className="p-6 sm:p-8">
                                 <div className="flex items-center justify-between mb-4">
-                                    <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-2">
+                                    <h3 className="text-sm font-semibold uppercase tracking-wider text-muted-foreground flex items-center gap-2 relative z-10">
                                         <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                                         Verified Formatting
                                     </h3>
                                     <Button
                                         variant="ghost"
                                         size="sm"
-                                        className="h-8 text-xs text-muted-foreground hover:text-foreground"
-                                        onClick={handleCopy}
+                                        className="h-8 text-xs text-muted-foreground hover:text-foreground relative z-20"
+                                        onClick={(e) => {
+                                            e.stopPropagation(); // Prevent card clicks if any
+                                            handleCopy();
+                                        }}
                                     >
                                         Copy raw text
                                     </Button>

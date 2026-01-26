@@ -255,10 +255,10 @@ export const CustomizeTemplate = () => {
           <ThemeToggle />
         </div>
 
-        <div className="flex flex-col lg:flex-row gap-8 items-start h-[calc(100vh-140px)]">
+        <div className="flex flex-col lg:flex-row gap-8 items-start lg:h-[calc(100vh-140px)]">
 
-          {/* LEFT: Input Form (Scrollable) */}
-          <ScrollArea className="w-full lg:w-1/2 h-full pr-4 overflow-y-auto">
+          {/* LEFT: Input Form (Scrollable on Desktop) */}
+          <ScrollArea className="w-full lg:w-1/2 h-auto lg:h-full pr-0 lg:pr-4 overflow-y-visible lg:overflow-y-auto">
             <div>
               <div className="flex items-center gap-3 mb-2">
                 <span className="text-3xl">{template.icon}</span>
@@ -353,7 +353,7 @@ export const CustomizeTemplate = () => {
                 </div>
               </div>
 
-              <div className="bg-background rounded-md p-5 border border-border font-mono text-sm whitespace-pre-wrap leading-relaxed shadow-inner flex-grow overflow-y-auto">
+              <div className="bg-background rounded-md p-5 border border-border font-mono text-sm whitespace-pre-wrap leading-relaxed shadow-inner flex-grow overflow-y-auto overflow-x-auto">
                 {generatedPrompt}
               </div>
 
