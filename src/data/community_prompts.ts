@@ -23,7 +23,7 @@ export const communityPrompts: CommunityPrompt[] = [
         loves: 8942,
         author: '@strategy_titan',
         badge: 'featured',
-        example_image: 'images/salary-negotiation.png',
+        example_image: 'images/business-strategy.png',
         created_at: new Date().toISOString(),
         content: `You are a Senior Partner at a top-tier strategy consulting firm (like McKinsey or BCG).
 I want you to conduct a strategic audit of my business/idea: [BUSINESS DESCRIPTION].
@@ -68,6 +68,7 @@ Provide a section-by-section optimization plan:
         loves: 4500,
         author: '@market_maven',
         badge: 'gem',
+        example_image: 'images/business-strategy.png',
         created_at: new Date().toISOString(),
         content: `Act as a senior market research analyst. I need a deep-dive analysis on the [INDUSTRY/NICHE] market.
 
@@ -125,6 +126,7 @@ Parameters: --ar 4:5 --v 6.1 --style raw --q 2 --s 50`
         loves: 6100,
         author: '@design_guru',
         badge: 'trending',
+        example_image: 'images/ui-design.png',
         created_at: new Date().toISOString(),
         content: `/imagine prompt: High-fidelity UI design of a [APP TYPE] mobile application.
 Style: Glassmorphism, translucent blurred cards, neon gradients (cyan and magenta).
@@ -141,6 +143,7 @@ Parameters: --ar 9:16 --v 6.0`
         category: 'creative',
         loves: 5300,
         author: '@director_cut',
+        example_image: 'images/ui-design.png',
         created_at: new Date().toISOString(),
         content: `/imagine prompt: A cinematic wide shot of [SCENE DESCRIPTION] in the style of Denis Villeneuve.
 Lighting: Moody, high contrast, chiaroscuro, volumetric fog.
@@ -160,7 +163,7 @@ Parameters: --ar 2.39:1 --v 6.0 --stylize 250`
         loves: 5621,
         author: '@clean_coder',
         badge: 'gem',
-        example_image: 'images/code-review.png',
+        example_image: 'images/code-review-pro.png',
         created_at: new Date().toISOString(),
         content: `You are a Senior Staff Software Engineer at Google. Review the code below.
 Focus strictly on:

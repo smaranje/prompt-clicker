@@ -22,7 +22,7 @@ const getImagePath = (path: string) => {
 };
 
 // Helper for row sections
-const PromptRow = ({ title, prompts, icon: Icon, color }: any) => {
+const PromptRow = ({ title, prompts, icon: Icon, color, categoryId, onSeeAll }: any) => {
     const navigate = useNavigate();
     const [lovedPrompts, setLovedPrompts] = useState<Set<string>>(new Set());
 
@@ -47,7 +47,12 @@ const PromptRow = ({ title, prompts, icon: Icon, color }: any) => {
                     <Icon className="w-5 h-5" weight="duotone" />
                 </div>
                 <h2 className="text-xl font-bold tracking-tight">{title}</h2>
-                <Button variant="ghost" size="sm" className="ml-auto text-xs text-muted-foreground hover:text-primary">
+                <Button
+                    variant="ghost"
+                    size="sm"
+                    className="ml-auto text-xs text-muted-foreground hover:text-primary"
+                    onClick={() => onSeeAll(categoryId)}
+                >
                     See All <ArrowRight className="w-3 h-3 ml-1" />
                 </Button>
             </div>
@@ -366,6 +371,11 @@ const Discover = () => {
         return matchesSearch && matchesCategory;
     });
 
+    const handleSeeAll = (categoryId: string) => {
+        setFilterCategory(categoryId);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    };
+
     // Grouping for Widget Layout
     const trendingPrompts = filteredPrompts.filter(p => p.badge === 'viral' || p.badge === 'trending' || p.loves > 5000);
     const businessPrompts = filteredPrompts.filter(p => p.category === 'business');
@@ -418,24 +428,32 @@ const Discover = () => {
                         prompts={trendingPrompts}
                         icon={Fire}
                         color="bg-orange-500/10 text-orange-600"
+                        categoryId="all"
+                        onSeeAll={handleSeeAll}
                     />
                     <PromptRow
                         title="Business Essentials"
                         prompts={businessPrompts}
                         icon={Briefcase}
                         color="bg-blue-500/10 text-blue-600"
+                        categoryId="business"
+                        onSeeAll={handleSeeAll}
                     />
                     <PromptRow
                         title="Creative Studio"
                         prompts={creativePrompts}
                         icon={Palette}
                         color="bg-pink-500/10 text-pink-600"
+                        categoryId="creative"
+                        onSeeAll={handleSeeAll}
                     />
                     <PromptRow
                         title="Developer Tools"
                         prompts={devPrompts}
                         icon={TerminalWindow}
                         color="bg-green-500/10 text-green-600"
+                        categoryId="code"
+                        onSeeAll={handleSeeAll}
                     />
 
                     {/* Fallback if no specific groups but search is active */}
