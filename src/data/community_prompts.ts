@@ -1,4 +1,4 @@
-import { ShareNetwork, TreeStructure, Detective, Sparkle, Fire, Heart, TrendUp, Briefcase, Layout, ChartPieSlice, Envelope, Camera, AppWindow, FilmStrip, Code, CheckCircle, Database, PenNib, Article, Brain, Robot, Rocket, Kanban, Target, PresentationChart, Megaphone, UsersThree, Globe, ShoppingCart, Money, Handshake, Lightbulb, PuzzlePiece, Wrench, Shield, Bug, GitBrunch, Browsers, Cpu, FigmaLogo, PaintBrush, VideoCamera, SpeakerHigh, Microphone, NotePencil, Books, GraduationCap, Translate, FileText, MagicWand } from 'phosphor-react';
+import { ShareNetwork, TreeStructure, Detective, Sparkle, Fire, Heart, TrendUp, Briefcase, Layout, ChartPieSlice, Envelope, Camera, AppWindow, FilmStrip, Code, CheckCircle, Database, PenNib, Article, Brain, Robot, Rocket, Kanban, Target, PresentationChart, Megaphone, UsersThree, Globe, ShoppingCart, Money, Handshake, Lightbulb, PuzzlePiece, Wrench, Shield, Bug, GitBranch, Browsers, Cpu, FigmaLogo, PaintBrush, VideoCamera, SpeakerHigh, Microphone, NotePencil, Books, GraduationCap, Translate, FileText, MagicWand, Package, BezierCurve } from 'phosphor-react';
 
 export interface CommunityPrompt {
     id: string;
