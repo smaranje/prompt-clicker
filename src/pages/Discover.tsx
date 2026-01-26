@@ -136,6 +136,177 @@ const PromptRow = ({ title, prompts, icon: Icon, color }: any) => {
     );
 };
 
+// Hero Carousel Item Interface
+interface HeroItem {
+    id: string;
+    title: string;
+    description: string;
+    badge: string;
+    icon: any;
+    image: string;
+    gradient: string;
+    actionLink: string;
+    readLink: string;
+    uses: string;
+    categoryBadge: string;
+    categoryColor: string;
+}
+
+const heroItems: HeroItem[] = [
+    {
+        id: 'virtual-mckinsey-consultant',
+        title: 'Virtual Strategy Consultant',
+        description: 'Unlock McKinsey-level insights. This researched-backed framework conducts a 360° audit of your business model.',
+        badge: "Editor's Choice",
+        icon: Sparkle,
+        image: 'images/salary-negotiation.png',
+        gradient: 'from-indigo-600/90 to-purple-700/80',
+        actionLink: '/customize/virtual-mckinsey-consultant',
+        readLink: '/prompt/virtual-mckinsey-consultant',
+        uses: '8.9k uses',
+        categoryBadge: 'Business',
+        categoryColor: 'bg-emerald-500/20 text-emerald-100'
+    },
+    {
+        id: 'midjourney-v6-photorealism',
+        title: 'Midjourney v6 Photorealism',
+        description: 'Generate indistinguishable-from-reality photos using specific camera gear, lighting, and film stock metadata.',
+        badge: "Trending",
+        icon: Fire,
+        image: 'images/midjourney-v6.png',
+        gradient: 'from-pink-600/90 to-rose-700/80',
+        actionLink: '/customize/midjourney-v6-photorealism',
+        readLink: '/prompt/midjourney-v6-photorealism',
+        uses: '12.5k uses',
+        categoryBadge: 'Creative',
+        categoryColor: 'bg-purple-500/20 text-purple-100'
+    },
+    {
+        id: 'saas-landing-page-optimizer',
+        title: 'SaaS Landing Page Optimizer',
+        description: 'Design high-converting landing pages with scientific precision. Focuses on fold layout, CTA placement.',
+        badge: "New Arrival",
+        icon: TrendUp,
+        image: 'images/saas-optimizer.png',
+        gradient: 'from-emerald-600/90 to-teal-700/80',
+        actionLink: '/customize/saas-landing-page-optimizer',
+        readLink: '/prompt/saas-landing-page-optimizer',
+        uses: '7.2k uses',
+        categoryBadge: 'Marketing',
+        categoryColor: 'bg-blue-500/20 text-blue-100'
+    }
+];
+
+const HeroCarousel = () => {
+    const navigate = useNavigate();
+    const [currentIndex, setCurrentIndex] = useState(0);
+
+    // Auto-advance
+    useEffect(() => {
+        const timer = setInterval(() => {
+            setCurrentIndex((prev) => (prev + 1) % heroItems.length);
+        }, 6000);
+        return () => clearInterval(timer);
+    }, []);
+
+    // Helper to get image path respecting base URL
+    const getImagePath = (path: string) => {
+        const base = import.meta.env.BASE_URL.endsWith('/') ? import.meta.env.BASE_URL : `${import.meta.env.BASE_URL}/`;
+        return `${base}${path}`;
+    };
+
+    const item = heroItems[currentIndex];
+
+    return (
+        <div className="relative mx-4 sm:mx-0 mb-12 group">
+            {/* Main Card */}
+            <div className={`rounded-3xl bg-gradient-to-br ${item.gradient} text-white p-6 sm:p-12 relative overflow-hidden shadow-2xl transition-colors duration-1000`}>
+
+                {/* Background Decorations */}
+                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none mix-blend-overlay" />
+
+                <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center min-h-[400px]">
+                    {/* Text Content - Animate Key Changes */}
+                    <div className="flex-1 text-center md:text-left">
+                        <motion.div
+                            key={`text-${currentIndex}`}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ duration: 0.5 }}
+                        >
+                            <Badge className="mb-4 bg-white/20 hover:bg-white/30 text-white border-0 backdrop-blur-md px-3 py-1">
+                                <item.icon className="w-3.5 h-3.5 mr-1.5 fill-current" />
+                                {item.badge}
+                            </Badge>
+                            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 leading-tight tracking-tight">
+                                {item.title}
+                            </h1>
+                            <p className="text-lg sm:text-xl text-white/80 mb-8 max-w-xl mx-auto md:mx-0 leading-relaxed font-medium">
+                                {item.description}
+                            </p>
+                            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                                <Button
+                                    size="lg"
+                                    className="font-bold h-12 px-8 shadow-xl bg-white text-indigo-700 hover:bg-white/90 hover:-translate-y-0.5 transition-all text-base"
+                                    onClick={() => navigate(item.actionLink)}
+                                >
+                                    <Diamond className="w-4 h-4 mr-2" />
+                                    Use This Framework
+                                </Button>
+                                <Button
+                                    size="lg"
+                                    variant="outline"
+                                    className="bg-black/20 border-white/20 text-white hover:bg-black/30 h-12 text-base backdrop-blur-sm"
+                                    onClick={() => navigate(item.readLink)}
+                                >
+                                    Read Strategy
+                                </Button>
+                            </div>
+                        </motion.div>
+                    </div>
+
+                    {/* Visual Preview - Animate Slide In */}
+                    <div className="w-full md:w-5/12 aspect-[4/3] relative perspective-1000">
+                        <motion.div
+                            key={`image-${currentIndex}`}
+                            initial={{ opacity: 0, rotateY: 10, x: 50 }}
+                            animate={{ opacity: 1, rotateY: -2, x: 0 }}
+                            transition={{ duration: 0.6, type: "spring" }}
+                            className="w-full h-full relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black/20"
+                        >
+                            <img
+                                src={getImagePath(item.image)}
+                                alt={item.title}
+                                className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
+                            <div className="absolute bottom-4 left-4 right-4">
+                                <div className="flex items-center gap-2 text-white/90 text-sm font-medium">
+                                    <Badge variant="secondary" className={`${item.categoryColor} border-0`}>{item.categoryBadge}</Badge>
+                                    <span>{item.uses}</span>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
+                </div>
+            </div>
+
+            {/* Pagination Dots */}
+            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+                {heroItems.map((_, idx) => (
+                    <button
+                        key={idx}
+                        onClick={() => setCurrentIndex(idx)}
+                        className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-white w-6' : 'bg-white/40 hover:bg-white/60'
+                            }`}
+                        aria-label={`Go to slide ${idx + 1}`}
+                    />
+                ))}
+            </div>
+        </div>
+    );
+};
+
 const Discover = () => {
     const navigate = useNavigate();
     const [communityPromptsData, setCommunityPrompts] = useState<CommunityPrompt[]>(communityPrompts);
@@ -209,59 +380,8 @@ const Discover = () => {
             <EnterpriseHeader />
 
             <div className="container mx-auto px-0 sm:px-6 py-8 sm:py-12 max-w-7xl">
-                {/* Featured Spotlight Hero */}
-                <div className="mx-4 sm:mx-0 mb-12 rounded-3xl bg-gradient-to-br from-indigo-600/90 to-purple-700/80 text-white p-6 sm:p-12 relative overflow-hidden shadow-2xl group">
-                    <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none" />
-
-                    <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center">
-                        <div className="flex-1 text-center md:text-left">
-                            <Badge className="mb-4 bg-white/20 hover:bg-white/30 text-white border-0 backdrop-blur-md px-3 py-1">
-                                <Sparkle className="w-3.5 h-3.5 mr-1.5 fill-current" />
-                                Editor's Choice
-                            </Badge>
-                            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 leading-tight tracking-tight">
-                                Virtual Strategy Consultant
-                            </h1>
-                            <p className="text-lg sm:text-xl text-white/80 mb-8 max-w-xl mx-auto md:mx-0 leading-relaxed font-medium">
-                                Unlock McKinsey-level insights. This researched-backed framework conducts a 360° audit of your business model in seconds.
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-                                <Button
-                                    size="lg"
-                                    className="font-bold h-12 px-8 shadow-xl bg-white text-indigo-700 hover:bg-white/90 hover:-translate-y-0.5 transition-all text-base"
-                                    onClick={() => navigate('/customize/virtual-mckinsey-consultant')}
-                                >
-                                    <Diamond className="w-4 h-4 mr-2" />
-                                    Use This Framework
-                                </Button>
-                                <Button
-                                    size="lg"
-                                    variant="outline"
-                                    className="bg-black/20 border-white/20 text-white hover:bg-black/30 h-12 text-base backdrop-blur-sm"
-                                    onClick={() => navigate('/prompt/virtual-mckinsey-consultant')}
-                                >
-                                    Read Strategy
-                                </Button>
-                            </div>
-                        </div>
-
-                        {/* Visual Preview */}
-                        <div className="w-full md:w-5/12 aspect-[4/3] relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 transform md:rotate-2 transition-all duration-500 group-hover:rotate-0 group-hover:scale-105 bg-black/20">
-                            <img
-                                src={getImagePath('images/salary-negotiation.png')}
-                                alt="Strategy Consultant"
-                                className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity"
-                            />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                            <div className="absolute bottom-4 left-4 right-4">
-                                <div className="flex items-center gap-2 text-white/90 text-sm font-medium">
-                                    <Badge variant="secondary" className="bg-emerald-500/20 text-emerald-100 border-0">Business</Badge>
-                                    <span>8.9k uses</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {/* Hero Carousel */}
+                <HeroCarousel />
 
                 {/* Search & Filters */}
                 <div className="px-4 sm:px-0 flex flex-col md:flex-row gap-4 mb-10 sticky top-2 z-20">
