@@ -4,7 +4,7 @@ import { EnterpriseHeader } from '@/components/EnterpriseHeader';
 import { Badge } from '@/components/ui/badge';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Heart, TrendUp, Star, Fire, Diamond, CircleNotch, Sparkle, MagnifyingGlass as Search, Palette, Briefcase, TerminalWindow } from 'phosphor-react';
+import { ArrowRight, ArrowLeft, Heart, TrendUp, Star, Fire, Diamond, CircleNotch, Sparkle, MagnifyingGlass as Search, Palette, Briefcase, TerminalWindow } from 'phosphor-react';
 import { DynamicIcon } from '@/components/DynamicIcon';
 import { supabase, type CommunityPrompt } from '@/lib/supabase';
 import { motion } from 'framer-motion';
