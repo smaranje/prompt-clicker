@@ -386,52 +386,52 @@ Specs:
 - Use **TypeScript** interfaces for props.
 - Use **Tailwind CSS** for styling.
 - Ensure **Accessibility** (ARIA labels, keyboard nav).
-- Include standard hooks (`useState`, `useEffect`) if logic is needed.
+- Include standard hooks (\`useState\`, \`useEffect\`) if logic is needed.
 - Handle loading and error states if applicable.`
     },
-{
-    id: 'python-automation-script',
+    {
+        id: 'python-automation-script',
         title: 'Python Automation Script',
-            description: 'Write a Python script to automate file handling, scraping, or data processing.',
-                icon: 'FileCode',
-                    category: 'code',
-                        loves: 210,
-                            author: '@automator_py',
-                                created_at: new Date().toISOString(),
-                                    content: `Write a Python script to [TASK DESCRIPTION].
+        description: 'Write a Python script to automate file handling, scraping, or data processing.',
+        icon: 'FileCode',
+        category: 'code',
+        loves: 210,
+        author: '@automator_py',
+        created_at: new Date().toISOString(),
+        content: `Write a Python script to [TASK DESCRIPTION].
 Example: "Scrape the top 10 headlines from [WEBSITE] and save them to a CSV."
 Requirements:
 1. Use modern libraries (e.g., \`pandas\`, \`beautifulsoup4\`, \`requests\`).
 2. Include error handling (try/except blocks).
 3. Add comments explaining the logic.
 4. Make it modular with functions.`
-},
-{
-    id: 'docker-compose-setup',
+    },
+    {
+        id: 'docker-compose-setup',
         title: 'Docker Compose Wizard',
-            description: 'Generate a multi-container Docker Compose setup for full-stack apps.',
-                icon: 'Container',
-                    category: 'code',
-                        loves: 98,
-                            author: '@devops_dude',
-                                created_at: new Date().toISOString(),
-                                    content: `Create a \`docker-compose.yml\` file for a stack containing:
+        description: 'Generate a multi-container Docker Compose setup for full-stack apps.',
+        icon: 'Container',
+        category: 'code',
+        loves: 98,
+        author: '@devops_dude',
+        created_at: new Date().toISOString(),
+        content: `Create a \`docker-compose.yml\` file for a stack containing:
 1. **Frontend**: React (Dockerfile provided).
 2. **Backend**: Node.js/Express.
 3. **Database**: PostgreSQL (with persistent volume).
 4. **Cache**: Redis.
 Include environment variables injection and network configuration.`
-},
-{
-    id: 'git-commit-message',
+    },
+    {
+        id: 'git-commit-message',
         title: 'Semantic Git Commit',
-            description: 'Rewrite sloppy commit messages into conventional semantic commits.',
-                icon: 'GitBranch',
-                    category: 'code',
-                        loves: 45,
-                            author: '@git_police',
-                                created_at: new Date().toISOString(),
-                                    content: `Rewrite these commit messages to follow the **Conventional Commits** standard (feat, fix, chore, refactor, docs).
+        description: 'Rewrite sloppy commit messages into conventional semantic commits.',
+        icon: 'GitBranch',
+        category: 'code',
+        loves: 45,
+        author: '@git_police',
+        created_at: new Date().toISOString(),
+        content: `Rewrite these commit messages to follow the **Conventional Commits** standard (feat, fix, chore, refactor, docs).
 
 My sloppy messages:
 - "Fixed the login button bug finally"
@@ -440,69 +440,69 @@ My sloppy messages:
 
 Output format:
 \`type(scope): description\``
-},
-{
-    id: 'complexity-analysis',
+    },
+    {
+        id: 'complexity-analysis',
         title: 'Big O Complexity Analyzer',
-            description: 'Analyze the time and space complexity of a given code snippet.',
-                icon: 'Graph',
-                    category: 'code',
-                        loves: 88,
-                            author: '@algo_expert',
-                                created_at: new Date().toISOString(),
-                                    content: `Analyze the Time and Space complexity (Big O) of the following function:
+        description: 'Analyze the time and space complexity of a given code snippet.',
+        icon: 'Graph',
+        category: 'code',
+        loves: 88,
+        author: '@algo_expert',
+        created_at: new Date().toISOString(),
+        content: `Analyze the Time and Space complexity (Big O) of the following function:
 [PASTE CODE]
 
 1. **Time Complexity**: Explain step-by-step why (loops, recursion).
 2. **Space Complexity**: Memory usage explanation.
 3. **Optimization**: Can this be improved from O(n^2) to O(n log n) or O(n)?`
-},
+    },
 
-// =========================================================================
-// NEW CREATIVE & DESIGN PROMPTS
-// =========================================================================
-{
-    id: 'logo-design-brief',
+    // =========================================================================
+    // NEW CREATIVE & DESIGN PROMPTS
+    // =========================================================================
+    {
+        id: 'logo-design-brief',
         title: 'Logo Design Brief Creator',
-            description: 'Generate a comprehensive design brief for logo designers.',
-                icon: 'PenNib',
-                    category: 'creative',
-                        loves: 76,
-                            author: '@design_lead',
-                                created_at: new Date().toISOString(),
-                                    content: `Create a professional Logo Design Brief for [COMPANY NAME].
+        description: 'Generate a comprehensive design brief for logo designers.',
+        icon: 'PenNib',
+        category: 'creative',
+        loves: 76,
+        author: '@design_lead',
+        created_at: new Date().toISOString(),
+        content: `Create a professional Logo Design Brief for [COMPANY NAME].
 Industry: [INDUSTRY].
 1. **Brand Values**: (e.g., Trust, Innovation, Speed).
 2. **Target Audience**: Demographics and psychographics.
 3. **Style Preference**: Minimalist vs. Complex, Vintage vs. Modern.
 4. **Color Palette**: Preferred colors and their psychology.
 5. **Do NOTs**: Specific clichés to avoid.`
-},
-{
-    id: 'midjourney-logo',
+    },
+    {
+        id: 'midjourney-logo',
         title: 'Midjourney Logo Generator',
-            description: 'Prompts to generate vector-style, flat, minimal logo concepts.',
-                icon: 'VectorTwo',
-                    category: 'creative',
-                        loves: 198,
-                            author: '@mj_helper',
-                                badge: 'trending',
-                                    created_at: new Date().toISOString(),
-                                        content: `/imagine prompt: A minimalist vector logo for a [COMPANY TYPE], [KEY IMAGE/SYMBOL].
+        description: 'Prompts to generate vector-style, flat, minimal logo concepts.',
+        icon: 'VectorTwo',
+        category: 'creative',
+        loves: 198,
+        author: '@mj_helper',
+        badge: 'trending',
+        created_at: new Date().toISOString(),
+        content: `/imagine prompt: A minimalist vector logo for a [COMPANY TYPE], [KEY IMAGE/SYMBOL].
 Style: Paul Rand, flat design, negative space, geometric shapes.
 Colors: [COLOR 1] and [COLOR 2] on a white background.
 --no shading, realistic details, text`
-},
-{
-    id: 'ux-user-persona',
+    },
+    {
+        id: 'ux-user-persona',
         title: 'UX User Persona Generator',
-            description: 'Create detailed user personas to guide product design decisions.',
-                icon: 'UsersThree',
-                    category: 'creative',
-                        loves: 134,
-                            author: '@ux_researcher',
-                                created_at: new Date().toISOString(),
-                                    content: `Create a User Persona for a [PRODUCT TYPE].
+        description: 'Create detailed user personas to guide product design decisions.',
+        icon: 'UsersThree',
+        category: 'creative',
+        loves: 134,
+        author: '@ux_researcher',
+        created_at: new Date().toISOString(),
+        content: `Create a User Persona for a [PRODUCT TYPE].
 Name: [NAME].
 Role: [JOB TITLE].
 1. **Bio**: A short backstory.
@@ -510,17 +510,17 @@ Role: [JOB TITLE].
 3. **Frustrations**: What pains do they currently face?
 4. **Tech Savviness**: Low/Medium/High.
 5. **Quote**: A phrase summarizing their mindset.`
-},
-{
-    id: 'color-palette-generator',
+    },
+    {
+        id: 'color-palette-generator',
         title: 'Accessible Color Palette',
-            description: 'Generate a cohesive, accessible color scheme for web/app design.',
-                icon: 'Palette',
-                    category: 'creative',
-                        loves: 92,
-                            author: '@color_theory',
-                                created_at: new Date().toISOString(),
-                                    content: `Suggest a color palette for a [INDUSTRY] brand.
+        description: 'Generate a cohesive, accessible color scheme for web/app design.',
+        icon: 'Palette',
+        category: 'creative',
+        loves: 92,
+        author: '@color_theory',
+        created_at: new Date().toISOString(),
+        content: `Suggest a color palette for a [INDUSTRY] brand.
 Mood: [MOOD, e.g., Trustworthy, Energetic, Calm].
 Provide 5 Hex codes:
 1. **Primary**: Main brand color.
@@ -528,51 +528,51 @@ Provide 5 Hex codes:
 3. **Accent**: For highlights.
 4. **Neutral**: For text/backgrounds.
 Ensure sufficient contrast ratio for WCAG AA accessibility standards.`
-},
-{
-    id: 'design-system-tokens',
+    },
+    {
+        id: 'design-system-tokens',
         title: 'Design System Tokens',
-            description: 'Define the core token tier for a UI design system.',
-                icon: 'FigmaLogo',
-                    category: 'creative',
-                        loves: 67,
-                            author: '@system_designer',
-                                created_at: new Date().toISOString(),
-                                    content: `Define the core design tokens for a Design System called "[NAME]".
+        description: 'Define the core token tier for a UI design system.',
+        icon: 'FigmaLogo',
+        category: 'creative',
+        loves: 67,
+        author: '@system_designer',
+        created_at: new Date().toISOString(),
+        content: `Define the core design tokens for a Design System called "[NAME]".
 1. **Typography**: Font family, base size, scale ratio (e.g., 1.250 Major Third).
 2. **Spacing**: Base unit (e.g., 4px) and scale (4, 8, 16, 24, 32...).
 3. **Radius**: Small, Medium, Large, Pill.
 4. **Shadows**: Elevation levels (1-5).`
-},
+    },
 
-// =========================================================================
-// NEW WRITING PROMPTS
-// =========================================================================
-{
-    id: 'tweet-thread-generator',
+    // =========================================================================
+    // NEW WRITING PROMPTS
+    // =========================================================================
+    {
+        id: 'tweet-thread-generator',
         title: 'Viral Twitter/X Thread',
-            description: 'Turn a blog post or topic into an engaging 10-tweet thread.',
-                icon: 'Bird',
-                    category: 'writing',
-                        loves: 245,
-                            author: '@thread_boi',
-                                badge: 'viral',
-                                    created_at: new Date().toISOString(),
-                                        content: `Turn this topic "[TOPIC]" into a viral Twitter thread.
+        description: 'Turn a blog post or topic into an engaging 10-tweet thread.',
+        icon: 'Bird',
+        category: 'writing',
+        loves: 245,
+        author: '@thread_boi',
+        badge: 'viral',
+        created_at: new Date().toISOString(),
+        content: `Turn this topic "[TOPIC]" into a viral Twitter thread.
 Hook (Tweet 1): Controversial statement or high-value promise.
 Body (Tweets 2-9): Break down the concept into punchy, one-idea-per-tweet segments. Use bullet points and spacing.
 Conclusion (Tweet 10): Summary and CTA (Retweet/Follow).`
-},
-{
-    id: 'linkedin-thought-leadership',
+    },
+    {
+        id: 'linkedin-thought-leadership',
         title: 'LinkedIn Thought Leadership',
-            description: 'Write a professional, engagement-bait post for LinkedIn.',
-                icon: 'LinkedinLogo',
-                    category: 'writing',
-                        loves: 180,
-                            author: '@linkedin_influencer',
-                                created_at: new Date().toISOString(),
-                                    content: `Write a LinkedIn post about [TOPIC].
+        description: 'Write a professional, engagement-bait post for LinkedIn.',
+        icon: 'LinkedinLogo',
+        category: 'writing',
+        loves: 180,
+        author: '@linkedin_influencer',
+        created_at: new Date().toISOString(),
+        content: `Write a LinkedIn post about [TOPIC].
 Style: "Broetry" (Short sentences, lots of white space).
 Structure:
 1. **The Myth**: "Most people think X."
@@ -580,17 +580,17 @@ Structure:
 3. **The Evidence**: A personal story or data point.
 4. **The Lesson**: What the reader should do differently.
 5. **The Question**: Ask the audience for their opinion to drive comments.`
-},
-{
-    id: 'ebook-outline',
+    },
+    {
+        id: 'ebook-outline',
         title: 'Non-Fiction Book Outline',
-            description: 'Create a chapter-by-chapter outline for a non-fiction book.',
-                icon: 'Books',
-                    category: 'writing',
-                        loves: 70,
-                            author: '@book_coach',
-                                created_at: new Date().toISOString(),
-                                    content: `Create a detailed outline for a non-fiction book titled "[TITLE]".
+        description: 'Create a chapter-by-chapter outline for a non-fiction book.',
+        icon: 'Books',
+        category: 'writing',
+        loves: 70,
+        author: '@book_coach',
+        created_at: new Date().toISOString(),
+        content: `Create a detailed outline for a non-fiction book titled "[TITLE]".
 Promise: How to [RESULT] without [PAIN].
 Structure:
 - **Introduction**: The Hook and The Promise.
@@ -598,34 +598,34 @@ Structure:
 - **Part 2 (The Solution/Method)**: Chapters 4-8.
 - **Part 3 (The Application)**: Chapters 9-10.
 - **Conclusion**: The New World.`
-},
-{
-    id: 'product-description-ecom',
+    },
+    {
+        id: 'product-description-ecom',
         title: 'Sensory Product Description',
-            description: 'Write alluring product descriptions for e-commerce that drive sales.',
-                icon: 'ShoppingCart',
-                    category: 'writing',
-                        loves: 115,
-                            author: '@copy_cat',
-                                created_at: new Date().toISOString(),
-                                    content: `Write a product description for [PRODUCT NAME].
+        description: 'Write alluring product descriptions for e-commerce that drive sales.',
+        icon: 'ShoppingCart',
+        category: 'writing',
+        loves: 115,
+        author: '@copy_cat',
+        created_at: new Date().toISOString(),
+        content: `Write a product description for [PRODUCT NAME].
 Target Audience: [AUDIENCE].
 1. **The Hook**: Open with a relatable problem or desire.
 2. **Sensory Details**: Describe how it feels, looks, smells, or sounds. Use vivid adjectives.
 3. **Features-to-Benefits**: Translate "Made of X" to "So that you get Y".
 4. **Social Proof**: Mention "Join thousands of happy customers".`
-},
-{
-    id: 'job-cover-letter',
+    },
+    {
+        id: 'job-cover-letter',
         title: 'Standout Cover Letter',
-            description: 'Write a cover letter that grabs a recruiter\'s attention immediately.',
-                icon: 'FileText',
-                    category: 'writing',
-                        loves: 310,
-                            author: '@career_hacker',
-                                badge: 'gem',
-                                    created_at: new Date().toISOString(),
-                                        content: `Write a cover letter for the role of [JOB TITLE] at [COMPANY].
+        description: 'Write a cover letter that grabs a recruiter\'s attention immediately.',
+        icon: 'FileText',
+        category: 'writing',
+        loves: 310,
+        author: '@career_hacker',
+        badge: 'gem',
+        created_at: new Date().toISOString(),
+        content: `Write a cover letter for the role of [JOB TITLE] at [COMPANY].
 My Key skills: [SKILLS].
 Tone: Confident, enthusiastic, professional.
 Structure:
@@ -633,20 +633,20 @@ Structure:
 2. **The Match**: Connect my specific achievements to the requirements in the job description.
 3. **The Culture**: Explain why I fit their values.
 4. **The CTA**: Ask for the interview.`
-},
-{
-    id: 'language-translator',
+    },
+    {
+        id: 'language-translator',
         title: 'Contextual Translator',
-            description: 'Translate text while preserving idiom, tone, and cultural nuance.',
-                icon: 'Translate',
-                    category: 'writing',
-                        loves: 120,
-                            author: '@polyglot',
-                                created_at: new Date().toISOString(),
-                                    content: `Translate the following text from [SOURCE LANGUAGE] to [TARGET LANGUAGE].
+        description: 'Translate text while preserving idiom, tone, and cultural nuance.',
+        icon: 'Translate',
+        category: 'writing',
+        loves: 120,
+        author: '@polyglot',
+        created_at: new Date().toISOString(),
+        content: `Translate the following text from [SOURCE LANGUAGE] to [TARGET LANGUAGE].
 Text: "[INSERT TEXT]".
 Critical Instruction: Do not translate word-for-word. Translate meaning-for-meaning.
 Context: This is for [CONTEXT, e.g., a marketing slogan, a formal legal letter, casual slang].
 Preserve the [TONE].`
-}
+    }
 ];
