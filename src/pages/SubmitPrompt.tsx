@@ -108,16 +108,20 @@ const SubmitPrompt = () => {
         <div className="min-h-screen bg-background">
             <EnterpriseHeader />
 
-            <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-6 max-w-6xl">
-                <div className="mb-6 text-center">
-                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center mx-auto mb-3 shadow-md shadow-primary/20">
-                        <Sparkle className="w-5 h-5 text-primary-foreground" />
+            <div className="container mx-auto px-4 sm:px-6 py-4 max-w-6xl">
+                <div className="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-border/40 pb-4">
+                    <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center text-primary shadow-sm">
+                            <Sparkle className="w-5 h-5" weight="duotone" />
+                        </div>
+                        <div>
+                            <h1 className="text-xl sm:text-2xl font-bold tracking-tight">Submit a Prompt</h1>
+                            <p className="text-xs sm:text-sm text-muted-foreground">
+                                Share your best work with the community.
+                            </p>
+                        </div>
                     </div>
-                    <h1 className="text-2xl sm:text-3xl font-bold mb-2 tracking-tight">Submit a Prompt</h1>
-                    <p className="text-sm text-muted-foreground max-w-2xl mx-auto leading-normal">
-                        Share your best prompts with the community. Help others achieve better results.
-                        Top rated prompts get featured in the Discover editor's choice.
-                    </p>
+                    {/* Optional: Add a subtle link or stat here later if needed */}
                 </div>
 
                 <div className="grid lg:grid-cols-3 gap-8">
