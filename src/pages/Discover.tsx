@@ -164,11 +164,11 @@ const heroItems: HeroItem[] = [
         description: 'Unlock McKinsey-level insights. This researched-backed framework conducts a 360° audit of your business model.',
         badge: "Editor's Choice",
         icon: Sparkle,
-        image: 'images/salary-negotiation.png',
+        image: 'images/business-strategy.png',
         gradient: 'from-indigo-600/90 to-purple-700/80',
         actionLink: '/customize/virtual-mckinsey-consultant',
         readLink: '/prompt/virtual-mckinsey-consultant',
-        uses: '8.9k uses',
+        uses: '142 uses',
         categoryBadge: 'Business',
         categoryColor: 'bg-emerald-500/20 text-emerald-100'
     },
@@ -182,7 +182,7 @@ const heroItems: HeroItem[] = [
         gradient: 'from-pink-600/90 to-rose-700/80',
         actionLink: '/customize/midjourney-v6-photorealism',
         readLink: '/prompt/midjourney-v6-photorealism',
-        uses: '12.5k uses',
+        uses: '324 uses',
         categoryBadge: 'Creative',
         categoryColor: 'bg-purple-500/20 text-purple-100'
     },
@@ -196,7 +196,7 @@ const heroItems: HeroItem[] = [
         gradient: 'from-emerald-600/90 to-teal-700/80',
         actionLink: '/customize/saas-landing-page-optimizer',
         readLink: '/prompt/saas-landing-page-optimizer',
-        uses: '7.2k uses',
+        uses: '89 uses',
         categoryBadge: 'Marketing',
         categoryColor: 'bg-blue-500/20 text-blue-100'
     }
