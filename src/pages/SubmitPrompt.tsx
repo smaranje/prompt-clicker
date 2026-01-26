@@ -108,13 +108,13 @@ const SubmitPrompt = () => {
         <div className="min-h-screen bg-background">
             <EnterpriseHeader />
 
-            <div className="container mx-auto px-4 sm:px-6 py-6 sm:py-8 max-w-6xl">
-                <div className="mb-8 text-center">
-                    <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center mx-auto mb-4 shadow-lg shadow-primary/20">
-                        <Sparkle className="w-6 h-6 text-primary-foreground" />
+            <div className="container mx-auto px-4 sm:px-6 py-4 sm:py-6 max-w-6xl">
+                <div className="mb-6 text-center">
+                    <div className="w-10 h-10 rounded-lg bg-gradient-to-br from-primary to-primary/70 flex items-center justify-center mx-auto mb-3 shadow-md shadow-primary/20">
+                        <Sparkle className="w-5 h-5 text-primary-foreground" />
                     </div>
-                    <h1 className="text-3xl sm:text-4xl font-extrabold mb-3 tracking-tight">Submit a Prompt</h1>
-                    <p className="text-base text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+                    <h1 className="text-2xl sm:text-3xl font-bold mb-2 tracking-tight">Submit a Prompt</h1>
+                    <p className="text-sm text-muted-foreground max-w-2xl mx-auto leading-normal">
                         Share your best prompts with the community. Help others achieve better results.
                         Top rated prompts get featured in the Discover editor's choice.
                     </p>
