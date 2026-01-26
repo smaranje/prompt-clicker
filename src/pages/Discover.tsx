@@ -218,14 +218,14 @@ const HeroCarousel = () => {
     const item = heroItems[currentIndex];
 
     return (
-        <div className="relative mx-4 sm:mx-0 mb-12 group">
+        <div className="relative mx-4 sm:mx-0 mb-8 group">
             {/* Main Card */}
-            <div className={`rounded-3xl bg-gradient-to-br ${item.gradient} text-white p-6 sm:p-12 relative overflow-hidden shadow-2xl transition-colors duration-1000`}>
+            <div className={`rounded-2xl bg-gradient-to-br ${item.gradient} text-white p-6 sm:p-8 relative overflow-hidden shadow-xl transition-colors duration-1000`}>
 
                 {/* Background Decorations */}
-                <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none mix-blend-overlay" />
+                <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-white/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none mix-blend-overlay" />
 
-                <div className="relative z-10 flex flex-col md:flex-row gap-8 items-center min-h-[400px]">
+                <div className="relative z-10 flex flex-col md:flex-row gap-6 items-center min-h-[300px]">
                     {/* Text Content - Animate Key Changes */}
                     <div className="flex-1 text-center md:text-left">
                         <motion.div
@@ -234,29 +234,29 @@ const HeroCarousel = () => {
                             animate={{ opacity: 1, x: 0 }}
                             transition={{ duration: 0.5 }}
                         >
-                            <Badge className="mb-4 bg-white/20 hover:bg-white/30 text-white border-0 backdrop-blur-md px-3 py-1">
-                                <item.icon className="w-3.5 h-3.5 mr-1.5 fill-current" />
+                            <Badge className="mb-3 bg-white/20 hover:bg-white/30 text-white border-0 backdrop-blur-md px-2.5 py-0.5 text-xs">
+                                <item.icon className="w-3 h-3 mr-1.5 fill-current" />
                                 {item.badge}
                             </Badge>
-                            <h1 className="text-3xl sm:text-4xl md:text-5xl font-extrabold mb-4 leading-tight tracking-tight">
+                            <h1 className="text-2xl sm:text-3xl md:text-4xl font-extrabold mb-3 leading-tight tracking-tight">
                                 {item.title}
                             </h1>
-                            <p className="text-lg sm:text-xl text-white/80 mb-8 max-w-xl mx-auto md:mx-0 leading-relaxed font-medium">
+                            <p className="text-base sm:text-lg text-white/80 mb-6 max-w-lg mx-auto md:mx-0 leading-relaxed font-medium">
                                 {item.description}
                             </p>
-                            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                            <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start">
                                 <Button
-                                    size="lg"
-                                    className="font-bold h-12 px-8 shadow-xl bg-white text-indigo-700 hover:bg-white/90 hover:-translate-y-0.5 transition-all text-base"
+                                    size="default"
+                                    className="font-bold h-10 px-6 shadow-lg bg-white text-indigo-700 hover:bg-white/90 hover:-translate-y-0.5 transition-all text-sm"
                                     onClick={() => navigate(item.actionLink)}
                                 >
                                     <Diamond className="w-4 h-4 mr-2" />
                                     Use This Framework
                                 </Button>
                                 <Button
-                                    size="lg"
+                                    size="default"
                                     variant="outline"
-                                    className="bg-black/20 border-white/20 text-white hover:bg-black/30 h-12 text-base backdrop-blur-sm"
+                                    className="bg-black/20 border-white/20 text-white hover:bg-black/30 h-10 text-sm backdrop-blur-sm"
                                     onClick={() => navigate(item.readLink)}
                                 >
                                     Read Strategy
@@ -266,13 +266,13 @@ const HeroCarousel = () => {
                     </div>
 
                     {/* Visual Preview - Animate Slide In */}
-                    <div className="w-full md:w-5/12 aspect-[4/3] relative perspective-1000">
+                    <div className="w-full md:w-5/12 max-w-[400px] aspect-[16/10] relative perspective-1000">
                         <motion.div
                             key={`image-${currentIndex}`}
                             initial={{ opacity: 0, rotateY: 10, x: 50 }}
                             animate={{ opacity: 1, rotateY: -2, x: 0 }}
                             transition={{ duration: 0.6, type: "spring" }}
-                            className="w-full h-full relative rounded-2xl overflow-hidden shadow-2xl border border-white/10 bg-black/20"
+                            className="w-full h-full relative rounded-xl overflow-hidden shadow-2xl border border-white/10 bg-black/20"
                         >
                             <img
                                 src={getImagePath(item.image)}
@@ -280,9 +280,9 @@ const HeroCarousel = () => {
                                 className="w-full h-full object-cover"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent" />
-                            <div className="absolute bottom-4 left-4 right-4">
-                                <div className="flex items-center gap-2 text-white/90 text-sm font-medium">
-                                    <Badge variant="secondary" className={`${item.categoryColor} border-0`}>{item.categoryBadge}</Badge>
+                            <div className="absolute bottom-3 left-3 right-3">
+                                <div className="flex items-center gap-2 text-white/90 text-xs font-medium">
+                                    <Badge variant="secondary" className={`${item.categoryColor} border-0 h-5 px-1.5`}>{item.categoryBadge}</Badge>
                                     <span>{item.uses}</span>
                                 </div>
                             </div>
@@ -292,12 +292,12 @@ const HeroCarousel = () => {
             </div>
 
             {/* Pagination Dots */}
-            <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 flex gap-1.5 z-20">
                 {heroItems.map((_, idx) => (
                     <button
                         key={idx}
                         onClick={() => setCurrentIndex(idx)}
-                        className={`w-2 h-2 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-white w-6' : 'bg-white/40 hover:bg-white/60'
+                        className={`w-1.5 h-1.5 rounded-full transition-all duration-300 ${idx === currentIndex ? 'bg-white w-5' : 'bg-white/40 hover:bg-white/60'
                             }`}
                         aria-label={`Go to slide ${idx + 1}`}
                     />
