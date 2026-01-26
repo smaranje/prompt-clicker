@@ -22,6 +22,82 @@ const getImagePath = (path: string) => {
 };
 
 // Helper for row sections
+// Helper for row sections
+const PromptCard = ({ prompt, navigate, toggleLove }: any) => (
+    <Card
+        className="group relative overflow-hidden border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg bg-card/50 backdrop-blur-sm h-full flex flex-col whitespace-normal"
+        onClick={() => navigate(`/prompt/${prompt.id}`)}
+    >
+        {/* Card Header / Image Area */}
+        <div className="relative aspect-video w-full overflow-hidden bg-muted/30 group-hover:bg-muted/50 transition-colors">
+            {prompt.example_image ? (
+                <div className="w-full h-full relative">
+                    <img
+                        src={getImagePath(prompt.example_image)}
+                        alt={prompt.title}
+                        className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
+                </div>
+            ) : (
+                <div className="w-full h-full flex items-center justify-center">
+                    <DynamicIcon
+                        name={prompt.icon}
+                        className="w-12 h-12 text-muted-foreground/20 group-hover:text-primary/40 transition-colors duration-300"
+                    />
+                </div>
+            )}
+
+            {/* Category Pill */}
+            <div className="absolute top-3 left-3">
+                <Badge variant="secondary" className="backdrop-blur-md bg-background/80 hover:bg-background/90 text-xs px-2 py-0.5 h-6">
+                    {categories.find(c => c.id === prompt.category)?.title || prompt.category}
+                </Badge>
+            </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-4 flex-1 flex flex-col">
+            <h3 className="font-semibold text-base leading-tight mb-1 group-hover:text-primary transition-colors line-clamp-1">
+                {prompt.title}
+            </h3>
+            <p className="text-xs text-muted-foreground line-clamp-2 mb-3 flex-1">
+                {prompt.description}
+            </p>
+
+            {/* Footer */}
+            <div className="mt-auto pt-3 border-t border-border/50 flex items-center justify-between gap-2">
+                <div className="flex items-center text-[10px] text-muted-foreground">
+                    <span className="font-medium text-foreground">{prompt.author}</span>
+                </div>
+
+                <div className="flex items-center gap-2">
+                    <Button
+                        size="sm"
+                        variant="secondary"
+                        className="h-7 px-2 text-[10px] font-medium"
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            navigate(`/customize/${prompt.id}`);
+                        }}
+                    >
+                        Get
+                    </Button>
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        className="h-7 w-7 hover:bg-red-500/10 hover:text-red-500 transition-colors text-muted-foreground"
+                        onClick={(e) => toggleLove(e, prompt.id)}
+                    >
+                        <Heart weight="regular" className="w-3.5 h-3.5" />
+                        <span className="sr-only">Love</span>
+                    </Button>
+                </div>
+            </div>
+        </div>
+    </Card>
+);
+
 const PromptRow = ({ title, prompts, icon: Icon, color, categoryId, onSeeAll }: any) => {
     const navigate = useNavigate();
     const [lovedPrompts, setLovedPrompts] = useState<Set<string>>(new Set());
@@ -60,78 +136,11 @@ const PromptRow = ({ title, prompts, icon: Icon, color, categoryId, onSeeAll }: 
                 <div className="flex w-max space-x-4 pl-4 sm:pl-6 md:pl-0 pr-4 sm:pr-6">
                     {prompts.map((prompt: CommunityPrompt) => (
                         <div key={prompt.id} className="w-[280px] sm:w-[320px]">
-                            <Card
-                                className="group relative overflow-hidden border-border/50 hover:border-primary/50 transition-all duration-300 hover:shadow-lg bg-card/50 backdrop-blur-sm h-full flex flex-col whitespace-normal"
-                                onClick={() => navigate(`/prompt/${prompt.id}`)}
-                            >
-                                {/* Card Header / Image Area */}
-                                <div className="relative aspect-video w-full overflow-hidden bg-muted/30 group-hover:bg-muted/50 transition-colors">
-                                    {prompt.example_image ? (
-                                        <div className="w-full h-full relative">
-                                            <img
-                                                src={getImagePath(prompt.example_image)}
-                                                alt={prompt.title}
-                                                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                                            />
-                                            <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors" />
-                                        </div>
-                                    ) : (
-                                        <div className="w-full h-full flex items-center justify-center">
-                                            <DynamicIcon
-                                                name={prompt.icon}
-                                                className="w-12 h-12 text-muted-foreground/20 group-hover:text-primary/40 transition-colors duration-300"
-                                            />
-                                        </div>
-                                    )}
-
-                                    {/* Category Pill */}
-                                    <div className="absolute top-3 left-3">
-                                        <Badge variant="secondary" className="backdrop-blur-md bg-background/80 hover:bg-background/90 text-xs px-2 py-0.5 h-6">
-                                            {categories.find(c => c.id === prompt.category)?.title || prompt.category}
-                                        </Badge>
-                                    </div>
-                                </div>
-
-                                {/* Content */}
-                                <div className="p-4 flex-1 flex flex-col">
-                                    <h3 className="font-semibold text-base leading-tight mb-1 group-hover:text-primary transition-colors line-clamp-1">
-                                        {prompt.title}
-                                    </h3>
-                                    <p className="text-xs text-muted-foreground line-clamp-2 mb-3 flex-1">
-                                        {prompt.description}
-                                    </p>
-
-                                    {/* Footer */}
-                                    <div className="mt-auto pt-3 border-t border-border/50 flex items-center justify-between gap-2">
-                                        <div className="flex items-center text-[10px] text-muted-foreground">
-                                            <span className="font-medium text-foreground">{prompt.author}</span>
-                                        </div>
-
-                                        <div className="flex items-center gap-2">
-                                            <Button
-                                                size="sm"
-                                                variant="secondary"
-                                                className="h-7 px-2 text-[10px] font-medium"
-                                                onClick={(e) => {
-                                                    e.stopPropagation();
-                                                    navigate(`/customize/${prompt.id}`);
-                                                }}
-                                            >
-                                                Get
-                                            </Button>
-                                            <Button
-                                                variant="ghost"
-                                                size="icon"
-                                                className="h-7 w-7 hover:bg-red-500/10 hover:text-red-500 transition-colors text-muted-foreground"
-                                                onClick={(e) => toggleLove(e, prompt.id)}
-                                            >
-                                                <Heart weight="regular" className="w-3.5 h-3.5" />
-                                                <span className="sr-only">Love</span>
-                                            </Button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </Card>
+                            <PromptCard
+                                prompt={prompt}
+                                navigate={navigate}
+                                toggleLove={toggleLove}
+                            />
                         </div>
                     ))}
                 </div>
@@ -377,10 +386,12 @@ const Discover = () => {
     };
 
     // Grouping for Widget Layout
-    const trendingPrompts = filteredPrompts.filter(p => p.badge === 'viral' || p.badge === 'trending' || p.loves > 5000);
+    const trendingPrompts = filteredPrompts.filter(p => p.badge === 'viral' || p.badge === 'trending' || p.loves > 500);
     const businessPrompts = filteredPrompts.filter(p => p.category === 'business');
     const creativePrompts = filteredPrompts.filter(p => p.category === 'creative' || p.category === 'writing');
     const devPrompts = filteredPrompts.filter(p => p.category === 'code');
+
+    const isFiltered = filterCategory !== 'all' || searchQuery.length > 0;
 
     return (
         <motion.div
@@ -391,7 +402,7 @@ const Discover = () => {
 
             <div className="container mx-auto px-0 sm:px-6 py-8 sm:py-12 max-w-7xl">
                 {/* Hero Carousel */}
-                <HeroCarousel />
+                {!isFiltered && <HeroCarousel />}
 
                 {/* Search & Filters */}
                 <div className="px-4 sm:px-0 flex flex-col md:flex-row gap-4 mb-10 sticky top-2 z-20">
@@ -421,49 +432,76 @@ const Discover = () => {
                     </Select>
                 </div>
 
-                {/* Rows */}
-                <div className="space-y-2 pb-20">
-                    <PromptRow
-                        title="Trending Now"
-                        prompts={trendingPrompts}
-                        icon={Fire}
-                        color="bg-orange-500/10 text-orange-600"
-                        categoryId="all"
-                        onSeeAll={handleSeeAll}
-                    />
-                    <PromptRow
-                        title="Business Essentials"
-                        prompts={businessPrompts}
-                        icon={Briefcase}
-                        color="bg-blue-500/10 text-blue-600"
-                        categoryId="business"
-                        onSeeAll={handleSeeAll}
-                    />
-                    <PromptRow
-                        title="Creative Studio"
-                        prompts={creativePrompts}
-                        icon={Palette}
-                        color="bg-pink-500/10 text-pink-600"
-                        categoryId="creative"
-                        onSeeAll={handleSeeAll}
-                    />
-                    <PromptRow
-                        title="Developer Tools"
-                        prompts={devPrompts}
-                        icon={TerminalWindow}
-                        color="bg-green-500/10 text-green-600"
-                        categoryId="code"
-                        onSeeAll={handleSeeAll}
-                    />
-
-                    {/* Fallback if no specific groups but search is active */}
-                    {searchQuery && filteredPrompts.length === 0 && (
-                        <div className="text-center py-20">
-                            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-muted mb-4">
-                                <Search className="w-8 h-8 text-muted-foreground" />
+                {/* Content Area */}
+                <div className="pb-20 px-4 sm:px-0">
+                    {isFiltered ? (
+                        /* Grid View for Filtered Results */
+                        <>
+                            <div className="mb-6 flex items-center justify-between">
+                                <h2 className="text-xl font-bold">
+                                    {filterCategory !== 'all'
+                                        ? `${categories.find(c => c.id === filterCategory)?.title || 'All'} Prompts`
+                                        : 'Search Results'}
+                                </h2>
+                                <span className="text-sm text-muted-foreground">{filteredPrompts.length} results</span>
                             </div>
-                            <h3 className="text-lg font-medium">No results found</h3>
-                            <p className="text-muted-foreground">Try searching for something else</p>
+
+                            {filteredPrompts.length > 0 ? (
+                                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+                                    {filteredPrompts.map((prompt) => (
+                                        <PromptCard
+                                            key={prompt.id}
+                                            prompt={prompt}
+                                            navigate={navigate}
+                                            toggleLove={() => { }} // Simple mock for grid view love toggle
+                                        />
+                                    ))}
+                                </div>
+                            ) : (
+                                <div className="text-center py-20">
+                                    <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-muted mb-4">
+                                        <Search className="w-8 h-8 text-muted-foreground" />
+                                    </div>
+                                    <h3 className="text-lg font-medium">No results found</h3>
+                                    <p className="text-muted-foreground">Try adjusting your filters</p>
+                                </div>
+                            )}
+                        </>
+                    ) : (
+                        /* Row View for Dashboard */
+                        <div className="space-y-2">
+                            <PromptRow
+                                title="Trending Now"
+                                prompts={trendingPrompts}
+                                icon={Fire}
+                                color="bg-orange-500/10 text-orange-600"
+                                categoryId="all"
+                                onSeeAll={handleSeeAll}
+                            />
+                            <PromptRow
+                                title="Business Essentials"
+                                prompts={businessPrompts}
+                                icon={Briefcase}
+                                color="bg-blue-500/10 text-blue-600"
+                                categoryId="business"
+                                onSeeAll={handleSeeAll}
+                            />
+                            <PromptRow
+                                title="Creative Studio"
+                                prompts={creativePrompts}
+                                icon={Palette}
+                                color="bg-pink-500/10 text-pink-600"
+                                categoryId="creative"
+                                onSeeAll={handleSeeAll}
+                            />
+                            <PromptRow
+                                title="Developer Tools"
+                                prompts={devPrompts}
+                                icon={TerminalWindow}
+                                color="bg-green-500/10 text-green-600"
+                                categoryId="code"
+                                onSeeAll={handleSeeAll}
+                            />
                         </div>
                     )}
                 </div>
