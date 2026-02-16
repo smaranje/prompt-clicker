@@ -12,6 +12,7 @@ export interface CommunityPrompt {
     example_image?: string;
     content?: string; // Content for the ViewPrompt page
     created_at: string;
+    tags?: string[]; // Hashtags for filtering
 }
 
 export const communityPrompts: CommunityPrompt[] = [
@@ -31,6 +32,7 @@ export const communityPrompts: CommunityPrompt[] = [
         badge: 'featured',
         example_image: 'images/business-strategy.png',
         created_at: new Date().toISOString(),
+        tags: ['strategy', 'business', 'consulting', 'growth'],
         content: `You are a Senior Partner at a top-tier strategy consulting firm (like McKinsey or BCG).
 I want you to conduct a strategic audit of my business/idea: [BUSINESS DESCRIPTION].
 
@@ -54,6 +56,7 @@ Tone: Professional, direct, and insight-heavy. Avoid generic advice.`
         badge: 'trending',
         example_image: 'images/saas-wireframe.png',
         created_at: new Date().toISOString(),
+        tags: ['landing-page', 'conversion', 'saas', 'marketing'],
         content: `Analyze this landing page structure for [PRODUCT/SERVICE].
         
 Goal: Maximize sign-ups.
@@ -76,6 +79,7 @@ Provide a section-by-section optimization plan:
         badge: 'gem',
         example_image: 'images/business-strategy.png',
         created_at: new Date().toISOString(),
+        tags: ['market-research', 'analysis', 'business', 'strategy'],
         content: `Act as a senior market research analyst. I need a deep-dive analysis on the [INDUSTRY/NICHE] market.
 
 Please provide:
@@ -94,6 +98,7 @@ Please provide:
         loves: 112,
         author: '@sales_sniper',
         created_at: new Date().toISOString(),
+        tags: ['cold-email', 'sales', 'outreach', 'b2b'],
         content: `Write 3 variations of a cold email to pitch [PRODUCT/SERVICE] to [TARGET PERSON/ROLE].
 
 Use the PAS Framework (Problem-Agitate-Solution).
@@ -117,6 +122,7 @@ Variation 3: "The Helper" (Offer extensive value/resource upfront before asking 
         badge: 'viral',
         example_image: 'images/midjourney-portrait.png',
         created_at: new Date().toISOString(),
+        tags: ['midjourney', 'photography', 'ai-art', 'photorealism'],
         content: `/imagine prompt: A candid portrait photograph of [SUBJECT], shot on a Leica Q2 with a 28mm Summilux lens at f/1.7. 
 Lighting: Natural window light, soft wrap-around illumination, slight dust motes in the air.
 Details: Ultra-realistic skin texture, visible pores, vellus hair, perfect eye reflections.
@@ -235,7 +241,7 @@ For each week, provide:
         category: 'business',
         loves: 189,
         author: '@tube_master',
-        badge: 'popular',
+        badge: 'trending',
         example_image: 'images/viral-hook.png',
         created_at: new Date().toISOString(),
         content: `Write a script for the first 60 seconds of a YouTube video about [TOPIC].
