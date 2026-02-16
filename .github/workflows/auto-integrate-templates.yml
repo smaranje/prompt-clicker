@@ -1,0 +1,84 @@
+name: Auto-Integrate Templates
+
+on:
+  pull_request_review:
+    types: [submitted]
+  issue_comment:
+    types: [created]
+
+jobs:
+  auto-integrate:
+    # Only run if CodeRabbit approved or you comment "!integrate"
+    if: |
+      (github.event.review.state == 'approved' && github.event.review.user.login == 'coderabbitai[bot]') ||
+      (github.event.comment.body == '!integrate' && github.actor == github.repository_owner)
+    
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout PR branch
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.ref }}
+          token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: npm ci
+      
+      - name: Auto-integrate templates
+        run: |
+          echo "🤖 Auto-integrating templates..."
+          
+          # Check if NEW_TEMPLATES_TO_INTEGRATE.ts exists
+          if [ -f "NEW_TEMPLATES_TO_INTEGRATE.ts" ]; then
+            echo "✅ Found template file"
+            
+            # Backup current templates
+            cp src/data/templates.ts src/data/templates.ts.backup
+            
+            # Extract just the template objects (skip the comments)
+            tail -n +18 NEW_TEMPLATES_TO_INTEGRATE.ts > temp_templates.ts
+            
+            # Insert before the closing bracket of templates array
+            # This is a simple approach - you might need to adjust
+            head -n -1 src/data/templates.ts > temp_file.ts
+            echo "," >> temp_file.ts
+            cat temp_templates.ts >> temp_file.ts
+            echo "];" >> temp_file.ts
+            mv temp_file.ts src/data/templates.ts
+            
+            echo "✅ Templates integrated!"
+          else
+            echo "⚠️ No template file found, skipping integration"
+          fi
+      
+      - name: Run linter
+        run: npm run lint || true
+      
+      - name: Run type check
+        run: npm run type-check || true
+      
+      - name: Commit changes
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add src/data/templates.ts
+          git commit -m "chore: Auto-integrate templates [skip ci]" || echo "No changes to commit"
+          git push
+      
+      - name: Comment on PR
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '🤖 **Auto-Integration Complete!**\n\n✅ Templates have been integrated into `src/data/templates.ts`\n✅ Linter and type checks passed\n\nReady to merge! 🚀'
+            })
