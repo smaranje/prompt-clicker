@@ -1,6 +1,6 @@
+
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { EnterpriseHeader } from '@/components/EnterpriseHeader';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -106,7 +106,6 @@ const SubmitPrompt = () => {
 
     return (
         <div className="min-h-screen bg-background">
-            <EnterpriseHeader />
 
             <div className="container mx-auto px-4 sm:px-6 py-4 max-w-6xl">
                 <div className="mb-6 flex flex-col md:flex-row md:items-center md:justify-between gap-4 border-b border-border/40 pb-4">
@@ -226,10 +225,10 @@ const SubmitPrompt = () => {
                             <Label className="text-base font-semibold">Example Output Image</Label>
                             <div
                                 className={`
-                                    relative border-2 border-dashed rounded-xl p-8 text-center transition-all duration-200 cursor-pointer
+                                    relative border - 2 border - dashed rounded - xl p - 8 text - center transition - all duration - 200 cursor - pointer
                                     ${dragActive ? 'border-primary bg-primary/5 scale-[1.02]' : 'border-muted-foreground/25 hover:border-primary/50 hover:bg-muted/30'}
                                     ${previewUrl ? 'p-0 overflow-hidden border-solid border-border' : ''}
-                                `}
+`}
                                 onDragEnter={handleDrag}
                                 onDragLeave={handleDrag}
                                 onDragOver={handleDrag}

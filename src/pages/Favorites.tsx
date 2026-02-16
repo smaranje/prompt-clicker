@@ -3,7 +3,6 @@ import { useNavigate } from 'react-router-dom';
 import { ArrowLeft, Trash2, ExternalLink, Copy } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
-import { EnterpriseHeader } from '@/components/EnterpriseHeader';
 
 import { getFavorites, removeFavorite, SavedPrompt } from '@/lib/favorites';
 import { useToast } from '@/hooks/use-toast';
@@ -49,11 +48,8 @@ const Favorites = () => {
 
   return (
     <div className="min-h-screen bg-background pb-8">
-      {/* Header */}
-      <EnterpriseHeader />
-
-      <div className="container mx-auto px-4 sm:px-6 py-6 border-b border-border/40">
-        <h1 className="text-2xl sm:text-3xl font-bold">Saved Prompts</h1>
+      <div className="container mx-auto px-4 sm:px-6 py-8 max-w-7xl border-b border-border/40">
+        <h1 className="text-2xl sm:text-3xl font-bold">My Library</h1>
         <p className="text-muted-foreground mt-1">
           {favorites.length} {favorites.length === 1 ? 'prompt' : 'prompts'} saved for later
         </p>

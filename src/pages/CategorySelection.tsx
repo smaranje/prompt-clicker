@@ -1,15 +1,13 @@
 import { useState } from 'react';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Sparkles, Code2 } from 'lucide-react';
-import {
-  DoodleBulb
-} from '@/components/Doodles';
+import { DoodleBulb } from '@/components/Doodles';
 
-import { EnterpriseHeader } from '@/components/EnterpriseHeader';
 import { FirstTimeTutorial } from '@/components/FirstTimeTutorial';
 import { MagicMode } from '@/components/MagicMode';
 import { StudioMode } from '@/components/StudioMode';
 import { PromptComparison } from '@/components/PromptComparison';
+import { ExploreSection } from '@/components/ExploreSection';
 
 const CategorySelection = () => {
   const [activeMode, setActiveMode] = useState<'magic' | 'studio'>('magic');
@@ -19,8 +17,7 @@ const CategorySelection = () => {
       <FirstTimeTutorial />
 
       <div className="min-h-screen bg-gradient-to-br from-background via-background to-primary/5 page-transition pb-24 md:pb-8">
-        {/* Enterprise Header */}
-        <EnterpriseHeader />
+
 
         <div className="container mx-auto px-3 sm:px-6 py-6 sm:py-12 md:py-16 lg:py-20 max-w-7xl">
           {/* Main Heading */}
@@ -82,6 +79,8 @@ const CategorySelection = () => {
           <div className="relative">
             <PromptComparison />
           </div>
+
+          <ExploreSection />
 
 
           {/* Footer */}

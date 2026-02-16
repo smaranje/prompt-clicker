@@ -3,6 +3,8 @@ import { useNavigate } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Card } from '@/components/ui/card';
+import { Badge } from '@/components/ui/badge';
+import { Textarea } from '@/components/ui/textarea';
 import { Loader2, Copy, Check, ExternalLink, Sparkles } from 'lucide-react';
 import { toast } from 'sonner';
 import { supabase } from '@/integrations/supabase/client';
@@ -12,10 +14,41 @@ export const MagicMode = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [generatedPrompt, setGeneratedPrompt] = useState('');
   const [copied, setCopied] = useState(false);
+
+  // Advanced Mode State (RTCROS)
+  const [isAdvanced, setIsAdvanced] = useState(false);
+  const [advancedFields, setAdvancedFields] = useState({
+    role: '',
+    task: '',
+    context: '',
+    reasoning: '',
+    output: '',
+    stopping: ''
+  });
+
   const navigate = useNavigate();
 
   const handleMagicGenerate = async () => {
-    if (!userInput.trim()) {
+    // Construct the final prompt based on mode
+    let finalInput = userInput;
+
+    if (isAdvanced) {
+      // Validate that at least Task is present
+      if (!advancedFields.task.trim()) {
+        toast.error('Task is required in Advanced Mode');
+        return;
+      }
+
+      // Combine RTCROS fields into a structured request
+      finalInput = `
+Role: ${advancedFields.role}
+Task: ${advancedFields.task}
+Context: ${advancedFields.context}
+Reasoning: ${advancedFields.reasoning}
+Output Format: ${advancedFields.output}
+Stopping Criteria: ${advancedFields.stopping}
+      `.trim();
+    } else if (!userInput.trim()) {
       toast.error('Please describe what you want to create');
       return;
     }
@@ -25,7 +58,7 @@ export const MagicMode = () => {
     try {
       // Call AI to generate prompt directly
       const { data, error } = await supabase.functions.invoke('magic-prompt', {
-        body: { userInput: userInput.trim() }
+        body: { userInput: finalInput }
       });
 
       if (error) throw error;
@@ -70,30 +103,106 @@ export const MagicMode = () => {
     <div className="w-full max-w-5xl mx-auto">
       {/* Magic Input */}
       <Card className="p-4 sm:p-6 md:p-8 border border-border shadow-sm">
-        <div className="flex items-center gap-2 mb-3 sm:mb-4">
-          <h2 className="text-base sm:text-xl font-semibold">Magic Mode</h2>
+        <div className="flex items-center justify-between mb-3 sm:mb-4">
+          <div className="flex items-center gap-2">
+            <h2 className="text-base sm:text-xl font-semibold">Magic Mode</h2>
+            <Badge variant="secondary" className="text-[10px] h-5 px-1.5">
+              Refined
+            </Badge>
+          </div>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setIsAdvanced(!isAdvanced)}
+            className={`text-xs ${isAdvanced ? 'bg-primary/10 text-primary' : 'text-muted-foreground'}`}
+          >
+            {isAdvanced ? 'Switch to Simple' : '✨ Advanced (RTCROS)'}
+          </Button>
         </div>
 
         <p className="text-xs sm:text-sm text-muted-foreground mb-4 sm:mb-6">
-          Just tell us what you want, and we'll create the perfect prompt for you
+          {isAdvanced
+            ? "Engineer robust prompts using the RTCROS framework. Fill what you can, we'll do the rest."
+            : "Just tell us what you want, and we'll create the perfect prompt for you."}
         </p>
 
-        <div className="space-y-3 sm:space-y-4">
-          <div className="relative">
-            <Input
-              type="text"
-              placeholder="I want to write an email to my boss about..."
-              value={userInput}
-              onChange={(e) => setUserInput(e.target.value)}
-              onKeyDown={(e) => e.key === 'Enter' && handleMagicGenerate()}
-              disabled={isProcessing}
-              className="h-11 sm:h-14 text-sm sm:text-base pr-4"
-            />
-          </div>
+        <div className="space-y-4">
+          {isAdvanced ? (
+            <div className="grid gap-4 animate-in slide-in-from-top-2 fade-in duration-300">
+              <div className="grid sm:grid-cols-2 gap-4">
+                <div className="space-y-2">
+                  <label className="text-xs font-medium text-muted-foreground">Role (Who)</label>
+                  <Input
+                    placeholder="e.g. Senior Copywriter, Python Expert"
+                    value={advancedFields.role}
+                    onChange={(e) => setAdvancedFields(prev => ({ ...prev, role: e.target.value }))}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-medium text-primary">Task (What) *</label>
+                  <Input
+                    placeholder="e.g. Write a sales email, Debug this code"
+                    value={advancedFields.task}
+                    onChange={(e) => setAdvancedFields(prev => ({ ...prev, task: e.target.value }))}
+                    className="border-primary/20 bg-primary/5"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="text-xs font-medium text-muted-foreground">Context (Background)</label>
+                <Textarea
+                  placeholder="Audience, constraints, platform details..."
+                  value={advancedFields.context}
+                  onChange={(e) => setAdvancedFields(prev => ({ ...prev, context: e.target.value }))}
+                  className="h-20"
+                />
+              </div>
+
+              <div className="grid sm:grid-cols-3 gap-4">
+                <div className="space-y-2">
+                  <label className="text-xs font-medium text-muted-foreground">Reasoning (How)</label>
+                  <Input
+                    placeholder="Step-by-step..."
+                    value={advancedFields.reasoning}
+                    onChange={(e) => setAdvancedFields(prev => ({ ...prev, reasoning: e.target.value }))}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-medium text-muted-foreground">Output (Format)</label>
+                  <Input
+                    placeholder="Table, JSON, List..."
+                    value={advancedFields.output}
+                    onChange={(e) => setAdvancedFields(prev => ({ ...prev, output: e.target.value }))}
+                  />
+                </div>
+                <div className="space-y-2">
+                  <label className="text-xs font-medium text-muted-foreground">Stopping (Limits)</label>
+                  <Input
+                    placeholder="Max 300 words..."
+                    value={advancedFields.stopping}
+                    onChange={(e) => setAdvancedFields(prev => ({ ...prev, stopping: e.target.value }))}
+                  />
+                </div>
+              </div>
+            </div>
+          ) : (
+            <div className="relative animate-in slide-in-from-bottom-2 fade-in duration-300">
+              <Input
+                type="text"
+                placeholder="I want to write an email to my boss about..."
+                value={userInput}
+                onChange={(e) => setUserInput(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && handleMagicGenerate()}
+                disabled={isProcessing}
+                className="h-11 sm:h-14 text-sm sm:text-base pr-4"
+              />
+            </div>
+          )}
 
           <Button
             onClick={handleMagicGenerate}
-            disabled={isProcessing || !userInput.trim()}
+            disabled={isProcessing || (!isAdvanced && !userInput.trim()) || (isAdvanced && !advancedFields.task.trim())}
             className="w-full h-10 sm:h-12 text-sm sm:text-base"
             size="lg"
           >
@@ -104,6 +213,7 @@ export const MagicMode = () => {
               </>
             ) : (
               <>
+                <Sparkles className="w-4 h-4 mr-2" />
                 Generate Prompt
               </>
             )}

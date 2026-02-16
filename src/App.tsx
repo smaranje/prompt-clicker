@@ -15,6 +15,8 @@ import Discover from "./pages/Discover";
 import ViewPrompt from "./pages/ViewPrompt";
 import SubmitPrompt from "./pages/SubmitPrompt";
 import NotFound from "./pages/NotFound";
+import { MainLayout } from "./components/MainLayout";
+import { FocusLayout } from "./components/FocusLayout";
 
 const queryClient = new QueryClient();
 
@@ -24,13 +26,21 @@ const AnimatedRoutes = () => {
   return (
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<CategorySelection />} />
-        <Route path="/templates/:categoryId" element={<TemplateSelection />} />
-        <Route path="/customize/:templateId" element={<CustomizeTemplate />} />
-        <Route path="/prompt/:promptId" element={<ViewPrompt />} />
-        <Route path="/favorites" element={<Favorites />} />
-        <Route path="/discover" element={<Discover />} />
-        <Route path="/submit" element={<SubmitPrompt />} />
+        {/* Main Layout Pages (Standard Header + Bottom Nav) */}
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<CategorySelection />} />
+          <Route path="/favorites" element={<Favorites />} />
+          <Route path="/discover" element={<Discover />} />
+          <Route path="/submit" element={<SubmitPrompt />} />
+        </Route>
+
+        {/* Focus Layout Pages (Custom Header + Bottom Nav) */}
+        <Route element={<FocusLayout />}>
+          <Route path="/templates/:categoryId" element={<TemplateSelection />} />
+          <Route path="/customize/:templateId" element={<CustomizeTemplate />} />
+          <Route path="/prompt/:promptId" element={<ViewPrompt />} />
+        </Route>
+
         {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
         <Route path="*" element={<NotFound />} />
       </Routes>

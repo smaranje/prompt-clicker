@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Checkbox } from '@/components/ui/checkbox';
-import { ArrowLeft, Check, Copy, Wand2, ArrowRight, Bookmark, ExternalLink, RefreshCw } from 'lucide-react';
+import { ArrowLeft, Check, Copy, Wand2, ArrowRight, Bookmark, ExternalLink, RefreshCw, Send } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { toast } from 'sonner';
@@ -15,6 +15,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { communityPrompts } from '@/data/community_prompts';
 import { saveFavorite, isFavorite } from '@/lib/favorites';
 import { OpenChatGPTDialog } from '@/components/OpenChatGPTDialog';
+import { SubmitPromptDialog } from '@/components/SubmitPromptDialog';
 import { ScrollArea } from "@/components/ui/scroll-area";
 
 export const CustomizeTemplate = () => {
@@ -33,6 +34,7 @@ export const CustomizeTemplate = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [selectedService, setSelectedService] = useState<'chatgpt' | 'claude'>('chatgpt');
   const [saved, setSaved] = useState(false);
+  const [shareDialogOpen, setShareDialogOpen] = useState(false);
 
   // Auto-scroll ref
   const previewRef = useRef<HTMLDivElement>(null);
@@ -350,6 +352,9 @@ export const CustomizeTemplate = () => {
                   <Button size="sm" variant="outline" onClick={handleSaveFavorite} disabled={saved}>
                     <Bookmark className={`w-4 h-4 mr-1 ${saved ? "fill-current" : ""}`} />
                   </Button>
+                  <Button size="sm" variant="outline" onClick={() => setShareDialogOpen(true)} title="Share with Community">
+                    <Send className="w-4 h-4" />
+                  </Button>
                 </div>
               </div>
 
@@ -374,6 +379,13 @@ export const CustomizeTemplate = () => {
           onOpenChange={setDialogOpen}
           prompt={generatedPrompt}
           service={selectedService}
+        />
+
+        <SubmitPromptDialog
+          open={shareDialogOpen}
+          onOpenChange={setShareDialogOpen}
+          initialPrompt={generatedPrompt}
+          initialTitle={template.title}
         />
       </div>
     </div>

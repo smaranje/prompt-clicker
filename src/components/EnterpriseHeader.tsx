@@ -93,42 +93,9 @@ export const EnterpriseHeader = () => {
                         })}
                     </nav>
 
-                    {/* Right Side: Mobile Nav & Theme Toggle */}
+                    {/* Right Side: Theme Toggle */}
                     <div className="flex items-center gap-2 flex-shrink-0">
                         <ThemeToggle />
-
-                        {/* Mobile Navigation */}
-                        <div className="lg:hidden">
-                            <Sheet open={open} onOpenChange={setOpen}>
-                                <SheetTrigger asChild>
-                                    <Button variant="ghost" size="icon" className="h-9 w-9">
-                                        <List className="w-5 h-5" />
-                                        <span className="sr-only">Toggle navigation menu</span>
-                                    </Button>
-                                </SheetTrigger>
-                                <SheetContent side="right">
-                                    <SheetHeader className="text-left mb-6">
-                                        <SheetTitle>Menu</SheetTitle>
-                                    </SheetHeader>
-                                    <div className="flex flex-col gap-2">
-                                        {navItems.map((item) => {
-                                            const Icon = item.icon;
-                                            return (
-                                                <Button
-                                                    key={item.path}
-                                                    variant={isActive(item.path) ? "secondary" : "ghost"}
-                                                    className="w-full justify-start gap-3 px-4 py-6"
-                                                    onClick={() => handleMobileNavClick(item.path)}
-                                                >
-                                                    <Icon className="w-5 h-5" weight={isActive(item.path) ? "fill" : "regular"} />
-                                                    <span className="text-base">{item.label}</span>
-                                                </Button>
-                                            );
-                                        })}
-                                    </div>
-                                </SheetContent>
-                            </Sheet>
-                        </div>
                     </div>
                 </div>
             </div>
